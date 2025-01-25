@@ -44,6 +44,7 @@ links = [                             # Your links
     { name = "GitHub", icon = "github", url = "https://github.com/pUrGe12" },
     # { name = "Twitter", icon = "twitter", url = "https://twitter.com/<your-username>" },
     { name = "Email", icon = "email", url = "mailto:helloitsme0218@gmail.com" },
+    { name = "LinkedIn", icon = "linkedin", url = "https://www.linkedin.com/in/achintya-jai-887658212/" }
 ]
 
 nav_separator = " > "
