@@ -2,3 +2,6 @@
 	path = themes/serene
 	url = https://github.com/isunjn/serene.git
 	branch = latest
+[submodule "themes/tranquil"]
+	path = themes/tranquil
+	url = https://github.com/teadrinkingprogrammer/tranquil.git

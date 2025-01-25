@@ -1,10 +1,9 @@
 [[project]]
-name = ""
-desc = ""
-tags = ["", ""]
-img = ""
+name = "Achintya"
+desc = "Test"
+tags = ["uhh", "what?"]
 links = [
-  { name = "", url = "" },
+  { name = "ah", url = "alri" },
   { name = "", url = "" },
 ]
 
@@ -12,7 +11,6 @@ links = [
 name = ""
 desc = ""
 tags = ["", ""]
-img = ""
 links = [
   { name = "", url = "" },
   { name = "", url = "" },
