@@ -1,5 +1,5 @@
 +++
-title = "Creating an ESP32 based WiFi deauther and honepot"
+title = "WiFi spoofing part B: Creating an ESP32 based WiFi deauther"
 date = 2025-01-23
 draft = false
 
@@ -11,8 +11,18 @@ tags = ["Hardware", "Networks", "Cysec", "blog"]
 lang = "en"
 +++
 
+ESP32 has a wifi adapter inbuilt. It also apparently allows you to send raw wifi packets if you use the ESP-IDF framework and the ieee80211_raw_frame_sanity_check(), an actual bypass that was found after reverse engineering the ESP-IDF source code and binaries. 
 
-# Making a Database
+The reason I wanna do this is because otherwise people won't be incentivised to click on my honepot, 2 reasons for this
+
+1. It is free and hence less trustworth in the minds of the people
+2. People generally don't check available networks (cause most of the times, it automatically connects)
+
+If I can broadcast deauthentication frames posing as my insti AP, and then perform a DoS attack, they will be forced to notice my "iitmwifi_6g" and boom, gotcha!
+
+> TLDR: It did not work, because ESP-IDF won't support sending deauth frames and the working behind the actual raw packet sending is closed source. We will have to use a custom framework and not ESP-IDF, thus a new board like ESP8266. 
+
+I shall do this for another time. If you are `still interested` in going through what I learnt in this frustating process, read through...
 
 ## Installing ESP-IDF v5.4 (latest)
 
@@ -158,11 +168,13 @@ First, lets test the actual [deatuh script](LinkToIt) (with the 0xC0 byte set) t
 
 Meanwhile also add supabase setup for the spoofing page. Why is it not connecting to the board! Packing for lunch.
 
-haha, got 2 more victims in this 1 hour of lunching. Interesting, the girl has a cgpa of 8.23 but interned in the defence agency and PnG? Crazy stuff. Makes one wonder. Running my elective script to stalk this girl with roll number ee22b143 for a friend (really for a friend!)
+Haha, got 2 more victims in this 1 hour of lunching. Interesting, the girl has a cgpa of 8.23 but interned in the defence agency and PnG? Crazy stuff. Makes one wonder. Running my elective script to stalk this girl with roll number ee22b143 for a friend (really for a friend!)
+
+My honeypot code is below, its really simple actually but quite fun.
 
 ---
 
-Alright, unsupported frame type again for c0. I guess they had removed support for 0xC0 in all versions of esp-idf. Testing the GitHub repo patch now.
+Alright, unsupported frame type again for 0xC0. I guess they had removed support for 0xC0 in all versions of esp-idf. Testing the GitHub repo patch now.
 
 I don't think its working. Two explanations
 
