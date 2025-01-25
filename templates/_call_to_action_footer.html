@@ -1,0 +1,27 @@
+<div class="col gap-8">
+    {% if page.extra.call_to_action_footer_text is defined %}{% set call_to_action_footer_text = page.extra.call_to_action_footer_text %}{% else %}{% set call_to_action_footer_text = config.extra.call_to_action_footer_text %}{% endif %}
+    <p class="[&>a]:underline [&>a]:underline-offset-4 [&>a]:decoration-2 [&>a]:decoration-sky-500 [&>a]:dark:decoration-sky-400">{{ call_to_action_footer_text | safe }} </p>
+    <div class="flex gap-5">
+        <form
+        action="https://buttondown.email/api/emails/embed-subscribe/TDP"
+        method="post"
+        target="popupwindow"
+        onsubmit="window.open('https://buttondown.email/TDP', 'popupwindow')"
+        class="col gap-2 w-1/2"
+        >
+            <input aria-label="Email input field" class="p-2 bg-stone-300 dark:bg-stone-700n placeholder:text-slate-700 dark:placeholder:text-slate-900" placeholder="Enter your email address"  type="email" name="email" id="bd-email" />
+            
+            <input class="rounded-md text-black dark:bg-sky-600 p-2 bg-sky-500" type="submit" value="Subscribe" />
+        </form>
+        <div class="flex justify-center items-center w-1/2">
+            {% set rss_icon = load_data(path="static/icon/rss.svg") %}
+            {% if section.generate_feed -%}
+            <a class="" href="{{ config.base_url }}/blog/{{ config.feed_filename }}" aria-label="rss feed">{{ rss_icon | safe }}</a>
+            {% elif config.generate_feed -%}
+            <a class="" href="{{ config.base_url }}/{{ config.feed_filename }}" aria-label="rss feed">{{ rss_icon | safe }}</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+

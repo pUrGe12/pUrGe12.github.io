@@ -1,17 +1,8 @@
 [[project]]
-name = "Achintya"
-desc = "Test"
-tags = ["uhh", "what?"]
-links = [
-  { name = "ah", url = "alri" },
-  { name = "", url = "" },
-]
-
-[[project]]
-name = ""
-desc = ""
-tags = ["", ""]
-links = [
-  { name = "", url = "" },
-  { name = "", url = "" },
-]
+    name = "TerminAI"
+    desc = "This is an AI infused terminal that can do whatever you tell it to do, without having to use commands at all! Works on Linux and MAC (haven't tested extensively on Windows)"
+    tags = ["Python", "AI"]
+    links = [
+      { name = "Github", url = "https://github.com/pUrGe12/TerminAI_V2" },
+      { name = "Youtube", url = "https://www.youtube.com/watch?v=nFkwPLMH3D4" },
+    ]
