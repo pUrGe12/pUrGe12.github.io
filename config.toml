@@ -1,8 +1,6 @@
-# serene v1.2.0 (check for update at https://github.com/isunjn/serene/releases)
-
 base_url = "https://purge12.github.io/"      # Domain name of your website
-title = "Blog"
-description = "blog"
+title = "Musing"
+description = "Beleco en Kreado"
 default_language = "en"
 theme = "tranquil"
 output_dir = "public"
@@ -34,15 +32,34 @@ anchors = "on"
 insert_anchor_links = "left"
 #=========================================================================================
 
+[search]
+# Whether to include the title of the page/section in the index
+include_title = true
+# Whether to include the description of the page/section in the index
+include_description = false
+# Whether to include the path of the page/section in the index
+include_path = false
+# Whether to include the rendered content of the page/section in the index
+include_content = true
+# At which character to truncate the content to. Useful if you have a lot of pages and the index would
+# become too big to load on the site. Defaults to not being set.
+# truncate_content_length = 100
+
+# Wether to produce the search index as a javascript file or as a JSON file
+# Accepted value "elasticlunr_javascript" or "elasticlunr_json"
+index_format = "elasticlunr_javascript"
+
 [extra]
 
 name = "Achintya Jai"                         # Your name
-id = "Purge"                           # Your id / username / handle
-bio = ""                          # Your bio
+id = "Musing"                           # Your id / username / handle
+home = "home"
+bio = """
+An undegrad from IIT Madras. I like stuff, which you will see about here!
+"""                          # Your bio
 avatar = "img/avatar.webp"            # Your avatar
 links = [                             # Your links
     { name = "GitHub", icon = "github", url = "https://github.com/pUrGe12" },
-    # { name = "Twitter", icon = "twitter", url = "https://twitter.com/<your-username>" },
     { name = "Email", icon = "email", url = "mailto:helloitsme0218@gmail.com" },
     { name = "LinkedIn", icon = "linkedin", url = "https://www.linkedin.com/in/achintya-jai-887658212/" }
 ]
@@ -64,8 +81,11 @@ outdate_alert_days = 120              # How many days will a post be outdated by
 outdate_alert_text_before = "This article was last updated "
 outdate_alert_text_after = " days ago and may be out of date."
 
-footer_copyright = "© 2023 <your-name>"
+call_to_action_footer_text = "Did you like this blogpost? Then consider catching up via LinkedIn or Github!"
+call_to_action_footer = true
+
+footer_copyright = "© 2024-2025 Achintya Jai"
 footer_credits = true                 # Whether to show "Powered by Zola and Serene" in footer
 
 footer_privacy_text = "Privacy Policy"
-footer_privacy = false
+footer_privacy = true
