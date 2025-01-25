@@ -6,4 +6,4 @@ template = 'privacy.html'
 lang = 'en'
 +++
 
-Yeah, will have to update with my own privacy policy. How am I keeping track of the people visiting my blog?
+I am using `google analytics` to get insights on the visitors to the website. Rest assured, I have no idea who you are, only that you opened my blog post and read through stuff.

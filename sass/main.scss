@@ -631,7 +631,7 @@ body.homepage {
     }
 
     #name, #id {
-      font-size: 1.1em;
+      font-size: 1.7em;
     }
 
     #id {
@@ -699,7 +699,7 @@ body.homepage {
 
   #brief {
     padding: 0 15px;
-    font-size: 1em;
+    font-size: 1.5em;
     line-height: var(--homepage-line-height);
   }
 }
@@ -741,7 +741,7 @@ header {
   }
 
   nav {
-    font-size: 1.35em;
+    font-size: 1.5em;
     display: flex;
     align-items: center;
 
@@ -755,7 +755,7 @@ header {
     }
 
     .separator {
-      font-size: 0.9em;
+      font-size: 1.0em;
       font-weight: 600;
       width: 24px;
       text-align: center;
@@ -876,7 +876,7 @@ dialog#rss-mask {
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 footer {
-  font-size: 0.9em;
+  font-size: 1.0em;
   padding: 15px;
   display: flex;
   justify-content: center;
