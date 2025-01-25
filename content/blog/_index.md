@@ -2,7 +2,7 @@
 title = "Blog"
 description = "My blog"
 sort_by = "date"
-template = "blog-page.html"
+template = "blog.html"
 page_template = "post.html"
 insert_anchor_links = "left"
 generate_feeds = true
