@@ -4,7 +4,7 @@ date = 2025-01-25
 draft = false
 
 [taxonomies]
-categories = ["dev"]
+categories = ["Dev"]
 tags = ["webdev", "blog"]
 
 [extra]
