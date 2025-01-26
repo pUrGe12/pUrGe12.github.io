@@ -68,6 +68,7 @@ nav_separator = " > "
 
 display_id = true                     # Display your id on homepage
 projects_page = true                  # Display projects page
+wisps_page = true                     # Custom page to display some non-tech stuff
 blog_categorized = true               # Whether to categorize blog posts
 blur_effect = true                    # Whether to turn on blur effect on navigation bar
 
