@@ -217,7 +217,7 @@ So, since action frames work, I am going to try something with `0xD0`. Reading m
 
 > The Channel Switch Announcement element is used by an AP in a BSS, a STA in an IBSS, or a mesh STA in an MBSS to advertise when it is changing to a new channel and the channel number of the new channel. The format of the Channel Switch Announcement element is shown below (source IEEE 802.11-2012)
 
-{{ figure(src="./assets/IEEE_802_11_2012.png", alt="CSA element format diagram", caption="CSA format diagram") }}
+{{ figure(src="assets/IEEE_802_11_2012.png", alt="CSA element format diagram", caption="CSA format diagram") }}
 
 The idea being that a `Channel Switch Annoucement` can potentially be used to deauthenticate a user. If for example you're connected to your wifi using channel 1 and it suddenly asks you to switch to channel 6 then there **might** be a small time interval of disconnect followed by a reconnect.
 
