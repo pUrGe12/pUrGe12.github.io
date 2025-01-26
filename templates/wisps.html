@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="intro">
+    <h1>Wisps</h1>
+    <p>A collection of my non-tech musings—guitar sheet music, sketches, and ideas.</p>
+  </section>
+
+  <section class="wisps-list">
+    <h2>Creations</h2>
+    <ul>
+      {% for page in section.pages %}
+        <li>
+          <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+          {% if page.summary %}
+            <p>{{ page.summary }}</p>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endblock %}
