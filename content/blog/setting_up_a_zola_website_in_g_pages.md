@@ -37,3 +37,12 @@ I figured that its quite easy to host a website using GitHub pages especially fo
 - Changing colors, messing with stuff etc.
 - Adding images and YouTube links 
 - Creating a good README.md file
+
+## Adding your own section
+
+- Go to home.html
+- Add the link to the new directory
+- Create new directory under contents/
+- Create \_index.md file, use same syntax, use a page and a page-template
+- Create the page and page-template html files, use a similar syntax as others, save it in templates/
+- Build and serve locally first
