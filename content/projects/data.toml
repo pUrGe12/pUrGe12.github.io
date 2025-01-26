@@ -1,8 +1,26 @@
 [[project]]
     name = "TerminAI"
     desc = "This is an AI infused terminal that can do whatever you tell it to do, without having to use commands at all! Works on Linux and MAC (haven't tested extensively on Windows)"
-    tags = ["Python", "AI"]
+    tags = ["Python", "Gemini", "bash"]
     links = [
       { name = "Github", url = "https://github.com/pUrGe12/TerminAI_V2" },
       { name = "Youtube", url = "https://www.youtube.com/watch?v=nFkwPLMH3D4" },
+    ]
+
+[[project]]
+    name = "duxMLB"
+    desc = "This is a chrome extension build to help MLB fans gain a better experience while watching their matches! It can predict statcast data for legacy games and live matches, give up to date information on players, teams and schedules and predict your MLB future based on your best homerun statistics!"
+    tags = ["Pinecone", "Yolo", "APIs", "Selenium"]
+    links = [
+      { name = "Github", url = "https://github.com/pUrGe12/MLBxG-extension" },
+      { name = "Youtube", url = "upcoming~" },
+    ]
+
+[[project]]
+    name = "Cromax"
+    desc = "This project was the winner of the Google's GenAI challenge in 2024. We developed this to help new shop owners manage their logistics. It has AI controlled web elements, a product sales forecaster and a huge database of potential warehouses and competitiors"
+    tags = ["Gemini", "APIs", "Meta's prophet", "Node.js", "Supabase"]
+    links = [
+      { name = "Github", url = "https://github.com/AadiSrivastava05/genaihack_croma" },
+      { name = "Youtube", url = "upcoming~" },
     ]
