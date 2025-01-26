@@ -42,6 +42,7 @@ I figured that its quite easy to host a website using GitHub pages especially fo
 
 - Go to home.html
 - Add the link to the new directory
+- It is best to copy and past all template files in your local template directory
 - Create new directory under contents/
 - Create \_index.md file, use same syntax, use a page and a page-template
 - Create the page and page-template html files, use a similar syntax as others, save it in templates/
