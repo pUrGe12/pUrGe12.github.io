@@ -5,7 +5,7 @@ draft = false
 
 [taxonomies]
 categories = ["Poetry"]
-tags = ["Love"]
+tags = ["Life"]
 
 [extra]
 lang = "en"
