@@ -71,6 +71,7 @@ projects_page = true                  # Display projects page
 wisps_page = true                     # Custom page to display some non-tech stuff
 blog_categorized = true               # Whether to categorize blog posts
 blur_effect = true                    # Whether to turn on blur effect on navigation bar
+wisps_categorized = true              # Whether to categorize wisp posts
 
 toc = true                            # Whether to show Table-Of-Contents by default
 comment = false                       # Whether to show giscus comment section by default, see https://giscus.app for more info
