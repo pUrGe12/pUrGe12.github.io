@@ -11,6 +11,12 @@ tags = ["Automata", "Blockchain", "Hashing"]
 lang = "en"
 +++
 
+> This might be a bit hard to read
+
+Because for some reason my LATEX is not being rendered correctly. Hence, I am linking the actual paper as well. 
+
+[Paper](https://drive.google.com/file/d/1F7iiWc0XKPXG4dQcONL6DCCdC5Z11kNx/view?usp=drive_link)
+
 # On the Game of Life
 
 This was the title of a paper I was trying to get published to a math `interest` magazine in my college. Unfortunately they had a strict page limit (of 2 pages which is ridiculous) and though I fought for it to be changed, they never did concede. Hence, I am writing about it here! 
@@ -107,7 +113,7 @@ You may choose to go over and verify for themselves that this indeed is in compl
 
 A simple code like this one can be used to produce this system for any number of generations.
 
-```python3
+```python
 import numpy as np
 from copy import deepcopy
 def create_matrix(rows, columns):
