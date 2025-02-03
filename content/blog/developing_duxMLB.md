@@ -69,12 +69,6 @@ The `options page` for the extension which contains the other features also has 
 
 In the coming subsections I will talk majorly about the backend and now the UI because that is pretty normal stuff and nothing interesting.
 
-### The flow
-
-This is how the website flow works:
-
-{{ figure(src="assets/duxMLB_flow.png", alt="duxMLB flow diagram", caption="Flow diagram") }}
-
 ### Building the live statcast setup
 
 This setup is the one where you can type "How fast was that swing?" in the panel and get accurate results. This is the code the helps me get the video feed and store it in a `rolling buffer`. This is the `content.js` script basically.
@@ -218,7 +212,8 @@ The following underlines how the speed calculation works: (assuming that the inp
 7. We then calculate the parabolic average velocity and use the pixel_to_feet_ratio to convert this in ft/s.
 8. Next we correct for the camera angle using the angle made by the `pitcher and catcher to the normal` (that is, the line that splits the screen vertically) when the catcher acts a pivot to the normal line (so, we first **shift the entire pitcher and catcher line mathematically**). The math suggests that we calculate this angle using `beta = float(np.arctan(2*(x1-x2)/(y2-y1)))` where x1,y1,x2,y2 are average coordiantes of the pitcher and the catcher.
 
-I have only used this angle if it is less than 10 degrees, because I found that only then are the results accurate enough (otherwise for larger angles, you don't really need this as frame by frame calculation is good enough there). The corrected velocities are then the predicted ones divided by the sine of this angle.
+I have only used this angle if it is greater than 10 degrees, because I found that only then are the results accurate enough. The corrected velocities are then the predicted ones divided by the sine of this angle.
+
 ```py
 def calculate_speed_ball(video_path, min_confidence=0.5, max_displacement=100, min_sequence_length=7, pitch_distance_range=(55,65)):
     SOURCE_VIDEO_PATH = video_path
@@ -283,29 +278,77 @@ These are the steps following to calulate the maximum swing speed:
 3. The `pixel_to_ft_ratio` is calculated for the video using the bat length in pixel coordinates divided by that in real life.
 4. The detections for the bat are passed to a `univariate spline` to get a continous detection sequence. I then differentiate this spline using small time intervals and find the maximum speed.
 
+### The load models button
+
+This is simple, its a button that when pressed, installs the weights of the trained model on the user's computer (If I could host the backend, this button woudn't exist). This was required because otherwise the models load when they are called and that is infeasible and time taking.
+```py
+@app.route('/load-yolo-model/', methods=['POST'])
+def loading_yolo_models():
+    load_tools = LoadTools()
+    model_weights1 = load_tools.load_model(model_alias='ball_trackingv4')
+    model1 = YOLO(model_weights1)
+
+    model_weights2 = load_tools.load_model(model_alias='phc_detector')
+    model2 = YOLO(model_weights2)
+
+    model_weights3 = load_tools.load_model(model_alias='bat_tracking')
+    model3 = YOLO(model_weights3)
+
+    return jsonify({
+        'message': "loaded deeplearning model"
+        })
+```
+
 ## Challenges I ran into
 
--- Getting the buffer feed
--- Finding the right model for baseball tracking (and training my own)
--- The math for the camera correction
--- Hosted backend on render but it ran out of memory
+There were multiple!
 
-## Accomplishments that I am proud of
+1. **Hosting it on render**
 
--- Multi-model structure
--- Multiple simultaneous architecture
+I had initially hosted the backend on render, so all the user would have to do would be install and play. This also meant having to change all the absolute paths in my code to match the render directory style and installing different software specific to that. 
+
+This failed however because I reached a `memory limit exceeded` error and it wouldn't run my backend. I agree I haven't optmised anything at all in the code base but this still stung. This is why you will have to run the backend file yourself.
+
+2. **Training a custom model**
+
+The problem with training a custom model was just the dataset. I tried `florence2` and `YOLO` on different baseball datasets I found on roboflow that were specifically annotated for these models but the prediction confidence was very low and accuracy also was on the floor. 
+
+I tried applying custom edits to each frame to make it look similar to the training dataset (changing size, increasing contrast etc) and when that also didn't work I realised that this is probably because the dataset contained vastly different enviornments and sometimes zoomed images of the ball. So, I had to find a dataset that was closer to an MLB scenario.
+
+You can find all the test runs in the `test` directory. After having tried 3 different models (and more tested directly on roboflow) I fixed on the one I am using now. 
+
+3.  **The math for the camera correction**
+
+There are two angles I had to take care of, one the `normal angle` and one the `azimuthal angle` (the two angles in polar coordinates). I cound't figure out a consistent way to account for the azimuthal angle but normal angle yes. 
+
+The exact calculations have been defined above, but it took three tries to get there. Most of the trouble seemed to come from the pixel to feet ratio and the angles to actually use the formulas I got. This is because for some test cases I ended up with 1000mph which is ridiculous and this was because the angles were so low that dividing by their sine ended up bloating the velocities.
 
 ## What I learned
 
--- First time using DL stuff
--- Building this was fun!
+This was the first time I tried to build something that involved vector databases, deep learning models and LLMs all in one product. I learnt along the course of building this about how models like YOLO work first hand, and I dived into the math behind deep learning (in fact, I ended up taking a course at my university on deep learning!).
+I also dived into the math behind embedding models and vector databases. I tried to code a custom embedding model using transformers in this project for the MLB future predictor. It was pretty fun (a little nerve racking too because there are just so many ways to do this, it was hard to choose).
+
+Using multiple models, creating a pipeline that integrates them all and sketching that in a canva whiteboard (haha) was an interesting experience cause I felt like I am developing something that can ACTUALLY make a difference. 
 
 ## What's next for duxMLB
 
-Lot of things to write here!
+Ahh I have a lot of things to write here!
 
--- Get users to upload their swings and compare with MLB swings
--- Host it up so you don't have to run the python file again and again
--- Since we are already detecting pitchers and catchers, we can do similar things for other players and then based on where they are standing, figure out what sort of game is being played
+I probably didn't mention above but I couldn't work on the project for almost 1.5 weeks in the middle because of a family emergency, and hence some features that I was going to implement never made it through. It might be a stretch to say I could've achieved all this in 1.5 weeks but at least some of it, yes.
 
-The reason I didn't do this is because I had absolutely no idea what type of games exist. (give them how to make it though)
+1. **Prediction from user's practice videos**
+
+I figured that for a normal user, uploading homerun data like that is `infeasible` largely because that requires a lot of focused approach and most people aren't that way. So, I wanted to come up with a way for the users to enter a **video of them pracitisng a swing, or a pitch and then compare that to a MLB swing or a pitch**. I was going to do this by calculating 
+
+- How high they hold the bat from the waist
+- Where the maximum velocity of their swing occurs at (it should be when it makes contact with the ball and not before)
+- Their hand movement when they're about to release the ball (the flick)
+and more...
+
+This would be fun and I'll do it regardless of the competition (once my exams are over for the semester)
+
+2. **Figuring out game plans**
+
+Since we are already detecting pitchers and catchers, we can do similar things for other players and then based on where they are standing, figure out what sort of game is being played. There was one more reason I coudn't implement this and that was because I had absolutely no idea what type of games exist!
+
+I could research a lot but to get a feel for what the user really wants from the gameplay (do they want just the name? or the reason? or maybe who discovered it?) I would have be a long time fan myself, which wasn't possible since I just started watching baseball!
