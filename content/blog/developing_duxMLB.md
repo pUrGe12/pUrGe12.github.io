@@ -11,7 +11,7 @@ tags = ["Python", "yolo", "Deep learning"]
 lang = "en"
 +++
 
-This is how I built duxMLB and what it really is. It was developed for a hackathon and though I eventually got bored I decided to finally finish it and write about it. The following is the elevator pitch that I gave for the official submission.
+This is how I built duxMLB and what it really is. It was developed for a hackathon and though I eventually got bored I decided to finally finish it and write about it. The following is the elevator pitch that I gave for the official submission. You can now watch the official YouTube video [here](https://www.youtube.com/watch?v=QNKBWi1MJe4) as well!
 
 ## Inspiration
 
