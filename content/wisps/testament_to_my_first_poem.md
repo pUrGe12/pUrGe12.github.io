@@ -31,6 +31,6 @@ lang = "en"
 > was a garden I intended to save overturn.
 > Along the misty shade of river gray,
 > I lay, with a yellow tape.
-> That is my life now, my only merch.
+> That is my life now.
 
 I could sit here and anaylse this for hours because there is a lot of things I wanted to convey and believe it or not, this came on the spot `while` I was creating this blog page. I had written a poem with the same title once before but it was a very different structure. I am myself amazed.
