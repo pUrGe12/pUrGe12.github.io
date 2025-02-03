@@ -4,14 +4,14 @@ date = 2025-02-03
 draft = false
 
 [taxonomies]
-categories = ["OpenSource", "Dev"]
+categories = ["Dev", "OpenSource"]
 tags = ["Python"]
 
 [extra]
 lang = "en"
 +++
 
-# The beginnigns
+# The beginnings
 
 I have used git for quite some time now and I was spending most of my day staring at my screen working on things. Now seems like the right time to step up with game and start making contributions to projects that people `actually use` already.
 
