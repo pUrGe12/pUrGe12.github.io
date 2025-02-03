@@ -140,7 +140,7 @@ The panel can query APIs based on the user's request. The main code that does th
 
 The thing with the API calls was that the URLs expected the `codes` that is, a numerical value rather than a string for the names. Thus, I first scraped the data using `requests` and `beautiful soup` and created a mapping for the team's and player's name to their official codes as expected by the API URLs. Thus the model returns a tuple object that I called `name_code_tuple` which contains information on whether this was a **player call**, **team call** or **schedule call** and the relevant code.
 
-```python3
+```py
 def call_API(name_code_tuple, year=2025, game_type='R'):
 	assert type(name_code_tuple) == tuple, 'Maybe you made a mistake in the name? Check your spellings please! I am doing this all manually, an AI can get tired!'
 	type_, code = name_code_tuple
