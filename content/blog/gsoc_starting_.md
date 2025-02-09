@@ -26,3 +26,9 @@ I don't want to make a lot of the details public yet, at least until the applica
 ---
 
 This is day 3, I got my first PR merged, after having made around 5 in the last 3 days, with 2 issues and multiple comments regarding code updates. I will try and focus on different repos too along with 1 proper issue in the one repo I want to get in with.
+
+---
+
+Alright, day 8 today.
+
+I have made some contributions, raised issues etc. The org is mostly dead man and it takes so much time to do anything! I really want to make this a faster process.
