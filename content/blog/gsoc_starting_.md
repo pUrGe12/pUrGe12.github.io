@@ -32,3 +32,7 @@ This is day 3, I got my first PR merged, after having made around 5 in the last 
 Alright, day 8 today.
 
 I have made some contributions, raised issues etc. The org is mostly dead man and it takes so much time to do anything! I really want to make this a faster process.
+
+---
+
+Today I worked on a big parser, trying to update it to ensure the latest data format is matched. Let's hope it works well.

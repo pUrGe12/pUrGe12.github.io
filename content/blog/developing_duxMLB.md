@@ -11,11 +11,14 @@ tags = ["Python", "yolo", "Deep learning"]
 lang = "en"
 +++
 
-This is how I built duxMLB and what it really is. It was developed for a hackathon and though I eventually got bored I decided to finally finish it and write about it. The following is the elevator pitch that I gave for the official submission. You can now watch the official YouTube video [here](https://www.youtube.com/watch?v=QNKBWi1MJe4) as well!
+This is how I built duxMLB and what it really is. It was developed for a hackathon and though I eventually got bored I decided to finally finish it and write about it. The following is the elevator pitch that I gave for the official submission. 
+
+
+You can now watch the official YouTube video [here](https://www.youtube.com/watch?v=QNKBWi1MJe4) as well!
 
 ## Inspiration
 
-I found this hackathon through a friend and I figured something very interesting can be done with this problem statement. Around a week before the launch of this hackathon I was working on an AI based terminal, which I called `TerminAI`. It was a LAM type framework where the user could enter their commands in natural lanaguge (and not bash or MAC commands) and have it execute. So, things they didn't know how to do using a normal terminal could be done there. So, I was pretty much `into` the idea of creating LAM based applications because I found normal LLMs to be pretty boring and overdone.
+I found this hackathon through a friend and I figured something very interesting can be done with this problem statement. Around a week before the launch of this hackathon I was working on an AI based terminal, which I called `TerminAI` (I came 4th in that hackathon! It was hosted by Berkely so I am extremely happy). It was a LAM type framework where the user could enter their commands in natural lanaguge (and not bash or MAC commands) and have it execute. So, things they didn't know how to do using a normal terminal could be done there. So, I was pretty much `into` the idea of creating LAM based applications because I found normal LLMs to be pretty boring and overdone.
 
 When I heard of this, the first thing that came to my mind was a **live statcast generator**, that would record your screen realtime and generate data based on that. This was the time when Apple Intelligence was also gaining some hype and it did something similar so I figured I would do this. But soon I realised that, though it make for a **good project**, it would've been pretty useless cause nowadays statcast data is present during games! 
 
