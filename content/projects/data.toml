@@ -10,7 +10,7 @@
 
 [[project]]
     name = "TerminAI"
-    desc = "This is an AI infused terminal that can do whatever you tell it to do, without having to use commands at all! Works on Linux and MAC (haven't tested extensively on Windows)"
+    desc = "This is an AI infused terminal that can do whatever you tell it to do, without having to use commands at all! Works on Linux and MAC (haven't tested extensively on Windows)". This is the winner of the LLM agents hackathon organised by UC Berkely amongst 3000+ competitors!
     tags = ["Python", "Gemini", "bash"]
     links = [
       { name = "Github", url = "https://github.com/pUrGe12/TerminAI_V2" },
