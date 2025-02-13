@@ -43,4 +43,8 @@ Yes, day 11 (11th Feb, coincidence?) I guess. Went out to meet a friend. Apparen
 
 There is nothing that stands them out.
 
-I pushed a PR fixing an output report for a scanner. The mod said do it in a different way and don't change the main functionality for a single scan, so I did that. Then I did the same thing for another and released a PR. So far so good. Let's see.
+I pushed a PR fixing an output report for a scanner. The mod said do it in a different way and don't change the main functionality for a single scan, so I did that. Then I did the same thing for another and released a PR. So far so good. Let's see. 
+
+---
+
+Day 13 or 14. Added my first new functionality to the codebase and released a PR. BTW the previous one got merged. one step at a time. 
