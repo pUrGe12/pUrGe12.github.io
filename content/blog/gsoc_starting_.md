@@ -47,4 +47,4 @@ I pushed a PR fixing an output report for a scanner. The mod said do it in a dif
 
 ---
 
-Day 13 or 14. Added my first new functionality to the codebase and released a PR. BTW the previous one got merged. one step at a time. 
+Day 13 or 14. Added my first new functionality to the codebase and released a PR. BTW the previous one got merged. one step at a time. I made the bug fixes to this one and a previous PR in defect dojo for a parser upgrade. This one's fixes worked, hopefully the docker doesn't show cock in the other one!
