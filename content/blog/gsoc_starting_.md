@@ -47,4 +47,21 @@ I pushed a PR fixing an output report for a scanner. The mod said do it in a dif
 
 ---
 
-Day 13 or 14. Added my first new functionality to the codebase and released a PR. BTW the previous one got merged. one step at a time. I made the bug fixes to this one and a previous PR in defect dojo for a parser upgrade. This one's fixes worked, hopefully the docker doesn't show cock in the other one!
+Day 13 or 14. Added my first new functionality to the codebase and released a PR. BTW the previous one got merged. one step at a time. I made the bug fixes to this one and a previous PR in defect dojo for a parser upgrade. This one's fixes worked, hopefully the docker doesn't show cock in the other one! I am bored now. I will make the documentation for the project proposal for Cysec. 
+
+---
+
+Made a bunch of PRs yesterday, 1 more got merged. Told the moderator on slack to check my PR for the new feature in nettacker. Let's see how it goes, it's been a day, he hasn't reached back.
+
+He subtly hinted on implementing a version scanner along with normal port detection so I am now working on that. It's pretty crazy stuff, trying to imitate nmap as much as possible. 
+
+---
+
+Day 16 or something I guess. 
+
+Bruh this takes so much time! He said he'll review today but I am still waiting (granted the afternoon just started in London) but come on man. 
+
+I have a good idea about what I wanna do next. I am trying to get two big things working
+
+1. Path building in URL during directory scans
+2. Version detection for port scanning
