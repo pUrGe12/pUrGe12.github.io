@@ -65,3 +65,10 @@ I have a good idea about what I wanna do next. I am trying to get two big things
 
 1. Path building in URL during directory scans
 2. Version detection for port scanning
+
+---
+
+New day!
+
+Alright so didn't do much today. Cause I have 2 quizes today. Made some fixes for the drone security sheet, including formatting the table in markdown.
+
