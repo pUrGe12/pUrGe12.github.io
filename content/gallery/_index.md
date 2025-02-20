@@ -15,7 +15,7 @@ images = [
 	{ src = "/images/beering.jpg", alt = "Beer", caption = "Beer starts when the solar system finishes"},
 	{ src = "/images/pcbing.jpg", alt = "PCB", caption = "My first PCB (that got printed)"},
 	{ src = "/images/bangaloreDebating.jpg", alt = "Bangalore", caption = "Debating in Chirst (jokes on me)"},
-	{ src = "/images/comparingSketches.png", alt = "4 years since", caption = "After 4 entire years, not much has changed"},
+	{ src = "/images/comparingSketches.jpg", alt = "4 years since", caption = "After 4 entire years, not much has changed"},
 	{ src = "/images/firstHackathonWinner.jpg", alt = "Winning my first hackathon", caption = "This is what it took to win my first hackathon"}
 ]
 +++
