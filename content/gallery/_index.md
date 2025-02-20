@@ -12,7 +12,7 @@ lang = 'en'
 display_tags = true
 truncate_summary = false
 images = [
-	{ src = "/images/beering.jpg", alt = "Beer", caption = "Beer starts when the solar system finishes"},
+	{ src = "/images/beering.jpg", alt = "Beer", caption = "British Empire starts when the solar system finishes"},
 	{ src = "/images/pcbing.jpg", alt = "PCB", caption = "My first PCB (that got printed)"},
 	{ src = "/images/bangaloreDebating.jpg", alt = "Bangalore", caption = "Debating in Chirst (jokes on me)"},
 	{ src = "/images/comparingSketches.jpg", alt = "4 years since", caption = "After 4 entire years, not much has changed"},
