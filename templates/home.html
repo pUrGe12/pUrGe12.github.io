@@ -35,6 +35,10 @@
         {% if config.extra.wisps_page -%}
         <a class="text-lg tl-link" href="{{ config.base_url }}/wisps">wisps</a>
         {% endif -%}
+
+        {% if config.extra.gallery_page -%}
+        <a class="text-lg tl-link" href="{{ config.base_url }}/gallery">gallery</a>
+        {% endif -%}
       </div>
       <div class="row gap-2 h-6">
         {% for link in config.extra.links -%}
