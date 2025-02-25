@@ -22,3 +22,7 @@ I wanna write a book, I have been thinking of ideas, its a novel but more like h
 > If it doesn't come bursting out of you, don't do it
 
 Bukowski may have been a genius, but he can't be more wrong about this. I don't think I would've been here if not for delibrate practise, it never comes bursting for then you would never have to worry about it and the best artists are born of worry.
+
+---
+
+Done and dusted. I am prolly not doing this as well. I mean, I am probably going to do this later, but definetly on break till GSoC

@@ -12,3 +12,5 @@ lang = "en"
 +++
 
 # United Nations
+
+Funny shit. I stopped reading that book cause it was pretty much useless. I am not doing this.

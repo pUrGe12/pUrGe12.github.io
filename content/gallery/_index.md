@@ -17,5 +17,6 @@ images = [
 	{ src = "/images/bangaloreDebating.jpg", alt = "Bangalore", caption = "Debating in Chirst (jokes on me)"},
 	{ src = "/images/comparingSketches.jpg", alt = "4 years since", caption = "After 4 entire years, not much has changed"},
 	{ src = "/images/firstHackathonWinner.jpg", alt = "Winning my first hackathon", caption = "This is what it took to win my first hackathon"}
+	{ src = "/images/anaDeArmas.jpg", alt = "Sketching during classes. Sorry for butchering this, had only a graphite pencil"}
 ]
 +++

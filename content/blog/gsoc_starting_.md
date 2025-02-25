@@ -72,3 +72,7 @@ New day!
 
 Alright so didn't do much today. Cause I have 2 quizes today. Made some fixes for the drone security sheet, including formatting the table in markdown.
 
+---
+
+Day 23ish I guess. I am so bored. I think the maintainer is busy so he isn't reviewing my PR. I need to step up my game but will only succeed once he merges this!
+I opened another in a different branch for custom wordlist addition. I have a feeling he's against error catching and using that as a core logic, but let's see.
