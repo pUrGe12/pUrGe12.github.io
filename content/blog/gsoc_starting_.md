@@ -76,3 +76,20 @@ Alright so didn't do much today. Cause I have 2 quizes today. Made some fixes fo
 
 Day 23ish I guess. I am so bored. I think the maintainer is busy so he isn't reviewing my PR. I need to step up my game but will only succeed once he merges this!
 I opened another in a different branch for custom wordlist addition. I have a feeling he's against error catching and using that as a core logic, but let's see.
+
+---
+
+Alright, My PR is still not reviewed, and today is a Saturday. I am not that worried cause I have started working on my application. I have included the following ideas into that, 
+
+- [ ] Integrating Nettacker output with DefectDojo
+- [ ] Integrating Grafana’s visualisation tool
+- [ ] Version and filtered ports detection
+- [ ] UI improvements for the dashboard
+- [ ] Multi-threading issues fix -> Code refactoring
+- [ ] Adding a SARIF output report format
+- [ ] Implementing a testing framework
+
+The problem is, unless I talk to Mr. Sam I am not sure what they except from DefectDojo and Grafana integration? Do they want me to make contributions in their repos to include enpoints and parsers for nettacker? or what else can they be actually asking my friend?
+
+I am pretty sure its the former, cause there is no other way to integrate that, even if we use APIs, that still means I will have to create a parser for nettacker and its output formats. The question then is, should that be for the SARIF outputs or should it be for the HTML/json outputs? I am thinking I will say SARIF cause it makes more sense especially if that is the standard now.
+
