@@ -93,3 +93,6 @@ The problem is, unless I talk to Mr. Sam I am not sure what they except from Def
 
 I am pretty sure its the former, cause there is no other way to integrate that, even if we use APIs, that still means I will have to create a parser for nettacker and its output formats. The question then is, should that be for the SARIF outputs or should it be for the HTML/json outputs? I am thinking I will say SARIF cause it makes more sense especially if that is the standard now.
 
+---
+
+Bhai, my head is spinning. I have way too many things to work on. I need to plan this properly else I'll continue spinning forever.
