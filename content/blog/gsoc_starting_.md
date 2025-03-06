@@ -96,3 +96,7 @@ I am pretty sure its the former, cause there is no other way to integrate that, 
 ---
 
 Bhai, my head is spinning. I have way too many things to work on. I need to plan this properly else I'll continue spinning forever.
+
+---
+
+If an implementation is correct, and it doesn't harm the existing code, why not accept that? I don't understand the point of "fixing" something that's not really broken or hard to use.
