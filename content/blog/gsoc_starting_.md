@@ -100,3 +100,7 @@ Bhai, my head is spinning. I have way too many things to work on. I need to plan
 ---
 
 If an implementation is correct, and it doesn't harm the existing code, why not accept that? I don't understand the point of "fixing" something that's not really broken or hard to use.
+
+---
+
+Its been a long time since I wrote updates. I am working on my proposal rn. securestep9 has "indirectly" asked me to look into celery for lite-queuing and multi-task handling, so I'll look into that. I'm gonna have whiskey tonight. Currently, writing tests is taking a bit too much time, once that is done and documented I will start this work.
