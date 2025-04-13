@@ -4,7 +4,7 @@ date = 2025-04-13
 draft = false
 
 [taxonomies]
-categories = ["Homelab", "Networking"]
+categories = ["Hardware" ,"Homelab", "Networking"]
 tags = ["NAS"]
 
 [extra]

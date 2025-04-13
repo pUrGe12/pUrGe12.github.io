@@ -4,7 +4,7 @@ date = 2025-01-29
 draft = false
 
 [taxonomies]
-categories = ["GCP", "VertexAI"]
+categories = ["Dev", "GCP", "VertexAI"]
 tags = ["AI", "Setup"]
 
 [extra]
