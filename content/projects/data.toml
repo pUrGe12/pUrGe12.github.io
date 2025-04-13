@@ -30,4 +30,6 @@
     name = "homelab"
     desc = "I am building a homelab. This is to learn about computer networking and experiment with hardware and different services. This is an ongoing project and more on this is available in the blog section!"
     tags = ["Networking", "Homelab", "Cybersec"]
-    links = []
+    links = [
+      { name = "nothing", url = "https://youtu.be/dQw4w9WgXcQ" }
+    ]

@@ -19,8 +19,5 @@ I am interested in `cybersec` and `hacking` so there is a special section in my 
 That's what `wisps` is for, a different perspective to life, a step in a direction that truly defines what being a human means. I am being dramatic, but its genuinely a fun place to be!
 
 ---
-I am Achintya Jai, and this is my `musings`.
-
----
 
 I felt this monotone theme gave a certain asthetic vibe to the website, for which I would have to thank the [TeaDrinkingProgrammer](https://github.com/TeaDrinkingProgrammer).
