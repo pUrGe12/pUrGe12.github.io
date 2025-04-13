@@ -25,3 +25,8 @@
       { name = "Github", url = "https://github.com/pUrGe12/MLBxG-extension" },
       { name = "Youtube", url = "https://www.youtube.com/watch?v=QNKBWi1MJe4" },
     ]
+
+[[project]]
+    name = "homelab"
+    desc = "I am building a homelab. This is to learn about computer networking and experiment with hardware and different services. This is an ongoing project and more on this is available in the blog section!"
+    tags = ["Networking", "Homelab", "Cybersec"]
