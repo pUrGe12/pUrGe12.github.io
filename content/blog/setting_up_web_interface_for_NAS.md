@@ -11,8 +11,6 @@ tags = ["NAS", "Flask"]
 lang = "en"
 +++
 
-# TLDR;
-
 A simple webserver that allows me to put up multiple files from my client laptop and save them in the samba directory in the NAS server if we're over the same LAN. The only issue is the dynamic IP address of the server, so for now, I was forced to use supabase to store the address and created aliases for each access.
 
 ---
