@@ -59,3 +59,41 @@ This needs to be done by the client. So, you're actively supporting the MITM (it
 ---
 
 With this basic mitmproxy setup, we can start the process of dissecting this and displaying this in the flask server.
+
+---
+
+Alright so the first step I figured I will try is just directly piping the output of tcp dump to my flask server. Then I will add some filtering options (which will probably be difficult). So direct `tcpdump` I will simply run that as a subprocess, something like this
+
+```py
+def generate_tcpdump():
+    process = subprocess.Popen(
+        ['sudo', '/usr/bin/tcpdump'],
+        stdout = subprocess.PIPE,
+        stderr = subprocess.STDOUT,
+        text=True,
+        bufsize=1
+        )
+
+    for line in process.stdout:
+        yield f"data: {line.strip()} \n\n"
+
+@app.route("/tcpdump", methods=["GET"])
+def show_work():
+    return Response(generate_tcpdump(), mimetype='text/plain')
+```
+
+This works nicely for now. The only thing to keep in mind is, to avoid giving the sudo password, we can add ourself to the sudoer list for tcpdump.
+
+```sh
+sudo visudo
+```
+
+Then inside that, add the following line:
+```sh
+<username> ALL=(ALL) NOPASSWD: /usr/bin/tcpdump
+```
+Make sure the path for tcpdump is correct. This will allow the server to run this tcpdump without any password. 
+
+I realised late that with this implementation, doing filtering and all will be pretty hard (I am not sure how I'll do it) so we'll see.
+
+Additionally, there are some issues.
