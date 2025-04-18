@@ -120,3 +120,25 @@ I have a cooler idea now:
 - The client will then route its internet requests via the eth0 interface to the server first, who will use the dynamic IP assigned to it by the institute's DHCP server to connect to the internet.
 
 I am not sure if this will work. Will test this out.
+
+### Commands I am running (for reference)
+
+So my old laptop detects the ethernet interface but doesn't have the drivers for it. So step 1 is installing the right driver. It uses intel's e1000e driver so,
+
+```sh
+modinfo e1000e  # This works
+sudo modprobe e1000e
+```
+
+I checked that the drivers exist and are not bound because of something called the `ULP` mode. From the docs what I could understand is:
+
+- This mode is a part of the Energy Efficient Ethernet (IEEE 802.3az) and not an intel thing.
+- When ULP is enabled, the Ethernet controller may enter a low-power state that makes it less responsive.
+
+The thing is the old server was previously my dad's business laptop and ULP is enabled in the UEFI by default (It supports legacy as well but who cares about that).
+
+This is so fucked. So apparently my e1000e doesn't discover the NIC hardware (its not listed in the modinfo). I tried install a newer version of the e1000e driver and BAM! API misconfigs, deprecated functins etc. This is so frustrating. Without this I can't even setup a simple LAN connection.
+
+For some reas n manually binding the driver raises the issuse that "the file/directory cannot be found". BRUH I AM SITTING RIGHT HERE. its infront of me. Annoying as hell.
+
+I will try a usb-to-ethernet adapter. If not then let's see.
