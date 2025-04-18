@@ -97,3 +97,26 @@ Make sure the path for tcpdump is correct. This will allow the server to run thi
 I realised late that with this implementation, doing filtering and all will be pretty hard (I am not sure how I'll do it) so we'll see.
 
 Additionally, there are some issues.
+
+1. I can't run mitmproxy during startup because that requires a terminal interface and cronjob doesn't support that.
+2. This means if I want to get the right logs, I will have to setup the proxy and ensure that my laptop (old server) isn't turned off.
+
+Ideally it should never be off, but since the IP address I am receiving from the institute is dynamic, it sucks, as I have to setup the proxy from the client to new IP addresses all the time. This is the bigger problem I will try and resolve first. Setting up my own DHCP server that talks to the institute wifi and gets a dynamic address.
+
+This is how the DHCP works, straight from wikipedia docs
+
+> On receiving a DHCP request, the DHCP server may respond with specific information for each client, as previously configured by an administrator, or with a specific address and any other information valid for the entire network and for the time period for which the allocation (lease) is valid. A DHCP client typically queries this information immediately after booting, and periodically thereafter before the expiration of the information. When a DHCP client refreshes an assignment, it initially requests the same parameter values, but the DHCP server may assign a new address based on the assignment policies set by administrators.
+
+In my case, the adminstrators probably assign new ip addresses every new day. Not sure of the time.
+
+---
+
+I have a cooler idea now:
+
+- Firstly we need static IPs cause otherwise its a pain.
+- I found an ethernet cable lying around that I want to use.
+- I can setup the ethernet connection on a different interface `eth0` and forward my internet requests through that in my new laptop
+- The server can provide a static IP to itself and the new laptop over this interface.
+- The client will then route its internet requests via the eth0 interface to the server first, who will use the dynamic IP assigned to it by the institute's DHCP server to connect to the internet.
+
+I am not sure if this will work. Will test this out.
