@@ -146,3 +146,10 @@ For some reason manually binding the driver raises the issuse that "the file/dir
 https://unix.stackexchange.com/questions/625912/e1000e-error-with-b460-motherboard-and-intel-i219-v-chipset
 
 Ahh, mostly likely my driver is bad as well. It is somehow "stuck" in ULP and it contantly tries to achieve that. The mailing list mentioned has code to continue execution even if ULP failed, but I am not if following that is right.
+
+With this I also figured that since the old laptop was my dad's `business` laptop, they have not even given the name of the mother board used in that. From what I could find online its a fully custom board built specifically for this laptop. This is the worst news ever because:
+
+1. My entire day of solving this hardware issue through software and kernel debugging was waste
+2. I can't even replace the motherboard
+
+I might try the patches mentioned in the mailing list tomorrow and see if those work. I have some time to kill before 20th cause then I am locking in and studying. So why not. Let's see if I can get something working.
