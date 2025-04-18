@@ -139,6 +139,10 @@ The thing is the old server was previously my dad's business laptop and ULP is e
 
 This is so fucked. So apparently my e1000e doesn't discover the NIC hardware (its not listed in the modinfo). I tried install a newer version of the e1000e driver and BAM! API misconfigs, deprecated functins etc. This is so frustrating. Without this I can't even setup a simple LAN connection.
 
-For some reas n manually binding the driver raises the issuse that "the file/directory cannot be found". BRUH I AM SITTING RIGHT HERE. its infront of me. Annoying as hell.
+For some reason manually binding the driver raises the issuse that "the file/directory cannot be found". BRUH I AM SITTING RIGHT HERE. its infront of me. Annoying as hell.
 
-I will try a usb-to-ethernet adapter. If not then let's see.
+---
+
+https://unix.stackexchange.com/questions/625912/e1000e-error-with-b460-motherboard-and-intel-i219-v-chipset
+
+Ahh, mostly likely my driver is bad as well. It is somehow "stuck" in ULP and it contantly tries to achieve that. The mailing list mentioned has code to continue execution even if ULP failed, but I am not if following that is right.
