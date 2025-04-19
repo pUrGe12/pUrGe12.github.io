@@ -167,3 +167,13 @@ I will first test out option 2 cause that seems fun.
 ---
 
 Alright, after a day of trying to fix the `netdev.c` and `ethtool.c` I ran into some struct definition errors in `ptp.c`, and at this point I realised I am basically wasting my time because there are a lot of dependencies that I will need to take care of now. This is too painful so I am switching to option 3 now.
+
+Alright so I got kernel v6.8 cloned and tried making it. Note that running `make` won't work because the Makefile expects to be included in the kernel build system, and is not a standalone thing. So, I had to run
+
+`make -C /lib/modules/$(uname -r)/build M=$(pwd) modules`
+
+The good thing is the build passed. sigh... If only I did this yesterday :(.
+
+---
+
+Sad stuff happened, cause turns out the patch I wanted to do is already there. haha. :(((. What the fuck. 
