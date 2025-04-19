@@ -153,3 +153,17 @@ With this I also figured that since the old laptop was my dad's `business` lapto
 2. I can't even replace the motherboard
 
 I might try the patches mentioned in the mailing list tomorrow and see if those work. I have some time to kill before 20th cause then I am locking in and studying. So why not. Let's see if I can get something working.
+
+---
+
+So, I have the e1000e driver version 3.8.7 loaded and ready. Running `make` is a pain because I think there is a kernel version mismatch, as this driver proably expects an older kernel (this is downloaded straight from the intel website). I think this to be the case because my new laptop has the e1000e driver working correct without any ULP errors, has the same kernel version `6.8.0-57-generic` and consequently the builds fail in that as well. I guess intel patched the driver for future versions of the kernel but hasn't included that on their website. So I have three choices:
+
+1. Switch to an older kernel permanantly (Easy but not a good idea as its not maintained and is probably buggy)
+2. Patch the driver myself
+3. Download the linux source code (that will come with the patched driver) and apply the bypass for ULP.
+
+I will first test out option 2 cause that seems fun.
+
+---
+
+Alright, after a day of trying to fix the `netdev.c` and `ethtool.c` I ran into some struct definition errors in `ptp.c`, and at this point I realised I am basically wasting my time because there are a lot of dependencies that I will need to take care of now. This is too painful so I am switching to option 3 now.
