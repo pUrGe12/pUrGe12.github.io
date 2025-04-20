@@ -176,4 +176,12 @@ The good thing is the build passed. sigh... If only I did this yesterday :(.
 
 ---
 
-Sad stuff happened, cause turns out the patch I wanted to do is already there. haha. :(((. What the fuck. 
+Sad stuff happened, cause turns out the patch I wanted to do is already there. haha. :(((. What the fuck.
+
+---
+
+Alright so if the NIC is cooked, I might be able to use an usb-to-ethernet adapter and get an interface over that.
+
+---
+
+Update: 20th April, bought one. The adapter has its own network interface inside that is indepedent of the motherboard's NIC. So, this might work (assuming my LAN cables work)
