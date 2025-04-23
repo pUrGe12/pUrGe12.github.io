@@ -1,5 +1,5 @@
 +++
-title = "Setting up a network monitor on my server"
+title = "creating a gateway"
 date = 2025-04-18
 draft = false
 
@@ -134,3 +134,4 @@ Then I can simply define that in `app.py` and run that nicely. The specific comm
 sudo tshark -i en<name> -T json -Y "ip.addr == 192.168.42.2"
 ```
 
+This gives a nicely formatted json and filters that too. I want to eventually figure out a way to set these filters dynamically, and make the UI for this, as currently its only just printing stuff there. 
