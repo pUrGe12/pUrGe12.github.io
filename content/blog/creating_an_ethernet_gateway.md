@@ -134,4 +134,16 @@ Then I can simply define that in `app.py` and run that nicely. The specific comm
 sudo tshark -i en<name> -T json -Y "ip.addr == 192.168.42.2"
 ```
 
-This gives a nicely formatted json and filters that too. I want to eventually figure out a way to set these filters dynamically, and make the UI for this, as currently its only just printing stuff there. 
+This gives a nicely formatted json and filters that too. I want to eventually figure out a way to set these filters dynamically, and make the UI for this, as currently its only just printing stuff there.
+
+---
+
+## ON TO DOING BETTER
+
+So, I got my hands on a tplink Archer C50 version 6.8 router. It sadly doesn't support openWRT but its pretty cool. I set it up to assign static IPs to all devices connected to it. This is done by the `binding` tne MAC address of the connected device to a IP address. So, within the LAN, all connected devices have known ip addresses.
+
+Since this router will also act as a hub, I can connect two devices to it, assign them static IPs and then make them talk to each other. Thus, my NAS is now wireless! (Only need ethernet cables if I have to configure the router).
+
+A small skill issue in my side, my room's ethernet port given by the institute is broken (I am pretty sure these idiots broke it during cleaning for placements or something), so I can't connect that to wifi yet and forward all the requests. Another thing is that, I will probably have to rethink the traffic monitoring idea now, because my packets are no longer being passed through the old laptop.
+
+Pondering...
