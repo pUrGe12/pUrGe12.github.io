@@ -24,3 +24,5 @@ Sometimes, things like that happen. I know its bad for my health, but boy I love
 The new motor controller and BMS have arrived from AUS today. I will go and admire them.
 
 ---
+
+Alright, I did get GSoC. I don't know why I don't feel it in me. Maybe its just relief.
