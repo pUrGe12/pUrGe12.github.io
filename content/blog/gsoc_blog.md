@@ -37,3 +37,22 @@ Alright at this point, `patching-sqlalchemy-output` should be ready for raising 
 
 Another thought:
 > We should probably have tests for all databases! This should be inside the CI/CD checks as well... Lemme see.
+
+---
+
+Alright contuining with test cases. Let's do for arg_parser.py now. I am doing this randomly and not at all following the timeline I gave, but if the goal is finish allll of it before June then why does it even matter?
+
+
+The idea behind testing arg_parsing logic is simply that I need to see if it parses each argument correctly or not. We'll have to patch these guys:
+
+1. `sys.argv` (simulate command-line input)
+2. File I/O functions (open, read, write).
+3. Config access (Config.settings, Config.path, etc.).
+4. External function calls (like die_failure, die_success).
+5. Any module that causes side effects (start_api_server, generate_ip_range, etc.)
+
+okay this is harder than expected. Let's do the easy ones first. (**agressively crying**)
+
+---
+
+Testing out databases actually. These are important too! I wrote tests for mysql, model and sqlite. Will write one for postgres later once the updates are merged (or neglected. I think it shouldn't be neglected cause uhh, it won't really work otherwise). Same goes for db.py. Its supposed to undergo a major refraction so I will wait.
