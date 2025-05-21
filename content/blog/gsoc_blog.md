@@ -11,6 +11,12 @@ tags = ["Networks", "blog"]
 lang = "en"
 +++
 
+
+Update from the future (21st May)
+I am going to be using this as a work tracker thingie, you'll find a lot of rant about test cases intially, and then some rant about other things. For the actual gsoc blog, stay tuned, it'll be coming soon.
+
+---
+
 Saturday - 2025-05-17
 For the past few days I have been writing test cases for different files. So far I have 34% coverage locally and once I get to 70 which is hopefully by the end of this week, I will start pushing tests one by one (don't want to overburden the maintainer). I have written tests for the following files so far (will use this to keep track)
 
@@ -56,3 +62,12 @@ okay this is harder than expected. Let's do the easy ones first. (**agressively 
 ---
 
 Testing out databases actually. These are important too! I wrote tests for mysql, model and sqlite. Will write one for postgres later once the updates are merged (or neglected. I think it shouldn't be neglected cause uhh, it won't really work otherwise). Same goes for db.py. Its supposed to undergo a major refraction so I will wait.
+
+1. core/ip.py
+2. api/engine.py
+3. api/core.py
+4. core/die.py
+5. core/fuzzer.py
+6. graph.py
+
+There are no major revisions to file in the future (probably some small nitty-gritties here and there) so will fix the as they come up.
