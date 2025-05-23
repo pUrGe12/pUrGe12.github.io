@@ -71,3 +71,24 @@ Testing out databases actually. These are important too! I wrote tests for mysql
 6. graph.py
 
 There are no major revisions to file in the future (probably some small nitty-gritties here and there) so will fix the as they come up.
+
+---
+
+Today is May 23rd. I did some work on GI attacks yesterday, back to full time gsoc work today. So, I'll be starting with a few test cases again cause those are simple and easy. Then I am thinking I should get the peripherals over with and finish off the UI improvements and keep it safe to push later.
+
+The rebasing won't be difficult cause those files were never changed, so I will do that to. Its just important to keep track of which branch serves what purpose! Honestly I don't want to redo this work.
+
+I did some for module.py. This is soo boring and hard man. 
+
+
+1. core/ip.py
+2. api/engine.py
+3. api/core.py
+4. core/die.py
+5. core/fuzzer.py
+6. core/graph.py
+7. core/module.py (69%)
+
+Will have to revist this. Let's finalize the ones for web dev.
+
+Please to look in `adding-wordist-change-option` branch. It contains the rebased version of the webdev changes (the custom wordlist addition options). I will now finish the huey thingie as well. Had some missing things there. Tonights for that (after dinner)
