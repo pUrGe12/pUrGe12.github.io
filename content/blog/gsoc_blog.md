@@ -179,3 +179,13 @@ So with this the webdev part is completed. At least from my side. Mr. Sam may ha
 relevant branches for webdev:
 1. `keeping-only-new_scan_task`
 2. `adding-wordist-change-option`
+
+---
+
+Now working on the additional outputs thingie. Have to keep small things in mind, like checking for .dd.json before .json cause otherwise fucked.
+
+Alright, its 1:30am. I am done with SARIF fully, a little more advance approach to dd.json is left, but everything works. The SARIF outputs are validated and properly detailed. Now the same must happen for dd.json for which I was just using the minimum possible ones.
+
+branch: `all-new-outputs`
+
+So, I can either lazily add the event_json directly to a suitably good field or I can think through it. I am thinking I will start with lazy addition. If I find some cool fields which seem to match, then I will change it to them. Simple. 
