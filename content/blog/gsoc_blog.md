@@ -189,3 +189,13 @@ Alright, its 1:30am. I am done with SARIF fully, a little more advance approach 
 branch: `all-new-outputs`
 
 So, I can either lazily add the event_json directly to a suitably good field or I can think through it. I am thinking I will start with lazy addition. If I find some cool fields which seem to match, then I will change it to them. Simple. 
+
+---
+
+25th May 2025
+
+New day, I am done with the new output types. All tested, I am able to import the new result into DefectDojo and get it parsed with their generic parser. Nice.
+
+branch: `all-new-outputs`. This is rebased and all nice with the master. So, should be fine I suppose.
+
+This is getting too long so I'll move to a new file.
