@@ -154,3 +154,29 @@ BRUH THIS IS HIGHLY inefficient. This works for the version_scanning part becaus
 9. The extracted probes are then used to probe and get a response.
 
 Since the process is sooo slow due to the above mentioned inefficiencies, I have never really seen a response from UDP scan :(. Creating a new function now.
+
+---
+
+May 28th
+
+I need to get my glasses changed today. Will go at 11am. Mr. Sam sent me his previous talk on nettacker at a conference. Man, I so want to do something similar! 
+
+He merged two of my PRs yesterday. I will have to factor those in now, but refactoring of `ip.py` has been done that means I can directly write tests cases for it! Lets go. And postgres fix has also been done, so test case for postgres.py can also be written now. Later later.
+
+I got this new function ready. Most of the concurrecy overhead is gone. Yeah, I had small issues here, turns out that using .get("probes") was returning a list so my extract_udp_probes function was failing. Just had to do .get("probes")[0 and problem solved.
+
+NEXT UP:
+
+I need to now see how do I make this a part of the port_scan itself or an alternative to see. Something is still a little weird. So, this isn't `really` uhh scanning yet in the sense of how port_scan does it. For example, if I close port_scan midway, I quickly get the table, but if I close udp_scan midway I get "no_live_service". This suggests that the `actual` process, however may that be defined is not really starting. I will have to debug this out now.
+
+I am not returning anything from UDP scan as well. Need to fix that shit. Cause of this, what ends up happening is, as soon as I recieve a response, it fucks the system up. To check this I setup a UDP server using socat
+
+`socat -v UDP-LISTEN:9999,reuseaddr,fork EXEC:'/bin/cat'`
+
+This is a simple echo server.
+
+Cool stuff happened, its 3am RN. New day technically, I just realised that I can do filtered port scanning and there was another issue with getservbyport() function of socket that we were using incorrectly. I have a feeling he's gonna ask me to make two seperate PRs. But they work nicely and it seems like the best way to do it. If you're unable to create a connection due to a timeout, then it suggests a filtered port. If closed, then the connection will be refused outright. 
+
+Funny (and sad) thing is I wasn't even trying to do this and it ended up taking 2 hours :(. That's just how life be sometimes. I am soooo behind on schedule. Need to get the UDP scan done ASAP!
+
+Tomorrow. Hard. Deadline. Finish this or I am not sleeping.
