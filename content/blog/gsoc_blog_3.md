@@ -89,4 +89,4 @@ okay, its been a while, with new clarity I can safetly say that verbose mode doe
 python3 nettacker.py -i 127.0.0.1 -m port_scan -g 8334 -v (-sU)
 ```
 
-with or without -sU, I get the same output (if I don't print anything that is). Verbose needs to do better. Let's first fix that okay.
+With or without -sU, I get the same output (if I don't print anything that is). Verbose needs to do better. Let's first fix that okay.
