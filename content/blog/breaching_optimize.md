@@ -69,9 +69,103 @@ def prepare_attack(model, loss, cfg_attack, setup=dict(dtype=torch.float, device
     return attacker
 ```
 
-Basically, there are a lot of cool things we can try, the basic one that I have used is the `optimization` and the truth is, that's the one which works. The others have different uses which I will describe later in the blog.
+Basically, there are a lot of cool things we can try, the basic one that I have used is the `optimization` and the truth is, that's the only one which works. The others have different uses which I will describe later in the blog.
 
-So, it calls the `OptimizationBasedAttacker` class and that has a method called `reconstruct` which is what we used in the code shared above.
+So, it calls the `OptimizationBasedAttacker` class and that has a method called `reconstruct` which is what we used in the code shared above. Before we dive into the reconstruct method, we should checkout the `__init__` because that is what holds the `regularizers` and `augmentations` implementation.
+
+```py
+def __init__(self, model, loss_fn, cfg_attack, setup=dict(dtype=torch.float, device=torch.device("cpu"))):
+    super().__init__(model, loss_fn, cfg_attack, setup)
+    objective_fn = objective_lookup.get(self.cfg.objective.type)
+    if objective_fn is None:
+        raise ValueError(f"Unknown objective type {self.cfg.objective.type} given.")
+    else:
+        self.objective = objective_fn(**self.cfg.objective)
+    self.regularizers = []
+    try:
+        for key in self.cfg.regularization.keys():
+            if self.cfg.regularization[key].scale > 0:
+                self.regularizers += [regularizer_lookup[key](self.setup, **self.cfg.regularization[key])]
+    except AttributeError:
+        pass  # No regularizers selected.
+
+    try:
+        self.augmentations = []
+        for key in self.cfg.augmentations.keys():
+            self.augmentations += [augmentation_lookup[key](**self.cfg.augmentations[key])]
+        self.augmentations = torch.nn.Sequential(*self.augmentations).to(**setup)
+    except AttributeError:
+        self.augmentations = torch.nn.Sequential()  # No augmentations selected.
+```
+
+So, here we can see that it gets the `key` values from `self.cfg` and based on the scale there, it adds regularizers. The first thing to understand is how self.cfg comes into picture. Like what exactly is it? This comes from this definition of `Hydra`:
+
+```py
+def get_attack_config(attack="invertinggradients", overrides=[]):
+    """Return default hydra config for a given attack."""
+    with hydra.initialize(config_path="config/attack"):
+        cfg = hydra.compose(config_name=attack, overrides=overrides)
+    return cfg
+```
+
+This is basically what `self.cfg` also means, its a packed version of this YAML file, which by default is called `invertinggradients.yaml`. This works for me because this is literally what I am trying to do. So, inside this yaml are these configuration params, (note that I have already edited these to fit my idea, it will orignally be different):
+
+```yaml
+defaults:
+  - _default_optimization_attack
+  - _self_
+type: invertinggradients
+
+objective:
+  type: angular
+  scale: 1.0 # need to have a much smaller scale like 0.0001 for euclidean objectives
+
+restarts:
+  num_trials: 1
+  scoring: "euclidean"
+
+optim:
+  optimizer: adam
+  signed: "hard"
+  step_size: 0.025
+  boxed: True
+  max_iterations: 70
+  step_size_decay: step-lr
+  langevin_noise: 0.0
+
+  callback: 1000
+
+regularization:
+  orthogonality:
+    scale: 0.1
+``` 
+
+So, `self.cfg` gives us access to all of this. I will explain these changes later, first let us explore what the `reconstruct` code looks like:
+
+```py
+def reconstruct(self, server_payload, shared_data, server_secrets=None, initial_data=None, dryrun=False):
+    rec_models, labels, stats = self.prepare_attack(server_payload, shared_data)
+    scores = torch.zeros(self.cfg.restarts.num_trials)
+    candidate_solutions = []
+    try:
+        for trial in range(self.cfg.restarts.num_trials):
+            candidate_solutions += [
+                self._run_trial(rec_models, shared_data, labels, stats, trial, initial_data, dryrun)
+            ]
+            scores[trial] = self._score_trial(candidate_solutions[trial], labels, rec_models, shared_data)
+    except KeyboardInterrupt:
+        print("Trial procedure manually interruped.")
+        pass
+    optimal_solution = self._select_optimal_reconstruction(candidate_solutions, scores, stats)
+    reconstructed_data = dict(data=optimal_solution, labels=labels)
+    ...
+```
+
+Basically, it checks the number of trials it should run, then for that many times it passes it to `_run_trials` method. I won't add the code here. 
+
+<finish this>
+
+
 
 ---
 
