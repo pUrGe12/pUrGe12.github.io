@@ -83,10 +83,18 @@ Firstly, the `method` name is wrong, `method_version` shouldn't be set. I am get
 
 ---
 
+3rd June 2025
+
 okay, its been a while, with new clarity I can safetly say that verbose mode doesn't work. The reason i get `method_version` is because it is correct! I am getting verbose output only for `tcp_connect_send_and_recieve`. I will have to see to this. I think, other than that, should be fine. This is cause if I run the command
 
 ```sh
 python3 nettacker.py -i 127.0.0.1 -m port_scan -g 8334 -v (-sU)
 ```
 
-With or without -sU, I get the same output (if I don't print anything that is). Verbose needs to do better. Let's first fix that okay.
+With or without -sU, I get the same output (if I don't print anything that is). Verbose needs to do better. Let's first fix that okay. Let's figure out how verbose works. Alright, so I get this. We use the `log = logger.get_logger()` and  `log.verbose_event_info()` to make a verbose noise. The thing is that, this logging is not implemented in the socket side, rather its present in the app.py file. 
+
+So, the question then is, why is it not logging if everything starts from app.py. Hmm, will have to investigate. (At least this will also point to the right issue!) Also investigate why it returns immediately after a hit? I mean, its good but still. (Yeah this is sorted, this was because I was closing the socket after each hit)
+
+Also, we can thread inside a thread. So parallelize the probe sending.
+
+I shall parallelize tomorrow. I don't understand why but when I am returning, suddenly I return with all the udp_probes, EVEN though I am deleting them (maybe I am readding them, or maybe its being done before removal).
