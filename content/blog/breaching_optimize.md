@@ -161,9 +161,9 @@ def reconstruct(self, server_payload, shared_data, server_secrets=None, initial_
     ...
 ```
 
-Basically, it checks the number of trials it should run, then for that many times it passes it to `_run_trials` method. I won't add the code here. 
+Basically, it checks the number of trials it should run, then for that many times it passes it to `_run_trials` method. I won't add the code here.
 
-<finish this>
+<finish this> <lots of work remains here>
 
 
 

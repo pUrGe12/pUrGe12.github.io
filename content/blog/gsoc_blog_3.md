@@ -98,3 +98,21 @@ So, the question then is, why is it not logging if everything starts from app.py
 Also, we can thread inside a thread. So parallelize the probe sending.
 
 I shall parallelize tomorrow. I don't understand why but when I am returning, suddenly I return with all the udp_probes, EVEN though I am deleting them (maybe I am readding them, or maybe its being done before removal).
+
+---
+
+I have migrated all test cases to pytest based on what Mr. Arkadii told. I think its fine, not much work was involved in that. Additionally, I fixed all the reviewed PRs. Now, I am thinking I will help Mr. Sam with the database lock issues, he mentioned before he knows people who use it well, so he'll probably ask them.
+
+Meanwhile, I am working on getting the webserver parts ready. I will make a PR today itself, cause why not. I am thinking I will finish major "peripherals" as soon as possible, hopefully raise PRs for all of them before the end of this month itself. So, this gives me a lot of time to work on the major thing!
+
+---
+
+11th June
+
+Alright so my first 10 days are about to be over. I will make a small reflection tomorrow on what has been achieved and what remains. Yesterday I talked to Mr. Arkadii about using [hydra](https://github.com/facebookresearch/hydra) for Nettacker. He's the major software guy so I figured he'll be able to answer better. He said figure out if its the best solution and I don't know if its the best, but I think it might help.
+
+I have seen this being used in the breaching library and I was working with that for the genomics PPFL (this reminds me, I need tv do PCA and submit another result) and I have seen how easy the configurations become.
+
+FUCK!!
+
+My laptop has come from death. My screen died, then some RAM issues (blinking `caps lock` in HP laptops), then battery weak connections (I put surgical tape over it), but now it works. Turns out that if surgical tape can fix a lot of things. Also, removing and replugging your RAM will flush it and hence might work.
