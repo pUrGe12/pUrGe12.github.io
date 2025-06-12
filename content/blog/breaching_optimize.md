@@ -161,21 +161,62 @@ def reconstruct(self, server_payload, shared_data, server_secrets=None, initial_
     ...
 ```
 
-Basically, it checks the number of trials it should run, then for that many times it passes it to `_run_trials` method. I won't add the code here.
+Basically, it checks the number of trials it should run, then for that many times it passes it to `_run_trials` method. I won't add the code here. But the general idea behind that is it first initializes all the regularizers. In my case, I have defined that to be `orthogonal` and the default was `TotalVariation`. 
 
-<finish this> <lots of work remains here>
+The reason we can't use `TotalVariation` here is because of this function defined inside that class.
+
+```py
+def forward(self, tensor, *args, **kwargs):
+        """Use a convolution-based approach."""
+        if self.double_opponents:
+            tensor = torch.cat(
+                [
+                    tensor,
+                    tensor[:, 0:1, :, :] - tensor[:, 1:2, :, :],
+                    tensor[:, 0:1, :, :] - tensor[:, 2:3, :, :],
+                    tensor[:, 1:2, :, :] - tensor[:, 2:3, :, :],
+                ],
+                dim=1,
+            )
+        diffs = torch.nn.functional.conv2d(
+            tensor, self.weight, None, stride=1, padding=1, dilation=1, groups=self.groups
+        )
+        squares = (diffs.abs() + self.eps).pow(self.inner_exp)
+        squared_sums = (squares[:, 0::2] + squares[:, 1::2]).pow(self.outer_exp)
+        return squared_sums.mean() * self.scale
+```
+
+This is using the `torch.nn.functional.conv2d` function which requires the `tensor` to be 4D but ours ain't. Thus in the sample code they had given, they were bypassing this deliberately. This is achievied by setting the `scale` value there to 0, 
+
+```py
+self.regularizers = []
+        try:
+            for key in self.cfg.regularization.keys():
+                if self.cfg.regularization[key].scale > 0:
+                    self.regularizers += [regularizer_lookup[key](self.setup, **self.cfg.regularization[key])]
+```
+
+Hence, it never knew that the `TotalVariation` was set. So, I changed the scale to 0.1 and changed the regularizer to `orthogonal`which works for our data. 
+
+### What exactly are regularizers?
+
+Regularization is simply the process of penalizing the model when it tries to overfit. The idea is that, we have a `scale` value and we multiply that to a `regularization term` to prevent the loss being minimized exactly (yeah its a lil weird). 
+
+I was thinking that regularization will be especially helpful here, because we have about 100k features but very less rows, so the chances of overfitting are very high. This would mean that, it will never be able to achieve a high accuracy for testing data, which it has never seen before.
+
+The reason I went with `orthogonal` is two-folds:
+
+1. It was easily available and worked without tweaking the function
+2. It made sense
 
 
+I think I don't have to explain the first part, I was able to simply set this regularizer in the YAML file and boom, it works. But the second part requires more attention. The idea is that `orthogonal` regularization penalizes **non-orthogonality** of gradients (its for weights or gradients). The reason this works is because in FL, the orthogonality of gradients provides less aligned gradient information, or less redundant gradient information. This makes gradient inversion harder.
+
+Additionally, we are denoising the data. I mean, I can say a bunch of things here, but I could say the same about some other method if that worked. or I could equally critize this method if it didn't work.
+
+I think the data was such that this gave the best results. I am not `really` sure what and why this worked in this case.
 
 ---
-
-Then I noticed was the the `invertinggradients.yaml` file which has some hyperparams that we can tune off. 
-
----
-
-Talk about adding the regularizer and why that worked. Talk about the different types and what makes the one we use, better.
-
---- 
 
 Finally, how we figured out the best hyperparams for training the model in our case and what is the theory behind the reconstruction in the first place.
 
