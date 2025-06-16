@@ -218,8 +218,6 @@ I think the data was such that this gave the best results. I am not `really` sur
 
 ---
 
-Finally, how we figured out the best hyperparams for training the model in our case and what is the theory behind the reconstruction in the first place.
-
 # Measuring accuracy
 
 Talk about the code

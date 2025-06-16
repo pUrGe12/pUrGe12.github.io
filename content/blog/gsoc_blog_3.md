@@ -116,3 +116,8 @@ I have seen this being used in the breaching library and I was working with that
 FUCK!!
 
 My laptop has come from death. My screen died, then some RAM issues (blinking `caps lock` in HP laptops), then battery weak connections (I put surgical tape over it), but now it works. Turns out that if surgical tape can fix a lot of things. Also, removing and replugging your RAM will flush it and hence might work.
+
+---
+
+I sent the Hydra implementation to Mr. Arkadii, I will keep on checking on that. Meanwhile, I did put up a PR for new output types, Mr. Sam seems to be confused. I will now show him my implementation for huey with flask, will send a video to demonstrate that. Its much easier this way. Let's see what he thinks. Yepp, sent. I think its fine, I don't know what else to do here. The user can clearly see what's happening and that's always good. 
+Besides even if you need to use a different code (and not the GUI) you'll still need to run the API server in some machine as there is no central server. This means, huey will just run like its doing rn on the server its being run on. Simple.
