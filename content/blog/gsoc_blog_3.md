@@ -121,3 +121,42 @@ My laptop has come from death. My screen died, then some RAM issues (blinking `c
 
 I sent the Hydra implementation to Mr. Arkadii, I will keep on checking on that. Meanwhile, I did put up a PR for new output types, Mr. Sam seems to be confused. I will now show him my implementation for huey with flask, will send a video to demonstrate that. Its much easier this way. Let's see what he thinks. Yepp, sent. I think its fine, I don't know what else to do here. The user can clearly see what's happening and that's always good. 
 Besides even if you need to use a different code (and not the GUI) you'll still need to run the API server in some machine as there is no central server. This means, huey will just run like its doing rn on the server its being run on. Simple.
+
+---
+
+Jun 18th
+
+Its been 16 days since GSoC started. Honestly I am not happy with the progress (its been, uhh, slow. I have only 5 merged PRs now, that too all tests. I have 2 feature based open PRs though). I have shown my huey with flask implementation to Mr. Sam. He said we'll meet tomorrow and discuss this further. So, lets see what feedback I get then. Today I am coming back to my UDP scan. Firstly, I am such an idiot for not mentioning the branch name!
+
+branch: `code-refactor-version-scan-faster`
+
+Note, I just made a new push that reverts this back to the stage i had left it on (I had made a small mistake and pushed that too so when I came back to this, VIola! Suddently it was broken! I was getting errors, but that was because I was called `.getpeername` on a UDP socket which is fucking socketless. And my stupid ass didn't even test this and directly pushed.)
+
+Alright so, the next order of business is, I WANT port_scan to happen first! Lets work on that. Basically this should be the flow:
+
+1. It loads all the UDP probes at the start and shows to the user that, hehe it will take time, please be patient
+2. Then it does a normal port_scan with TCP probes FIRST (unless -d is specified)
+3. Then it tells the user its doing a UDP scan
+4. Then it returns all the results together
+
+Alright. I figured this out. The problem is this:
+
+- Since we are running multiple treads, each time it creates a tcp_send_connect_and_recieve connection, it sends the single probe, then immediately afterwards, it recieves or not a response (or connection refused error) and then it does the UDP probe (if the flag is called).
+
+- Since we're sending like 100 probes per port for a single thread, it takes time. This means, each thread is now occupied with sending UDP probes. I think what we need to say is only after all the threads have fully finished port_scanning, perform the UDP scan.
+
+I have a plan
+
+That is, create two run functions. one is `run_tcp_scan` and other is `run_udp_scan`. We perform the check inside `module.py` itself. Then we call run_tcp_scan by default. Then `IF` udp_scan is called for, we run that as well. only after all the threading for tcp_scan is done...
+
+---
+
+I did this part! Now, it runs tcp scan with all threads, then it runs UDP scan as requested.
+
+> Now, one small issue remains!
+
+That is, IT TAKES WAYYYYYY too much time to finish UDP scanning. Because, even thought we have multiple threading working on this, each thread still has to send 100 different probes! This takes a lot of time. I am thinking, can we do something like threading each thread? Yes, basically, parallelize the probe sending.
+
+So, I did this also. But now I am facing a small issue with line 490 in socket.py. For some reason (after UDP scanning) its going into the regex matching part for which it requires "conditions" which I don't have! I haven't coded this part yet, but I don't want it to match the conditions! or maybe, I will artificially add the conditions as and when needed. But for now, its somehow still going there (not sure why) and fucking up the code.
+
+on the bright side, it seems like the parallelization does work. Let's see that in more details when I fix this thingie.
