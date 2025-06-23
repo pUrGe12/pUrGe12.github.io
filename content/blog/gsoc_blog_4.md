@@ -50,3 +50,64 @@ Maybe we don't need to log every single thing. Yeah, just small hints are enough
 I will have to get a queue implementation as well. Hmm...  sad noises, cause I think its a lot of work. 
 
 I will first get the status bar (progress bar working) then we'll see about that. I really hope he likes this huey bit only so I don't have to work extra hard on that.
+
+Update: I do have a progress bar (at least the UI ready), I am able to stack multiple ones based on scan_ids. I just need to now figure out a way to calculate the progress for real and send it!
+
+---
+
+23rd June
+
+Its 10am in the morning. I have found another issue with the webserver
+
+1. When we launch nettacker it loads all modules, EVEN if its the webserver. Then when a scan is called for, it again loads all modules.
+
+Why don't we see it? Because its supressed in `logger.py`. You know what, its too much of a pain to solve, cause that will involve I think major refactoring! I am not ready for that.
+
+I will just get the progress bar thingie working. ALRIGHT BIG ISSUE. So you see this part of the code right
+```py
+    form_values["targets"] = [form_values["targets"]]
+    nettacker_app = Nettacker(api_arguments=SimpleNamespace(**form_values))
+    app_arguments = nettacker_app.arguments
+
+    if not isinstance(app_arguments.selected_modules, list) and (app_arguments.selected_modules is not None):
+        app_arguments.selected_modules = app_arguments.selected_modules.split(",")
+    nettacker_app.arguments = app_arguments
+    nettacker_app.run()
+
+    return vars(app_arguments)
+```
+
+This is what I had to change. Spot the difference? I had just found out that after selecting a profile from the UI, my initial code was not really taking in the different modules under it!
+
+This was because I wasn't really using the nettacker parsed arguments! So, simple bug fix.
+
+And, everything works!!! How happy I am to report this. I shared the working video with Mr. Sam who was initially suggesting that this might be too complex to do (well, it did take 5 hours of non-stop work) but in the end, I did get it working. There is one big problem with this approach though (which Mr. Sam also noted)
+
+> Using an SQLite database is not optimal cause WE'RE TRYING to avoid too many file read and writes!!!
+
+So, I need to figure out a way to have an in-memory thing. It shouldn't be hard except for the fact that we're using multiprocess! This means, new processes! This means I CAN'T just share a dictionary between them and call it a day! I spent so long wondering why that wasn't working, which is the whole reason why I came up with the SQLite new table thingie. 
+
+I have found one more thing to try so lets see about that now.
+
+Alright!! This also is done!! Wow. The wonders of `multiprocess.Manager.dict()`. Absoultely lovely.
+
+- So for multiple targets, it creates different processes. This is fine and dandy but since they are under the same scan_id I will have to display the cumulative progress which creates an illusion that things are happening sequentually (they aren't).
+
+This is a slight issue because the part where I am creating the updates for the percentages, are in the lower levels of threading which means, they are all acting on the single target. This means I have absolutely no way of know how many targets were specified by the user in the upper levels cause its all abstracted away.
+
+Fuck these problems man.
+
+I think one way to resolve this can be to have a `num_targets` value being shared across all processes, using the same Manager inside `__init__.py`. This might work. Let's test this out. The idea is simple, if there are `n` targets, then either
+
+1. Multiply the total number of requests by `n`
+2. Divide the current request number by `n`
+
+A is of-course the better idea because it only needs to be done once inside `module.py`.
+
+Guess what, that thing works, but life is never that easy. I just found out that for some reason, I am unable to enter multiple targets. This is again a revelation, second time in one day (technically this is a new day, its 1am now). Let's see.
+
+Alright, that is also now sorted! There is another issue (no one is surprised). If I choose more than 1 targets, it keep looping. It goes from 0 to 100 for the first one, then back from 0 to 100 for the next one and so on. Honestly, I dont mind. I might actually add a small bar next to it to indiviate the number of targets that it finished scanning!
+
+> Classic example of its not a bug, its a feature!
+
+okay sent the changelog to Mr. Sam. Let's see what he thinks. I also asked about the new-outputs changes for the SARIF and defect_dojo outputs. I am not sure if any changes are required there. I mean, since I am not the one using it, we can keep it there, and whoever's interested can modify and do it themselves! Thats the spirit of opensource isn't it.
