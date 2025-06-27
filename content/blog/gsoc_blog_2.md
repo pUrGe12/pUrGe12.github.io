@@ -1,5 +1,5 @@
 +++
-title = "Project Nettacker: Part 2"
+title = "Problems in version and UDP scanning"
 date = 2025-05-25
 draft = false
 

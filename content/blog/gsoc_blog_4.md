@@ -1,5 +1,5 @@
 +++
-title = "Project Nettacker: Part 3"
+title = "Updating Huey processing logic for in-memory usage and progress tracking UI"
 date = 2025-05-29
 draft = false
 
@@ -111,3 +111,78 @@ Alright, that is also now sorted! There is another issue (no one is surprised). 
 > Classic example of its not a bug, its a feature!
 
 okay sent the changelog to Mr. Sam. Let's see what he thinks. I also asked about the new-outputs changes for the SARIF and defect_dojo outputs. I am not sure if any changes are required there. I mean, since I am not the one using it, we can keep it there, and whoever's interested can modify and do it themselves! Thats the spirit of opensource isn't it.
+
+---
+
+June 24th
+
+So, I mentioned some problems to Mr. Sam about this. He asked me to send the changelog to him first in case there needs to be some architecture change. Let's see. I am watching `vanilla sky`.
+
+That's all I did today
+
+---
+
+June 25th
+
+Ahh, new day. I am finishing up the huey with flask thing. Took much longer than expected. I am so behind schedule! Mr. Sam hasn't replied yet so I will set forth and make the remaining changes. 
+
+1. Cap the limit at 100% and once it reaches that, change it to **done!**
+2. In case of multiple targets or modules, handle. 
+
+See, I am thinking for multiple modules, I can just let it display which module it is currently scanning. Hmm, same can be done for targets!
+
+Yeahh, this is done. Looks pretty good NGL. I would add this in my gallery but I am too lazy. Actually, I shall. and then reference it here. hmm, that works. I will make a nice video for Mr. Sam first, then do this.
+
+Also have to order that watch and something for mom rn through a friend who's in the US rn.
+
+I sent him a [documentation](https://docs.google.com/document/d/1RsYGEXXK32k3yBkJ4a6OoFEAE7zvh70pb23yZzb22nA/edit?tab=t.0#heading=h.wul3v0eg5n84) and a video running both the web and the normal scan. He was a little skeptical and rightly so because the changes at a glace may look like I have broken something, but to be sure, I haven't! I ran both the scans simultaneously to show that it works! I think i should seperate the huey part with the progress report and display part. Hmm, maybe I can't. I will see.
+
+Firstly I have to fix my new-outputs thingie. Boy, this is not ideal! I was thinking I am done with this and this was supposed to be the easy part! Come on! See the problem is, I am reopening all the files in order to figure out the severity and all. That's redudundant because I have already opened those files before! Gotta fix it all. Its almost 12am, before 2, this should be ready.
+
+BTW I found out that the drupal_scan and joomla_template scans are broken because of a python regexing issue. So, I created a test case that will scan through all regexes inside the `scan` and `vuln` modules and tell which of them are fine and which aren't. I added this to nettacker today. So, atleast something came from the day!
+
+---
+June 26th
+
+Haha, took less than 20 minutes. Cause I didn't have to juggle about! There is only 1 place in the entire codebase where we are actually reading all the modules. That is inside load_modules in arg_parser. So, that's where I attacked and boom, I have all the severity and descs for everyone.
+
+This is not good though, this day was a waste SMH. I had to do UDP scanning today! There is less than 4 days left to the end of the month now! Come on! Gotta be fast fast.  Huh, I didn't really work today, all the stuff was done before sleeping.
+
+---
+June 27th
+
+Today I have a meet with Mr. Sam. He wants to discuss the Huey part again with me. I don't know, let's see what happens. Its at 6:30. Until then I am thinking I will FINALLY get some work done on the UDP port scan! I want to be done with huey, at least for now, LATEST by July 1st. Let's not be doing the same things in July as well... oh, and also the new outputs thingie.
+
+
+So, back to the old track. I have to do the following to make UDP scanning proper. I will first descibe the entire architecture, then the remaining work
+
+1. The user runs Nettacker with the `-sU` flag enabled.
+2. This sets the `udp_scan` variable and hence loads all the UDP probes.
+3. The probe loading logic is that, it opens the YAML file for the service probes that is present inside `nettacker/lib/payloads/probes` and it pulls the probes from that, seperates the UDP ones and gives it.
+
+Note that we don't and we shouldn't load this YAMl if the `-sU` flag is not set because it takes too much time! Its a big file. We could look into manually seperating the UDP probes from the TCP ones but that is currently just a matter of optimization and not principle.
+
+4. While it is loading, we display to the user that it is loading UDP probes and it may take some time.
+5. After it is done, nettacker runs a `port_scan` as before. Then once the port_scan is over, it displays `TCP scan is finished`. Now if the `UDP_scan` flag was set, it displays, `Now starting UDP scan`.
+
+I don't want it to say `TCP scan is finished, now starting UDP scan` because the user might not have ever specified the `-sU` flag.
+
+6. Then we start UDP port scanning. Here each thread picks up a port, sends around 100 or so probes sequentially. After each probe, each thread waits for 3 seconds for a response, and if nothing, then it sends the next probe.
+
+Improvements:
+
+1. Make it such that only if `port_scan` is specified by the user, will the UDP scanning take place. I don't want it to be like
+
+```sh
+python3 nettacker.py -i example.com,test.com -m dir_scan,http_vuln_scan -v -t 100 -sU
+```
+
+This makes no sense. I know that internally it will do a port_scan first unless -d is specified, but still. I want the command itself to make sense, so `port_scan` must be specified by the user explicitly if they want UDP scanning to take place.
+
+2. three seconds of wait time after each request should actually be a user defined parameter inside settings.
+
+3. Improve the request sending capacity in the UDP scanning part. I want to thread it. I know its already inside a thread, but I want to see if I can make it faster.
+
+So currently each thread is sending a 100 or so probes sequentially. I want to see, if this can be parallelized in itself. If yes, then boom, instant boost in speed. Lets work on that, and swtich to a new doc.
+
+I think I should change the names of these titles. They are too boring.
