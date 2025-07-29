@@ -34,14 +34,4 @@ Yeah, this is a beautiful way to put it. I will attach a diagram soon in my gall
 
 2. Two tools ready. Modularity is at its peak. Atlas now has a logo
 
-```
-    ::: ::::::::::: :::            :::      :::::::: 
-  :+: :+:   :+:     :+:          :+: :+:   :+:    :+:
- +:+   +:+  +:+     +:+         +:+   +:+  +:+       
-+#++:++#++: +#+     +#+        +#++:++#++: +#++:++#++   Version 0.0.1
-+#+     +#+ +#+     +#+        +#+     +#+        +#+   AI-OSINT
-#+#     #+# #+#     #+#        #+#     #+# #+#    #+#
-###     ### ###     ########## ###     ###  ######## 
-https://github.com/pUrGe12{
-Author: purge12
-```
+
