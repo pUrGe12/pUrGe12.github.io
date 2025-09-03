@@ -31,4 +31,4 @@ The central brain talks to the other parts of the brain. It tells them what need
 
 Yeah, this is a beautiful way to put it. I will attach a diagram soon in my gallery!
 
-2. Two tools ready. Modularity is at its peak. Atlas now has a logo
+2. Two tools ready. Modularity is at its peak. Atlas now has a logo. Is this working?
