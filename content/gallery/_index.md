@@ -12,6 +12,7 @@ lang = 'en'
 display_tags = true
 truncate_summary = false
 images = [
+	{ src = "/images/australia_race_track.jpg", alt = "Australia Race Track", caption = "Hidden valley racetrack in Australia"},
 	{ src = "/images/beering.jpg", alt = "Beer", caption = "British Empire starts when the solar system finishes"},
 	{ src = "/images/pcbing.jpg", alt = "PCB", caption = "My first PCB (that got printed)"},
 	{ src = "/images/bangaloreDebating.jpg", alt = "Bangalore", caption = "Debating in Chirst (jokes on me)"},

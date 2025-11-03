@@ -1,6 +1,25 @@
 [[project]]
+    name = "Open-Atlas"
+    desc = "This is part of an OSINT tool which I have been building. At the time of writing, its sitting at 75 stars! I opensourced all the functions and the tools which I will be using for Atlas. I am trying to develop a congnitive framework for OSINT. I gave a talk on this at PyCon India 2025, do check out the YouTube video."
+    tags = ["python", "OSINT", "privacy"]
+    links = [
+        { name = "GitHub", url = "https://github.com/fauvidoTechnologies/open-atlas/"},
+        { name = "YouTube", url = "https://www.youtube.com/watch?v=CT2BXN22gfk"}
+    ]
+
+[[project]]
+    name = "pyba"
+    desc = "This is a no-code browser automation framework library for python. I am developing this because it is a major step for my main project (Atlas) and there are many beautiful things that PyBA can do. For starters, all you need to do is enter a simple prompt, and it will visit the relevant sites, login to social media if needed (without passing your credentials to the LLM), create its own DSL (domain specific language), provide tracibility and database options and reproduce the entire automation scrpit in playwright form scratch!"
+    tags = ["python", "automation", "browsers"]
+    links = [
+        { name = "GitHub", url = "https://github.com/fauvidoTechnologies/PyBrowserAutomation/"},
+        { name = "PyPi", url = "https://pypi.org/project/py-browser-automation/"},
+        { name = "Examples", url = "https://github.com/FauvidoTechnologies/PyBrowserAutomation/tree/main/automation_eval"}
+    ]
+
+[[project]]
     name = "Cromax"
-    desc = "This project was the winner of the Google's GenAI challenge in 2024. We developed this to help new shop owners manage their logistics. It has AI controlled web elements, a product sales forecaster and a huge database of potential warehouses and competitiors"
+    desc = "This project was the winner of the Google's GenAI challenge in 2024. We developed this to help new shop owners manage their logistics. It has AI controlled web elements, a product sales forecaster and a huge database of potential warehouses and competitiors. The CEO of croma ended up writing an article on my team!"
     tags = ["Gemini", "APIs", "Meta's prophet", "Node.js", "Supabase"]
     links = [
       { name = "Github", url = "https://github.com/AadiSrivastava05/genaihack_croma" },
@@ -15,15 +34,6 @@
     links = [
       { name = "Github", url = "https://github.com/pUrGe12/TerminAI_V2" },
       { name = "Youtube", url = "https://www.youtube.com/watch?v=nFkwPLMH3D4" },
-    ]
-
-[[project]]
-    name = "duxMLB"
-    desc = "This is a chrome extension build to help MLB fans gain a better experience while watching their matches! It can predict statcast data for legacy games and live matches, give up to date information on players, teams and schedules and predict your MLB future based on your best homerun statistics!"
-    tags = ["Pinecone", "Yolo", "APIs", "Selenium"]
-    links = [
-      { name = "Github", url = "https://github.com/pUrGe12/MLBxG-extension" },
-      { name = "Youtube", url = "https://www.youtube.com/watch?v=QNKBWi1MJe4" },
     ]
 
 [[project]]
