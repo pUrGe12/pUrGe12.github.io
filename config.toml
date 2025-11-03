@@ -60,7 +60,7 @@ An undegrad from IIT Madras. I like stuff, which you will see about here!
 avatar = "img/avatar.webp"            # Your avatar
 links = [                             # Your links
     { name = "GitHub", icon = "github", url = "https://github.com/pUrGe12" },
-    { name = "Email", icon = "email", url = "mailto:helloitsme0218@gmail.com" },
+    { name = "Email", icon = "email", url = "mailto:achintya.jai@owasp.org" },
     { name = "LinkedIn", icon = "linkedin", url = "https://www.linkedin.com/in/achintya-jai-887658212/" }
 ]
 
