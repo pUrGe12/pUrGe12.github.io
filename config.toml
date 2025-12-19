@@ -55,7 +55,7 @@ name = "Achintya Jai"                         # Your name
 id = "Musing"                           # Your id / username / handle
 home = "home"
 bio = """
-An undegrad from IIT Madras. I like stuff, which you will see about here!
+I do a lot of things, so I figured I would write them down
 """                          # Your bio
 avatar = "img/avatar.webp"            # Your avatar
 links = [                             # Your links
