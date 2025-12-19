@@ -1,0 +1,54 @@
+[[project]]
+    name = "Open-Atlas"
+    desc = "This is part of an OSINT tool which I have been building. At the time of writing, its sitting at 75 stars! I opensourced all the functions and the tools which I will be using for Atlas. I am trying to develop a congnitive framework for OSINT. I gave a talk on this at PyCon India 2025, do check out the YouTube video."
+    tags = ["python", "OSINT", "privacy"]
+    links = [
+        { name = "GitHub", url = "https://github.com/fauvidoTechnologies/open-atlas/"},
+        { name = "YouTube", url = "https://www.youtube.com/watch?v=CT2BXN22gfk"}
+    ]
+
+[[project]]
+    name = "pyba"
+    desc = "This is a no-code browser automation framework library for python. I am developing this because it is a major step for my main project (Atlas) and there are many beautiful things that PyBA can do. For starters, all you need to do is enter a simple prompt, and it will visit the relevant sites, login to social media if needed (without passing your credentials to the LLM), create its own DSL (domain specific language), provide tracibility and database options and reproduce the entire automation scrpit in playwright form scratch!"
+    tags = ["python", "automation", "browsers"]
+    links = [
+        { name = "GitHub", url = "https://github.com/fauvidoTechnologies/PyBrowserAutomation/"},
+        { name = "PyPi", url = "https://pypi.org/project/py-browser-automation/"},
+        { name = "Examples", url = "https://github.com/FauvidoTechnologies/PyBrowserAutomation/tree/main/automation_eval"}
+    ]
+
+[[project]]
+    name = "pybinwalk"
+    desc = "Binwalk is a rust project. But it's lovely and I had to use binwalk for my fully automated OSINT framework, which meant calling binwalk as a tool. So, I created pyo3 bindings to make a python library off of this. And of-course its opensourced!"
+    tags = ["python", "rust"]
+    links = [
+        { name = "GitHub", url = "https://github.com/FauvidoTechnologies/binwalk-python-sdk"},
+        { name = "PyPi", url = "https://pypi.org/project/binwalk-python-sdk/"}
+    ]
+
+[[project]]
+    name = "Cromax"
+    desc = "This project was the winner of the Google's GenAI challenge in 2024. We developed this to help new shop owners manage their logistics. It has AI controlled web elements, a product sales forecaster and a huge database of potential warehouses and competitiors. The CEO of croma ended up writing an article on my team!"
+    tags = ["Gemini", "APIs", "Meta's prophet", "Node.js", "Supabase"]
+    links = [
+      { name = "Github", url = "https://github.com/AadiSrivastava05/genaihack_croma" },
+      { name = "Devfolio", url = "https://devfolio.co/projects/cromax-0536" },
+      { name = "Article", url = "https://www.linkedin.com/pulse/democratisation-problem-solving-shibashish-roy-rbuif"}
+    ]
+
+[[project]]
+    name = "TerminAI"
+    desc = "This is an AI infused terminal that can do whatever you tell it to do, without having to use commands at all! Works on Linux and MAC (haven't tested extensively on Windows). This is the winner of the LLM agents hackathon organised by UC Berkely amongst 3000+ competitors!"
+    tags = ["Python", "Gemini", "bash"]
+    links = [
+      { name = "Github", url = "https://github.com/pUrGe12/TerminAI_V2" },
+      { name = "Youtube", url = "https://www.youtube.com/watch?v=nFkwPLMH3D4" },
+    ]
+
+[[project]]
+    name = "homelab"
+    desc = "I am building a homelab. This is to learn about computer networking and experiment with hardware and different services. This is an ongoing project and more on this is available in the blog section!"
+    tags = ["Networking", "Homelab", "Cybersec"]
+    links = [
+      { name = "nothing", url = "https://youtu.be/dQw4w9WgXcQ" }
+    ]
