@@ -20,7 +20,7 @@ smart_punctuation = true
 
 [markdown.highlighting]
 enable = true
-theme = "tranquil-dark"
+theme = "tranquil"
 
 [slugify]
 paths = "on"
