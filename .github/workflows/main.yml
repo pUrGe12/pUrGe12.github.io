@@ -1,9 +1,11 @@
 on: push
 name: Build and Deploy GH Pages
+
 jobs:
   build:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
@@ -11,29 +13,34 @@ jobs:
           submodules: recursive
           token: ${{ secrets.G_TOKEN }}
 
-      - name: Prebuild
+      - name: Setup Bun
         uses: oven-sh/setup-bun@v1
 
-      - run: bun install
+      - name: Install theme dependencies
+        run: bun install
         working-directory: ./themes/tranquil
 
-      - run: bun x tailwindcss -i styles/styles.css -o static/styles/styles.css --minify
+      - name: Build theme CSS
+        run: bun x tailwindcss -i styles/styles.css -o static/styles/styles.css --minify
         working-directory: ./themes/tranquil
-
-      - name: Check for broken links
-        uses: lycheeverse/lychee-action@v1
-        with:
-          args: --verbose --no-progress ./public
 
       - name: Install Zola 0.20.0
         run: |
           curl -L https://github.com/getzola/zola/releases/download/v0.20.0/zola-v0.20.0-x86_64-unknown-linux-gnu.tar.gz -o zola.tar.gz
           tar -xzf zola.tar.gz
           sudo mv zola /usr/local/bin/
+          zola --version
 
-      - name: Build and Deploy
-        if: success()
-        uses: shalzz/zola-deploy-action@master
-        env:
-          PAGES_BRANCH: gh-pages
-          TOKEN: ${{ secrets.G_TOKEN }}
+      - name: Build site
+        run: zola build
+
+      - name: Check for broken links
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --verbose --no-progress ./public
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.G_TOKEN }}
+          publish_dir: ./public
