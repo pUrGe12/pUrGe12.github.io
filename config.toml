@@ -12,7 +12,6 @@ feed_filenames = []             # The file name of feed, "feed.xml" / "atom.xml"
 taxonomies = [{ name = "tags" }, { name = "categories" }]
 
 [markdown]
-highlight_code = true
 highlight_theme = "css"
 highlight_themes_css = [
     { theme = "tranquil-light", filename = "hl-light.css"},
