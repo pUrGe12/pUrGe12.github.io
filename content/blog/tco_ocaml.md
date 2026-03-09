@@ -355,6 +355,12 @@ Let's look at the second case, compile the second implementation in the same man
 
 Notice the magic here! No, `call` instructions, only conditional jumps. If you just take a look at the assembly, you'll never realize that this was actually a recursive function. Which is the point. `Tail-call optimisations` covert a recursive function to its fastest counterpart which is a loop.
 
+1. This function doesn't allocate a new frame in the stack for each value computed, so we don't have memory issues anymore.
+
+2. We went from **not** being able to compute the `100th` fibonnaci number (true, try definition 1 for the 100th number!) to computing `10^6th` fibonnaci number in a matter of seconds, **without memoization** of dynamic programming!
+
+This it the compiler magic!
+
 I will not go into details of **exactly** what is happening in the above assembly, because there are so many more optimisations there as well and some beautiful math (which I am still learning).
 
 ## What those weird numbers mean
