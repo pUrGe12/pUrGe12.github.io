@@ -87,6 +87,10 @@
         <lastmod>2025-01-23</lastmod>
     </url>
     <url>
+        <loc>https://purge12.github.io/blog/tco-ocaml/</loc>
+        <lastmod>2026-03-09</lastmod>
+    </url>
+    <url>
         <loc>https://purge12.github.io/blog/traning-custom-yolov5/</loc>
         <lastmod>2024-12-19</lastmod>
     </url>
@@ -126,6 +130,9 @@
         <loc>https://purge12.github.io/categories/biography/</loc>
     </url>
     <url>
+        <loc>https://purge12.github.io/categories/compilers/</loc>
+    </url>
+    <url>
         <loc>https://purge12.github.io/categories/cve/</loc>
     </url>
     <url>
@@ -157,6 +164,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/categories/novel/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/categories/ocaml/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/opensource/</loc>
@@ -207,6 +217,9 @@
         <loc>https://purge12.github.io/tags/ai/</loc>
     </url>
     <url>
+        <loc>https://purge12.github.io/tags/assembly/</loc>
+    </url>
+    <url>
         <loc>https://purge12.github.io/tags/autobiography/</loc>
     </url>
     <url>
@@ -241,6 +254,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/tags/flask/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/tags/functional-programming/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/hardware/</loc>
