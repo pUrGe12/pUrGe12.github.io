@@ -365,7 +365,7 @@ I will not go into details of **exactly** what is happening in the above assembl
 
 ## What those weird numbers mean
 
-These numbers are specially tagged, they are called `tagged integers`. OCaml uses these tagged versions to help the garbage collector. How exactly? I think I will move this to a separate post.
+These numbers are specially tagged, they are called `tagged integers`. OCaml uses these tagged versions to help the garbage collector. How exactly? I think I will move this to a separate post. Checkout [this blog](https://purge12.github.io/blog/ocaml_compiler_tagged_integers).
 
 ## Ending note
 
