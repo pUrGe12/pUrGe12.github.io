@@ -98,6 +98,10 @@
         <loc>https://purge12.github.io/books/</loc>
     </url>
     <url>
+        <loc>https://purge12.github.io/books/cant-hurt-me/</loc>
+        <lastmod>2026-02-10</lastmod>
+    </url>
+    <url>
         <loc>https://purge12.github.io/books/greenlights/</loc>
         <lastmod>2026-01-12</lastmod>
     </url>
@@ -117,6 +121,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/categories/ai/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/categories/autobiography/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/biography/</loc>
@@ -261,6 +268,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/tags/matterfile/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/tags/mind/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/monitoring/</loc>
