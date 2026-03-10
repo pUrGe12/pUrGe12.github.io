@@ -11,10 +11,6 @@
         <lastmod>2025-07-29</lastmod>
     </url>
     <url>
-        <loc>https://purge12.github.io/blog/breaching-optimize/</loc>
-        <lastmod>2025-06-02</lastmod>
-    </url>
-    <url>
         <loc>https://purge12.github.io/blog/creating-a-esp32-wifi-deauther/</loc>
         <lastmod>2025-01-23</lastmod>
     </url>
@@ -63,6 +59,10 @@
         <lastmod>2025-12-14</lastmod>
     </url>
     <url>
+        <loc>https://purge12.github.io/blog/ocaml-compiler-tagged-integers/</loc>
+        <lastmod>2026-03-09</lastmod>
+    </url>
+    <url>
         <loc>https://purge12.github.io/blog/opensource/</loc>
         <lastmod>2025-05-06</lastmod>
     </url>
@@ -91,16 +91,8 @@
         <lastmod>2026-03-09</lastmod>
     </url>
     <url>
-        <loc>https://purge12.github.io/blog/traning-custom-yolov5/</loc>
+        <loc>https://purge12.github.io/blog/training-custom-yolov5/</loc>
         <lastmod>2024-12-19</lastmod>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/blog/working-on-gradient-inversions/</loc>
-        <lastmod>2025-06-08</lastmod>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/blog/working-with-task-based-queues/</loc>
-        <lastmod>2025-03-22</lastmod>
     </url>
     <url>
         <loc>https://purge12.github.io/books/</loc>
@@ -172,16 +164,10 @@
         <loc>https://purge12.github.io/categories/opensource/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/categories/parallel-processing/</loc>
-    </url>
-    <url>
         <loc>https://purge12.github.io/categories/philosophy/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/poetry/</loc>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/categories/python/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/rant/</loc>
@@ -280,9 +266,6 @@
         <loc>https://purge12.github.io/tags/monitoring/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/tags/multiprocessing/</loc>
-    </url>
-    <url>
         <loc>https://purge12.github.io/tags/must-read/</loc>
     </url>
     <url>
@@ -304,16 +287,10 @@
         <loc>https://purge12.github.io/tags/python/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/tags/queues/</loc>
-    </url>
-    <url>
         <loc>https://purge12.github.io/tags/setup/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/stoicism/</loc>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/tags/threading/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/united-nations/</loc>
