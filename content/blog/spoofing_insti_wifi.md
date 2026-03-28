@@ -11,7 +11,7 @@ tags = ["Hardware", "Networks", "Cysec", "blog"]
 lang = "en"
 +++
 
-My college has LDAP credentials that we supposed to use to get access to the ethernet. There is a `netaccess.iitm.ac.in` page that asks for these creds whenever you login to a new network. Now if multiple people are connected to the same network and anyone person also authenticates, everyone gets access. Its weird, but thats not why we are here.
+My college has LDAP credentials that we supposed to use to get access to the ethernet. There is a `netaccess.iitm.ac.in` page that asks for these creds whenever you login to a new network. Now if multiple people are connected to the same network and any **one** person authenticates, everyone gets access. Its weird, but thats not why we are here.
 
 # Idea
 

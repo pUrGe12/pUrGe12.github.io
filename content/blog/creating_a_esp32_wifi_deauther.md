@@ -11,6 +11,14 @@ tags = ["Hardware", "Networks", "Cysec", "blog", "ESP32"]
 lang = "en"
 +++
 
+`Update`: This is March 28th 2026
+
+If you want to read a story of what I tried and failed at, you can scroll down. But this is what worked in the end, it only cost about 1.5k(INR). The problem was sending an `0xC0` frame which was unsupposed in all sorts of ESP frameworks. So, I bought an adapter from amazon, a 2.4GHz 802.11n 150Mbps USB Wireless WiFi Adapter.
+
+This worked beautifully in the sense that I was very easily able to deauth people (given they didn't use `PMF` frames from WPA3 but most insitutional wifi systems don't since it needs specific hardware support). Its very easy to setup an attack using `aircrack-ng`.
+
+---
+
 ESP32 has a wifi adapter inbuilt. It also apparently allows you to send raw wifi packets if you use the ESP-IDF framework and the `ieee80211_raw_frame_sanity_check()`, an actual bypass that was found after reverse engineering the ESP-IDF source code and binaries. 
 
 The reason I wanna do this is because otherwise people won't be incentivised to click on my honepot, 2 reasons for this
