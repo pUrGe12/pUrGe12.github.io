@@ -40,6 +40,10 @@
         <a class="text-lg tl-link" href="{{ config.base_url }}/books">books</a>
         {% endif -%}
 
+        {% if config.extra.notes_page -%}
+        <a class="text-lg tl-link" href="{{ config.base_url }}/notes">notes</a>
+        {% endif -%}
+
         {% if config.extra.gallery_page -%}
         <a class="text-lg tl-link" href="{{ config.base_url }}/gallery">gallery</a>
         {% endif -%}
