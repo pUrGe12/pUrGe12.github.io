@@ -140,6 +140,9 @@
         <loc>https://purge12.github.io/categories/compilers/</loc>
     </url>
     <url>
+        <loc>https://purge12.github.io/categories/cs3110/</loc>
+    </url>
+    <url>
         <loc>https://purge12.github.io/categories/cve/</loc>
     </url>
     <url>
@@ -198,6 +201,17 @@
     </url>
     <url>
         <loc>https://purge12.github.io/gallery/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/notes/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/notes/functional-prog-introduction/</loc>
+        <lastmod>2026-03-29</lastmod>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/notes/functional-prog-types-and-application/</loc>
+        <lastmod>2026-03-29</lastmod>
     </url>
     <url>
         <loc>https://purge12.github.io/privacy/</loc>
@@ -303,6 +317,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/tags/pqc/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/tags/programming/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/python/</loc>
