@@ -7,10 +7,6 @@
         <loc>https://purge12.github.io/blog/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/blog/atlas/</loc>
-        <lastmod>2025-07-29</lastmod>
-    </url>
-    <url>
         <loc>https://purge12.github.io/blog/creating-a-esp32-wifi-deauther/</loc>
         <lastmod>2025-01-23</lastmod>
     </url>
@@ -27,32 +23,8 @@
         <lastmod>2025-01-27</lastmod>
     </url>
     <url>
-        <loc>https://purge12.github.io/blog/developing-duxmlb/</loc>
-        <lastmod>2025-01-29</lastmod>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/blog/differential-privacy/</loc>
-        <lastmod>2025-06-02</lastmod>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/blog/gsoc-blog-2/</loc>
-        <lastmod>2025-05-25</lastmod>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/blog/gsoc-blog-3/</loc>
-        <lastmod>2025-05-29</lastmod>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/blog/gsoc-blog-4/</loc>
-        <lastmod>2025-06-20</lastmod>
-    </url>
-    <url>
         <loc>https://purge12.github.io/blog/gsoc-blog-final/</loc>
         <lastmod>2025-09-03</lastmod>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/blog/gsoc-blog/</loc>
-        <lastmod>2025-05-17</lastmod>
     </url>
     <url>
         <loc>https://purge12.github.io/blog/low-power-riscv-pqc/</loc>
@@ -103,10 +75,6 @@
         <lastmod>2024-12-19</lastmod>
     </url>
     <url>
-        <loc>https://purge12.github.io/blog/understanding-dune/</loc>
-        <lastmod>2026-03-29</lastmod>
-    </url>
-    <url>
         <loc>https://purge12.github.io/books/</loc>
     </url>
     <url>
@@ -133,9 +101,6 @@
         <loc>https://purge12.github.io/categories/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/categories/ai-security/</loc>
-    </url>
-    <url>
         <loc>https://purge12.github.io/categories/ai/</loc>
     </url>
     <url>
@@ -145,9 +110,6 @@
         <loc>https://purge12.github.io/categories/biography/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/categories/build-system/</loc>
-    </url>
-    <url>
         <loc>https://purge12.github.io/categories/compilers/</loc>
     </url>
     <url>
@@ -155,9 +117,6 @@
     </url>
     <url>
         <loc>https://purge12.github.io/categories/cve/</loc>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/categories/debate/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/dev/</loc>
@@ -175,16 +134,10 @@
         <loc>https://purge12.github.io/categories/homelab/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/categories/literature/</loc>
-    </url>
-    <url>
         <loc>https://purge12.github.io/categories/math/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/networking/</loc>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/categories/novel/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/ocaml/</loc>
@@ -250,12 +203,6 @@
         <loc>https://purge12.github.io/tags/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/tags/ai-osint/</loc>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/tags/ai-security/</loc>
-    </url>
-    <url>
         <loc>https://purge12.github.io/tags/ai/</loc>
     </url>
     <url>
@@ -274,9 +221,6 @@
         <loc>https://purge12.github.io/tags/blog/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/tags/china/</loc>
-    </url>
-    <url>
         <loc>https://purge12.github.io/tags/classics/</loc>
     </url>
     <url>
@@ -287,9 +231,6 @@
     </url>
     <url>
         <loc>https://purge12.github.io/tags/cysec/</loc>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/tags/deep-learning/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/dtls/</loc>
@@ -313,13 +254,7 @@
         <loc>https://purge12.github.io/tags/ideas/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/tags/ir/</loc>
-    </url>
-    <url>
         <loc>https://purge12.github.io/tags/life/</loc>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/tags/matterfile/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/mind/</loc>
@@ -358,9 +293,6 @@
         <loc>https://purge12.github.io/tags/stoicism/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/tags/united-nations/</loc>
-    </url>
-    <url>
         <loc>https://purge12.github.io/tags/webdev/</loc>
     </url>
     <url>
@@ -376,14 +308,6 @@
     <url>
         <loc>https://purge12.github.io/wisps/gameoflife/</loc>
         <lastmod>2024-01-15</lastmod>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/wisps/ir-china-traditional/</loc>
-        <lastmod>2025-01-26</lastmod>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/wisps/ir-un/</loc>
-        <lastmod>2025-01-26</lastmod>
     </url>
     <url>
         <loc>https://purge12.github.io/wisps/on-pain/</loc>
@@ -412,10 +336,6 @@
     <url>
         <loc>https://purge12.github.io/wisps/untitiled-299/</loc>
         <lastmod>2026-02-22</lastmod>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/wisps/writing-my-book/</loc>
-        <lastmod>2025-02-10</lastmod>
     </url>
     <url>
         <loc>https://purge12.github.io/wisps/you-are-not-so-different/</loc>
