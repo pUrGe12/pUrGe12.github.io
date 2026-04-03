@@ -64,13 +64,16 @@ According to the provided list of enhancements to be made, I worked on
 - #1083: Banner grabbing regex fixes for MariaDB and MySQL
 - #1072: fixing the create database part of postgresql
 - #1085: Adding new report types -> SARIF and DefectDojo compatible
-
-These are the few open PRs which are under review:
-
 - #1076: porting sqlite operations to APSW
+- #1130: pyproject updates to fix warnings issued by pytest
+- #1264: fixed database file error strings
+- #1261: Set APSW usage as default in configs
+- #1108: updated the declarative base import namespace
+- #1098: Updating regex for strict_transport_security_vuln
+- #1094: test cases for core/graph.py
+...
 
 - There is a PR for my WebUI improvements which I am yet to release but can be found in my local fork.
-
 - Huey integrated WebUI with live scan tracking
 
 And a PR for new modules for UDP_scans and version_scanning. The latter is a little buggy (that is, a little slow) so it still resides in my local fork.
@@ -78,14 +81,6 @@ And a PR for new modules for UDP_scans and version_scanning. The latter is a lit
 ## Work Summary
 
 Over the course of the summer I mostly carried out research and benchmarks in the side while adding new features and fixing old ones in the main repository. I was in constant contact with my mentor and we had discussed about this approach in advance.
-
-Additionally I made a few extra blog posts over this course which might be interesting to some readers:
-
-1. [Starting with opensource](https://purge12.github.io/blog/opensource/)
-2. [Getting the Huey task queue working](https://purge12.github.io/blog/gsoc-blog/)
-3. [Problems in version and UDP scans](https://purge12.github.io/blog/gsoc-blog-2/)
-4. [Optimising the UDP scan part with minor adjustments](https://purge12.github.io/blog/gsoc-blog-3/)
-5. [Updating Huey processing logic for in-memory usage and progress tracking UI](https://purge12.github.io/blog/gsoc-blog-4/)
 
 I helped resolve issues that users were facing, updated documentation based on the same, worked on feedback provided by users on special feature requests and fixed bug as and when I encountered them.
 
