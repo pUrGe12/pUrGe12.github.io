@@ -23,6 +23,10 @@
         <lastmod>2025-01-27</lastmod>
     </url>
     <url>
+        <loc>https://purge12.github.io/blog/dreamcoder/</loc>
+        <lastmod>2026-04-03</lastmod>
+    </url>
+    <url>
         <loc>https://purge12.github.io/blog/gsoc-blog-final/</loc>
         <lastmod>2025-09-03</lastmod>
     </url>
@@ -122,6 +126,9 @@
         <loc>https://purge12.github.io/categories/dev/</loc>
     </url>
     <url>
+        <loc>https://purge12.github.io/categories/functional-programming/</loc>
+    </url>
+    <url>
         <loc>https://purge12.github.io/categories/gcp/</loc>
     </url>
     <url>
@@ -135,6 +142,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/categories/math/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/categories/ml/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/networking/</loc>
@@ -217,6 +227,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/tags/automata/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/tags/automation/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/blockchain/</loc>
