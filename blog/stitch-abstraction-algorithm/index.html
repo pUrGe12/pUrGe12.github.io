@@ -1,0 +1,104 @@
+<!doctype html><html lang=en><head><script src="https://www.googletagmanager.com/gtag/js?id=G-EKTHKNJH0Q" async></script><script>window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-EKTHKNJH0Q');</script><meta charset=utf-8><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content="light dark" name=color-scheme><title>Understanding the Stitch Algorithm for abstractions</title><meta name=description><link href=/icons/apple-touch-icon.png rel=apple-touch-icon sizes=180x180><link href=/icons/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=/icons/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link href=/icons/site.webmanifest rel=manifest><link color=#5bbad5 href=/icons/safari-pinned-tab.svg rel=mask-icon><link rel="shortcut icon" href=/icons/favicon.ico><meta content=#00aba9 name=msapplication-TileColor><meta content=/icons/browserconfig.xml name=msapplication-config><meta content=#ffffff name=theme-color><link href=https://purge12.github.io//styles/styles.css rel=stylesheet><script>if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+    localStorage.setItem("theme", "dark")
+  } else {
+    document.documentElement.classList.remove('dark')
+    localStorage.setItem("theme", "light")
+  }</script><link href=https://purge12.github.io//hl-light.css id=hl rel=stylesheet><body class="antialiased text-slate-700 dark:text-slate-300 bg-white dark:bg-stone-900"><header><div class="bg-stone-300 dark:bg-stone-700 py-1"><div class="row justify-between max-w-prose m-auto px-5"><nav class="row items-center gap-2"><img alt=avatar class=h-12 src=https://purge12.github.io//img/avatar.webp><div><a class=text-xl href=https://purge12.github.io/>home</a><span class=text-xl> > </span><a class=text-xl href=https://purge12.github.io//blog>blog</a><span class=text-xl> > </span><a class=text-xl href=https://purge12.github.io//blog/stitch-abstraction-algorithm>stitch-abstraction-algorithm</a></div></nav><div class="row items-center gap-3"><button aria-label="theme switch" data-moon-icon='<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+</svg>' data-sun-icon='<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+</svg>' id=theme-toggle><svg class="w-6 h-6" viewbox="0 0 24 24" fill=none stroke=currentColor stroke-width=1.5 xmlns=http://www.w3.org/2000/svg><path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" stroke-linecap=round stroke-linejoin=round /></svg></button></div></div></div></header><div class="flex justify-center items-center w-full"><main class="max-w-prose px-4 w-full"><div data-check-icon='<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+</svg>' data-copy-icon='<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" />
+</svg>' id=copy-cfg style=display:none></div><article class="col w-full" data-backlink-icon='<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 19.5l-15-15m0 0v11.25m0-11.25h11.25" />
+</svg>' id=post><section aria-label="Article Info" class="col pt-7 gap-4 mb-10"><h1 class=text-2xl>Understanding the Stitch Algorithm for abstractions</h1><div class="row justify-between"><div><span class="text-lg text-stone-400" id=publish>2026-04-03</span></div><div class="flex gap-2"><a class="text-lg tl-link" href=https://purge12.github.io//tags/ml># ML</a></div></div></section><section aria-label="Table of Contents" class="bg-stone-200 dark:bg-stone-800 p-4 rounded-lg mb-10"><h2 class="text-2xl pb-3">Contents:</h2><ul class="col gap-3"><li><a class="text-black dark:text-white text-xl underline underline-offset-8 decoration-1 hover:decoration-2 decoration-sky-500 dark:decoration-sky-400" href=#introduction>Introduction</a><li><a class="text-black dark:text-white text-xl underline underline-offset-8 decoration-1 hover:decoration-2 decoration-sky-500 dark:decoration-sky-400" href=#how-it-works>How it works</a> <ul class="col gap-2 pl-2 pt-3"><li><a class="text-lg tl-link" href=#corpus-guided-top-down-search-cts>Corpus Guided Top-Down Search (CTS)</a></ul></ul></section><section aria-label=Article class=tl-prose><p>This is the paper published by MIT on something called the <strong>Top-Down synthesis for Library Learning</strong>. It’s another technique for generating abstractions from a set of primitives into a library for future use, similar to what <code>wake-sleep</code> cycles were doing for DreamCoder (see <a rel="noopener nofollow noreferrer" href=https://purge12.github.io/blog/dreamcoder/ target=_blank>this post</a>).<p>To quote the authors:<blockquote><p>We present an implementation of the approach in a tool called Stitch and evaluate it against the state-of-the-art deductive library learning algorithm from DreamCoder. Our evaluation shows that Stitch is 3-4 orders of magnitude faster and uses 2 orders of magnitude less memory while maintaining comparable or better library quality (as measured by compressivity).</blockquote><h2 id=introduction><span class=not-prose> <a aria-label="Anchor link for: introduction" class="tl-link text-2xl" href=#introduction>#</a> </span> Introduction</h2><p>The idea is very simple, faced with the task of writing a program from low-level primitives, multiple-times, you would want to create parameterized abstractions.<blockquote><p>One popular approach to library learning is to search for common tree fragments across a corpus of programs, which can be introduced as new abstractions</blockquote><p>Some authors have found very good algorithms that gave good results but are not feasible to scale for large datasets of longer and deeper programs. All these <code>deductive</code> approaches to library learning will inevitably lead to higher memory and compute requirements (so the author claims, I don’t understand why though.)<ul><li>Here the authors say that they don’t take the deductive approach of “refactoring the corpus with rewrite rules”. Instead, they “directly synthesize abstractions”.<li>They call this <strong>corpus-guided top-down synthesis</strong>.</ul><p>Finally we come to what stitch is, I genuinely didn’t know that!<blockquote><p>Stitch, a corpus-guided top-down library learning tool written in Rust</blockquote><p>And boom: https://github.com/mlb2251/stitch<p>The code!<ul><li>Now the authors are saying that stitch can do in seconds or single-digit minutes, what is beyond the compute of the <code>DreamCoder</code> algorithm! That’s really insane</ul><h2 id=how-it-works><span class=not-prose> <a aria-label="Anchor link for: how-it-works" class="tl-link text-2xl" href=#how-it-works>#</a> </span> How it works</h2><p>The authors are awesome! They are giving an example. Let’s work through that. Suppose that the Stitch algorithm has been given these corpus of programs and the goal is to learn a single abstraction.<pre class=z-code><code><span class="z-text z-plain">λx. + 3 (* (+ 2 4) 2)
+</span><span class="z-text z-plain">λxs. map (λx. + 3 (* 4 (+ 3 x))) xs
+</span><span class="z-text z-plain">λx. * 2 (+ 3 (* x (+ 2 1)))
+</span></code></pre><p>Defining a good abstraction, the authors write that a good abstraction is one that <strong>minimizes the size of the corpus when re-written with the abstraction</strong>. We’ll talk about <code>compression</code> as a utility function. Let’s talk a little bit about that now.<p>In compression we seek to minimize some measure of the size, or more generally the cost, of a corpus of programs after rewriting them with a new abstraction.<pre class=z-code><code><span class="z-text z-plain">U_{P,R} (A) ≜ −cost(A) + cost(P) − cost(Rewrite_{R} (P, A))
+</span></code></pre><p>Here P represents the corpus and <strong>A</strong> is the abstraction. The <code>cost(.)</code> is a function with the following properties:<pre class=z-code><code><span class="z-text z-plain">cost(λ.e′) = cost_λ + cost(e')
+</span><span class="z-text z-plain">cost(e'e'') = cost_{app} + cost(e') + cost(e'')
+</span><span class="z-text z-plain">cost($i) = cost_{$i}
+</span><span class="z-text z-plain">cost(t) = cost_{t}(t), for t ∈ Gsym
+</span><span class="z-text z-plain">cost(α) = cost_{α}
+</span></code></pre><p>where <code>cost_λ</code>, <code>cost_{app}</code>, <code>cost_{$i}</code>, and <code>cost_{α}</code> are non-negative constants, and <code>cost_{t}(t)</code> is a mapping from grammar primitives to their (non-negative) costs. <code>Gsym</code>, as we will talk about later as well, is the set of primitives in a DSL.<p>Now they (the authors) dive deeper into explaning how this works. But I won’t do that just yet because we haven’t covered a lot of stuff, so let’s do that first.<blockquote><p>At a high level the utility function above seeks to maximize the product of the size of the abstraction and the number of locations where the abstraction can be used</blockquote><p>In the case of the three snippets shown, a single abstraction that maximizes the utility would be:<pre class=z-code><code><span class="z-text z-plain">fn0 = λa. λb.(+ 3 (* a b))
+</span></code></pre><p>and hence when we write the 3 snippets using the shared abstraction, the size of the corpus is minimized:<pre class=z-code><code><span class="z-text z-plain">λx. fn0 (+ 2 4) 2
+</span><span class="z-text z-plain">λxs. map (λx. fn0 4 (+ 3 x)) xs
+</span><span class="z-text z-plain">λx. * 2 (fn0 x (+ 2 1))
+</span></code></pre><ul><li>Here we need to understand what a <code>top-down</code> search even means. For this, I am going to make use of their python API.</ul><pre class="language-python3 z-code" data-lang=python3><code class=language-python3 data-lang=python3><span class="z-text z-plain">from stitch_core import compress
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain"># The same programs as above, written in de Bruijn style
+</span><span class="z-text z-plain">programs = [
+</span><span class="z-text z-plain">    "(lam (+ 3 (* (+ 2 4) 2)))",
+</span><span class="z-text z-plain">    "(lam (map (lam (+ 3 (* 4 (+ 3 $0)))) $0))",
+</span><span class="z-text z-plain">    "(lam (* 2 (+ 3 (* $0 (+ 2 1)))))"
+</span><span class="z-text z-plain">]
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain"># Iterations control the number of abstractions
+</span><span class="z-text z-plain">res = compress(programs, iterations=1, max_arity=2)
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">res.abstractions[0]
+</span><span class="z-text z-plain"># fn_0(#0,#1) := (+ 3 (* #1 #0))
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain"># We can rewrite with the abstractions
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">from stitch_core import rewrite
+</span><span class="z-text z-plain">a = rewrite(["(lam (+ 3 (* (+ 1 1) 1)))", "(lam (- 5 (+ 3 (* $0 (+ 2 1)))))"], res.abstractions)
+</span><span class="z-text z-plain"># [
+</span><span class="z-text z-plain">#     '(lam (fn_0 1 (+ 1 1)))',
+</span><span class="z-text z-plain">#     '(lam (- 5 (fn_0 (+ 2 1) $0)))'
+</span><span class="z-text z-plain"># ]
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain"># We can also do silent=False
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">res2 = compress(programs, iterations=1, max_arity=2, silent=False)
+</span><span class="z-text z-plain"># This will produce a lot of interesting outputs
+</span></code></pre><p>Let me show you the output produced by the verbose mode:<pre class=z-code><code><span class="z-text z-plain">**********
+</span><span class="z-text z-plain">* Stitch *
+</span><span class="z-text z-plain">**********
+</span><span class="z-text z-plain">Programs:
+</span><span class="z-text z-plain">	 num: 3
+</span><span class="z-text z-plain">	 max cost: 910
+</span><span class="z-text z-plain">	 max depth: 9
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">=======Iteration 0=======
+</span><span class="z-text z-plain">num_paths_to_node(): 0ms
+</span><span class="z-text z-plain">associate_tasks() and other task stuff: 0ms
+</span><span class="z-text z-plain">num unique tasks: 3
+</span><span class="z-text z-plain">num unique programs: 3
+</span><span class="z-text z-plain">cost_of_node structs: 0ms
+</span><span class="z-text z-plain">get_zippers(): 0ms
+</span><span class="z-text z-plain">85 zips
+</span><span class="z-text z-plain">arg_of_zid_node size: 85
+</span><span class="z-text z-plain">Tracking setup: 0ms
+</span><span class="z-text z-plain">ran analyses: 0ms
+</span><span class="z-text z-plain">arity 0: 0ms
+</span><span class="z-text z-plain">got 1 arity zero inventions
+</span><span class="z-text z-plain">built SharedData: 0ms
+</span><span class="z-text z-plain">TOTAL PREP: 0ms
+</span><span class="z-text z-plain">running pattern search...
+</span><span class="z-text z-plain">TOTAL SEARCH: 0ms
+</span><span class="z-text z-plain">TOTAL PREP + SEARCH: 0ms
+</span><span class="z-text z-plain">Stats { worklist_steps: 59, finished: 1, calc_final_utility: 23, calc_unargcap: 4, donelist_push: 1, azero_calc_util: 2, azero_calc_unargcap: 1, upper_bound_fired: 0, free_vars_fired: 11, single_use_fired: 43, single_task_fired: 45, useless_abstract_fired: 2, force_multiuse_fired: 0 }
+</span><span class="z-text z-plain">Cost before: 2526
+</span><span class="z-text z-plain">0: utility: 302 | final_cost: 1920 | 1.32x | uses: 3 | body: [fn_0 arity=2: (+ 3 (* #1 #0))]
+</span><span class="z-text z-plain">post processing: 0ms
+</span><span class="z-text z-plain">Chose Invention fn_0: utility: 302 | final_cost: 1920 | 1.32x | uses: 3 | body: [fn_0 arity=2: (+ 3 (* #1 #0))]
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">=======Compression Summary=======
+</span><span class="z-text z-plain">Found 1 inventions
+</span><span class="z-text z-plain">Cost Improvement: (1.32x better) 2526 -> 1920
+</span><span class="z-text z-plain">fn_0 (1.32x wrt orig): utility: 302 | final_cost: 1920 | 1.32x | uses: 3 | body: [fn_0 arity=2: (+ 3 (* #1 #0))]
+</span><span class="z-text z-plain">Time: 0ms
+</span></code></pre><ul><li>You can see that it found the same abstraction as before, and moreoever, some stats.</ul><p>Now let’s understand their <strong>Corpus Guided Top-Down Search</strong> mechanism.<h3 id=corpus-guided-top-down-search-cts><span class=not-prose> <a aria-label="Anchor link for: corpus-guided-top-down-search-cts" class="tl-link text-2xl" href=#corpus-guided-top-down-search-cts>#</a> </span> Corpus Guided Top-Down Search (CTS)</h3><p>The paper is actually written in a very textbook like manner which is lovely for me cause now I can read and understand (as opposed to read and not understand).<ol><li><code>Grammar</code>: The algorithm operates on lambda calculus expressions with de brujin variables. We say <code>e'</code> is a <strong>subexpression</strong> of <code>e</code> if <code>e=C[e']</code>, where C is a context defined by another paper.</ol><p>Breaks… What is <code>C</code>? <a rel="noopener nofollow noreferrer" href=https://www2.ccs.neu.edu/racket/pubs/tcs92-fh.pdf target=_blank>This</a> is the relevant paper. From the paper some relevant things which I found are summarized below:<pre class=z-code><code><span class="z-text z-plain">The expression C[e] stands for the result of putting the expression e into the hole of the context C, which may bind free variables in e
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">For the formal definition, we rely on the concept of a term context, which are expressions with a hole ([ ]) at the place of a subexpression: 
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">C ::= [ ] | (e C) | (C e) | (λx.C).
+</span></code></pre><p>You know, to understand it better, you might have to actually read the other paper :). I will continue in a while man I am kinda tired and bored. I will go towards OCaml.</section></article><hr class="h-px my-10 bg-slate-700 dark:bg-slate-300"><section aria-label="Subscription call-to-action"><div class="col gap-8"><p class="[&>a]:underline [&>a]:underline-offset-4 [&>a]:decoration-2 [&>a]:decoration-sky-500 [&>a]:dark:decoration-sky-400">Did you like this blogpost? Then consider catching up via LinkedIn or Github!<div class="flex gap-5"><form class="col gap-2 w-1/2" onsubmit="window.open('https://buttondown.com/achintya', 'popupwindow')" action=https://buttondown.com/api/emails/embed-subscribe/achintya method=post target=popupwindow><input aria-label="Email input field" class="p-2 bg-stone-300 dark:bg-stone-700n placeholder:text-slate-700 dark:placeholder:text-slate-900" placeholder="Enter your email address" id=bd-email name=email type=email><input class="rounded-md text-black dark:bg-sky-600 p-2 bg-sky-500" type=submit value=Subscribe></form><div class="flex justify-center items-center w-1/2"></div></div></div></section><div class="flex justify-center my-16"><button aria-label="back to top" id=back-to-top><svg class="w-6 h-6" viewbox="0 0 24 24" fill=none stroke=currentColor stroke-width=1.5 xmlns=http://www.w3.org/2000/svg><path d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75" stroke-linecap=round stroke-linejoin=round /></svg></button></div><footer class="text-stone-400 dark:text-stone-400 row my-16 text-center"><div class=basis-full><p>© 2024-2025 Achintya Jai</div><div class=basis-full><div>Powered by <a class="text-stone-500 dark:text-stone-300 underline underline-offset-4 decoration-1 hover:decoration-2 decoration-sky-500 dark:decoration-sky-400" rel="noreferrer noopener" href=https://www.getzola.org target=_blank>zola</a> and <a class="text-stone-500 dark:text-stone-300 underline underline-offset-4 decoration-1 hover:decoration-2 decoration-sky-500 dark:decoration-sky-400" rel="noreferrer noopener" href=https://github.com/TeaDrinkingProgrammer/tranquil target=_blank>tranquil</a></div></div><div class=basis-full><a class="text-stone-500 dark:text-stone-300 underline underline-offset-4 decoration-1 hover:decoration-2 decoration-sky-500 dark:decoration-sky-400" rel="noreferrer noopener" href=https://purge12.github.io//privacy target=_blank>Privacy Policy</a></div></footer></main></div><script src=https://purge12.github.io//js/post.js></script><script src=https://purge12.github.io//js/lightense.min.js></script><script src=https://purge12.github.io//js/main.js></script>
