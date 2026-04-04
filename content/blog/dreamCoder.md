@@ -4,8 +4,8 @@ date = 2026-04-03
 draft = false
 
 [taxonomies]
-categories = ["ML" ,"functional-programming"]
-tags = ["Automation"]
+categories = ["abstractions", "program-synthesis"]
+tags = ["ML"]
 
 [extra]
 lang = "en"
@@ -84,3 +84,6 @@ $$
 
 (hopefully the above is rendered properly)
 
+However some papers (like this [master's thesis on Discovering Abstractions from Language via Neurosymbolic Program Synthesis](https://dspace.mit.edu/bitstream/handle/1721.1/151322/grand-grandg-sm-eecs-2023-thesis.pdf?sequence=1&isAllowed=y)) do claim that a better abstraction algorithm is something called `Stitch`.
+
+I will make a separate post about how that works!
