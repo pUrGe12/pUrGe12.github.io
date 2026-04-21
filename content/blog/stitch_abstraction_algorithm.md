@@ -183,4 +183,90 @@ For the formal definition, we rely on the concept of a term context, which are e
 C ::= [ ] | (e C) | (C e) | (λx.C).
 ```
 
-You know, to understand it better, you might have to actually read the other paper :). I will continue in a while man I am kinda tired and bored. I will go towards OCaml.
+A few questions that you may have are:
+
+1. What's a **free variable in e**?
+2. What's **binding** that mean?
+3. What is a **hole of the context**?
+4. What's exactly a **subexpression**n?
+
+I will only answer the subexpression part because others are a little hard :>. For us OCaml programmers (haha, I am calling myself an OCaml programmer now), we can reason about what's happening exactly in the following way:
+
+- You can think of a Context `C` as an AST where exactly one node is missing.
+
+Something like:
+
+```ocaml
+type context =
+  | Hole                 (* The [·] *)
+  | CLam of context
+  | CAppLeft of context * expr
+  | CAppRight of expr * context
+```
+
+- Then we take the context and plug the expression `e'` into the hole
+
+Assume a curried application of the `+` operator like `(+) 3 4`, we can have an AST variant in OCaml like this:
+
+```ocaml
+type expr =
+  | Lam of expr          (* \lambda. e *)
+  | App of expr * expr   (* e1 e2 *)
+  | Var of int           (* $i (de Bruijn index) *)
+  | Prim of string       (* t (built-in primitives like +, 3) *)
+```
+
+Then this application would look like:
+
+```ocaml
+let e = App (App (Prim "+", Prim "3"), Prim "4")
+```
+
+Now a `subexpression` is anything you pluck out out this definition of `e`. Say `Prim "3"`, which is a valid subexpression for `e`. Because according to the paper, we need to find a context C such that if we plug `Prim "3"` into it, we get `e`.
+
+So, if we let the context C be:
+
+```ocaml
+let C = App (App (Prim "+", Hole), Prim "4")
+```
+
+And we plug in the Hole with `Prim "3"`, we get `e`, hence `Prim "3"` is a subexpression for `e`. Hope that atleast gives you a concrete example to keep in your head.
+
+Now the fact of the matter here is that, it's not very relevant for us to dive deep into **De Bruijn's indices** because its a whole new post of its own. Some relevant information can be:
+
+- This was of writing the variables will turn them into integers
+- There are `levels` to this (quite literally)
+- The specific integer depends on how many lambdas are between it and its root lambda.
+
+Example:
+
+```
+λx. λy. (x y) ==> λ λ ($1 $0)
+```
+
+The `($0)` means its bound to the first lambda going right to left, while the dollar `$1` means its bound to the left-most lambda. The `1` indicates the number of lambda inbetween it and the lambda its bound to.
+
+A free-variable can be thought of as something like:
+
+```ocaml
+let y = 10
+let my_func = fun x -> x + y
+```
+
+in this case, the variable `x` is bound, but `y` is free. Hence the expression for `my_func` is **not** closed. 
+
+- According to the paper, if you have a closed expression, it can be thought of a program. And a bunch of those programs is what is called the `corpus`.
+
+2. `Abstraction`: This is basically G (the grammar) extended by the abstractions we've discovered, or any other.
+
+3. `Partial abstraction`: This is when there are `Holes` in the tree of abstraction.
+
+4. `Lambda unification`: This is the technique they're using to help with De Bruijn's indices and subexpressionss.
+
+> Here the authors have written a lot about what each function should do. If you're interested then check if out. I think the algorithm is more exciting.
+
+## The algorithm
+
+> Given a corpus P, rewrite strategy R, and utility function U_{P,R} (A), the objective is to find the abstraction A that maximizes the utility U_{P,R} (A).
+
+CTS takes a **branch-and-bound** approach which will be described further on.
