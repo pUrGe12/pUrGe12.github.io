@@ -204,8 +204,16 @@
         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
+        <loc>https://purge12.github.io/notes/modules-in-ocaml/</loc>
+        <lastmod>2026-04-23</lastmod>
+    </url>
+    <url>
         <loc>https://purge12.github.io/notes/pattern-matching/</loc>
         <lastmod>2026-03-31</lastmod>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/notes/queues-and-options/</loc>
+        <lastmod>2026-04-23</lastmod>
     </url>
     <url>
         <loc>https://purge12.github.io/notes/trees-and-maps/</loc>
