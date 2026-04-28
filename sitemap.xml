@@ -87,6 +87,10 @@
         <lastmod>2024-12-19</lastmod>
     </url>
     <url>
+        <loc>https://purge12.github.io/blog/triton-kernels/</loc>
+        <lastmod>2026-04-26</lastmod>
+    </url>
+    <url>
         <loc>https://purge12.github.io/books/</loc>
     </url>
     <url>
@@ -180,6 +184,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/categories/travel/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/categories/triton/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/vertexai/</loc>
