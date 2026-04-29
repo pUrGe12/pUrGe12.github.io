@@ -1,5 +1,5 @@
 +++
-title = "Using signatures"
+title = "Signatures and module types"
 date = 2026-04-23
 draft = false
 
