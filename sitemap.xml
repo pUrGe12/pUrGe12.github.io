@@ -51,6 +51,10 @@
         <lastmod>2025-05-06</lastmod>
     </url>
     <url>
+        <loc>https://purge12.github.io/blog/scraping-indian-court-data/</loc>
+        <lastmod>2026-05-02</lastmod>
+    </url>
+    <url>
         <loc>https://purge12.github.io/blog/setting-up-a-network-monitor/</loc>
         <lastmod>2025-04-13</lastmod>
     </url>
@@ -159,6 +163,9 @@
         <loc>https://purge12.github.io/categories/math/</loc>
     </url>
     <url>
+        <loc>https://purge12.github.io/categories/ml/</loc>
+    </url>
+    <url>
         <loc>https://purge12.github.io/categories/networking/</loc>
     </url>
     <url>
@@ -178,6 +185,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/categories/rant/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/categories/scraping/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/software/</loc>
@@ -296,6 +306,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/tags/flask/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/tags/fun/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/functional-programming/</loc>
