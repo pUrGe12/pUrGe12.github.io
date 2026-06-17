@@ -27,6 +27,10 @@
         <lastmod>2026-04-03</lastmod>
     </url>
     <url>
+        <loc>https://purge12.github.io/blog/emulating-esp-firmware-on-qemu/</loc>
+        <lastmod>2026-06-17</lastmod>
+    </url>
+    <url>
         <loc>https://purge12.github.io/blog/gsoc-blog-final/</loc>
         <lastmod>2025-09-03</lastmod>
     </url>
@@ -97,6 +101,10 @@
     <url>
         <loc>https://purge12.github.io/blog/triton-kernels/</loc>
         <lastmod>2026-04-26</lastmod>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/blog/understanding-buffer-overflows-with-freertos/</loc>
+        <lastmod>2026-06-17</lastmod>
     </url>
     <url>
         <loc>https://purge12.github.io/books/</loc>
