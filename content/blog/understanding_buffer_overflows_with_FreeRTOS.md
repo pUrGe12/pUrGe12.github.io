@@ -53,3 +53,9 @@ EXCVADDR: 0xbb2e7d50  LBEG    : 0x00000000  LEND    : 0x00000000  LCOUNT  : 0x00
 Backtrace: 0x40085cd7:0x3ffb47e0 0x40085b84:0x3ffb47f0 0x0006001e:0xa5a5a5a5 |<-CORRUPTED
 ```
 
+
+References:
+
+- [x] https://www.freertos.org/Documentation/02-Kernel/02-Kernel-features/09-Memory-management/02-Stack-usage-and-stack-overflow-checking
+
+- [x] https://en.wikipedia.org/wiki/Guru_Meditation

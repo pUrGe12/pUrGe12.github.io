@@ -77,4 +77,4 @@ python3 -m pip install -r tests/requirements.txt
 
 > Note you could always just run it in a docker container like they have mentioned but this is more fun
 
-Now you can run renode! More on that soon...
+Now you can run renode! Checkout [this](https://purge12.github.io/blog/running-an-emulator-with-renode) blog post for more details on that.
