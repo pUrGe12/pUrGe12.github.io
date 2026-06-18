@@ -1,5 +1,5 @@
 +++
-title = "Observing TinyML crashes on edge with ESP32"
+title = "Observing edge-ai related crashes with ESP32"
 date = 2026-06-18
 draft = false
 
