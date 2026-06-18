@@ -55,6 +55,14 @@
         <lastmod>2025-05-06</lastmod>
     </url>
     <url>
+        <loc>https://purge12.github.io/blog/running-an-emulator-with-renode/</loc>
+        <lastmod>2026-06-18</lastmod>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/blog/sample-nn-on-edge-with-esp/</loc>
+        <lastmod>2026-06-18</lastmod>
+    </url>
+    <url>
         <loc>https://purge12.github.io/blog/scraping-indian-court-data/</loc>
         <lastmod>2026-05-02</lastmod>
     </url>
@@ -93,10 +101,6 @@
     <url>
         <loc>https://purge12.github.io/blog/tco-ocaml/</loc>
         <lastmod>2026-03-09</lastmod>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/blog/tinyml-on-edge-with-esp/</loc>
-        <lastmod>2026-06-18</lastmod>
     </url>
     <url>
         <loc>https://purge12.github.io/blog/training-custom-yolov5/</loc>
