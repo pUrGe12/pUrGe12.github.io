@@ -13,7 +13,7 @@ lang = "en"
 
 ## Introduction
 
-Good evening, its 1am and now we're gonna look at running TinyML on edge (with an ESP32 which I have many of). Let's first see if ESP-IDF allows me do something like this or if someone else has already done this.
+Good evening, its 1am and now we're gonna look at running some dummy NN code on edge (with an ESP32 which I have many of). Let's first see if ESP-IDF allows me do something like this or if someone else has already done this.
 
 And reddit to the rescue, [this](https://www.programmingboss.com/2025/05/run-tinyml-ai-models-on-esp32-voice-recgonation-using-esp32.html#gsc.tab=0) has some insights. But its not exatly what I am looking for because firstly its an arduino project, I mean written in a slightly higher level, I can't compile that with ESP-IDF to a firmware binary to run inside the emulator (since the bootloader, partition-table etc. will be handled by arduino's framework).
 
