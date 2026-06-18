@@ -407,7 +407,7 @@ Let's understand this bug, precisely because this is something that cannot be ca
 
 - `EXCVADDR: 0x00000000` -> This is the address which is fucking us up, which is NULL. As expected since malloc(huge_number) gives NULL which is what we tried to store as a float here `float *hid = arena`.
 
-- `PC: 0x400d3697` — the instruction that did it. 0x400d_xxxx is the flash-mapped code region, and that address lives inside `infer()` (the cooked function, PC means **processor state**). How do I know this? Well I really don't, atleast not by looking at the number itself. We'll have to cross-link this with the symbol table, which I didn't. I am stating this assumption because I know its not a RAM or a ROM problem.
+- `PC: 0x400d3697` — the instruction that did it. 0x400d_xxxx is the flash-mapped code region, and that address lives inside `infer()` (the cooked function, PC means **Program Counter**). How do I know this? Well I really don't, atleast not by looking at the number itself. We'll have to cross-link this with the symbol table, which I didn't. I am stating this assumption because I know its not a RAM or a ROM problem.
 
 This is because these addresses `0x4000_xxxx` are masked ROM and these `0x4008_xxxx` are IRAM (Instruction RAM) while `0x400D_xxxx` are the application memory. Hence I know its application memory and one function which can fuck up (I mean we deliberately set up `infer` to fuck up but still) is `infer`.
 
