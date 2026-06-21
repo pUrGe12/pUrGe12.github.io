@@ -119,6 +119,10 @@
         <lastmod>2026-06-17</lastmod>
     </url>
     <url>
+        <loc>https://purge12.github.io/blog/writing-stm32-firmware/</loc>
+        <lastmod>2026-06-21</lastmod>
+    </url>
+    <url>
         <loc>https://purge12.github.io/books/</loc>
     </url>
     <url>
@@ -170,6 +174,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/categories/emulator/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/categories/firmware/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/gcp/</loc>
