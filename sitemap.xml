@@ -150,8 +150,16 @@
         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
+        <loc>https://purge12.github.io/books/shoe-dog/</loc>
+        <lastmod>2026-02-10</lastmod>
+    </url>
+    <url>
         <loc>https://purge12.github.io/books/steve-jobs/</loc>
         <lastmod>2026-01-08</lastmod>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/books/the-code-breaker/</loc>
+        <lastmod>2026-02-10</lastmod>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/</loc>
@@ -363,6 +371,9 @@
         <loc>https://purge12.github.io/tags/functional-programming/</loc>
     </url>
     <url>
+        <loc>https://purge12.github.io/tags/gene-editing/</loc>
+    </url>
+    <url>
         <loc>https://purge12.github.io/tags/hardware/</loc>
     </url>
     <url>
@@ -409,6 +420,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/tags/setup/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/tags/startup/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/stoicism/</loc>
