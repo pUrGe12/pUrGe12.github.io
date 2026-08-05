@@ -9,11 +9,10 @@ tags = ["Automata", "Blockchain", "Hashing"]
 
 [extra]
 lang = "en"
+math = true
 +++
 
-> This might be a bit hard to read
-
-Because for some reason my LATEX is not being rendered correctly. Hence, I am linking the actual paper as well. 
+> If you'd rather read the original, I am linking the actual paper as well.
 
 [Paper](https://drive.google.com/file/d/1F7iiWc0XKPXG4dQcONL6DCCdC5Z11kNx/view?usp=drive_link)
 
@@ -32,7 +31,7 @@ On October 1970, Martin Gardner described the brainchild of John Conway called L
 A Cellular Automata (CA) is a grid of uniformly arranged cells in D-dimensions, discrete in space and time where each cell encapsulates a finite value called it’s state. A State Transition Function ($\phi$) is applied to every cell, to obtain the next generation of cells. $\phi$ uses the values in the neighbourhood of a cell $X_{i,j}^t$ to determine ${X_{i,j}^{t+1}}$, where (i,j) specify the cell coordinates and t represents time (or generation).
 
 Life uses the Moore neighbourhood, i.e. if the cell is represented by $X_{i,j}$ then the Moore neighbourhood $N_m$ of $X_{i,j}$ is
-$$ N_m = \{X_{i-1,j-1},X_{i-1,j},X_{i-1,j+1},X_{i,j-1},X_{i,j+1},X_{i+1,j-1},X_{i+1,j},X_{i+1,j+1} \}$$
+$$ N_m = \lbrace X_{i-1,j-1},X_{i-1,j},X_{i-1,j+1},X_{i,j-1},X_{i,j+1},X_{i+1,j-1},X_{i+1,j},X_{i+1,j+1} \rbrace $$
 
 In Life (no pun intended),
 
@@ -46,10 +45,14 @@ Thus, a set of rules determined by $\phi$ describe the evolution of an initial s
 
 The cells in the Game of Life can take two values, 0 or 1 (may be thought of as alive or dead). The board in which the game is played is infinite, with all cells either living or dead, initially.
 
-| ... | 1 | 1 | 1 | 1 | 0 | ... |
-| ... | 1 | 0 | 0 | 0 | 1 | ... |
-| ... | 0 | 1 | 0 | 1 | 1 | ... |
-| ... | 1 | 1 | 0 | 0 | 0 | ... |
+$$
+\begin{bmatrix}
+\cdots & 1 & 1 & 1 & 1 & 0 & \cdots \cr
+\cdots & 1 & 0 & 0 & 0 & 1 & \cdots \cr
+\cdots & 0 & 1 & 0 & 1 & 1 & \cdots \cr
+\cdots & 1 & 1 & 0 & 0 & 0 & \cdots
+\end{bmatrix}
+$$
 
 Conway describes 3 rules that determine the next generation of cells:
 
@@ -65,7 +68,7 @@ $$
 
 where, $\delta$ is the kronecker delta function,
 
-$$ \delta \left(a,b\right) = 1 \Longrightarrow a=b \;,\; else \; 0$$
+$$ \delta \left(a,b\right) = 1 \text{ if } a = b, \text{ and } 0 \text{ otherwise}$$
 
 and $H_{i,j}^t$ represents the sum of the Moore neighbourhood of $S_{i,j}^t$,
 
@@ -79,16 +82,19 @@ Now given an initial state of 0s and 1s, a computer can be made to apply these f
 
 Consider a finite matrix A given by:
 
-$$A^{t=0} = $$
-
-| 0 | 0 | 0 | 1 | 1 | 0 | 1 | 1 |
-| 0 | 1 | 1 | 1 | 1 | 1 | 1 | 0 |
-| 0 | 1 | 1 | 0 | 0 | 0 | 0 | 1 |
-| 1 | 1 | 0 | 0 | 0 | 0 | 1 | 0 |
-| 0 | 1 | 1 | 1 | 1 | 1 | 0 | 0 |
-| 0 | 1 | 1 | 1 | 0 | 1 | 1 | 0 |
-| 1 | 1 | 1 | 0 | 1 | 0 | 1 | 0 |
-| 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 |
+$$
+A^{t=0} =
+\begin{bmatrix}
+0 & 0 & 0 & 1 & 1 & 0 & 1 & 1 \cr
+0 & 1 & 1 & 1 & 1 & 1 & 1 & 0 \cr
+0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 \cr
+1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 \cr
+0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \cr
+0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 \cr
+1 & 1 & 1 & 0 & 1 & 0 & 1 & 0 \cr
+0 & 1 & 0 & 0 & 1 & 0 & 0 & 0
+\end{bmatrix}
+$$
 
 
 Since this is a finite grid, there are 2 ways to play the Game of Life here:
@@ -98,16 +104,19 @@ Since this is a finite grid, there are 2 ways to play the Game of Life here:
 
 For the sake of this example, I will ignore the edges. Then applying the rules of Life we get the next generation,
 
-$$A^{t=1} = $$
-
-| 0 | 0 | 0 | 1 | 1 | 0 | 1 | 1 |
-| 0 | 1 | 0 | 0 | 1 | 0 | 1 | 0 |
-| 0 | 0 | 1 | 0 | 0 | 1 | 0 | 1 |
-| 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
-| 0 | 0 | 0 | 1 | 0 | 1 | 0 | 0 |
-| 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 |
-| 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 |
-| 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 |
+$$
+A^{t=1} =
+\begin{bmatrix}
+0 & 0 & 0 & 1 & 1 & 0 & 1 & 1 \cr
+0 & 1 & 0 & 0 & 1 & 0 & 1 & 0 \cr
+0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 \cr
+1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \cr
+0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 \cr
+0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 \cr
+1 & 1 & 1 & 0 & 1 & 0 & 0 & 0 \cr
+0 & 1 & 0 & 0 & 1 & 0 & 0 & 0
+\end{bmatrix}
+$$
 
 You may choose to go over and verify for themselves that this indeed is in compliance with the rules.
 
@@ -158,7 +167,7 @@ if __name__ == '__main__':
     while num_gen <= max_gen:
         main()
         num_gen += 1
-````
+```
 
 The real magic of the Game of Life is in the animations. Unfortunately it is a little hard to visualise on paper, but the reader is free to explore online.
 
@@ -180,9 +189,9 @@ $$ T_{new} = T_{base2} \circ S $$
 where $\circ$ represents concatenation. Now, consider a square matrix $A$ of dimension $\sqrt{P_n}$ whose values are bits in $T_{new}$ filled row-first.
 
 
-Applying the rules of Life for $k$ generations, a new matrix $A'$ is obtained. Taking all the values row-wise and concatenating them we have a new string $T'_{base2}$ of length $P_n$. 
+Applying the rules of Life for $k$ generations, a new matrix $A^{\prime}$ is obtained. Taking all the values row-wise and concatenating them we have a new string $T^{\prime}_{base2}$ of length $P_n$. 
 
-The Game of Life is irreversible. This means it is difficult to predict the $(m-1)^{th}$ generation given the $m^{th}$ generation. The provided algorithm runs Life for $k$ generations and hence, it's infeasible to compute the initial given the hash $T'_{base2}$. Hence, it can be implemented as a cryptographic hash function.
+The Game of Life is irreversible. This means it is difficult to predict the $(m-1)^{th}$ generation given the $m^{th}$ generation. The provided algorithm runs Life for $k$ generations and hence, it's infeasible to compute the initial given the hash $T^{\prime}_{base2}$. Hence, it can be implemented as a cryptographic hash function.
 
 Prevalent cryptographic hash functions like SHA256 have a time complexity of O($n$), while Life runs at O($n^2$). However, the run-time of Life's algorithm does not depend on the input, that is, it is always going to take the same time (more or less) to compute the hashes of two different values. Thus, it inherently prevents timing attacks.
 
