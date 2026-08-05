@@ -8,26 +8,38 @@
 {% block content %}
 {% include "_header.html" %}
 <div class="flex items-center justify-center">
-  <div class="py-7 p-6 max-w-prose">
-    <main class="col gap-5">
+  <div class="py-7 p-6 w-full max-w-5xl">
+    <main class="col gap-8">
+      <div class="col gap-1">
+        <h1 class="text-3xl text-black dark:text-white">{{ section.title }}</h1>
+        <p class="text-sm text-slate-500 dark:text-slate-400">{{ section.pages | length }} posts</p>
+      </div>
+
       {% if config.extra.blog_categorized %}
-      {% for category,posts in section.pages | group_by(attribute="taxonomies.categories.0") -%}
-      <h1 class="text-2xl">{{ category }}</h1>
-      <div class="col gap-5">
-        {% for post in posts %}
-        <div>
-          <a href="{{ post.permalink }}" class="tl-link">{{ post.title }}</a>
-          <span class="text-black dark:text-white text-lg pl-2">{{ post.date | date}}</span>
-        </div>
+      <div class="columns-1 md:columns-2 gap-x-12">
+        {% for category, posts in section.pages | group_by(attribute="taxonomies.categories.0") -%}
+        <section class="break-inside-avoid mb-10 col gap-3">
+          <h2 class="row items-baseline justify-between gap-3 pb-2 text-2xl text-black dark:text-white border-b border-stone-300 dark:border-stone-700">
+            <span>{{ category }}</span>
+            <span class="text-sm text-slate-500 dark:text-slate-400">{{ posts | length }}</span>
+          </h2>
+          <ul class="col gap-3">
+            {% for post in posts %}
+            <li class="col gap-0.5">
+              <a href="{{ post.permalink }}" class="tl-link leading-snug">{{ post.title }}</a>
+              <span class="text-sm text-slate-500 dark:text-slate-400">{{ post.date | date(format="%b %d, %Y") }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </section>
         {% endfor %}
       </div>
-      {% endfor %}
       {% else %}
-      <div class="col gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5">
         {% for post in section.pages %}
-        <div>
-          <a href="{{ post.permalink }}"class="tl-link">{{ post.title }}</a>
-          <span class="text-black dark:text-white text-lg pl-2">{{ post.date | date}}</span>
+        <div class="col gap-0.5">
+          <a href="{{ post.permalink }}" class="tl-link leading-snug">{{ post.title }}</a>
+          <span class="text-sm text-slate-500 dark:text-slate-400">{{ post.date | date(format="%b %d, %Y") }}</span>
         </div>
         {% endfor %}
       </div>
