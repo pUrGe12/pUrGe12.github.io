@@ -43,6 +43,10 @@
         <lastmod>2026-02-10</lastmod>
     </url>
     <url>
+        <loc>https://purge12.github.io/blog/gameoflife/</loc>
+        <lastmod>2024-01-15</lastmod>
+    </url>
+    <url>
         <loc>https://purge12.github.io/blog/gsoc-blog-final/</loc>
         <lastmod>2025-09-03</lastmod>
     </url>
@@ -346,12 +350,6 @@
         <loc>https://purge12.github.io/tags/autobiography/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/tags/automata/</loc>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/tags/blockchain/</loc>
-    </url>
-    <url>
         <loc>https://purge12.github.io/tags/blog/</loc>
     </url>
     <url>
@@ -386,9 +384,6 @@
     </url>
     <url>
         <loc>https://purge12.github.io/tags/hardware/</loc>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/tags/hashing/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/ideas/</loc>
@@ -450,10 +445,6 @@
     <url>
         <loc>https://purge12.github.io/wisps/abhorrence-of-being/</loc>
         <lastmod>2025-05-11</lastmod>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/wisps/gameoflife/</loc>
-        <lastmod>2024-01-15</lastmod>
     </url>
     <url>
         <loc>https://purge12.github.io/wisps/on-pain/</loc>
