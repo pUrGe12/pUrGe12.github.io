@@ -4,8 +4,8 @@ date = 2024-01-15
 draft = false
 
 [taxonomies]
-categories = ["Math"]
-tags = ["Automata", "Blockchain", "Hashing"]
+categories = ["Games", "Math"]
+tags = ["blog"]
 
 [extra]
 lang = "en"
@@ -60,7 +60,7 @@ Conway describes 3 rules that determine the next generation of cells:
 2. If a live cell has 2 or 3 neighbours, it survives to the next generation 
 3. If a dead cell has exactly 3 neighbours, it comes back to life in the next generation
 
-he rules can be explicitly written out as the state transition function for Life. If the current state of a cell is $S_{i,j}^t$ and the next generation is $S_{i,j}^{t+1}$ then,
+The rules can be explicitly written out as the state transition function for Life. If the current state of a cell is $S_{i,j}^t$ and the next generation is $S_{i,j}^{t+1}$ then,
 
 $$
 S_{i,j}^{t+1} = \delta \left(H_{i,j}^t,3 \right) + S_{i,j}^t \delta \left(H_{i,j}^t,2 \right)

@@ -19,7 +19,7 @@ The idea here is, I wanted to create a `honeypot` which will be a wifi network w
 
 It turns out that it's not that simple. 
 
-- I can't directly act as an `ISP` using just a wifi adapter (at least that's what I think, I am still reseraching this area) so I can't really provide internet access at all. But that's alright I can just get the creds and tell them to fuck off.
+- I can't directly act as an `ISP` using just a wifi adapter (at least that's what I think, I am still researching this area) so I can't really provide internet access at all. But that's alright I can just get the creds and tell them to fuck off.
 
 - I have to keep the wifi open and not protected.
 

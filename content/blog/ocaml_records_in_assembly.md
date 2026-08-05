@@ -13,7 +13,7 @@ lang = "en"
 
 ## What's a record
 
-A `record` is a data strcuture in OCaml. In its core, its a type definition which goes like this:
+A `record` is a data structure in OCaml. In its core, its a type definition which goes like this:
 
 ```ocaml
 type books = {
@@ -47,7 +47,7 @@ Well, OCaml has no idea what this is! It cannot work this way, we must define a 
 
 ### How do I use it?
 
-Well, the idea is that you can pull invidual elements from this record. So, if you want say the author, you can do:
+Well, the idea is that you can pull individual elements from this record. So, if you want say the author, you can do:
 
 ```ocaml
 let a = book.author;;

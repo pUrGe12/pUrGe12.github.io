@@ -15,22 +15,22 @@ lang = "en"
 
 If you want to read a story of what I tried and failed at, you can scroll down. But this is what worked in the end, it only cost about 1.5k(INR). The problem was sending an `0xC0` frame which was unsupposed in all sorts of ESP frameworks. So, I bought an adapter from amazon, a 2.4GHz 802.11n 150Mbps USB Wireless WiFi Adapter.
 
-This worked beautifully in the sense that I was very easily able to deauth people (given they didn't use `PMF` frames from WPA3 but most insitutional wifi systems don't since it needs specific hardware support). Its very easy to setup an attack using `aircrack-ng`.
+This worked beautifully in the sense that I was very easily able to deauth people (given they didn't use `PMF` frames from WPA3 but most institutional wifi systems don't since it needs specific hardware support). Its very easy to setup an attack using `aircrack-ng`.
 
 ---
 
 ESP32 has a wifi adapter inbuilt. It also apparently allows you to send raw wifi packets if you use the ESP-IDF framework and the `ieee80211_raw_frame_sanity_check()`, an actual bypass that was found after reverse engineering the ESP-IDF source code and binaries. 
 
-The reason I wanna do this is because otherwise people won't be incentivised to click on my honepot, 2 reasons for this
+The reason I wanna do this is because otherwise people won't be incentivised to click on my honeypot, 2 reasons for this
 
-1. It is free and hence less trustworth in the minds of the people
+1. It is free and hence less trustworthy in the minds of the people
 2. People generally don't check available networks (cause most of the times, their phones automatically connect)
 
 If I can broadcast deauthentication frames posing as my insti AP, and then perform a DoS attack, they will be forced to notice my "iitmwifi_6g" and boom, gotcha!
 
 > TLDR: It did not work, because ESP-IDF won't support sending deauth frames and the working behind the actual raw packet sending is closed source. We will have to use a custom framework and not ESP-IDF, thus a new board like ESP8266. 
 
-I shall do this for another time. If you are `still interested` in going through what I learnt in this frustating process, read through...
+I shall do this for another time. If you are `still interested` in going through what I learnt in this frustrating process, read through...
 
 ## Installing ESP-IDF v5.4 (latest)
 

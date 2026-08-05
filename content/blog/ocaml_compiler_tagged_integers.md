@@ -19,9 +19,9 @@ From the [OCaml documentation](https://ocaml.org/docs/memory-representation): "W
 
 From the [Jane Street documentation](https://blog.janestreet.com/what-is-gained-and-lost-with-63-bit-integers/): "If a record’s field is float, record’s data will actually contain the pointer to the float data. The only exceptions are records with only floats and float arrays, whose data instead of pointers contain the values of floats. This representation is called `unboxed`.""
 
-The idea behind boxxed and unboxxed representations is to help the Garbage Collector do its job, but this comes with an extra step to access that boxxed value.
+The idea behind boxed and unboxed representations is to help the Garbage Collector do its job, but this comes with an extra step to access that boxed value.
 
-## Why are integer values not boxxed?
+## Why are integer values not boxed?
 
 Values of type int are never stored as header and data (boxed). This is because we don't need this extra overhead in case of integers, the GC can very easily differentiate between integers and others which look most like it, pointers.
 
@@ -29,11 +29,11 @@ This is because OCaml is storing an integer `x` as `(x << 1) | 1` which translat
 
 ## What does word-aligned mean?!
 
-A `word` is 8 bytes for 64bit machines and 4 bytes for 32 bit machines. When the hardware tries to access the memory, it will do it in contigous sizes of 8 bytes each. So, you can imagine a sliding window for example, with a length of 8, going over the first 8 bytes, then it directly goes over the next 8 bytes and so on.
+A `word` is 8 bytes for 64bit machines and 4 bytes for 32 bit machines. When the hardware tries to access the memory, it will do it in contiguous sizes of 8 bytes each. So, you can imagine a sliding window for example, with a length of 8, going over the first 8 bytes, then it directly goes over the next 8 bytes and so on.
 
-Word-alignment then means that each contigous memory space is occupied by a single value only. Does that make sense?
+Word-alignment then means that each contiguous memory space is occupied by a single value only. Does that make sense?
 
-So if pointers are always stored word aligned, their values must be multiples of 8 (for a 64 bit machine) i.e. they point to contigous memory addresses. So, 0-7 bytes is one pointer, then 8-15 bytes is the next pointer etc. These bytes of course, can be at a specific offset where the hardware is storing stuff, but they will all be multiples of 8.
+So if pointers are always stored word aligned, their values must be multiples of 8 (for a 64 bit machine) i.e. they point to contiguous memory addresses. So, 0-7 bytes is one pointer, then 8-15 bytes is the next pointer etc. These bytes of course, can be at a specific offset where the hardware is storing stuff, but they will all be multiples of 8.
 
 Now if you were to actually go ahead and print the value of a pointer, you'll see that it MUST end with the last 3 bits as 0. Let's go ahead and do that in OCaml, we'll assign a heap object using `let` (a good documentation for what this means is [here](https://ocaml.org/docs/memory-representation)), and then inspect the value at runtime.
 

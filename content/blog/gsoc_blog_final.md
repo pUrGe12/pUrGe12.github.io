@@ -92,15 +92,15 @@ A bunch of cool things came up during this time which aren’t technically a par
 
 2. I started working on a streamlit version of the WebUI which will make Nettacker more like a dashboard than a static page.
 
-3. There are some compatbility issues with python3.13 which are to be resolved and me and the Mr. Sam’s (the maintainer) guess is that its due to the SSL modules.
+3. There are some compatibility issues with python3.13 which are to be resolved and me and the Mr. Sam’s (the maintainer) guess is that its due to the SSL modules.
 
 4. From what Mr. Sam has been telling me, there are better ways to cache the module files because right now we’re keeping them open in memory during the entire scan (even when they aren’t needed) which crashes the ulimit
 
 ## What I learnt
 
-I had only barely worked on async codebases and had never worked on such a large and impactful project before. I learnt a lot of best practices for python development, especially about the importance and maintainance of the code architecture. I remember Mr. Sam emphasising this to me so many times when I would “hack” my way into an implementation! I also developed an interesting in networks and network security in general. I started out a homelab, from NAS servers, to upgrading with RPis and a switch and an old laptop which I bought of cheap.
+I had only barely worked on async codebases and had never worked on such a large and impactful project before. I learnt a lot of best practices for python development, especially about the importance and maintenance of the code architecture. I remember Mr. Sam emphasising this to me so many times when I would “hack” my way into an implementation! I also developed an interest in networks and network security in general. I started out a homelab, from NAS servers, to upgrading with RPis and a switch and an old laptop which I bought of cheap.
 
-I became an OWSAP member (now I have an OWASP mailing address!), took part in programs other than Nettacker (GenAI security initiatives) and used their resources to help me understand best practices for secure coding in python.
+I became an OWASP member (now I have an OWASP mailing address!), took part in programs other than Nettacker (GenAI security initiatives) and used their resources to help me understand best practices for secure coding in python.
 
 I also applied for a talk at OWASP AppSec Bangalore 2025 to speak on Nettacker! This was the first time I applied to any conference so I am psyched (thought I didn't get it :()
 

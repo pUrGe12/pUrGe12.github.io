@@ -22,7 +22,7 @@ lang = "en"
 
 > My fingers are charred with coal,
 
-> filling the bottoms of some fictatious bowl;
+> filling the bottoms of some fictitious bowl;
 
 > dark is the night now and it's all I see,
 

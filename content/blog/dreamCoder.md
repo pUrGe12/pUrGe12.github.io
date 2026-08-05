@@ -28,7 +28,7 @@ In this blog post, I will be deconstructing the paper with every single line as 
 
 I thought of the goal of the system as a curve finder. Just like in **curve fitting** where we have a bunch of data points and we need to find a function that fits that perfectly, the goal here is to find a `program` (not just a mathematical function, but a function is within the set of programs), that can produce the desired output in `any domain`.
 
-The word **any** is important because the primitives we pass it detemine the language the system will learn and reason in. (Does it really reason? I'll let you decide that once we progress forward).
+The word **any** is important because the primitives we pass it determine the language the system will learn and reason in. (Does it really reason? I'll let you decide that once we progress forward).
 
 
 ### Approach
@@ -40,13 +40,13 @@ What does that mean exactly? This means that if you're trying to solve physics p
 - Train it (and the NN that comes along with it) -> We'll see about this soon
 - Have a NN that will `guide` the model in its search for a program given a task.
 
-The serach problem is a combinatorial explosion. There are so many ways to arrange primitives, some of them will make sense, some won't, so how do you efficiently search for the right program? That is one of the major hurdles that the paper tries to avoid (we'll see how they do that, and why its good but still not very practical).
+The search problem is a combinatorial explosion. There are so many ways to arrange primitives, some of them will make sense, some won't, so how do you efficiently search for the right program? That is one of the major hurdles that the paper tries to avoid (we'll see how they do that, and why its good but still not very practical).
 
 - **Learning** happens for both the model that "generates" the program and the NN that guides it.
 
 Notice I used the word generate here. Because later we'll read about a learning phase called **abstraction** which will generate libraries out of useful + previously seen primitives to use in later tasks. In practice therefore, the model which tries to **search** for a program, CAN also be said to be generating the said program. In spirit ofcourse, its not a `generation model` per se.
 
-Now the paper mentions two more ideas which they have utilizied to solve this problem:
+Now the paper mentions two more ideas which they have utilized to solve this problem:
 
 1. **Bayesian multitask program learning** (I couldn't understand why use this, from it’s name)
 2. **Neurally-guided program synthesis** (I can understand why this, because the NN literally is supposed to help in program generation for program induction)
@@ -68,7 +68,7 @@ Let me clarify some notation for you:
 - [x] `P[p|L]` -> The generative model defined as giving a program from the given library
 - [x] `Q(p|x)` -> The posterior distribution output by the NN given the task x.
 
-The NN gives out a "posterior distribution" over programs likely to solve the task. A posterior distribution is probability distribution that takes into context both the `prior` and the `liklihood`.
+The NN gives out a "posterior distribution" over programs likely to solve the task. A posterior distribution is probability distribution that takes into context both the `prior` and the `likelihood`.
 
 In bayesian statistics, the **posterior** is the final step in the three-part process of updating your belief in with new evidence.
 

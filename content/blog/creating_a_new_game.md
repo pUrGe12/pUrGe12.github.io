@@ -13,7 +13,7 @@ lang = "en"
 
 ## Introduction
 
-I was watching some clips on YouTube of Pirates of the Carribean and the scene where Davy Jones plays against Will Turner the dice game got me thinking. So, naturally I wanted to understand how the fuck the game even works because the movie's cut for this scene does an absoulute jackshit job of explaining it. I found some YouTube videos to explain the game and I won't explain that here but I'll [link the video](https://youtu.be/T44LuxdH0iw?si=2B5FIfzB6kQPapCQ) so that you can see for yourself.
+I was watching some clips on YouTube of Pirates of the Carribean and the scene where Davy Jones plays against Will Turner the dice game got me thinking. So, naturally I wanted to understand how the fuck the game even works because the movie's cut for this scene does an absolute jackshit job of explaining it. I found some YouTube videos to explain the game and I won't explain that here but I'll [link the video](https://youtu.be/T44LuxdH0iw?si=2B5FIfzB6kQPapCQ) so that you can see for yourself.
 
 Now I only have a deck of cards, and 0 dies, which means I had to come up with a variant for Liar's Dice that I can play with my friends using cards. 
 
@@ -116,7 +116,7 @@ And we can also have a **neutral player and sweep its axes against two other neu
 
 ### Plots
 
-{{ figure(src="assets/axis_sweeps_BASE_neutral_control.png", alt="Neutral control sweep", caption="This sweeps all the axes for the netural player against neutral bots. This is our control") }}
+{{ figure(src="assets/axis_sweeps_BASE_neutral_control.png", alt="Neutral control sweep", caption="This sweeps all the axes for the neutral player against neutral bots. This is our control") }}
 
 > These are against neutral players
 
@@ -130,13 +130,13 @@ Across all the plots, clearly `calling` more is an advantage. The **win percenta
 
 > These are against a bluffer and a truthful guy
 
-This is more interesting because raising and predictability have changed coureses drastically. Against a truthful guy and a bluffer, `raising` **DOES NOT** bring down your profits at all! This could be explained by the bluffer always bluffing harder and losing the pot to either you or the truthful guy. There can ofcourse be more nuanced explanations.
+This is more interesting because raising and predictability have changed courses drastically. Against a truthful guy and a bluffer, `raising` **DOES NOT** bring down your profits at all! This could be explained by the bluffer always bluffing harder and losing the pot to either you or the truthful guy. There can ofcourse be more nuanced explanations.
 
-`Predictability` again doens't change the net money you make, but it does change how many rounds you win. The earlier drop becomes almost the new peak! Its better to be only slightly predictable against a truthful and a bluffer!
+`Predictability` again doesn't change the net money you make, but it does change how many rounds you win. The earlier drop becomes almost the new peak! Its better to be only slightly predictable against a truthful and a bluffer!
 
-{{ figure(src="assets/heatmap_TRUTHFUL_truthfulness_x_predictability_vs_field.png", alt="Heatmap for truthfulness and predictability", caption="Amount of chips won depending on the truthfulness and predictability of the netural guy") }}
+{{ figure(src="assets/heatmap_TRUTHFUL_truthfulness_x_predictability_vs_field.png", alt="Heatmap for truthfulness and predictability", caption="Amount of chips won depending on the truthfulness and predictability of the neutral guy") }}
 
-Its kind of counter-intuitive if you think about. Its saying that the more predictable AND truthful you are, the more chips you win (against a netural and a bluffer). Basically, letting others know that you are always truthful no matter what, works out.
+Its kind of counter-intuitive if you think about. Its saying that the more predictable AND truthful you are, the more chips you win (against a neutral and a bluffer). Basically, letting others know that you are always truthful no matter what, works out.
 
 This might be because everyone you're called out, you're rarely off the threshold cause you had been telling the truth. So you are either rarely called out, or you win the pot. Hence the money.
 
@@ -146,5 +146,34 @@ Increasing the bluff lever, kills almost all variation in the green side and inv
 
 ### Variations
 
-You will notice that the plots reveal something serious. The game is quite boring so to speak. Due to the dependent events set forth by the cards. So, let's give a little more to chance by adding more players and decks.
+You will notice that the plots reveal something serious. The game is quite boring so to speak. Due to the dependent events on the cards. So, let's give a little more to chance by adding more players and decks.
 
+We want to find the "optimal" game, so to do that, we first need to define what an optimal game means in this context. This is what I came up with:
+
+> An optimal game is where bluffing and calling both lie in the "contested" zone, and more than 40% of the entire deck remains hidden in an honest table (everyone is honest)
+
+Let's first unpack what a contested zone is. Look at this image here for a normal game:
+
+{{ figure(src="assets/bid_winprob_contested_zone.png", alt="Bid win probability distribution against bet size", caption="Bid win probability distribution against bid size for H and N cards.") }}
+
+The `contested zone` is defined as the region where there is a near coin flip probability of winning or losing the bid. This adds an element of fun in the game. In the plain game as shown above the contested zone is really only for 1 number in each of H and N. Can we do better?
+
+> Note the probability remains same in going from 10 to 11, because of the 0.1 tolerance rule
+
+{{ figure(src="assets/decks_winprob_widen_contested_zone.png", alt="Bid win probability on H against multiple decks", caption="Bid win probability distribution for H against multiple decks") }}
+
+This image shows the effect of different deck sizes in a 3 player game on the probability of a victory. What you should note, is that when there are more decks, the point 8 slowly slides inside the contested zone. This means, we wanna up our number of decks.
+
+But if we use more decks without increasing the number of players, that's gonna be bad too. Because look at this graph.
+
+{{ figure(src="assets/sweep_lines_players_vs_game_health.png", alt="Effect of number of players on the game health", caption="Left: effect of number of players and number of decks on game health. Having 1 deck and 10 players kills bluffing. Right: Same plot with different axes") }}
+
+This is using a metric called "contested-zone health" which is the weighted total number of **bid values**, across all faces, that sit in the **bluffable win-probability band** which is defined as the band where the win probability is within 30% to 70%.
+
+We can see that 9 players seem to maximize the health of the contested zone, which in-turn means there is a higher chance of someone bluffing and it being a genuinely contested bet. 10 players might rise up with more decks, but we're already pushing our limits with 6 decks. This is not blackjack!
+
+So, clearly an optimal seems to be around 9 players and 3 decks, we can verify that with a heatmap too:
+
+{{ figure(src="assets/sweep_heatmap_players_vs_game_health.png", alt="Heatmaps for the previous data", caption="Heatmaps for gamehealth vs number of decks measured against different fields.") }}
+
+If we analyze this properly, then it becomes clear 
