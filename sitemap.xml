@@ -186,9 +186,6 @@
         <loc>https://purge12.github.io/categories/autobiography/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/categories/autobioraphy/</loc>
-    </url>
-    <url>
         <loc>https://purge12.github.io/categories/biography/</loc>
     </url>
     <url>
@@ -347,10 +344,10 @@
         <loc>https://purge12.github.io/tags/assembly/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/tags/autobiography/</loc>
+        <loc>https://purge12.github.io/tags/blog/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/tags/blog/</loc>
+        <loc>https://purge12.github.io/tags/business/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/classics/</loc>
@@ -416,6 +413,9 @@
         <loc>https://purge12.github.io/tags/pain/</loc>
     </url>
     <url>
+        <loc>https://purge12.github.io/tags/philosophy/</loc>
+    </url>
+    <url>
         <loc>https://purge12.github.io/tags/pqc/</loc>
     </url>
     <url>
@@ -423,6 +423,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/tags/python/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/tags/science/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/setup/</loc>
