@@ -5,7 +5,7 @@ draft = false
 
 [taxonomies]
 categories = ["Biography"]
-tags = ["Gene-editing"]
+tags = ["gene-editing", "science"]
 
 [extra]
 lang = "en"

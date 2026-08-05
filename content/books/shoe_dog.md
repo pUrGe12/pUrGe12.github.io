@@ -5,7 +5,7 @@ draft = false
 
 [taxonomies]
 categories = ["Autobiography"]
-tags = ["Startup"]
+tags = ["startup", "business"]
 
 [extra]
 lang = "en"

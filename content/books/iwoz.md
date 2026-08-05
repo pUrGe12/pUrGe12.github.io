@@ -4,7 +4,7 @@ date = 2026-06-21
 draft = false
 
 [taxonomies]
-categories = ["Autobioraphy"]
+categories = ["Autobiography"]
 tags = ["must-read"]
 
 [extra]

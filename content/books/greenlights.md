@@ -4,8 +4,8 @@ date = 2026-01-12
 draft = false
 
 [taxonomies]
-categories = ["Philosophy"]
-tags = ["must-read", "autobiography"]
+categories = ["Autobiography"]
+tags = ["must-read", "philosophy"]
 
 [extra]
 lang = "en"

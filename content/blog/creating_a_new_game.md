@@ -23,9 +23,7 @@ In a typical liar's dice game, you can roll any number you want, but it doesn't 
 
 ## Rules
 
-This is a 3 player game only with 1 standard card deck.
-
-Each player gets 5 cards out of a standard 52 card deck.
+This is a 3 player game only with 1 standard card deck. Each player gets 5 cards out of a standard 52 card deck.
 
 The cards are ordered in the following Increasing face value:
 
@@ -183,3 +181,4 @@ We need to work in the diagonal band and on the upper side of it, which is 3 pla
 ### Plots for 3P9D
 
 For 3P9D, we can run the simulations again and see how they affect the game.
+
