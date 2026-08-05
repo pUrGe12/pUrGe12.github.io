@@ -11,7 +11,7 @@ tags = ["blog"]
 lang = "en"
 +++
 
-## Introduction
+# Introduction
 
 I was watching some clips on YouTube of Pirates of the Carribean and the scene where Davy Jones plays against Will Turner the dice game got me thinking. So, naturally I wanted to understand how the fuck the game even works because the movie's cut for this scene does an absolute jackshit job of explaining it. I found some YouTube videos to explain the game and I won't explain that here but I'll [link the video](https://youtu.be/T44LuxdH0iw?si=2B5FIfzB6kQPapCQ) so that you can see for yourself.
 
@@ -176,4 +176,10 @@ So, clearly an optimal seems to be around 9 players and 3 decks, we can verify t
 
 {{ figure(src="assets/sweep_heatmap_players_vs_game_health.png", alt="Heatmaps for the previous data", caption="Heatmaps for gamehealth vs number of decks measured against different fields.") }}
 
-If we analyze this properly, then it becomes clear 
+If we analyze this properly, then our above assessment becomes clearer. About 71% of the deck is still hidden which leaves enough room for players to bluff (with 80%+ still hidden, all calls will be bluffs!) while still having something substantial on the table. The **game health** (contested zone health) also supports this argument. At 10 decks, the room for blluffing is way too high for a game to function normally, and too little decks, kills bluffing very fast.
+
+We need to work in the diagonal band and on the upper side of it, which is 3 players and 9 decks.
+
+### Plots for 3P9D
+
+For 3P9D, we can run the simulations again and see how they affect the game.

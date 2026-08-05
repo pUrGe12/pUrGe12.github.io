@@ -36,7 +36,7 @@
 {% block content %}
 {% include "_header.html" %}
 <div class="flex justify-center items-center w-full">
-  <main class="max-w-prose px-4 w-full">
+  <main class="tl-wide px-4 w-full">
     {% if page.extra.copy is defined %}{% set allow_copy = page.extra.copy %}{% else %}{% set allow_copy = config.extra.copy %}{% endif %}
     {% if allow_copy %}
     {% set copy_icon = load_data(path="static/icon/copy.svg") %}

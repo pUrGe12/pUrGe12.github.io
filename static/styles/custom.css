@@ -1,0 +1,24 @@
+/* Wider reading column for long-form pages (posts, notes, books, wisps).
+   60% of the viewport, i.e. ~20% margin on either side. */
+.tl-wide {
+  width: 100%;
+  max-width: 60%;
+}
+
+/* the theme caps prose at 65ch; let it follow the container instead */
+.tl-wide .tl-prose {
+  max-width: 100%;
+}
+
+/* keep narrower screens readable rather than squeezed */
+@media (max-width: 1280px) {
+  .tl-wide {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .tl-wide {
+    max-width: 100%;
+  }
+}
