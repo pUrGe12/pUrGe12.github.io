@@ -182,3 +182,45 @@ We need to work in the diagonal band and on the upper side of it, which is 3 pla
 
 For 3P9D, we can run the simulations again and see how they affect the game.
 
+{{ figure(src="assets/joint_grid_BASE_9p_3deck.png", alt="Heatmaps for calling and bluffing 9p3d", caption="Calling vs Raising over 9 players and 3 decks w.r.t. the number of chips gained.") }}
+
+If you compare these heatmaps to the ones made for the 3p1d configuration, it will become very apparent as to why the 9p3d is a much better game
+
+{{ figure(src="assets/joint_grid_BASE_vs_TRUTHFUL_BLUFFER.png", alt="Heatmaps for calling and bluffing", caption="Calling vs Raising for 3 players and 1 deck w.r.t. the number of chips gained against a truthful player and a bluffer player.") }}
+
+- The 9p3d set tells us that calling too much, even if the player is a huge bluffer will reward you negatively. While the 3p1d set always tells you to call. 
+
+- There are certain gray areas in the 9p3d config, especially when you raise moderately (0.6) and call base (base is where all params are 0.5) aggressively, you are more likely to lose all your money there.
+
+- The best part about 9p3d is that the middle region is a mix of green and orange, which means the region where most players will live in, is where there is a lot of variability, which is what makes a game worth playing. In contrast to the 3p1d where there are solid boundaries!
+
+---
+
+Before I run the next part of the sims, I noticed that to make sure **calling is not the best thing** in the world for any bluff level, I decided to **penalize calls**. That is, by having the caller throw in some money in the pot. But that doesn't make sense if you think about it, they'll just throw in the table minimum always. So, we change the rules:
+
+> Let anyone in the table call out, the final caller will be decided by the size of their bets during calls
+
+The confidence of their calls is prescribed by their bet size they're willing to throw into the pot. All potential callers would throw in their money, one person will win, rest automatically lose money. The `conviction` is a metric for how much they want to call, which is reflected in their bid size.
+
+{{ figure(src="assets/axis_sweeps_BASE_9p_3deck.png", alt="Axis sweeps for 9p3d", caption="Sweeping the axis for the BASE player in a 9p3d setting.") }}
+
+This is another very important graph because if you look at the **bluffing** axis, its now at an optimal value of 0.2ish! Which means you should bluff atleast 20% of the times and if you look at the slope of the curve leading up to it, the number of victories rise steeply as you start bluffing from 0 to 0.2.
+
+And this time, calling all the time is not the best strategy, while the number of games you win will increase, you will lose money when you do so (because you are throwing money in the pot).
+
+Another important revelation now is that, if you are in general `truthful`, then being sligtly predictable is fine, but as soon as someone is sure that you are always saying the truth, you get screwed very very quickly. This is because its not just the next call who can call you out, **its anyone in the table**. So you got to be extra careful.
+
+The `conviction` axis is also pretty interesting, the more money you throw in your calls, (that is, the more you `show` that you are sure of what your calls are) the more you win. Pretty neat.
+
+Let's look at the truthfulness and predictability map in more details:
+
+{{ figure(src="assets/heatmap_TRUTHFUL_truthfulness_x_predictability_9p_3deck.png", alt="Truthfulness vs predictability over chips scored", caption="Truthfulness vs predictability over chips scored") }}
+
+1. Being 100% truthful and 0% predictable (hard to replicate in real life) earns you a lot of money
+2. Being 0% truthful and 100% predictable (that is, everyone knows you just lie), you get called out a lot and lose money
+
+> There really is only one optimal strategy here, its best to be 0% predictable, no matter whether you're truthful or not
+
+---
+
+Alright that concludes this. I will (hopefully) code out a website where I can play this game with bots and maybe even host it in the future. Haffun.
