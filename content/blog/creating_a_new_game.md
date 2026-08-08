@@ -90,13 +90,13 @@ Now, a game by itself is not very useful. We need to run some calculations to es
 
 2. There are 12 N cards, 15 cards are dealt, which means on average in the table, there are (12/52) * 15 ~ 3.5 N cards. So, a bid more than 4 N is a risky bid and less than 3 is a safe bid.
 
-3. For each of the numbered cards till 6, we have 4 of each which means (4/52) * 12 ~ 0.9. That means even bidding on 1 numbered card till 6 is a risky bid.
+3. For each of the numbered cards till 6, we have 4 of each which means (4/52) * 15 ~ 1.15. That means even bidding on 1 numbered card till 6 is a risky bid.
 
 These numbers don't paint the most beautiful picture of the game, because it looks like the majority of the game is going to be within H and N cards only. So why not group the remaining cards into a different set L? I'll explore that later. Let's first look at some simulations.
 
 ### Sims
 
-I ran some monte-carlo sims to understand the game nuances. I'll attach the more important graphs and plots here. To begin with we'll be assuming a 3 player 5 card 1 deck game and we'll assign a certain persona to each person. These persona's toggle 4 different axises:
+I ran some monte-carlo sims to understand the game nuances. I'll attach the more important graphs and plots here. To begin with we'll be assuming a 3 player, 5 cards each, 1 deck game and we'll assign a certain persona to each person. These persona's toggle 4 different axises:
 
 1. `Truthfulness` - how closely opening/raising bids track the player's own expected count (1.0 = bids exactly its estimate, 0.0 = bids are unrelated to belief).
 2. `Bluffing` - propensity to inflate a bid beyond what belief supports (0.0 = never pad the count, 1.0 = pad aggressively).
@@ -176,11 +176,11 @@ So, clearly an optimal seems to be around 9 players and 3 decks, we can verify t
 
 If we analyze this properly, then our above assessment becomes clearer. About 71% of the deck is still hidden which leaves enough room for players to bluff (with 80%+ still hidden, all calls will be bluffs!) while still having something substantial on the table. The **game health** (contested zone health) also supports this argument. At 10 decks, the room for blluffing is way too high for a game to function normally, and too little decks, kills bluffing very fast.
 
-We need to work in the diagonal band and on the upper side of it, which is 3 players and 9 decks.
+We need to work in the diagonal band and on the upper side of it, which is 9 players and 3 decks.
 
-### Plots for 3P9D
+### Plots for 9P3D
 
-For 3P9D, we can run the simulations again and see how they affect the game.
+For 9P3D, we can run the simulations again and see how they affect the game.
 
 {{ figure(src="assets/joint_grid_BASE_9p_3deck.png", alt="Heatmaps for calling and bluffing 9p3d", caption="Calling vs Raising over 9 players and 3 decks w.r.t. the number of chips gained.") }}
 
