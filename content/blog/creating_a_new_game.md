@@ -4,7 +4,7 @@ date = 2026-08-03
 draft = false
 
 [taxonomies]
-categories = ["Games", "Math"]
+categories = ["Math", "Games"]
 tags = ["blog"]
 
 [extra]
