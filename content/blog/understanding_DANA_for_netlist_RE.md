@@ -9,6 +9,7 @@ tags = ["blog"]
 
 [extra]
 lang = "en"
+math = true
 +++
 
 ## Background
@@ -154,7 +155,7 @@ The rule for merging the two stages together is:
 
 > Delete any stage that is a subset of another
 
-In this case, stages $\{A\}$, $\{B\}$ and $\{C\}$ will be removed because they are subsets of $\{A, B, C\}$, similarly $\{D\}$ and $\{E\}$ will be removed as they are a subset of $\{D, E\}$, and \{F\}$ and $\{G\}$ will be removed as they are a subset of $\{F, G\}$. 
+In this case, stages $\{A\}$, $\{B\}$ and $\{C\}$ will be removed because they are subsets of $\{A, B, C\}$, similarly $\{D\}$ and $\{E\}$ will be removed as they are a subset of $\{D, E\}$, and $\{F\}$ and $\{G\}$ will be removed as they are a subset of $\{F, G\}$. 
 
 Now the final stages will look like:
 
