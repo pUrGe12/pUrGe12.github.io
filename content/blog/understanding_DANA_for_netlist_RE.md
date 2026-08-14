@@ -12,7 +12,7 @@ lang = "en"
 math = true
 +++
 
-## Background
+# Background
 
 The DANA paper is a pretty cool idea which I came across recently. Its goal is to facilitate the understanding of a netlist of logic-gates, making abstractions out of Flip-Flops (FF) into higher level registers so that the flow of data can be better understood.
 
@@ -30,13 +30,13 @@ What about netlists? If we open one up on HAL (A framework for reverse-engineeri
 
 Its a mess that looks like this, on a very very large scale (imagine millions of these boxes all tied together). Reverse engineering that logic is a difficult problem, which is made even more complex with FFs!
 
-## Introduction
+# Introduction
 
 `DANA` (Dataflow-based Netlist Analysis) is an algorithm that a few researches came up with in 2020, to identify the data flow in a netlist with FFs and consolidate the FFs into higher level registers so that reverse engineering the design becomes easier (comparatively).
 
 > We want to recreate semantic groups of FFs
 
-## Algorithm
+# Algorithm
 
 The high level architecture for doing this is provided in the paper as:
 
@@ -44,7 +44,7 @@ The high level architecture for doing this is provided in the paper as:
 
 The goal is to reduce the netlist to registers + logic only. To do that, the paper employs three stages, which we'll discuss now.
 
-### Pre-Processing
+## Pre-Processing
 
 Here we try to group the FFs into different initial stages. The premise of this phase is that
 
@@ -70,7 +70,7 @@ Note:
 
 4. We will independently do the forward and backward stage assignments and only merge them in the end.
 
-#### Forward pass 1
+### Forward pass 1
 
 Let's start with the **forward stage assignment**. This follows a very simple rule:
 
@@ -79,16 +79,18 @@ Let's start with the **forward stage assignment**. This follows a very simple ru
 Let's write out the successors for each FF (ignoring primary input and outputs)
 
 $$
-\text{succ}(A) = {D, F} \\
-\text{succ}(B) = {D, E} \\ 
-\text{succ}(C) = {D, E} \\
-\text{succ}(D) = {F, G}
+\begin{aligned}
+\text{succ}(A) &= \lbrace D, F \rbrace \\\\
+\text{succ}(B) &= \lbrace D, E \rbrace \\\\
+\text{succ}(C) &= \lbrace D, E \rbrace \\\\
+\text{succ}(D) &= \lbrace F, G \rbrace
+\end{aligned}
 $$
 
 According to the rule, we will have to take a union of all the successor sets to get the set of all successors that belong in a single stage. That is,
 
 $$
-\text{succ}(A) \cup \text{succ}(B) \cup \text{succ}(C) \cup \text{succ}(D) = {D, F, G, E}
+\text{succ}(A) \cup \text{succ}(B) \cup \text{succ}(C) \cup \text{succ}(D) = \lbrace D, F, G, E \rbrace
 $$
 
 Thus the groups `D`, `F`, `G` and `E` must be of the same color according to the forward pass. So, we have this:
@@ -97,7 +99,7 @@ Thus the groups `D`, `F`, `G` and `E` must be of the same color according to the
 
 I have colored them black, while `A`, `B` and `C` are all different stages, hence colored differently.
 
-#### Backward pass 1
+### Backward pass 1
 
 We'll also do a backward stage assignment on the same initial diagram as mentioned before. This time the rule is:
 
@@ -106,16 +108,18 @@ We'll also do a backward stage assignment on the same initial diagram as mention
 Let's write out the predecessors for each FF (ignoring primary input and outputs)
 
 $$
-\text{pred}(D) = {A, B, C} \\
-\text{pred}(E) = {B, C} \\
-\text{pred}(F) = {A, D} \\
-\text{pred}(G) = {D}
+\begin{aligned}
+\text{pred}(D) &= \lbrace A, B, C \rbrace \\\\
+\text{pred}(E) &= \lbrace B, C \rbrace \\\\
+\text{pred}(F) &= \lbrace A, D \rbrace \\\\
+\text{pred}(G) &= \lbrace D \rbrace
+\end{aligned}
 $$
 
 According to the rule, we will have to take a union of all the predecessor sets to get the set of all predecessors that belong in a single stage. That is,
 
 $$
-\text{pred}(D) \cup \text{pred}(E) \cup \text{pred}(F) \cup \text{pred}(G) = {A, B, C, D}
+\text{pred}(D) \cup \text{pred}(E) \cup \text{pred}(F) \cup \text{pred}(G) = \lbrace A, B, C, D \rbrace
 $$
 
 Thus the groups `A`, `B`, `C` and `D` must be of the same color according to the backward pass. So, we have this:
@@ -124,7 +128,7 @@ Thus the groups `A`, `B`, `C` and `D` must be of the same color according to the
 
 I have colored them black, while `E`, `F` and `G` are all different stages, hence colored differently.
 
-#### Forward pass 2 - Result splitting
+### Forward pass 2 - Result splitting
 
 The next rule says:
 
@@ -136,7 +140,7 @@ This is a violation of the rule. To fix this, we'll have to color `F` and `G` di
 
 {{ figure(src="assets/FF_diagram_FSA_2.png", alt="Flip-flop diagram for DANA forward stage 2", caption="FF diagram after the second forward stage assignment has finished") }}
 
-#### Backward pass 2 - Result splitting
+### Backward pass 2 - Result splitting
 
 The same rule applies to the backward stage 2 as well. In this case, `A`, `B` and `C` are all driving `D`, thus they must be in mutually different groups.
 
@@ -147,25 +151,27 @@ The same rule applies to the backward stage 2 as well. In this case, `A`, `B` an
 Now let's first look at the groups that we already have:
 
 $$
-\text{forward} = {A}; {B}; {C}; {D, E}; {F, G} \\
-\text{backward} = {A, B, C}; {D}; {E}; {F}; {G}
+\begin{aligned}
+\text{forward} &= \lbrace A \rbrace; \lbrace B \rbrace; \lbrace C \rbrace; \lbrace D, E \rbrace; \lbrace F, G \rbrace \\\\
+\text{backward} &= \lbrace A, B, C \rbrace; \lbrace D \rbrace; \lbrace E \rbrace; \lbrace F \rbrace; \lbrace G \rbrace
+\end{aligned}
 $$
 
 The rule for merging the two stages together is:
 
 > Delete any stage that is a subset of another
 
-In this case, stages ${A}$, ${B}$ and ${C}$ will be removed because they are subsets of ${A, B, C}$, similarly ${D}$ and ${E}$ will be removed as they are a subset of ${D, E}$, and ${F}$ and ${G}$ will be removed as they are a subset of ${F, G}$. 
+In this case, stages $\lbrace A \rbrace$, $\lbrace B \rbrace$ and $\lbrace C \rbrace$ will be removed because they are subsets of $\lbrace A, B, C \rbrace$, similarly $\lbrace D \rbrace$ and $\lbrace E \rbrace$ will be removed as they are a subset of $\lbrace D, E \rbrace$, and $\lbrace F \rbrace$ and $\lbrace G \rbrace$ will be removed as they are a subset of $\lbrace F, G \rbrace$. 
 
 Now the final stages will look like:
 
 $$
-\text{final\_stage} = {A, B, C}; {D, E}; {F, G}
+\text{final\\_stage} = \lbrace A, B, C \rbrace; \lbrace D, E \rbrace; \lbrace F, G \rbrace
 $$
 
 {{ figure(src="assets/FF_diagram_final.png", alt="Flip-flop diagram for DANA after pre-processing", caption="FF diagram after pre-processing") }}
 
-### Processing
+## Processing
 
 Next up we have the processing step, which takes in as input the output of the pre-processing step (the different stages) and gives out a better grouping. This is done via a pair of **9 passes** to the stages made above. These 9 passes listed out are:
 
@@ -177,7 +183,7 @@ Next up we have the processing step, which takes in as input the output of the p
 
 Let's first look at what each of them does.
 
-#### Group by successor OR predecessor
+### Group by successor OR predecessor
 
 We already have stages that share same successor OR predecessor, in this case we'll merge them. Consider this example for the predecessor merge (that is, merging cells which share the same predecessor)
 
@@ -185,7 +191,7 @@ We already have stages that share same successor OR predecessor, in this case we
 
 A similar procedure will follow for the successor. 
 
-#### Iteratively group by successor OR predecessor
+### Iteratively group by successor OR predecessor
 
 Exactly as above, but iteratively
 
@@ -193,7 +199,7 @@ Exactly as above, but iteratively
 
 A similar procedure will follow for the successor. 
 
-#### Split by successor OR predecessor groups
+### Split by successor OR predecessor groups
 
 In this case, the successors or the predecessors of a group are analyzed. If for example, a few elements of a group have a successor `X1` while the others have `X2` then the group is split based on that.
 
@@ -201,7 +207,7 @@ In this case, the successors or the predecessors of a group are analyzed. If for
 
 A similar procedure will follow for the predecessor.
 
-#### Group by number of sucessors OR predecessors
+### Group by number of sucessors OR predecessors
 
 Here for each group we compute the maximum and minimum number of FF-successors/predecessors over all contained FFs. It
 then merges groups with matching values. Note that the rule check still ensures that no unrelated groups are merged.
@@ -209,18 +215,18 @@ then merges groups with matching values. Note that the rule check still ensures 
 This means, say you have a group with 4 FFs
 
 $$
-G = {A, B, C, D}
+G = \lbrace A, B, C, D \rbrace
 $$
 
 For each FF of each group we'll compute the successor or predecessor, and based on the minimum and maximum we get there, we'll assign a pair (min, max) to the group.
 
 Then we'll do this for all the groups, and merge the groups which have the same pair of (min, max).
 
-#### Group by control signals
+### Group by control signals
 
 This pass is to merge the groups with same clock and control signals.
 
-### Voting mechanics
+## Voting mechanics
 
 Now the thing is, we don't do all 9 of them, we do only a pair. We can pick a pair, and permute them in any order (this makes the total possible options $9 \times 9 = 81$). We'll be doing that for all these 81 possible pairs. So, we'll have 81 possible "final" answers.
 
@@ -238,11 +244,13 @@ There is a small quirk here. If the top `n` votes lie within 10% of the top, the
 For example, say the following groups exist (among a set of only 6 FFs):
 
 $$
-G_{1} = {1, 2, 3, 4} \\
-G_{2} = {1, 2, 3, 4, 5, 6}
+\begin{aligned}
+G_{1} &= \lbrace 1, 2, 3, 4 \rbrace \\\\
+G_{2} &= \lbrace 1, 2, 3, 4, 5, 6 \rbrace
+\end{aligned}
 $$
 
-Let's say that the frequency of $G_{1}$ was 74 and $G_{2}$ was 70. This is within 10% hence these are tied. Now, if we choose $G_{1}$ as the winner we'll have $\{5, 6\}$ as a stranded group. But if we choose $G_{2}$ as the winner, we'll have no stranded flops. Hence, we'll pick $G_{2}$.
+Let's say that the frequency of $G_{1}$ was 74 and $G_{2}$ was 70. This is within 10% hence these are tied. Now, if we choose $G_{1}$ as the winner we'll have $\lbrace 5, 6 \rbrace$ as a stranded group. But if we choose $G_{2}$ as the winner, we'll have no stranded flops. Hence, we'll pick $G_{2}$.
 
 So, we'll pick a winner and commit to it.
 
