@@ -139,6 +139,10 @@
         <lastmod>2026-06-17</lastmod>
     </url>
     <url>
+        <loc>https://purge12.github.io/blog/understanding-dana-for-netlist-re/</loc>
+        <lastmod>2026-08-14</lastmod>
+    </url>
+    <url>
         <loc>https://purge12.github.io/blog/writing-stm32-firmware/</loc>
         <lastmod>2026-06-21</lastmod>
     </url>
@@ -257,6 +261,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/categories/rant/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/categories/rev/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/scraping/</loc>
