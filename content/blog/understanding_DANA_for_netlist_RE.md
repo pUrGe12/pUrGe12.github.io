@@ -79,16 +79,16 @@ Let's start with the **forward stage assignment**. This follows a very simple ru
 Let's write out the successors for each FF (ignoring primary input and outputs)
 
 $$
-\text{succ}(A) = \{D, F\}
-\text{succ}(B) = \{D, E\}
-\text{succ}(C) = \{D, E\}
-\text{succ}(D) = \{F, G\}
+\text{succ}(A) = {D, F} \\
+\text{succ}(B) = {D, E} \\ 
+\text{succ}(C) = {D, E} \\
+\text{succ}(D) = {F, G}
 $$
 
 According to the rule, we will have to take a union of all the successor sets to get the set of all successors that belong in a single stage. That is,
 
 $$
-\text{succ}(A) \cup \text{succ}(B) \cup \text{succ}(C) \cup \text{succ}(D) = \{D, F, G, E\}
+\text{succ}(A) \cup \text{succ}(B) \cup \text{succ}(C) \cup \text{succ}(D) = {D, F, G, E}
 $$
 
 Thus the groups `D`, `F`, `G` and `E` must be of the same color according to the forward pass. So, we have this:
@@ -106,16 +106,16 @@ We'll also do a backward stage assignment on the same initial diagram as mention
 Let's write out the predecessors for each FF (ignoring primary input and outputs)
 
 $$
-\text{pred}(D) = \{A, B, C\}
-\text{pred}(E) = \{B, C\}
-\text{pred}(F) = \{A, D\}
-\text{pred}(G) = \{D\}
+\text{pred}(D) = {A, B, C} \\
+\text{pred}(E) = {B, C} \\
+\text{pred}(F) = {A, D} \\
+\text{pred}(G) = {D}
 $$
 
 According to the rule, we will have to take a union of all the predecessor sets to get the set of all predecessors that belong in a single stage. That is,
 
 $$
-\text{pred}(D) \cup \text{pred}(E) \cup \text{pred}(F) \cup \text{pred}(G) = \{A, B, C, D\}
+\text{pred}(D) \cup \text{pred}(E) \cup \text{pred}(F) \cup \text{pred}(G) = {A, B, C, D}
 $$
 
 Thus the groups `A`, `B`, `C` and `D` must be of the same color according to the backward pass. So, we have this:
@@ -147,20 +147,20 @@ The same rule applies to the backward stage 2 as well. In this case, `A`, `B` an
 Now let's first look at the groups that we already have:
 
 $$
-\text{forward} = \{A\}; \{B\}; \{C\}; \{D, E\}; \{F, G\}
-\text{backward} = \{A, B, C\}; \{D\}; \{E\}; \{F\}; \{G\}
+\text{forward} = {A}; {B}; {C}; {D, E}; {F, G} \\
+\text{backward} = {A, B, C}; {D}; {E}; {F}; {G}
 $$
 
 The rule for merging the two stages together is:
 
 > Delete any stage that is a subset of another
 
-In this case, stages $\{A\}$, $\{B\}$ and $\{C\}$ will be removed because they are subsets of $\{A, B, C\}$, similarly $\{D\}$ and $\{E\}$ will be removed as they are a subset of $\{D, E\}$, and $\{F\}$ and $\{G\}$ will be removed as they are a subset of $\{F, G\}$. 
+In this case, stages ${A}$, ${B}$ and ${C}$ will be removed because they are subsets of ${A, B, C}$, similarly ${D}$ and ${E}$ will be removed as they are a subset of ${D, E}$, and ${F}$ and ${G}$ will be removed as they are a subset of ${F, G}$. 
 
 Now the final stages will look like:
 
 $$
-\text{final_stage} = \{A, B, C\}; \{D, E\}; \{F, G\}
+\text{final\_stage} = {A, B, C}; {D, E}; {F, G}
 $$
 
 {{ figure(src="assets/FF_diagram_final.png", alt="Flip-flop diagram for DANA after pre-processing", caption="FF diagram after pre-processing") }}
@@ -209,7 +209,7 @@ then merges groups with matching values. Note that the rule check still ensures 
 This means, say you have a group with 4 FFs
 
 $$
-G = \{A, B, C, D\}
+G = {A, B, C, D}
 $$
 
 For each FF of each group we'll compute the successor or predecessor, and based on the minimum and maximum we get there, we'll assign a pair (min, max) to the group.
@@ -238,8 +238,8 @@ There is a small quirk here. If the top `n` votes lie within 10% of the top, the
 For example, say the following groups exist (among a set of only 6 FFs):
 
 $$
-G_{1} = \{1, 2, 3, 4\}
-G_{2} = \{1, 2, 3, 4, 5, 6\}
+G_{1} = {1, 2, 3, 4} \\
+G_{2} = {1, 2, 3, 4, 5, 6}
 $$
 
 Let's say that the frequency of $G_{1}$ was 74 and $G_{2}$ was 70. This is within 10% hence these are tied. Now, if we choose $G_{1}$ as the winner we'll have $\{5, 6\}$ as a stranded group. But if we choose $G_{2}$ as the winner, we'll have no stranded flops. Hence, we'll pick $G_{2}$.
