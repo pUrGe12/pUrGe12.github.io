@@ -5,10 +5,15 @@ template = 'home.html'
 lang = 'en'
 +++
 
-Hello, I am Achintya, I am student of engineering though I have a lot of other interests (like any other engineer). Its the calculus and the numbers which bring out the true artists in people like us :). This is my blog post, I write some stuff here, usually tech blogs, sometimes life blogs. So this is a running ledger of what I am currently doing with my time. 
+Hi there! This is Achintya. You are reading through my website. Some of my personal favourites which I would love for anyone to go through are:
 
-Have fun :).
+1. [OCaml tagged integers in assembly](https://purge12.github.io/blog/tagged-integer-mult/)
+2. [The False - card variant for Liar's Dice](https://purge12.github.io/blog/creating-a-new-game/)
+3. [Square algebra](https://purge12.github.io/blog/confluence/)
+4. [The God of Lust (a poem)](https://purge12.github.io/wisps/the-god-of-lust/)
+
+Have a great day!
 
 ---
 
-Thanks to the [TeaDrinkingProgrammer](https://github.com/TeaDrinkingProgrammer) for creating this theme!
+Thanks to the [TeaDrinkingProgrammer](https://github.com/TeaDrinkingProgrammer) for creating this awesome theme!
