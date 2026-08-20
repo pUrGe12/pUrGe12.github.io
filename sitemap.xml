@@ -7,6 +7,10 @@
         <loc>https://purge12.github.io/blog/</loc>
     </url>
     <url>
+        <loc>https://purge12.github.io/blog/confluence/</loc>
+        <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
         <loc>https://purge12.github.io/blog/creating-a-esp32-wifi-deauther/</loc>
         <lastmod>2025-01-23</lastmod>
     </url>
@@ -189,6 +193,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/categories/ai/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/categories/algebra/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/autobiography/</loc>
