@@ -251,6 +251,60 @@ The mirror tag at the bottom, does **not** latch. It's just directionality, like
 
 <div class="slot">some mirror specific examples</div>
 
+## Pinning with P
+
+We also have a Pin (`P`) which can be used as $(\\,\cdot\\,)_P$. This pins the shape whenever called so all top rows and columns are referenced from the pinned shape.
+
+The rule splits into two halves at this point:
+
+1. Selection (which row, which column) counts only the cells inside P.
+2. Landing (where the unit actually comes to rest) still uses the whole figure.
+
+Pinning is for the reference only. It allows us to specify which figure's row or column are we talking about.
+
+A few more rules:
+
+1. It only changes what the selection is allowed to look at.
+2. Pinning again re-pins to whatever the shape is at that moment. You can pin as many times as you like.
+3. The pin travels with mirrors. Mirror the shape and the pinned cells mirror along with it.
+4. Before any pin, the scope is the whole shape.
+
+yes, scope is a better word for this. It scopes the references to a specific figure.
+
+This shape cannot be built without P:
+
+<div class="polyeq"><span class="poly"><i class="g" style="grid-area:1/3"></i><i class="g" style="grid-area:2/2"></i><i class="g" style="grid-area:2/3"></i><i class="g" style="grid-area:2/4"></i><i class="g" style="grid-area:3/1"></i><i class="g" style="grid-area:3/2"></i><i class="g" style="grid-area:3/3"></i><i class="g" style="grid-area:4/2"></i></span></div>
+
+This staircase pattern has a peculiarity that at some point we'll have to add an element to the middle of the figure, so our topmost and bottommost terminology fails us here.
+
+With P it comes out like this:
+
+$$
+\left(\left(\left(\left(\left(\left(\left(\left(A_C^{(2)}+1_R\right)^M\right)_C+1_R\right)_P+1_C\right)_R+1_R\right)^M\right)^M_C+1_C\right)+1_R\right)^M
+$$
+
+To illustrate that better:
+
+<div class="polyeq"><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:2/1"></i></span><span class="op">→</span><span class="poly"><i style="grid-area:1/1"></i><i class="new" style="grid-area:1/2"></i><i style="grid-area:2/1"></i></span><span class="op">→</span><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:2/1"></i><i style="grid-area:2/2"></i></span><span class="op">→</span><span class="poly"><i style="grid-area:1/1"></i><i class="new" style="grid-area:1/2"></i><i style="grid-area:2/1"></i><i style="grid-area:2/2"></i></span><span class="op">→</span><span class="poly"><i class="r" style="grid-area:1/1"></i><i class="r" style="grid-area:1/2"></i><i class="r" style="grid-area:2/1"></i><i class="r" style="grid-area:2/2"></i></span><span class="op">→</span><span class="poly"><i class="new" style="grid-area:1/2"></i><i class="r" style="grid-area:2/1"></i><i class="r" style="grid-area:2/2"></i><i class="r" style="grid-area:3/1"></i><i class="r" style="grid-area:3/2"></i></span></div> <div class="polyeq"><span class="poly"><i style="grid-area:1/2"></i><i class="r" style="grid-area:2/1"></i><i class="r" style="grid-area:2/2"></i><i class="new" style="grid-area:2/3"></i><i class="r" style="grid-area:3/1"></i><i class="r" style="grid-area:3/2"></i></span><span class="op">→</span><span class="poly"><i class="r" style="grid-area:1/1"></i><i class="r" style="grid-area:1/2"></i><i class="r" style="grid-area:2/1"></i><i class="r" style="grid-area:2/2"></i><i style="grid-area:2/3"></i><i style="grid-area:3/2"></i></span><span class="op">→</span><span class="poly"><i class="r" style="grid-area:1/2"></i><i class="r" style="grid-area:1/3"></i><i style="grid-area:2/1"></i><i class="r" style="grid-area:2/2"></i><i class="r" style="grid-area:2/3"></i><i style="grid-area:3/2"></i></span><span class="op">→</span><span class="poly"><i class="new" style="grid-area:1/3"></i><i class="r" style="grid-area:2/2"></i><i class="r" style="grid-area:2/3"></i><i style="grid-area:3/1"></i><i class="r" style="grid-area:3/2"></i><i class="r" style="grid-area:3/3"></i><i style="grid-area:4/2"></i></span><span class="op">→</span><span class="poly"><i style="grid-area:1/3"></i><i class="r" style="grid-area:2/2"></i><i class="r" style="grid-area:2/3"></i><i class="new" style="grid-area:2/4"></i><i style="grid-area:3/1"></i><i class="r" style="grid-area:3/2"></i><i class="r" style="grid-area:3/3"></i><i style="grid-area:4/2"></i></span></div>
+
+Explanation:
+
+1. Start from $A_C^{(2)}$.
+2. Add a row block. It goes to the topmost row.
+3. Mirror top-to-bottom.
+4. $()_C$ selects the largest column, the left one with 2 blocks. Latch is now $C$.
+5. Add a row block. That completes the red square.
+6. $()_P$ pins the square.
+7. Add a column block. The latch type is still $C$ and the selection has fallen back to default, so it goes to the rightmost column.
+8. $()_R$ now selects the largest row **among the pinned cells only**. Both pinned rows hold 2, so the tie goes topmost. Note that the block from step 7 doesn't contribute a row at all, because it isn't pinned. Then add a row block.
+9. Mirror top-to-bottom.
+10. Mirror left-to-right.
+11. Latch is $R$, so we're on the topmost pinned row. Add a column block.
+12. Same row, add a row block.
+
+A final $(\\,\cdot\\,)^{M}$ picks which of the two enantiomers we'll end up with.
+
+
 ## Worked examples
 
 <div class="slot">maybe I can add a few here</div>
@@ -278,6 +332,8 @@ $$
 $$
 
 I deliberately made this to use the dynamics of the push button. The first latch is on $R$, then we explicitly latch on $C$. This latch selects the most populous column and we add $1_R$ to it. Then the latch type is still $C$ but we move selection to default which is rightmost row. And we add $1_C$ to that to finish the inverted staircase. Then its a mirror image.
+
+<div class="polyeq"><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:1/2"></i></span><span class="op">→</span><span class="poly"><i class="new" style="grid-area:1/2"></i><i style="grid-area:2/1"></i><i style="grid-area:2/2"></i></span><span class="op">→</span><span class="poly"><i class="new" style="grid-area:1/2"></i><i class="r" style="grid-area:1/3"></i><i style="grid-area:2/1"></i><i style="grid-area:2/2"></i></span><span class="op">→</span><span class="poly"><i class="gr" style="grid-area:1/3"></i><i class="new" style="grid-area:2/2"></i><i class="r" style="grid-area:2/3"></i><i style="grid-area:3/1"></i><i style="grid-area:3/2"></i></span><span class="op">→</span><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:1/2"></i><i class="new" style="grid-area:2/2"></i><i class="r" style="grid-area:2/3"></i><i class="gr" style="grid-area:3/3"></i></span></div>
 
 ### The $3\times3$ ring
 
