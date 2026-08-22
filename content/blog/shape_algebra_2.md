@@ -114,17 +114,56 @@ In this blog, I'll explore a way of solving this first, then I'll write some gen
 
 The rules are the exact same as adding a block, except that when we write $-1_C$ we'll be removing the first block it hits. All other rules stay the same. With this in place, I had to use all the existing rules to carve out the shape above, and here's how it looks like:
 
+# WRITE THIS IN OLD FORM
+
 $$
-A_R^3(1_C)C(1_C)M_C1_CCP1_CC1_C(1_C\cdot3)M_C(-1_R)P(-1_R)C(1_R\cdot2)
+A_R^3(1_C)C(1_C)M_C1_CCP1_CC1_C(1_C\cdot3)M_C(-1_R)P(-1_R)C(1_R)C(1_R)
 $$
 
 <div class="polyeq"><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:1/2"></i><i style="grid-area:1/3"></i></span><span class="op">$\xrightarrow{1_C\cdot2}$</span><span class="poly"><i style="grid-area:3/1"></i><i style="grid-area:3/2"></i><i style="grid-area:3/3"></i><i class="new" style="grid-area:1/3"></i><i class="new" style="grid-area:2/3"></i></span><span class="op">$\xrightarrow{M_C}$</span><span class="poly"><i class="new" style="grid-area:1/1"></i><i class="new" style="grid-area:2/1"></i><i style="grid-area:3/1"></i><i style="grid-area:3/2"></i><i style="grid-area:3/3"></i></span><span class="op">$\xrightarrow{1_C}$</span><span class="poly"><i class="new" style="grid-area:1/1"></i><i class="new" style="grid-area:2/1"></i><i style="grid-area:3/1"></i><i style="grid-area:3/2"></i><i style="grid-area:3/3"></i><i class="new" style="grid-area:2/3"></i></span><span class="op">$\xrightarrow{P}$</span><span class="poly"><i class="r" style="grid-area:1/1"></i><i class="r" style="grid-area:2/1"></i><i class="r" style="grid-area:3/1"></i><i class="r" style="grid-area:3/2"></i><i class="r" style="grid-area:3/3"></i><i class="r" style="grid-area:2/3"></i></span><span class="op">$\xrightarrow{1_C}$</span><span class="poly"><i class="new" style="grid-area:1/1"></i><i class="r" style="grid-area:2/1"></i><i class="r" style="grid-area:3/1"></i><i class="r" style="grid-area:4/1"></i><i class="r" style="grid-area:4/2"></i><i class="r" style="grid-area:4/3"></i><i class="r" style="grid-area:3/3"></i></span><span class="op">$\xrightarrow{1_C}$</span><span class="poly"><i class="new" style="grid-area:1/1"></i><i class="new" style="grid-area:2/1"></i><i class="r" style="grid-area:3/1"></i><i class="r" style="grid-area:4/1"></i><i class="r" style="grid-area:5/1"></i><i class="r" style="grid-area:5/2"></i><i class="r" style="grid-area:5/3"></i><i class="r" style="grid-area:4/3"></i></span><span class="op">$\xrightarrow{1_C\cdot3}$</span><span class="poly"><i class="new" style="grid-area:1/1"></i><i class="new" style="grid-area:2/1"></i><i class="r" style="grid-area:3/1"></i><i class="r" style="grid-area:4/1"></i><i class="r" style="grid-area:5/1"></i><i class="r" style="grid-area:5/2"></i><i class="r" style="grid-area:5/3"></i><i class="r" style="grid-area:4/3"></i><i class="new" style="grid-area:3/3"></i><i class="new" style="grid-area:2/3"></i><i class="new" style="grid-area:1/3"></i></span><span class="op">$\xrightarrow{M_C}$</span><span class="poly"><i class="new" style="grid-area:1/3"></i><i class="new" style="grid-area:2/3"></i><i class="r" style="grid-area:3/3"></i><i class="r" style="grid-area:4/3"></i><i class="r" style="grid-area:5/3"></i><i class="r" style="grid-area:5/2"></i><i class="r" style="grid-area:5/1"></i><i class="r" style="grid-area:4/1"></i><i class="new" style="grid-area:3/1"></i><i class="new" style="grid-area:2/1"></i><i class="new" style="grid-area:1/1"></i></span><span class="op">$\xrightarrow{-1_R}$</span><span class="poly"><i class="new" style="grid-area:1/3"></i><i class="new" style="grid-area:2/3"></i><i class="r" style="grid-area:4/3"></i><i class="r" style="grid-area:5/3"></i><i class="r" style="grid-area:5/2"></i><i class="r" style="grid-area:5/1"></i><i class="r" style="grid-area:4/1"></i><i class="new" style="grid-area:3/1"></i><i class="new" style="grid-area:2/1"></i><i class="new" style="grid-area:1/1"></i></span><span class="op">$\xrightarrow{P}$</span><span class="poly"><i class="cy" style="grid-area:1/3"></i><i class="cy" style="grid-area:2/3"></i><i class="cy" style="grid-area:4/3"></i><i class="cy" style="grid-area:5/3"></i><i class="cy" style="grid-area:5/2"></i><i class="cy" style="grid-area:5/1"></i><i class="cy" style="grid-area:4/1"></i><i class="cy" style="grid-area:3/1"></i><i class="cy" style="grid-area:2/1"></i><i class="cy" style="grid-area:1/1"></i></span><span class="op">$\xrightarrow{-1_R}$</span><span class="poly"><i class="cy" style="grid-area:2/3"></i><i class="cy" style="grid-area:4/3"></i><i class="cy" style="grid-area:5/3"></i><i class="cy" style="grid-area:5/2"></i><i class="cy" style="grid-area:5/1"></i><i class="cy" style="grid-area:4/1"></i><i class="cy" style="grid-area:3/1"></i><i class="cy" style="grid-area:2/1"></i><i class="cy" style="grid-area:1/1"></i></span><span class="op">$\xrightarrow{1_R}$</span><span class="poly"><i style="grid-area:1/2"></i><i class="cy" style="grid-area:2/3"></i><i class="cy" style="grid-area:4/3"></i><i class="cy" style="grid-area:5/3"></i><i class="cy" style="grid-area:5/2"></i><i class="cy" style="grid-area:5/1"></i><i class="cy" style="grid-area:4/1"></i><i class="cy" style="grid-area:3/1"></i><i class="cy" style="grid-area:2/1"></i><i class="cy" style="grid-area:1/1"></i></span><span class="op">$\xrightarrow{1_R}$</span><span class="poly"><i style="grid-area:1/3"></i><i style="grid-area:1/2"></i><i class="cy" style="grid-area:2/3"></i><i class="cy" style="grid-area:4/3"></i><i class="cy" style="grid-area:5/3"></i><i class="cy" style="grid-area:5/2"></i><i class="cy" style="grid-area:5/1"></i><i class="cy" style="grid-area:4/1"></i><i class="cy" style="grid-area:3/1"></i><i class="cy" style="grid-area:2/1"></i><i class="cy" style="grid-area:1/1"></i></span></div>
 
+Explanation:
 
 
-## Notation
+
+## Notation and reduction
 
 You would have realized that there are a lot of unncessary brackets and plus signs. I mean addition is understood, so we can get rid of those and assume addition by default. We can also get rid of the brackets because its one block at a time always going to the right.
 
 So, a formula can be written in a simplified manner:
 
+$$
+OLD FORM \implies A_R^3(1_C)C(1_C)M_C1_CCP1_CC1_C(1_C\cdot3)M_C(-1_R)P(-1_R)C1_RC1_R
+$$
+
+This is a great relief tbh. Now let's talk about some reduction formulas:
+
+$$
+M_{X}M_{X} = \text{empty}
+$$
+
+$$
+A_X^{j+k} = A_X^j(1_X \cdot k) \forall j,k \in N
+$$
+
+$$
+M_{X}M_{Y} = M_{Y}M_{X} \forall X \neq Y
+$$
+
+So with these, we can reduce an obviously wrong formula into the simplest form:
+
+$$
+A_C^{2}1_C1_{R}M_{R}M_{C}M_{C}M_{R} \to A_C^{3}1_R
+$$
+
+There are a few more:
+
+$$
+A_X^{j}(1_Y \cdot (j-1))M_Y = A_Y^{j}(1_X \cdot (j-1))M_X
+$$
+
+In fact it is this obeservation that led me to adding subtraction in the rules and discovering the new formula for the unspeakable shape.
+
+## Coverage
+
+I ran some scripts.
