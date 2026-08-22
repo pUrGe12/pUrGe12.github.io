@@ -275,7 +275,7 @@ This shape cannot be built without P:
 
 <div class="polyeq"><span class="poly"><i class="g" style="grid-area:1/3"></i><i class="g" style="grid-area:2/2"></i><i class="g" style="grid-area:2/3"></i><i class="g" style="grid-area:2/4"></i><i class="g" style="grid-area:3/1"></i><i class="g" style="grid-area:3/2"></i><i class="g" style="grid-area:3/3"></i><i class="g" style="grid-area:4/2"></i></span></div>
 
-This staircase pattern has a peculiarity that at some point we'll have to add an element to the middle of the figure, so our topmost and bottommost terminology fails us here.
+This pattern has a peculiarity that at some point we'll have to add an element to the middle of the figure, so our topmost and bottommost terminology fails us here.
 
 With P it comes out like this:
 
@@ -359,6 +359,12 @@ Every shape of four cells, counted with all orientations distinct. A formula for
 
 ## Conclusion
 
-I have some plans on doing proofs for associativity and commutivity. I also want to write some automated scripts to see how far these set of rules to take me for different N values (number of squares).
+I'll settle some more questions and new ideas in the next post as this is already getting too long. Do note that so far, with the rules we have, we can make all shapes upto N=10. The only problem with higher shapes (N=11 gives 4 shapes which we cannot make) is interior reachability.
 
-Also since my system has potential for many-to-one formula assignment, maybe we can reconsile the differences? I'll work on that later.
+For example, this the shape we just cannot reach for N=11 (this and its mirror pair and 90 degree rotated versions).
+
+<div class="polyeq"><span class="poly"><i class="g" style="grid-area:1/1"></i><i class="g" style="grid-area:2/1"></i><i class="g" style="grid-area:3/1"></i><i class="g" style="grid-area:1/2"></i><i class="g" style="grid-area:3/2"></i><i class="g" style="grid-area:1/3"></i><i class="g" style="grid-area:1/4"></i><i class="g" style="grid-area:3/4"></i><i class="g" style="grid-area:1/5"></i><i class="g" style="grid-area:2/5"></i><i class="g" style="grid-area:3/5"></i></span></div>
+
+I will address this in the next blog and will solve it. I'll also talk about formula sizes and define some basic rules for reduction and maybe think about counting.
+
+Link: 
