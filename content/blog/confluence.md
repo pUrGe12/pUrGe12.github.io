@@ -375,4 +375,4 @@ For example, this the shape we just cannot reach for N=11 (this and its mirror p
 
 I will address this in the next blog and will solve it. I'll also talk about formula sizes and define some basic rules for reduction and maybe think about counting.
 
-Link: https://purge12.github.io/blog/shape_algebra_2/
+Link: (part 2)[https://purge12.github.io/blog/shape-algebra-2/]
