@@ -1,5 +1,5 @@
 +++
-title = "Algebra over groups of squares?"
+title = "Algebra for Polyominoes"
 date = 2026-08-20
 draft = false
 
@@ -249,7 +249,15 @@ The mirror tag at the bottom, does **not** latch. It's just directionality, like
 - $(\\,\cdot\\,)^{M}_R \implies$ mirror laid horizontally against the **bottommost row**. The shape flips top-to-bottom.
 - $(\\,\cdot\\,)^{M}_C \implies$ mirror laid vertically against the **rightmost column**. The shape flips left-to-right.
 
-<div class="slot">some mirror specific examples</div>
+Take an L, three cells down a column and three across the bottom row:
+
+<div class="polyeq"><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:2/1"></i><i style="grid-area:3/1"></i><i style="grid-area:3/2"></i><i style="grid-area:3/3"></i></span></div>
+
+A column mirror stands the mirror on the right of the shape, so column 1 swaps with column 3 and the stem moves to the other side:
+
+<div class="polyeq"><span class="latch"><span class="pr">(</span><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:2/1"></i><i style="grid-area:3/1"></i><i style="grid-area:3/2"></i><i style="grid-area:3/3"></i></span><span class="pr">)</span><sup class="lt" style="align-self:flex-start;margin:0.3em 0 0">M</sup><sub class="lt">C</sub></span><span class="op">=</span><span class="poly"><i class="new" style="grid-area:1/3"></i><i class="new" style="grid-area:2/3"></i><i class="new" style="grid-area:3/1"></i><i class="new" style="grid-area:3/2"></i><i class="new" style="grid-area:3/3"></i></span></div>
+
+Rows are untouched, the bottom row stays where it is, and the shape now points right.
 
 ## Pinning with P
 
@@ -367,4 +375,4 @@ For example, this the shape we just cannot reach for N=11 (this and its mirror p
 
 I will address this in the next blog and will solve it. I'll also talk about formula sizes and define some basic rules for reduction and maybe think about counting.
 
-Link: 
+Link: https://purge12.github.io/blog/shape_algebra_2/
