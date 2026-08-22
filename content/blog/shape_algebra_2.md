@@ -112,4 +112,13 @@ In this blog, I'll explore a way of solving this first, then I'll write some gen
 
 ## Introducing Subtraction
 
-That's exactly 
+The rules are the exact same as adding a block, except that when we write $-1_C$ we'll be removing the first block it hits. All other rules stay the same. With this in place, I had to use all the existing rules to carve out the shape above, and here's how it looks like:
+
+
+
+## Notation
+
+You would have realized that there are a lot of unncessary brackets and plus signs. I mean addition is understood, so we can get rid of those and assume addition by default. We can also get rid of the brackets because its one block at a time always going to the right.
+
+So, a formula can be written in a simplified manner:
+
