@@ -36,3 +36,111 @@
   border-radius: 0.5rem;
   margin-top: 1.75rem;
 }
+
+/* ---- Featured post cards on the home page ------------------------------- */
+
+/* Three to a row, and grid-auto-rows keeps every card the same size no matter
+   how long its title or blurb runs. */
+.tl-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 1.25rem;
+  margin: 1.5rem 0 3rem;
+}
+
+@media (max-width: 1024px) {
+  .tl-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .tl-cards { grid-template-columns: minmax(0, 1fr); }
+}
+
+.tl-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid #e7e5e4;
+  background-color: #fafaf9;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dark .tl-card {
+  border-color: #44403c;
+  background-color: #292524;
+}
+
+.tl-card:hover {
+  transform: translateY(-2px);
+  border-color: #0ea5e9;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.08);
+}
+
+.dark .tl-card:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.35);
+}
+
+/* Fixed strip so a card with a banner and a card without are the same height. */
+.tl-card-banner {
+  display: block;
+  flex: none;
+  width: 100%;
+  height: 8.5rem;
+  object-fit: cover;
+  object-position: top;
+  background-color: #eeecea;
+}
+
+.dark .tl-card-banner {
+  background-color: #221f1d;
+}
+
+.tl-card-body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.tl-card-title {
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: #0ea5e9;
+}
+
+.dark .tl-card-title {
+  color: #fff;
+  text-decoration-color: #38bdf8;
+}
+
+.tl-card:hover .tl-card-title {
+  text-decoration-thickness: 2px;
+}
+
+/* Clamped so a long blurb cannot push one card taller than its neighbours. */
+.tl-card-blurb {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.tl-card-meta {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #a8a29e;
+}
