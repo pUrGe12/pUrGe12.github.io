@@ -22,3 +22,17 @@
     max-width: 100%;
   }
 }
+
+/* Optional per-post banner. Spans the text column exactly (it is a child of
+   the same padded <main> the article sits in) and is fixed to a strip, so a
+   picture that is not already banner-shaped gets cropped from its top edge
+   rather than pushing the title off the screen. */
+.tl-banner {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 1;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 0.5rem;
+  margin-top: 1.75rem;
+}
