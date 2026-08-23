@@ -3,17 +3,34 @@ template = 'home.html'
 
 [extra]
 lang = 'en'
-+++
 
-Hi there! This is Achintya. You are reading through my website. Some of my personal favourites which I would love for anyone to go through are:
-
-1. [OCaml tagged integers in assembly](https://purge12.github.io/blog/tagged-integer-mult/)
-2. [The False - card variant for Liar's Dice](https://purge12.github.io/blog/creating-a-new-game/)
-3. [Square algebra](https://purge12.github.io/blog/confluence/)
-4. [The God of Lust (a poem)](https://purge12.github.io/wisps/the-god-of-lust/)
-
+outro = """
 Have a great day!
 
 ---
 
 Thanks to the [TeaDrinkingProgrammer](https://github.com/TeaDrinkingProgrammer) for creating this awesome theme!
+"""
+
+# Cards shown on the home page, in order. `path` is relative to content/;
+# title, link, date and banner are read off the post itself, so the only thing
+# to write here is the blurb. A post with no banner still gets a full-height
+# card, just with a blank strip on top.
+[[extra.featured]]
+path = "blog/tagged_integer_mult.md"
+blurb = "What the OCaml compiler actually emits when you multiply two integers, read side by side with the equivalent C — tag bits, shifts and all."
+
+[[extra.featured]]
+path = "blog/creating_a_new_game.md"
+blurb = "Davy Jones' dice game rebuilt for a single deck of cards: the rules, and the betting maths that shifts once your draws stop being independent."
+
+[[extra.featured]]
+path = "blog/confluence.md"
+blurb = "An algebra for growing polyominoes — latches, mirrors and pinning — worked all the way through to the nineteen tetrominoes at N=4."
+
+[[extra.featured]]
+path = "wisps/the_god_of_lust.md"
+blurb = "A poem about meeting the god of lust, the pact that follows, and everything the bargain fails to buy."
++++
+
+Hi there! This is Achintya. You are reading through my website. Some of my personal favourites which I would love for anyone to go through are:

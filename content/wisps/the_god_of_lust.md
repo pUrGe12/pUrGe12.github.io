@@ -9,6 +9,7 @@ tags = ["Life"]
 
 [extra]
 lang = "en"
+banner = "assets/banners/the-god-of-lust.jpg"
 +++
 
 > I met with the god of lust,

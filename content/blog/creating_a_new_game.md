@@ -9,6 +9,7 @@ tags = ["blog"]
 
 [extra]
 lang = "en"
+banner = "assets/banners/creating-a-new-game.jpg"
 +++
 
 # Introduction

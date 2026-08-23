@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class="flex items-center justify-center">
-  <main class="py-24 p-6 max-w-prose">
+  <main class="tl-wide w-full px-4 py-24">
     <section class="row gap-3">
       {% if config.extra.avatar %}
         <img class="h-24" src="{{ config.base_url }}/{{ config.extra.avatar }}" alt="avatar">
@@ -63,9 +63,39 @@
         </button>
       </div>
     </section>
-    <section class="mb-16 tl-prose">
+    <section class="tl-prose">
       {{ section.content | trim | safe }}
     </section>
+
+    {% if section.extra.featured %}
+    <section aria-label="Featured posts" class="tl-cards">
+      {% for item in section.extra.featured %}
+      {% set post = get_page(path=item.path) %}
+      <a class="tl-card" href="{{ post.permalink }}">
+        {% if post.extra.banner %}
+        <img class="tl-card-banner" src="{{ get_url(path=post.extra.banner) }}" alt="">
+        {% else %}
+        <div class="tl-card-banner" aria-hidden="true"></div>
+        {% endif %}
+        <div class="tl-card-body">
+          <span class="tl-card-title">{{ post.title }}</span>
+          {% if item.blurb %}
+          <p class="tl-card-blurb">{{ item.blurb }}</p>
+          {% elif post.description %}
+          <p class="tl-card-blurb">{{ post.description }}</p>
+          {% endif %}
+          <span class="tl-card-meta">{{ post.date | date }}</span>
+        </div>
+      </a>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if section.extra.outro %}
+    <section class="mb-16 tl-prose">
+      {{ section.extra.outro | markdown | safe }}
+    </section>
+    {% endif %}
     {% include "_footer.html" %}
   </main>
 </div>

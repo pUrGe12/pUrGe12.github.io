@@ -9,6 +9,7 @@ tags = ["functional-programming", "blog", "assembly"]
 
 [extra]
 lang = "en"
+banner = "assets/banners/tagged-integer-mult.jpg"
 +++
 
 We're going to compare `OCaml` with `C` as we do. Both are trying to multiple two integers `a` and `b` and return the value. All of this is AT&T syntax and I hate it (because I like intel's) and it feels reversed to me (**it is**).
