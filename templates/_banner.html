@@ -1,0 +1,15 @@
+{#- Optional banner strip across the top of a long-form page.
+
+    Opt in per post from the front matter:
+
+      [extra]
+      banner = "assets/banners/confluence.jpg"
+      banner_alt = "misty forest canopy"   # optional; omit for a decorative image
+
+    With no `banner` set this renders nothing, so posts without one are unchanged.
+    Sits outside <article> on purpose: post.js hands every `article img` to
+    Lightense, and the banner should not be click-to-zoom. -#}
+{% if page.extra.banner %}
+<img class="tl-banner" src="{{ get_url(path=page.extra.banner) }}"
+  alt="{% if page.extra.banner_alt %}{{ page.extra.banner_alt }}{% endif %}">
+{% endif %}

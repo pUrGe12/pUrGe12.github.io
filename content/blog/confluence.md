@@ -10,6 +10,7 @@ tags = ["blog"]
 [extra]
 lang = "en"
 math = true
+banner = "assets/banners/confluence.jpg"
 +++
 
 <style>

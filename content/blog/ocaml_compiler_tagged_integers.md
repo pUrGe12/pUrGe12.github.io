@@ -9,6 +9,7 @@ tags = ["functional-programming", "blog", "assembly"]
 
 [extra]
 lang = "en"
+banner = "assets/banners/ocaml-tagged-integers.jpg"
 +++
 
 Let's first understand how ocaml (and other ML-based languages) store data in memory.
