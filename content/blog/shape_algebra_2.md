@@ -112,7 +112,17 @@ In this blog, I'll explore a way of solving this first, then I'll write some gen
 
 ## Introducing Subtraction
 
-The rules are the exact same as adding a block, except that when we write $-1_C$ we'll be removing the first block it hits. All other rules stay the same. With this in place, I had to use all the existing rules to carve out the shape above, and here's how it looks like:
+The rules are the exact same as adding a block, except that when we write $-1_C$ we'll be removing the first block it hits. So, to give you a few examples:
+
+<div class="polyeq"><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:1/2"></i><i style="grid-area:1/3"></i><i style="grid-area:1/4"></i></span><span class="op">&minus;</span><span class="latch"><span class="pr">(</span><span class="poly"><i class="new" style="grid-area:1/1"></i></span><span class="pr">)</span><sub class="lt">C</sub></span><span class="op">=</span><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:1/2"></i><i style="grid-area:1/3"></i></span></div>
+
+<div class="polyeq"><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:2/1"></i><i style="grid-area:3/1"></i><i style="grid-area:4/1"></i><i style="grid-area:4/2"></i><i style="grid-area:4/3"></i></span><span class="op">&minus;</span><span class="latch"><span class="pr">(</span><span class="poly"><i class="new" style="grid-area:1/1"></i></span><span class="pr">)</span><sub class="lt">C</sub></span><span class="op">=</span><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:2/1"></i><i style="grid-area:3/1"></i><i style="grid-area:4/1"></i><i style="grid-area:4/2"></i></span></div>
+
+<div class="polyeq"><span class="latch"><span class="pr">(</span><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:2/1"></i><i style="grid-area:3/1"></i><i style="grid-area:4/1"></i><i style="grid-area:4/2"></i><i style="grid-area:4/3"></i></span><span class="pr">)</span><sub class="lt">C</sub></span><span class="op">&minus;</span><span class="latch"><span class="pr">(</span><span class="poly"><i class="new" style="grid-area:1/1"></i></span><span class="pr">)</span><sub class="lt">C</sub></span><span class="op">=</span><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:2/1"></i><i style="grid-area:3/1"></i><i style="grid-area:4/2"></i><i style="grid-area:4/3"></i></span></div>
+
+Hopefully these examples make it clear.
+
+All other rules stay the same. With this in place, I had to use all the existing rules to carve out the shape above, and here's how it looks like:
 
 # WRITE THIS IN OLD FORM
 
