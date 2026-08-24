@@ -124,17 +124,15 @@ Hopefully these examples make it clear.
 
 All other rules stay the same. With this in place, I had to use all the existing rules to carve out the shape above, and here's how it looks like:
 
-# WRITE THIS IN OLD FORM
+$$
+\left(\left(\left(\left(\left(\left(\left(\left(\left(\left(\left(\left(A_R^3+1_C\right)_C+1_C\right)^M_C+1_C\right)_C\right)_P+1_C\right)_C+1_C\right)+1_C\right)+1_C\right)+1_C\right)^M_C-1_R\right)_P-1_R\right)_C+1_R\right)_C+1_R
+$$
 
-$$
-A_R^3(1_C)C(1_C)M_C1_CCP1_CC1_C(1_C\cdot3)M_C(-1_R)P(-1_R)C(1_R)C(1_R)
-$$
+To make that clearer:
 
 <div class="polyeq"><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:1/2"></i><i style="grid-area:1/3"></i></span><span class="op">$\xrightarrow{1_C\cdot2}$</span><span class="poly"><i style="grid-area:3/1"></i><i style="grid-area:3/2"></i><i style="grid-area:3/3"></i><i class="new" style="grid-area:1/3"></i><i class="new" style="grid-area:2/3"></i></span><span class="op">$\xrightarrow{M_C}$</span><span class="poly"><i class="new" style="grid-area:1/1"></i><i class="new" style="grid-area:2/1"></i><i style="grid-area:3/1"></i><i style="grid-area:3/2"></i><i style="grid-area:3/3"></i></span><span class="op">$\xrightarrow{1_C}$</span><span class="poly"><i class="new" style="grid-area:1/1"></i><i class="new" style="grid-area:2/1"></i><i style="grid-area:3/1"></i><i style="grid-area:3/2"></i><i style="grid-area:3/3"></i><i class="new" style="grid-area:2/3"></i></span><span class="op">$\xrightarrow{P}$</span><span class="poly"><i class="r" style="grid-area:1/1"></i><i class="r" style="grid-area:2/1"></i><i class="r" style="grid-area:3/1"></i><i class="r" style="grid-area:3/2"></i><i class="r" style="grid-area:3/3"></i><i class="r" style="grid-area:2/3"></i></span><span class="op">$\xrightarrow{1_C}$</span><span class="poly"><i class="new" style="grid-area:1/1"></i><i class="r" style="grid-area:2/1"></i><i class="r" style="grid-area:3/1"></i><i class="r" style="grid-area:4/1"></i><i class="r" style="grid-area:4/2"></i><i class="r" style="grid-area:4/3"></i><i class="r" style="grid-area:3/3"></i></span><span class="op">$\xrightarrow{1_C}$</span><span class="poly"><i class="new" style="grid-area:1/1"></i><i class="new" style="grid-area:2/1"></i><i class="r" style="grid-area:3/1"></i><i class="r" style="grid-area:4/1"></i><i class="r" style="grid-area:5/1"></i><i class="r" style="grid-area:5/2"></i><i class="r" style="grid-area:5/3"></i><i class="r" style="grid-area:4/3"></i></span><span class="op">$\xrightarrow{1_C\cdot3}$</span><span class="poly"><i class="new" style="grid-area:1/1"></i><i class="new" style="grid-area:2/1"></i><i class="r" style="grid-area:3/1"></i><i class="r" style="grid-area:4/1"></i><i class="r" style="grid-area:5/1"></i><i class="r" style="grid-area:5/2"></i><i class="r" style="grid-area:5/3"></i><i class="r" style="grid-area:4/3"></i><i class="new" style="grid-area:3/3"></i><i class="new" style="grid-area:2/3"></i><i class="new" style="grid-area:1/3"></i></span><span class="op">$\xrightarrow{M_C}$</span><span class="poly"><i class="new" style="grid-area:1/3"></i><i class="new" style="grid-area:2/3"></i><i class="r" style="grid-area:3/3"></i><i class="r" style="grid-area:4/3"></i><i class="r" style="grid-area:5/3"></i><i class="r" style="grid-area:5/2"></i><i class="r" style="grid-area:5/1"></i><i class="r" style="grid-area:4/1"></i><i class="new" style="grid-area:3/1"></i><i class="new" style="grid-area:2/1"></i><i class="new" style="grid-area:1/1"></i></span><span class="op">$\xrightarrow{-1_R}$</span><span class="poly"><i class="new" style="grid-area:1/3"></i><i class="new" style="grid-area:2/3"></i><i class="r" style="grid-area:4/3"></i><i class="r" style="grid-area:5/3"></i><i class="r" style="grid-area:5/2"></i><i class="r" style="grid-area:5/1"></i><i class="r" style="grid-area:4/1"></i><i class="new" style="grid-area:3/1"></i><i class="new" style="grid-area:2/1"></i><i class="new" style="grid-area:1/1"></i></span><span class="op">$\xrightarrow{P}$</span><span class="poly"><i class="cy" style="grid-area:1/3"></i><i class="cy" style="grid-area:2/3"></i><i class="cy" style="grid-area:4/3"></i><i class="cy" style="grid-area:5/3"></i><i class="cy" style="grid-area:5/2"></i><i class="cy" style="grid-area:5/1"></i><i class="cy" style="grid-area:4/1"></i><i class="cy" style="grid-area:3/1"></i><i class="cy" style="grid-area:2/1"></i><i class="cy" style="grid-area:1/1"></i></span><span class="op">$\xrightarrow{-1_R}$</span><span class="poly"><i class="cy" style="grid-area:2/3"></i><i class="cy" style="grid-area:4/3"></i><i class="cy" style="grid-area:5/3"></i><i class="cy" style="grid-area:5/2"></i><i class="cy" style="grid-area:5/1"></i><i class="cy" style="grid-area:4/1"></i><i class="cy" style="grid-area:3/1"></i><i class="cy" style="grid-area:2/1"></i><i class="cy" style="grid-area:1/1"></i></span><span class="op">$\xrightarrow{1_R}$</span><span class="poly"><i style="grid-area:1/2"></i><i class="cy" style="grid-area:2/3"></i><i class="cy" style="grid-area:4/3"></i><i class="cy" style="grid-area:5/3"></i><i class="cy" style="grid-area:5/2"></i><i class="cy" style="grid-area:5/1"></i><i class="cy" style="grid-area:4/1"></i><i class="cy" style="grid-area:3/1"></i><i class="cy" style="grid-area:2/1"></i><i class="cy" style="grid-area:1/1"></i></span><span class="op">$\xrightarrow{1_R}$</span><span class="poly"><i style="grid-area:1/3"></i><i style="grid-area:1/2"></i><i class="cy" style="grid-area:2/3"></i><i class="cy" style="grid-area:4/3"></i><i class="cy" style="grid-area:5/3"></i><i class="cy" style="grid-area:5/2"></i><i class="cy" style="grid-area:5/1"></i><i class="cy" style="grid-area:4/1"></i><i class="cy" style="grid-area:3/1"></i><i class="cy" style="grid-area:2/1"></i><i class="cy" style="grid-area:1/1"></i></span></div>
 
-Explanation:
-
-
+The only trick here was to leverage the pinned image. Because when we subtract, we can then subtract off exactly the middle element, which would be impossible to do so without a rule like this.
 
 ## Notation and reduction
 
@@ -143,10 +141,33 @@ You would have realized that there are a lot of unncessary brackets and plus sig
 So, a formula can be written in a simplified manner:
 
 $$
-OLD FORM \implies A_R^3(1_C)C(1_C)M_C1_CCP1_CC1_C(1_C\cdot3)M_C(-1_R)P(-1_R)C1_RC1_R
+\left(\left(A_C^4 + 1_R\right)+1_R\right) \implies A_C^{4}(1_R \cdot 2)
 $$
 
-This is a great relief tbh. Now let's talk about some reduction formulas:
+Basic translations:
+
+1. $1_R$ + $1_R$ ... $n$ times = $(1_R \cdot n)$ 
+2. 
+
+
+There are some caveates to this. For example in case of rule 1, we only do this when the latch never changes! So, if we had latched onto a column before adding multiple things, we'll write:
+
+$$
+C1_R(1_R \cdot 3)
+$$
+
+and not
+
+$$
+C(1_R \cdot 4)
+$$
+
+This is because right after latching, the first $1_X$ will go to the largest X, but the subsequent ones will fall back to the defaults. Hence, we're trying to make this relationship discrete.
+
+
+## Reduction formulas
+
+Now let's talk about some reduction formulas.
 
 $$
 M_{X}M_{X} = \text{empty}
