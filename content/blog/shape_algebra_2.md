@@ -164,10 +164,9 @@ $$
 
 This is because right after latching, the first $1_X$ will go to the largest X, but the subsequent ones will fall back to the defaults. Hence, we're trying to make this relationship discrete.
 
-
 ## Reduction formulas
 
-Now let's talk about some reduction formulas.
+Now let's talk about some reduction formulas. The goal of the reduction formula is that if we see the LHS anywhere in the equation, we should be able to substitute them for the RHS and leave the entire equation unchanged. This means, we need to care about the latches as well.
 
 $$
 M_{X}M_{X} = \text{empty}
@@ -187,14 +186,54 @@ $$
 A_C^{2}1_C1_{R}M_{R}M_{C}M_{C}M_{R} \to A_C^{3}1_R
 $$
 
-There are a few more:
+In the following relation, I had to latch onto `X` in the RHS because the LHS was latched to X. If we don't do that, then we'll mess up the next element's placement.
 
 $$
-A_X^{j}(1_Y \cdot (j-1))M_Y = A_Y^{j}(1_X \cdot (j-1))M_X
+A_X^{j}(1_Y \cdot (j-1))M_Y = A_Y^{j}(1_X \cdot (j-1))M_XX
 $$
 
-In fact it is this obeservation that led me to adding subtraction in the rules and discovering the new formula for the unspeakable shape.
+In fact it is this observation that led me to adding subtraction in the rules and discovering the new formula for the unspeakable shape.
 
 ## Coverage
 
-I ran some scripts.
+So, I was able to run some scripts to prove that we're able to reach all the shapes upto N = 11 atleast. After that the required computations go very high so I didn't run those checks. I'll keep updating this, but I assume there shouldn't be a problem with coverage now with all the rules we have in place.
+
+## Theorems and observations
+
+We can define some basic theorems:
+
+**If we're starting from base $A_X^j$, for a figure with N blocks, if the number of "steps" needed is S then**
+
+$$
+S \geq (N-j)
+$$
+
+This is kinda trivial to see tbh. You will need N-j new blocks to build the shape, so definetly the number of steps will exceed that since we'll be counting M, P and X in the steps as well.
+
+What you're not prepared for is this emperical fact I discovered by running more scripts. I did the following:
+
+1. For each value of N from 5 to 10, we'll take every possible fixed polyominoes and try to find an algebra that fits it.
+2. For each algebra that we find, we'll count the number of steps. We'll find ALL possible algebra until we have exhausted the possible branches (the approach is obviously not a naive search, I'll talk about the code later) and move on.
+3. We'll count how many shapes fit in "i" number of "steps" and plot that.
+
+If we count the percentage of shapes achieved for different $N$ values against the number of steps, we get this nice looking graph:
+
+{{ figure(src="assets/shape_algebra_2_percentage.png", alt="Percentage of shapes covered against steps", caption="Percentage of total fixed shapes covered against steps (minimum)") }}
+
+> Note that fixes shapes means we're not counting rotations and reflections as the same thing for any shape. Each operation results in a distinct shape.
+
+Clearly the graph is shifting to the right, with the peak decreasing ever so slightly. The thing I want you to focus on right now is the correspondance between the $N$ value and the number of steps at which it peaks. They're the same! That's a pretty coincidence to have isn't it. It also means that for a given $N$ value, atleast emperically, more than 30% of the shapes can be generated in a minimum of $N$ steps.
+
+Maybe there is a proof for that, I am yet to do that.
+
+Here's another image I want to direct your attention to. This one is plotting the average number of steps (minimum) across all shapes for a given N, against N.
+
+{{ figure(src="assets/shape_algebra_2_linear_growth.png", alt="Average minimum steps plotted against N values", caption="Average minimum steps plotted against N values") }}
+
+This is a clear result because look at that beautiful linear growth! We roughly get 
+
+$$
+\text{mean} \approx 1.2n − 1.75
+$$
+
+So, each new value of N, requires on average 1.2 times more steps. 
