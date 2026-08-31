@@ -17,6 +17,10 @@ Thanks to the [TeaDrinkingProgrammer](https://github.com/TeaDrinkingProgrammer) 
 # to write here is the blurb. A post with no banner still gets a full-height
 # card, just with a blank strip on top.
 [[extra.featured]]
+path = "blog/low_power_riscv_pqc.md"
+blurb = "A post-quantum DTLS 1.3 handshake squeezed onto a bare-metal RV32IM soft core — ML-KEM, ML-DSA, two RX slots, and the InterIIT report that came out of it."
+
+[[extra.featured]]
 path = "blog/tagged_integer_mult.md"
 blurb = "What the OCaml compiler actually emits when you multiply two integers, read side by side with the equivalent C — tag bits, shifts and all."
 

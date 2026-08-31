@@ -9,6 +9,7 @@ tags = ["DTLS", "PQC"]
 
 [extra]
 lang = "en"
+banner = "assets/banners/low-power-riscv-pqc.jpg"
 +++
 
 This year for InterIIT we had by the best solution (we got gold). This is a blog that explains how we did what we did.
