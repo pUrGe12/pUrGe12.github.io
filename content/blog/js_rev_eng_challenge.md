@@ -10,6 +10,7 @@ tags = ["blog", "netlist"]
 [extra]
 lang = "en"
 math = true
+banner = "assets/banners/js-rev-eng-challenge.jpg"
 +++
 
 Table of contents:
