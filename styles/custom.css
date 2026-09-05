@@ -144,3 +144,359 @@
   font-size: 0.8rem;
   color: #a8a29e;
 }
+
+/* ---- Books page --------------------------------------------------------- */
+
+/* Hero strip: the picture carries the page title, so the heading sits on the
+   dark end of a gradient rather than on the picture itself. */
+.tl-books-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  margin: 1.5rem 0 2rem;
+  background-color: #292524;
+}
+
+.tl-books-hero img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 1;
+  object-fit: cover;
+}
+
+.tl-books-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(0 0 0 / 0.8) 0%, rgb(0 0 0 / 0.3) 45%, rgb(0 0 0 / 0) 75%);
+}
+
+.tl-books-hero-text {
+  position: absolute;
+  z-index: 1;
+  inset: auto 0 0 0;
+  padding: 1.25rem 1.5rem;
+}
+
+.tl-books-hero-title {
+  font-size: 2rem;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.tl-books-hero-meta {
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  color: rgb(255 255 255 / 0.8);
+}
+
+.tl-books-intro {
+  max-width: 65ch;
+  margin-bottom: 0.5rem;
+}
+
+/* The zigzag: shelf on one side, its feature card on the other, sides swapping
+   each row. Whichever side holds the card is nudged down so consecutive rows
+   don't line up into a table. */
+.tl-shelves {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 2.5rem;
+}
+
+.tl-shelf-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.tl-shelf-row .tl-feature {
+  margin-top: 2.25rem;
+}
+
+.tl-shelf-row--flip .tl-shelf {
+  order: 2;
+  margin-top: 2.25rem;
+}
+
+.tl-shelf-row--flip .tl-feature {
+  order: 1;
+  margin-top: 0;
+}
+
+/* Leftover shelves — the ones with nothing written up — pair off at the end. */
+.tl-shelf-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+  align-items: start;
+}
+
+/* ---- a shelf ------------------------------------------------------------ */
+
+.tl-shelf {
+  border: 1px solid #e7e5e4;
+  border-radius: 0.75rem;
+  background-color: #fafaf9;
+  padding: 1.25rem 1.35rem;
+}
+
+.dark .tl-shelf {
+  border-color: #44403c;
+  background-color: #292524;
+}
+
+.tl-shelf-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.9rem;
+  border-bottom: 1px solid #e7e5e4;
+}
+
+.dark .tl-shelf-head {
+  border-color: #44403c;
+}
+
+.tl-shelf-title {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: #000;
+}
+
+.dark .tl-shelf-title {
+  color: #fff;
+}
+
+.tl-shelf-count {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a8a29e;
+  white-space: nowrap;
+}
+
+.tl-shelf-note {
+  margin: -0.35rem 0 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #78716c;
+}
+
+.dark .tl-shelf-note {
+  color: #a8a29e;
+}
+
+.tl-shelf-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tl-shelf-item {
+  padding-left: 0.85rem;
+  border-left: 2px solid #e7e5e4;
+  transition: border-color 0.15s ease;
+}
+
+.dark .tl-shelf-item {
+  border-left-color: #44403c;
+}
+
+.tl-shelf-item:hover,
+.tl-shelf-item--star {
+  border-left-color: #0ea5e9;
+}
+
+.dark .tl-shelf-item:hover,
+.dark .tl-shelf-item--star {
+  border-left-color: #38bdf8;
+}
+
+.tl-shelf-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.5rem;
+  margin: 0;
+}
+
+.tl-shelf-book {
+  font-size: 0.98rem;
+  line-height: 1.35;
+  color: #000;
+}
+
+.dark .tl-shelf-book {
+  color: #fff;
+}
+
+.tl-shelf-author {
+  font-size: 0.82rem;
+  color: #78716c;
+}
+
+.dark .tl-shelf-author {
+  color: #a8a29e;
+}
+
+.tl-shelf-flag {
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #a8a29e;
+  border: 1px solid currentcolor;
+  border-radius: 999px;
+  padding: 0.05rem 0.45rem;
+}
+
+.tl-shelf-blurb {
+  margin: 0.2rem 0 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: #57534e;
+}
+
+.dark .tl-shelf-blurb {
+  color: #a8a29e;
+}
+
+/* ---- a feature card ----------------------------------------------------- */
+
+.tl-feature {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #e7e5e4;
+  border-radius: 0.75rem;
+  background-color: #fafaf9;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dark .tl-feature {
+  border-color: #44403c;
+  background-color: #292524;
+}
+
+.tl-feature:hover {
+  transform: translateY(-2px);
+  border-color: #0ea5e9;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.1);
+}
+
+.dark .tl-feature:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.35);
+}
+
+.tl-feature-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  background-color: #eeecea;
+}
+
+.dark .tl-feature-img {
+  background-color: #221f1d;
+}
+
+.tl-feature-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+
+.tl-feature-kicker {
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #0284c7;
+}
+
+.dark .tl-feature-kicker {
+  color: #38bdf8;
+}
+
+.tl-feature-title {
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: #0ea5e9;
+}
+
+.dark .tl-feature-title {
+  color: #fff;
+  text-decoration-color: #38bdf8;
+}
+
+.tl-feature:hover .tl-feature-title {
+  text-decoration-thickness: 2px;
+}
+
+.tl-feature-author {
+  font-size: 0.85rem;
+  color: #78716c;
+}
+
+.dark .tl-feature-author {
+  color: #a8a29e;
+}
+
+.tl-feature-blurb {
+  margin: 0.25rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.tl-feature-more {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  color: #0284c7;
+}
+
+.dark .tl-feature-more {
+  color: #38bdf8;
+}
+
+/* One column on narrow screens, and the stagger and the side-swapping both go
+   away so every shelf still reads before its card. */
+@media (max-width: 900px) {
+  .tl-shelves {
+    gap: 2.25rem;
+  }
+
+  .tl-shelf-row,
+  .tl-shelf-pair {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .tl-shelf-row .tl-feature,
+  .tl-shelf-row--flip .tl-shelf,
+  .tl-shelf-row--flip .tl-feature {
+    order: 0;
+    margin-top: 0;
+  }
+
+  .tl-books-hero img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .tl-books-hero-title {
+    font-size: 1.5rem;
+  }
+}
