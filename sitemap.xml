@@ -55,6 +55,10 @@
         <lastmod>2025-09-03</lastmod>
     </url>
     <url>
+        <loc>https://purge12.github.io/blog/js-rev-eng-challenge/</loc>
+        <lastmod>2026-09-05</lastmod>
+    </url>
+    <url>
         <loc>https://purge12.github.io/blog/llvm-ir-analysis/</loc>
         <lastmod>2026-04-25</lastmod>
     </url>
@@ -69,10 +73,6 @@
     <url>
         <loc>https://purge12.github.io/blog/ocaml-records-in-assembly/</loc>
         <lastmod>2026-03-30</lastmod>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/blog/opensource/</loc>
-        <lastmod>2025-05-06</lastmod>
     </url>
     <url>
         <loc>https://purge12.github.io/blog/rediscovering-hermite-polynomials/</loc>
@@ -117,10 +117,6 @@
     <url>
         <loc>https://purge12.github.io/blog/spoofing-insti-wifi/</loc>
         <lastmod>2025-01-23</lastmod>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/blog/stitch-abstraction-algorithm/</loc>
-        <lastmod>2026-04-03</lastmod>
     </url>
     <url>
         <loc>https://purge12.github.io/blog/tagged-integer-mult/</loc>
@@ -218,6 +214,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/categories/dev/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/categories/edge-ai/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/emulator/</loc>
@@ -393,6 +392,9 @@
         <loc>https://purge12.github.io/tags/esp32/</loc>
     </url>
     <url>
+        <loc>https://purge12.github.io/tags/fault-injection/</loc>
+    </url>
+    <url>
         <loc>https://purge12.github.io/tags/flask/</loc>
     </url>
     <url>
@@ -429,6 +431,9 @@
         <loc>https://purge12.github.io/tags/nas/</loc>
     </url>
     <url>
+        <loc>https://purge12.github.io/tags/netlist/</loc>
+    </url>
+    <url>
         <loc>https://purge12.github.io/tags/networks/</loc>
     </url>
     <url>
@@ -450,6 +455,12 @@
         <loc>https://purge12.github.io/tags/python/</loc>
     </url>
     <url>
+        <loc>https://purge12.github.io/tags/qemu/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/tags/quantization/</loc>
+    </url>
+    <url>
         <loc>https://purge12.github.io/tags/science/</loc>
     </url>
     <url>
@@ -460,6 +471,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/tags/stoicism/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/tags/tinyml/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/webdev/</loc>
