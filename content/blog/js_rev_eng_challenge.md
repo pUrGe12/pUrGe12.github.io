@@ -182,23 +182,23 @@ $$Q12_{(n+1)} = f(Q12_n,\ Q15_n,\ Q16_n,\ Input)$$
 
 3. When I traced the functions for the group 15 (since it's clearly the first one in the chain as it has all the others as successors), I found that the input to the D of the FF in group 15 is given by:
 
-$$Q15_{(n+1)} = Q15_n \ \textbf{XOR}\ ((\sim Q16_n)\ \&\ \text{Input}\ \&\ \text{enable})$$
+$$Q15_{(n+1)} = Q15_n \ \textbf{XOR}\ ((\sim Q16_n)\ \\&\ \text{Input}\ \\&\ \text{enable})$$
 
 (Note: Traced out for a group here means that I picked one FF in there and went backwards to hit each combinatorial gate to see how its D value is affected. For one FF groups like all of these ripple carry ones, it just means tracing the group)
 
 We find a similar pattern for the other groups in this chain as well:
 
-$$Q12_{(n+1)} = Q12_n \ \textbf{XOR}\ (((\sim Q16_n)\ \&\ \text{Input}\ \&\ \text{enable})\ \textbf{AND}\ (Q15_n))$$
+$$Q12_{(n+1)} = Q12_n \ \textbf{XOR}\ (((\sim Q16_n)\ \\&\ \text{Input}\ \\&\ \text{enable})\ \textbf{AND}\ (Q15_n))$$
 
-$$Q9_{(n+1)} = Q9_n \ \textbf{XOR}\ (((\sim Q16_n)\ \&\ \text{Input}\ \&\ \text{enable})\ \textbf{AND}\ (Q15_n \ \textbf{AND}\ Q12_n))$$
+$$Q9_{(n+1)} = Q9_n \ \textbf{XOR}\ (((\sim Q16_n)\ \\&\ \text{Input}\ \\&\ \text{enable})\ \textbf{AND}\ (Q15_n \ \textbf{AND}\ Q12_n))$$
 
-$$Q13_{(n+1)} = Q13_n \ \textbf{XOR}\ (((\sim Q16_n)\ \&\ \text{Input}\ \&\ \text{enable})\ \textbf{AND}\ (Q15_n \ \textbf{AND}\ Q12_n \ \textbf{AND}\ Q9_n))$$
+$$Q13_{(n+1)} = Q13_n \ \textbf{XOR}\ (((\sim Q16_n)\ \\&\ \text{Input}\ \\&\ \text{enable})\ \textbf{AND}\ (Q15_n \ \textbf{AND}\ Q12_n \ \textbf{AND}\ Q9_n))$$
 
 …
 
 The pattern seems to be clearly:
 
-$$QK_{(n+1)} = QK_n \ \textbf{XOR}\ ((\sim Q16_n)\ \&\ \text{Input}\ \&\ \text{enable})\ \&\ (\textbf{AND}\ \text{of predecessors})$$
+$$QK_{(n+1)} = QK_n \ \textbf{XOR}\ ((\sim Q16_n)\ \\&\ \text{Input}\ \\&\ \text{enable})\ \\&\ (\textbf{AND}\ \text{of predecessors})$$
 
 - This is like a ripple carry adder, where the carry flags are propagated. But this cannot be adding two numbers together since we don't have a second number input with group 15. This means it can be a **counter** or an **incrementation** circuit.
 - We can also note that the **input** must be high if it's to be set.
@@ -272,7 +272,7 @@ However there are some **47 other constraints** (that is, a 47 bit number, but l
 
 6. So, after this I was kind of lost, so I ran the function analysis on one FF of each group, and turns out the general formula for their inputs (n+1) is something like this:
 
-$$Q_{(n+1)} = Q_n \ \textbf{XOR}\ b; \quad \text{with } b = c\ \&\ (\textbf{AND}\ \text{of predecessor FF outputs}); \quad \text{with } c = \sim Q16\ \&\ I\ \&\ \text{enable}$$
+$$Q_{(n+1)} = Q_n \ \textbf{XOR}\ b; \quad \text{with } b = c\ \\&\ (\textbf{AND}\ \text{of predecessor FF outputs}); \quad \text{with } c = \sim Q16\ \\&\ I\ \\&\ \text{enable}$$
 
 This means something pretty cool actually, because as soon as Q16 is set, c becomes 0, and $Q_{(n+1)} = Q_n$ at all times. So the machine has frozen! This just means that group 16 is actually a **halt condition** and not a clock. **So my hypothesis was wrong.**
 
