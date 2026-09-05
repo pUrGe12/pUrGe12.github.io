@@ -1,25 +1,25 @@
 {% extends "_base.html" %}
 
-{% block page %}category-single{% endblock page %}
+{% block page %}tag-single{% endblock page %}
 {% block lang -%}
 {% set blog_section = get_section(path="blog/_index.md", metadata_only=true) %}
 {%- if blog_section.extra.lang %}{{ blog_section.extra.lang }}{% else %}{{ lang }}{% endif -%}
 {%- endblock lang %}
-{% block title %}{{ term.name }}{% endblock title %}
-{% block desc %}{{ term.page_count }} post{{ term.page_count | pluralize }} in {{ term.name }}.{% endblock desc %}
+{% block title %}#{{ term.name | lower }}{% endblock title %}
+{% block desc %}{{ term.page_count }} post{{ term.page_count | pluralize }} tagged {{ term.name | lower }}.{% endblock desc %}
 
 {% block content %}
-{% set crumb_names = ["categories", term.name | lower] %}
-{% set crumb_urls = [get_url(path="categories/", trailing_slash=true), term.permalink] %}
+{% set crumb_names = ["tags", term.name | lower] %}
+{% set crumb_urls = [get_url(path="tags/", trailing_slash=true), term.permalink] %}
 {% include "_header.html" %}
 <div class="flex justify-center w-full">
   <main class="tl-wide w-full px-4">
     <section class="tl-tax">
       <div class="tl-tax-head">
-        <h1 class="tl-tax-title">{{ term.name }}</h1>
+        <h1 class="tl-tax-title"><span class="tl-tax-hash">#</span> {{ term.name | lower }}</h1>
         <div class="tl-tax-nav">
           <span class="tl-tax-meta">{{ term.page_count }} post{{ term.page_count | pluralize }}</span>
-          <a class="tl-link" href="{{ get_url(path='categories/', trailing_slash=true) }}">all categories</a>
+          <a class="tl-link" href="{{ get_url(path='tags/', trailing_slash=true) }}">all tags</a>
         </div>
       </div>
 
@@ -29,10 +29,13 @@
           <a class="tl-tax-post-title" href="{{ post.permalink }}">{{ post.title }}</a>
           <span class="tl-tax-post-date">{{ post.date | date(format="%b %d, %Y") }}</span>
           <div class="tl-tax-post-meta">
+            {# Tags span every section, so say which one each hit lives in. #}
             <span class="tl-tax-kind">{{ post.components | first }}</span>
-            {% for tag in post.taxonomies.tags | default(value=[]) %}
-            {% set tag_slug = tag | slugify %}
-            <a class="tl-tax-sibling" href="{{ get_url(path='tags/' ~ tag_slug ~ '/', trailing_slash=true) }}">#{{ tag | lower }}</a>
+            {% for sibling in post.taxonomies.tags | default(value=[]) %}
+            {% if sibling | lower != term.name | lower %}
+            {% set sibling_slug = sibling | slugify %}
+            <a class="tl-tax-sibling" href="{{ get_url(path='tags/' ~ sibling_slug ~ '/', trailing_slash=true) }}">#{{ sibling | lower }}</a>
+            {% endif %}
             {% endfor %}
           </div>
         </article>

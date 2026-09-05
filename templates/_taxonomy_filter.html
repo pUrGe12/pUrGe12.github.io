@@ -1,0 +1,48 @@
+{# Live filter shared by /tags and /categories. Reads its noun ("tags" /
+   "categories") off #tag-count so the two pages differ only in markup. #}
+<script>
+  (function () {
+    var box = document.getElementById('tag-filter-box');
+    var input = document.getElementById('tag-filter');
+    var cloud = document.getElementById('tag-cloud');
+    var count = document.getElementById('tag-count');
+    var empty = document.getElementById('tag-empty');
+    if (!box || !input || !cloud || !count || !empty) return;
+
+    var terms = Array.prototype.slice.call(cloud.querySelectorAll('.tl-tag'));
+    var total = terms.length;
+    var noun = count.dataset.noun || 'tags';
+
+    // Only now is the box worth showing: without this script it would be a
+    // text field that filters nothing.
+    box.hidden = false;
+
+    function apply() {
+      var q = input.value.trim().toLowerCase();
+      var shown = 0;
+      terms.forEach(function (term) {
+        // Post titles are matched too, so "renode" or "polyomino" leads you to
+        // the term holding it rather than only to terms spelled that way.
+        var hit = !q
+          || term.dataset.term.indexOf(q) !== -1
+          || term.dataset.posts.indexOf(q) !== -1;
+        term.hidden = !hit;
+        if (hit) shown++;
+      });
+      count.textContent = q
+        ? shown + ' of ' + total + ' ' + noun
+        : total + ' ' + noun;
+      empty.hidden = shown !== 0;
+    }
+
+    input.addEventListener('input', apply);
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { input.value = ''; apply(); }
+    });
+
+    // Deep link: /tags/?q=esp arrives pre-filtered.
+    var q = new URLSearchParams(window.location.search).get('q');
+    if (q) { input.value = q; }
+    apply();
+  })();
+</script>

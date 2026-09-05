@@ -1,39 +1,44 @@
 {% extends "_base.html" %}
 
-{% block page %}category-list{% endblock page %}
+{% block page %}tag-list{% endblock page %}
 {% block lang -%}
 {% set blog_section = get_section(path="blog/_index.md", metadata_only=true) %}
 {%- if blog_section.extra.lang %}{{ blog_section.extra.lang }}{% else %}{{ lang }}{% endif -%}
 {%- endblock lang %}
-{% block title %}Categories{% endblock title %}
-{% block desc %}Every category across the blog, wisps, notes and books.{% endblock desc %}
+{% block title %}Tags{% endblock title %}
+{% block desc %}Every tag used across the blog, wisps, notes and books — browse or filter to find posts by subject.{% endblock desc %}
 
 {% block content %}
-{% set crumb_names = ["categories"] %}
-{% set crumb_urls = [get_url(path="categories/", trailing_slash=true)] %}
+{% set crumb_names = ["tags"] %}
+{% set crumb_urls = [get_url(path="tags/", trailing_slash=true)] %}
 {% include "_header.html" %}
 <div class="flex justify-center w-full">
   <main class="tl-wide w-full px-4">
     <section class="tl-tax">
       <div class="tl-tax-head">
-        <h1 class="tl-tax-title">Categories</h1>
+        <h1 class="tl-tax-title"><span class="tl-tax-hash">#</span> Tags</h1>
         <div class="tl-tax-nav">
-          <a class="tl-link" href="{{ get_url(path='tags/', trailing_slash=true) }}">tags</a>
+          <a class="tl-link" href="{{ get_url(path='categories/', trailing_slash=true) }}">categories</a>
           <a class="tl-link" href="{{ get_url(path='blog/', trailing_slash=true) }}">blog</a>
         </div>
       </div>
 
+      {# Hidden until the shared filter script unhides it, so a reader without
+         JS is never shown a box that cannot filter anything. #}
       <div class="tl-tax-search" id="tag-filter-box" hidden>
         <svg class="tl-tax-search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
         </svg>
-        <label class="sr-only" for="tag-filter">Filter categories</label>
+        <label class="sr-only" for="tag-filter">Filter tags</label>
         <input id="tag-filter" type="search" autocomplete="off" spellcheck="false"
-          placeholder="Filter by category or post title…">
+          placeholder="Filter by tag or post title…">
       </div>
 
-      <p class="tl-tax-meta" id="tag-count" data-noun="categories">{{ terms | length }} categories</p>
+      <p class="tl-tax-meta" id="tag-count" data-noun="tags">{{ terms | length }} tags</p>
 
+      {# Most-used first, so the hubs worth clicking sit at the top. `terms`
+         arrives alphabetical and Tera's sort is stable, so reversing before and
+         after keeps equal-count tags in a..z rather than z..a. #}
       <div class="tl-tag-cloud" id="tag-cloud">
         {% for term in terms | reverse | sort(attribute="page_count") | reverse %}
         {%- set_global titles = [] -%}
@@ -43,13 +48,14 @@
         <a class="tl-tag" href="{{ term.permalink }}"
           data-term="{{ term.name | lower }}"
           data-posts="{{ titles | join(sep=' ~ ') | lower }}">
-          <span class="tl-tag-name">{{ term.name }}</span>
+          <span class="tl-tag-hash">#</span>
+          <span class="tl-tag-name">{{ term.name | lower }}</span>
           <span class="tl-tag-count">{{ term.page_count }}</span>
         </a>
         {% endfor %}
       </div>
 
-      <p class="tl-tax-empty" id="tag-empty" hidden>No category matches that.</p>
+      <p class="tl-tax-empty" id="tag-empty" hidden>No tag matches that.</p>
     </section>
     {% include "_footer.html" %}
   </main>

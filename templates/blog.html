@@ -12,7 +12,13 @@
     <main class="col gap-8">
       <div class="col gap-1">
         <h1 class="text-3xl text-black dark:text-white">{{ section.title }}</h1>
-        <p class="text-sm text-slate-500 dark:text-slate-400">{{ section.pages | length }} posts</p>
+        <p class="row flex-wrap items-baseline gap-x-2 text-sm text-slate-500 dark:text-slate-400">
+          <span>{{ section.pages | length }} posts</span>
+          <span aria-hidden="true">·</span>
+          <a class="tl-link" href="{{ get_url(path='tags/', trailing_slash=true) }}">browse by tag</a>
+          <span aria-hidden="true">·</span>
+          <a class="tl-link" href="{{ get_url(path='categories/', trailing_slash=true) }}">by category</a>
+        </p>
       </div>
 
       {% if config.extra.blog_categorized %}

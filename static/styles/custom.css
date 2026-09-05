@@ -500,3 +500,309 @@
     font-size: 1.5rem;
   }
 }
+
+/* ---- Taxonomy pages: /tags and /categories ------------------------------ */
+
+/* These pages used to fall through to the theme's Serene-era markup, whose
+   class names have no rules in the Tailwind build — so they rendered as a
+   naked run of links. Everything below is the styling for the replacements in
+   templates/tags/ and templates/categories/. */
+
+.tl-tax {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 1.75rem;
+}
+
+.tl-tax-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e7e5e4;
+}
+
+.dark .tl-tax-head {
+  border-color: #44403c;
+}
+
+.tl-tax-title {
+  font-size: 1.9rem;
+  line-height: 1.15;
+  color: #000;
+}
+
+.dark .tl-tax-title {
+  color: #fff;
+}
+
+/* The '#' is decoration, so it stays out of the reading colour. */
+.tl-tax-hash {
+  color: #0ea5e9;
+}
+
+.dark .tl-tax-hash {
+  color: #38bdf8;
+}
+
+.tl-tax-meta {
+  font-size: 0.85rem;
+  color: #a8a29e;
+}
+
+.tl-tax-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+/* ---- filter box --------------------------------------------------------- */
+
+/* Progressive enhancement: hidden until the script on the page unhides it, so
+   a reader without JS never gets a box that does nothing. */
+.tl-tax-search {
+  position: relative;
+  max-width: 30rem;
+}
+
+.tl-tax-search-icon {
+  position: absolute;
+  top: 50%;
+  left: 0.7rem;
+  transform: translateY(-50%);
+  width: 1.05rem;
+  height: 1.05rem;
+  color: #a8a29e;
+  pointer-events: none;
+}
+
+.tl-tax-search input {
+  width: 100%;
+  padding: 0.55rem 0.9rem 0.55rem 2.3rem;
+  font: inherit;
+  font-size: 0.95rem;
+  color: inherit;
+  background-color: #fafaf9;
+  border: 1px solid #e7e5e4;
+  border-radius: 0.6rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dark .tl-tax-search input {
+  background-color: #292524;
+  border-color: #44403c;
+}
+
+.tl-tax-search input::placeholder {
+  color: #a8a29e;
+}
+
+.tl-tax-search input:focus {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgb(14 165 233 / 0.15);
+}
+
+.dark .tl-tax-search input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgb(56 189 248 / 0.2);
+}
+
+/* ---- the cloud ---------------------------------------------------------- */
+
+.tl-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.tl-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid #e7e5e4;
+  border-radius: 999px;
+  background-color: #fafaf9;
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.92rem;
+  line-height: 1.3;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.dark .tl-tag {
+  border-color: #44403c;
+  background-color: #292524;
+}
+
+.tl-tag:hover {
+  transform: translateY(-1px);
+  border-color: #0ea5e9;
+}
+
+.dark .tl-tag:hover {
+  border-color: #38bdf8;
+}
+
+.tl-tag-hash {
+  color: #a8a29e;
+}
+
+.tl-tag:hover .tl-tag-hash {
+  color: #0ea5e9;
+}
+
+.dark .tl-tag:hover .tl-tag-hash {
+  color: #38bdf8;
+}
+
+.tl-tag-name {
+  color: #000;
+}
+
+.dark .tl-tag-name {
+  color: #fff;
+}
+
+.tl-tag-count {
+  padding-left: 0.5rem;
+  border-left: 1px solid #e7e5e4;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  color: #a8a29e;
+}
+
+.dark .tl-tag-count {
+  border-left-color: #44403c;
+}
+
+/* Set by the filter script; plain [hidden] loses to the flex display above. */
+.tl-tag[hidden] {
+  display: none;
+}
+
+.tl-tax-empty {
+  font-size: 0.9rem;
+  color: #78716c;
+}
+
+.dark .tl-tax-empty {
+  color: #a8a29e;
+}
+
+/* ---- the post list on a single term ------------------------------------- */
+
+.tl-tax-posts {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #e7e5e4;
+}
+
+.dark .tl-tax-posts {
+  border-top-color: #44403c;
+}
+
+.tl-tax-post {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.35rem 1rem;
+  padding: 0.85rem 0.25rem;
+  border-bottom: 1px solid #e7e5e4;
+  transition: background-color 0.15s ease;
+}
+
+.dark .tl-tax-post {
+  border-bottom-color: #44403c;
+}
+
+.tl-tax-post:hover {
+  background-color: #fafaf9;
+}
+
+.dark .tl-tax-post:hover {
+  background-color: #292524;
+}
+
+.tl-tax-post-title {
+  color: #000;
+  line-height: 1.35;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: #0ea5e9;
+}
+
+.dark .tl-tax-post-title {
+  color: #fff;
+  text-decoration-color: #38bdf8;
+}
+
+.tl-tax-post:hover .tl-tax-post-title {
+  text-decoration-thickness: 2px;
+}
+
+.tl-tax-post-date {
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: #a8a29e;
+}
+
+/* Second row of the grid: which section the post lives in, plus its sibling
+   tags, so a reader can keep hopping sideways instead of going back to /tags. */
+.tl-tax-post-meta {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.55rem;
+  font-size: 0.78rem;
+  color: #a8a29e;
+}
+
+.tl-tax-kind {
+  font-size: 0.63rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a8a29e;
+  border: 1px solid currentcolor;
+  border-radius: 999px;
+  padding: 0.05rem 0.45rem;
+}
+
+.tl-tax-sibling {
+  color: #78716c;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: transparent;
+}
+
+.dark .tl-tax-sibling {
+  color: #a8a29e;
+}
+
+.tl-tax-sibling:hover {
+  color: #0284c7;
+  text-decoration-color: currentcolor;
+}
+
+.dark .tl-tax-sibling:hover {
+  color: #38bdf8;
+}
+
+@media (max-width: 640px) {
+  .tl-tax-post {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tl-tax-post-date {
+    grid-row: 3;
+  }
+}

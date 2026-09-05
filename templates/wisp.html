@@ -61,7 +61,7 @@
           <div class="flex gap-2">
             {% for tag in page.taxonomies.tags -%}
             {% set tag_slugify = tag | slugify -%}
-            <a class="text-lg tl-link" href="{{ config.base_url ~ '/tags/' ~ tag_slugify }}"># {{ tag }}</a>
+            <a class="text-lg tl-link" href="{{ get_url(path='tags/' ~ tag_slugify ~ '/', trailing_slash=true) }}"># {{ tag | lower }}</a>
             {%- endfor %}
           </div>
           {% endif %}
