@@ -11,6 +11,11 @@ tags = ["Monitoring"]
 lang = "en"
 +++
 
+## NOTE
+
+This is incomplete and probably just contains my thoughts and how I fucked up. Read with caution.
+
+---
 
 Update: 20th April, bought one. The adapter has its own network interface inside that is indepedent of the motherboard's NIC. So, this might work (assuming my LAN cables work)
 

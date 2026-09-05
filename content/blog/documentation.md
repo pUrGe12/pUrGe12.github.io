@@ -1110,3 +1110,7 @@ namespace Antmicro.Renode.Peripherals.Timers
 The thing is, this must be modelling some behvaiour, so let's pull out the datasheet for this bad boy. There are some properties [here](https://docs.zephyrproject.org/latest/build/dts/api/bindings/timer/riscv%2Cmachine-timer.html), and this is the [driver](https://github.com/zephyrproject-rtos/zephyr/blob/main/drivers/timer/riscv_machine_timer.c) for it. Here's what I learnt about this:
 
 1. sys_clock_announce() accepts at most INT32_MAX -> This seems familiar.
+
+---
+
+Hopefully I will finish this soon!

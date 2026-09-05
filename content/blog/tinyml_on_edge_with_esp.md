@@ -4,8 +4,8 @@ date = 2026-06-19
 draft = false
 
 [taxonomies]
-categories = ["Hardware", "emulator"]
-tags = ["blog"]
+categories = ["Edge-AI", "emulator"]
+tags = ["blog", "TinyML", "ESP32", "QEMU", "quantization"]
 
 [extra]
 lang = "en"
@@ -26,7 +26,7 @@ We could try **stack overflows** also which is a real problem but not for this c
 
 ## Setup and build
 
-For the basic setup details look at [this](https://purge12.github.com/blog/emulating-esp-firmware-on-qemu) blog post. Then come back!
+For the basic setup details look at [this](https://purge12.github.io/blog/emulating-esp-firmware-on-qemu) blog post. Then come back!
 
 We'll build the `HelloWorld` of `esp-tflite-micro`:
 

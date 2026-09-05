@@ -265,4 +265,4 @@ This was beautifully exhaustive, exactly 81 numbers as I wanted. And that's all 
 
 I made the emulator, it was able to boot a hello-world binary **for the vision-soc**!! That's the wrong board but it works because `hello world` barely touched any peripherals and the ones it did, were the ones which were shared between the two. I later compiled the hello world for the secure-IOT chip and tested that, and it worked too!
 
-Try it out: https://mgs2401-web.onrender.com (hopefully the link is still live by the time you read it. Otherwise, well, you gotta take my word for it)
+Try it out [here](https://macrohill.com) (hopefully the link is still live by the time you read it. Otherwise, well, you gotta take my word for it)

@@ -11,7 +11,7 @@ tags = ["NAS"]
 lang = "en"
 +++
 
-So my (potential) mentor told me about something called a Homelab, and why it will be useful if I want to learn more about networking. I knew a few things before from CTFs and nmap and nettacker scans, but that's all. I had no idea how to setup my own servers, run services on ports, host websites (will be done in the future after I learn `port forwarding`) for all users on the internet (note that hosting one on the same LAN is so much simpler, cause you don't need to host it at all).
+So my GSoC mentor had told me about something called a Homelab, and why it will be useful if I want to learn more about networking. I knew a few things before from CTFs and nmap and nettacker scans, but that's all. I had no idea how to setup my own servers, run services on ports, host websites (will be done in the future after I learn `port forwarding`) for all users on the internet (note that hosting one on the same LAN is so much simpler, cause you don't need to host it at all).
 
 This post is about creating my own NAS server. I am not sure if what I have is really a NAS server but it achieves its purpose. So, I will be describing exacly what I did, the commands I used and the hardware as well.
 
@@ -20,8 +20,6 @@ This post is about creating my own NAS server. I am not sure if what I have is r
 # Hardware
 
 I got this old `intel i3` Dell's laptop. Its got 4GB RAM and 512GB of hard-disk, without any SSD. I didn't really care about the display, all I did care about was the cost (at this point I am living on hackathon money until I get an intern, which I will, hopefully).
-
-![old_laptop_image](old_laptop_now_NAS_server.jpg)
 
 The keyboard doesn't work so I attached an external one. The battery is pretty much gone, it doesn't charge ever, so it needs to be plugged into the charger at all times. But other than these minor issues, its solid and can run Linux!
 

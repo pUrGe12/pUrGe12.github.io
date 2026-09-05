@@ -104,7 +104,7 @@ math = true
 
 ## Introduction
 
-In the last [blog](https://purge12.github.io/blog/shape_algebra_1/), I discussed about some fundamental rules for the shape algebra. I closed with a remark on how we're able to not construct shapes like these:
+In the last [blog](https://purge12.github.io/blog/confluence/), I discussed about some fundamental rules for the shape algebra. I closed with a remark on how we're able to not construct shapes like these:
 
 <div class="polyeq"><span class="poly"><i class="g" style="grid-area:1/1"></i><i class="g" style="grid-area:1/2"></i><i class="g" style="grid-area:1/3"></i><i class="g" style="grid-area:2/1"></i><i class="g" style="grid-area:2/3"></i><i class="g" style="grid-area:3/1"></i><i class="g" style="grid-area:4/1"></i><i class="g" style="grid-area:4/3"></i><i class="g" style="grid-area:5/1"></i><i class="g" style="grid-area:5/2"></i><i class="g" style="grid-area:5/3"></i></span></div>
 
@@ -237,3 +237,7 @@ $$
 $$
 
 So, each new value of N, requires on average 1.2 times more steps. 
+
+---
+
+I will develop this further when I am freerer

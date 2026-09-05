@@ -1,5 +1,5 @@
 +++
-title = "Introduction to the game of life"
+title = "Some Ideas related to the Game of Life"
 date = 2024-01-15
 draft = false
 

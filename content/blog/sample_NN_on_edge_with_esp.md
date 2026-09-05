@@ -4,8 +4,8 @@ date = 2026-06-18
 draft = false
 
 [taxonomies]
-categories = ["Hardware", "emulator"]
-tags = ["blog"]
+categories = ["Edge-AI", "emulator"]
+tags = ["blog", "TinyML", "ESP32", "QEMU", "fault-injection"]
 
 [extra]
 lang = "en"

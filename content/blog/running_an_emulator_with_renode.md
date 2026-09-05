@@ -15,7 +15,7 @@ This blog is to try out emulating a board in renode. We'll pick a sample board, 
 
 ### Setup
 
-I already explained the renode setup here at [this blog](https://purge12.github.io/blog/setting_up_renode), so you can follow that to reach the stage where I am right now.
+I already explained the renode setup here at [this blog](https://purge12.github.io/blog/setting-up-renode), so you can follow that to reach the stage where I am right now.
 
 ### Runing renode
 
