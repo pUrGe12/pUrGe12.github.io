@@ -70,7 +70,8 @@ projects_page = true                  # Display projects page
 wisps_page = true                     # Custom page to display some non-tech stuff
 notes_page = true                     # Custom page to display OCaml and LLM math notes
 books_page = true                     # Custom page to display book recommendations
-books_categorized = true              # Whether to categorize book posts
+# books_categorized is gone: the books page groups by the shelves declared in
+# content/books/_index.md instead.
 gallery_page = true                   # Custom page to display images
 blog_categorized = true               # Whether to categorize blog posts
 blur_effect = true                    # Whether to turn on blur effect on navigation bar

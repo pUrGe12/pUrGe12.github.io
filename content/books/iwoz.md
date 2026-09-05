@@ -1,5 +1,5 @@
 +++
-title = "IWoz - Steve Wozniack"
+title = "iWoz - Steve Wozniak"
 date = 2026-06-21
 draft = false
 
@@ -9,6 +9,11 @@ tags = ["must-read"]
 
 [extra]
 lang = "en"
+short_title = "iWoz"
+author = "Steve Wozniak"
+blurb = "The wizard who read all the documentation. Laying out memory addresses and writing the firmware by hand, before anyone could come and help you."
+card = "assets/books/iwoz.jpg"
+banner = "assets/banners/iwoz.jpg"
 +++
 
 ## The Book

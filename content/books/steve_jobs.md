@@ -1,5 +1,5 @@
 +++
-title = "Steve Jobs - Isaac Walterson"
+title = "Steve Jobs - Walter Isaacson"
 date = 2026-01-08
 draft = false
 
@@ -9,6 +9,11 @@ tags = ["must-read"]
 
 [extra]
 lang = "en"
+short_title = "Steve Jobs"
+author = "Walter Isaacson"
+blurb = "An evil-genius-who-did-good story. Self-made with Woz's help, manipulative, and extremely good at selling. I read it during a turn in my own life."
+card = "assets/books/steve_jobs.jpg"
+banner = "assets/banners/steve_jobs.jpg"
 +++
 
 ## The Book

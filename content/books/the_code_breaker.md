@@ -1,5 +1,5 @@
 +++
-title = "The code breaker - Isaac Walterson"
+title = "The Code Breaker - Walter Isaacson"
 date = 2026-02-10
 draft = false
 
@@ -9,6 +9,11 @@ tags = ["gene-editing", "science"]
 
 [extra]
 lang = "en"
+short_title = "The Code Breaker"
+author = "Walter Isaacson"
+blurb = "How CRISPR came to be, and how Doudna got there. Also the uncomfortable question of doing what the community calls unethical, when it benefits everyone."
+card = "assets/books/the_code_breaker.jpg"
+banner = "assets/banners/the_code_breaker.jpg"
 +++
 
 This book is a story of how the CRISPR technology came to being. This is a gene editing tech (I must admit, I am not very good at biology) which uses are guide RNA and a specific enzyme, CAS9 by Doudna's team and some others for others.

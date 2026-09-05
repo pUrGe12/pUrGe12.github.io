@@ -9,6 +9,11 @@ tags = ["mind"]
 
 [extra]
 lang = "en"
+short_title = "Can't Hurt Me"
+author = "David Goggins"
+blurb = "It looks like another master-your-mind book and it isn't. It's a story book, his own, and you learn a lot about a man from the way he describes his worst moments."
+card = "assets/books/cant_hurt_me.jpg"
+banner = "assets/banners/cant_hurt_me.jpg"
 +++
 
 ## The Book

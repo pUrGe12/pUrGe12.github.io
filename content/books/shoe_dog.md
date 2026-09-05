@@ -1,5 +1,5 @@
 +++
-title = "Shoedog - Phil Knight"
+title = "Shoe Dog - Phil Knight"
 date = 2026-02-10
 draft = false
 
@@ -9,6 +9,11 @@ tags = ["startup", "business"]
 
 [extra]
 lang = "en"
+short_title = "Shoe Dog"
+author = "Phil Knight"
+blurb = "More about dealing with pressure than about glory. He travelled the world with nothing in his pockets, looking for whatever it was he was seeking."
+card = "assets/books/shoe_dog.jpg"
+banner = "assets/banners/shoe_dog.jpg"
 +++
 
 Shoedog is the story of Phil Knight. He's an American billionare and philanthropist (with no mention in the Epstein files!) who co-founded Nike with his running coach Bill Bowerman.

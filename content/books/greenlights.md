@@ -9,6 +9,11 @@ tags = ["must-read", "philosophy"]
 
 [extra]
 lang = "en"
+short_title = "Greenlights"
+author = "Matthew McConaughey"
+blurb = "Not a tutorial and not a look-at-me flex. A man working out when to lock in, when to barge in, and more importantly when to leave."
+card = "assets/books/greenlights.jpg"
+banner = "assets/banners/greenlights.jpg"
 +++
 
 ## The book

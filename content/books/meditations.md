@@ -9,6 +9,11 @@ tags = ["stoicism", "must-read", "classics"]
 
 [extra]
 lang = "en"
+short_title = "Meditations"
+author = "Marcus Aurelius"
+blurb = "The private journal of a Roman emperor, never meant for publication. Read it like a novel and you lose the whole of it."
+card = "assets/books/meditations.jpg"
+banner = "assets/banners/meditations.jpg"
 +++
 
 ## The Book

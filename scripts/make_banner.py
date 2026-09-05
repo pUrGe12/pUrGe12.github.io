@@ -37,7 +37,7 @@ def parse_ratio(text):
     return ratio
 
 
-def make_banner(source, slug, ratio, width, offset, quality):
+def make_banner(source, slug, ratio, width, offset, quality, out_dir=OUT_DIR):
     img = ImageOps.exif_transpose(Image.open(source)).convert("RGB")
 
     band = round(img.width / ratio)
@@ -54,8 +54,8 @@ def make_banner(source, slug, ratio, width, offset, quality):
     if img.width != width:
         img = img.resize((width, round(width / ratio)), Image.LANCZOS)
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    dest = OUT_DIR / f"{slug}.jpg"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    dest = out_dir / f"{slug}.jpg"
     img.save(dest, "JPEG", quality=quality, optimize=True, progressive=True)
     return dest, img.size
 
@@ -68,6 +68,8 @@ def main():
     p.add_argument("--width", type=int, default=1600, help="output width in px (default 1600)")
     p.add_argument("--offset", type=float, default=0.0, help="0 = top edge (default), 1 = bottom edge")
     p.add_argument("--quality", type=int, default=88, help="JPEG quality (default 88)")
+    p.add_argument("--out-dir", type=pathlib.Path, default=OUT_DIR,
+                   help="where to write it (default static/assets/banners)")
     args = p.parse_args()
 
     if not args.source.is_file():
@@ -75,8 +77,12 @@ def main():
     if not 0.0 <= args.offset <= 1.0:
         sys.exit(f"--offset must be between 0 and 1, got {args.offset}")
 
-    dest, size = make_banner(args.source, args.slug, args.ratio, args.width, args.offset, args.quality)
-    rel = dest.relative_to(REPO / "static")
+    dest, size = make_banner(args.source, args.slug, args.ratio, args.width, args.offset,
+                             args.quality, args.out_dir)
+    try:
+        rel = dest.resolve().relative_to(REPO / "static")
+    except ValueError:
+        rel = dest
     print(f'{dest}  {size[0]}x{size[1]}  {dest.stat().st_size // 1024} KB')
     print(f'front matter:  banner = "{rel}"')
 

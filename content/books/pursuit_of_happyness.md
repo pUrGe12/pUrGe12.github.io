@@ -9,6 +9,11 @@ tags = ["mind", "culture"]
 
 [extra]
 lang = "en"
+short_title = "The Pursuit of Happyness"
+author = "Chris Gardner"
+blurb = "PSDs: poor, smart, with a deep desire to be someone. A raw account of a man who never stopped walking the walk."
+card = "assets/books/pursuit_of_happyness.jpg"
+banner = "assets/banners/pursuit_of_happyness.jpg"
 +++
 
 The pursuit of Happyness is the autobiography of a man who grew up in conditions not optimal for creating a million-dollar Wall-Street analyst. But he did.

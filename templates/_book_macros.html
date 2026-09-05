@@ -1,0 +1,54 @@
+{#- One shelf tile: a heading, an optional note, and the list of books on it.
+    Every field but `title` and `books` is optional. Kept in a macro because
+    the books page renders shelves in two places: paired with a feature card
+    in the zigzag, and on their own in the row at the bottom. -#}
+{% macro shelf(s) %}
+<section class="tl-shelf">
+  <header class="tl-shelf-head">
+    <h2 class="tl-shelf-title">{{ s.title }}</h2>
+    <span class="tl-shelf-count">{{ s.books | length }} {% if s.books | length == 1 %}book{% else %}books{% endif %}</span>
+  </header>
+  {% if s.note is defined %}
+  <p class="tl-shelf-note">{{ s.note }}</p>
+  {% endif %}
+  <ul class="tl-shelf-list">
+    {% for b in s.books %}
+    <li class="tl-shelf-item{% if b.star is defined %} tl-shelf-item--star{% endif %}">
+      <p class="tl-shelf-line">
+        <span class="tl-shelf-book">{{ b.title }}</span>
+        {% if b.author is defined %}<span class="tl-shelf-author">{{ b.author }}</span>{% endif %}
+        {% if b.status is defined %}<span class="tl-shelf-flag">{{ b.status }}</span>{% endif %}
+      </p>
+      {% if b.note is defined %}
+      <p class="tl-shelf-blurb">{{ b.note }}</p>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endmacro shelf %}
+
+{#- The card for a book that has its own page. Everything on it is read off
+    that page's front matter: `short_title`, `author`, `blurb` and `card`. -#}
+{% macro feature(path) %}
+{% set post = get_page(path=path) %}
+<a class="tl-feature" href="{{ post.permalink }}">
+  {% if post.extra.card is defined %}
+  <img class="tl-feature-img" src="{{ get_url(path=post.extra.card) }}" alt="" loading="lazy">
+  {% endif %}
+  <div class="tl-feature-body">
+    <span class="tl-feature-kicker">
+      {%- if post.taxonomies.categories is defined %}{{ post.taxonomies.categories.0 }} &middot; {% endif -%}
+      wrote about this one
+    </span>
+    <span class="tl-feature-title">{% if post.extra.short_title is defined %}{{ post.extra.short_title }}{% else %}{{ post.title }}{% endif %}</span>
+    {% if post.extra.author is defined %}
+    <span class="tl-feature-author">{{ post.extra.author }}</span>
+    {% endif %}
+    {% if post.extra.blurb is defined %}
+    <p class="tl-feature-blurb">{{ post.extra.blurb }}</p>
+    {% endif %}
+    <span class="tl-feature-more">Read the write-up &rarr;</span>
+  </div>
+</a>
+{% endmacro feature %}
