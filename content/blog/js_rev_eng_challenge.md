@@ -53,6 +53,8 @@ Jane Street had released a [challenge](https://blog.janestreet.com/can-you-rever
 
 Used the same code as from the warmup to get a netlist for the puzzle. Verification of the netlist was just checking for any floating pins. I used the `sky130_fd_sc_hd__tt_025C_1v80_hal.lib` file for extraction. It's unlikely that this didn't have a module that the actual puzzle did. And it worked on warmup well.
 
+I have focused more on the puzzle logic itself rather than the quirks of extracting netlists. One reason for that is the `skywater` labels survided in the GDS (thankfully) so technically, the job become much much easier.
+
 ### Basic Analysis
 
 1. Only VPWR and VGND were used for power rails; VPB and VNB tied to them.
