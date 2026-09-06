@@ -1,6 +1,6 @@
 +++
 title = "AI-control (APPS + Z-CTRL)"
-date = 2026-09-06
+date = 2025-06-06
 draft = false
 
 [taxonomies]
