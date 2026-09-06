@@ -427,9 +427,11 @@ $$\text{group 0} \Rightarrow \text{213 gates of logic} \Rightarrow \text{O[7:0] 
 
 That's interesting because we have already noted that group 0 doesn't take values from anyone apart from itself and group 14 (which in turn takes it only from group 16 apart from itself, so it's like a delayed halt switch so to speak). And we know group 0 cannot be reset.
 
-Since group 14 only fires AFTER halt (group 16), the group 0 would be 0000 for the entire time we feed the 121 bits of the correct sequence. This means that group 0's and in turn O[7:0] output doesn't even depend on the correct sequence because it only starts once the FFs freeze. If that's the case, then we can just feed in all 0s to the machine, go over the 121 bit halt, and run a few more cycles to see what O[7:0] produces.
+Since group 14 only fires AFTER halt (group 16), the group 0 would be 0000 for the entire time we feed the 121 bits of the correct sequence. This means that group 0's and in turn O[7:0] output doesn't even depend on the correct sequence because it only starts once the FFs freeze. (edit: I was wrong here. It does depend!)
 
-If we consider **O[7:0]** to be a BYTE of output, then we know that we'll be getting 16 bytes unique bytes at max (since group 0's four FF can have $2^4=16$ unique bytes). This made more sense because trying to decode them as individual bits led me nowhere. Doing this however, gave the string:
+If that's the case, then we can just feed in all 0s to the machine, go over the 121 bit halt, and run a few more cycles to see what O[7:0] produces. (edit: If we do that, we get "TRY AGAIN" which is what I noted as an easter egg later)
+
+If we consider **O[7:0]** to be a BYTE of output, then we know that we'll be getting 16 bytes unique bytes at max (since group 0's four FF can have $2^4=16$ unique bytes). This made more sense because trying to decode them as individual bits led me nowhere. Doing this however (with the correct bit sequence), gave the string:
 
 **(\* TWO STARS \*)**
 
