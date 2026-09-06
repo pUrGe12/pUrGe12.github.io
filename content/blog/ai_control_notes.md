@@ -1,5 +1,5 @@
 +++
-title = "AI Control notes"
+title = "AI-control (APPS + Z-CTRL)"
 date = 2026-09-06
 draft = false
 
