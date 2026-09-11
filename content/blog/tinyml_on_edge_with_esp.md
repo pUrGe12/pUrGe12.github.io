@@ -5,7 +5,7 @@ draft = false
 
 [taxonomies]
 categories = ["Edge-AI", "emulator"]
-tags = ["blog", "TinyML", "ESP32", "QEMU", "quantization"]
+tags = ["blog", "TinyML", "ESP32", "QEMU", "quantisation"]
 
 [extra]
 lang = "en"
@@ -20,7 +20,7 @@ We'll be using the `esp-tflite-micro` **sine model** real TFLM - TensorFlow Lite
 ## Boot a real TFLM model in QEMU, then build 3-4 flash images that each freeze one failure
 
 1. Have a malloc (tensor arena too small) errors with `AllocateTensors()` ignored which will lead to a panic.
-2. A quantization drift which gives wrong outputs and doesn't crash! -> This is very important
+2. A quantisation drift which gives wrong outputs and doesn't crash! -> This is very important
 
 We could try **stack overflows** also which is a real problem but not for this case we're running a `sine tracker` and that has 0 preprocessing so can't do a hard stack crash.
 
@@ -42,7 +42,7 @@ idf.py build
 
 I faced a lot of errors here. The problem with me was I was using clang (from the earlier posts where I was trying to see if the clang frontend's static checks will catch the malloc issues) but this toolchain is build for GCC!
 
-If your trace shows something like "unrecognized options" for the compiler then you've hit the same bug and you should do something like this:
+If your trace shows something like "unrecognised options" for the compiler then you've hit the same bug and you should do something like this:
 
 ```sh
 unset IDF_TOOLCHAIN
@@ -168,7 +168,7 @@ EXCVADDR: 0x00000000  LBEG    : 0x400d61b9  LEND    : 0x400d61bd  LCOUNT  : 0x00
 Backtrace: 0x400d62a0:0x3ffb4590 0x400d609a:0x3ffb45b0 0x400d5f03:0x3ffb4600 0x400e3294:0x3ffb4620
 ```
 
-`EXCVADDR: 0x00000000` --> Means that it faults reading the quantized params of a tensor that were NEVER ALLOCATED.
+`EXCVADDR: 0x00000000` --> Means that it faults reading the quantised params of a tensor that were NEVER ALLOCATED.
 
 > Note how this could not be caught by a static analyzer or unit tests! Reasons:
 
@@ -181,9 +181,9 @@ The reason unittests will fail is because its a static arena (not a malloc, a ma
 
 This is bad because it tells you nothing about what went wrong! But with the emulator, we get to know exactly.
 
-### Quantization drift -> Wrong answers
+### Quantisation drift -> Wrong answers
 
-This is the part where the quantization really messes up the model and it really starts giving wrong answers. The main problem here is the scale of quantization which is something you need to decide.
+This is the part where the quantisation really messes up the model and it really starts giving wrong answers. The main problem here is the scale of quantisation which is something you need to decide.
 
 These are the previous values we got for the happy path:
 
@@ -202,7 +202,7 @@ x_value: 2.827433, y_value: 0.237217
 
 Error from `y = sin(x)` is 
 
-Now if we change the quantization scale (which can drift after the model was re-exported but never updated!) in the code:
+Now if we change the quantisation scale (which can drift after the model was re-exported but never updated!) in the code:
 
 ```c
 // from int8_t x_quantized = x / input->params.scale + input->params.zero_point;

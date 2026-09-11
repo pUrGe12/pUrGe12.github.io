@@ -15,7 +15,7 @@ lang = "en"
 
 DreamCoder is a seminal (I am guessing) research paper published by MIT scientists on a machine learning algorithm that generates programs to solve tasks in any domain. It does this via taking in a set of **primitives** in that domain (read: a DSL, i.e. **Domain Specific Language**), **learning** to create higher-order abstractions and using a **Neural Network** as a guide to help search for the right program.
 
-In this blog post, I will be deconstructing the paper with every single line as I learnt them and analyze this paper. Why am I doing this? Hopefully that'll be clear soon (I have some vague ideas, I am reading some papers to get a concrete understanding of it, DreamCoder happens to be one of them).
+In this blog post, I will be deconstructing the paper with every single line as I learnt them and analyse this paper. Why am I doing this? Hopefully that'll be clear soon (I have some vague ideas, I am reading some papers to get a concrete understanding of it, DreamCoder happens to be one of them).
 
 ## Introduction
 
@@ -44,9 +44,9 @@ The search problem is a combinatorial explosion. There are so many ways to arran
 
 - **Learning** happens for both the model that "generates" the program and the NN that guides it.
 
-Notice I used the word generate here. Because later we'll read about a learning phase called **abstraction** which will generate libraries out of useful + previously seen primitives to use in later tasks. In practice therefore, the model which tries to **search** for a program, CAN also be said to be generating the said program. In spirit ofcourse, its not a `generation model` per se.
+Notice I used the word generate here. Because later we'll read about a learning phase called **abstraction** which will generate libraries out of useful + previously seen primitives to use in later tasks. In practice therefore, the model which tries to **search** for a program, CAN also be said to be generating the said program. In spirit of course, its not a `generation model` per se.
 
-Now the paper mentions two more ideas which they have utilized to solve this problem:
+Now the paper mentions two more ideas which they have utilised to solve this problem:
 
 1. **Bayesian multitask program learning** (I couldn't understand why use this, from it’s name)
 2. **Neurally-guided program synthesis** (I can understand why this, because the NN literally is supposed to help in program generation for program induction)
@@ -61,7 +61,7 @@ Now these are two separate research paper so I am did read them yet. But since t
 Let me clarify some notation for you:
 
 
-- [x] `X` -> domin of the tasks (say physics or web)
+- [x] `X` -> domain of the tasks (say physics or web)
 - [x] `x` -> single task from the domain X
 - [x] `px` -> A program that solves x
 - [x] `L` -> Library of tasks which form a "prior" distribution of programs likely to solve x in X

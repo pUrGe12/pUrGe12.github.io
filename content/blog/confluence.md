@@ -173,7 +173,7 @@ There is no syntax for naming a particular row or column, and none is needed. An
 
 Addition attaches **one unit cell** to the shape. The left operand is a shape, the right operand is always a single tagged unit. There is no shape-plus-shape addition because I thought that would make things just more complicated, cause we'll have to end up defining which edges interact, what happens when there is space between them and so on.
 
-Let's now talk about how a unit cells attaches to the shape. Note that we already established it should attach to the latched row or column, and we therefore have all 4 possiblities (2! (Row latched | Column latched) * 2! (row oriented unit | column oriented unit))
+Let's now talk about how a unit cells attaches to the shape. Note that we already established it should attach to the latched row or column, and we therefore have all 4 possibilities (2! (Row latched | Column latched) * 2! (row oriented unit | column oriented unit))
 
 - $1_R$ **floats** in from the right, moving leftwards, and comes to rest against the first cell it meets (on the latched line)
 - $1_C$ **falls** from above, moving downwards, and comes to rest on top of the first cell it meets (on the latched line).
@@ -193,7 +193,7 @@ Note: The third row is pretty cool. It says that we can float in from the right 
 
 ### Latched column, $+\\,1_R$
 
-The unit reaches the top of the chosen column from the side (the diagrams may not depect the position of "flowing in" perfectly).
+The unit reaches the top of the chosen column from the side (the diagrams may not depict the position of "flowing in" perfectly).
 
 <div class="polyeq"><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:2/1"></i><i style="grid-area:3/1"></i></span><span class="op">+</span><span class="poly"><i class="new" style="grid-area:1/1"></i></span><span class="op">=</span><span class="poly"><i style="grid-area:1/1"></i><i style="grid-area:2/1"></i><i style="grid-area:3/1"></i><i class="new" style="grid-area:1/2"></i></span></div>
 
@@ -243,7 +243,7 @@ I'll add more later. Feeling sleepy now.
 
 $(\\,\cdot\\,)^{M}_X$ **replaces** a shape with its reflection. We have two kinds of reflections, along the row or along the column.
 
-NOTE: It's important to realize that this means flips are mathematically impossible to replicate. Thus, if during construction we ever need to flip from a diagonal or cross diagonal axis, the construction needs to change.
+NOTE: It's important to realise that this means flips are mathematically impossible to replicate. Thus, if during construction we ever need to flip from a diagonal or cross diagonal axis, the construction needs to change.
 
 The mirror tag at the bottom, does **not** latch. It's just directionality, like $1_R$. It doesn't even change the latch momentarily or anything.
 
@@ -348,7 +348,7 @@ I deliberately made this to use the dynamics of the push button. The first latch
 
 <div class="polyeq"><span class="poly"><i class="g" style="grid-area:1/1"></i><i class="g" style="grid-area:1/2"></i><i class="g" style="grid-area:1/3"></i><i class="g" style="grid-area:2/1"></i><i class="g" style="grid-area:2/3"></i><i class="g" style="grid-area:3/1"></i><i class="g" style="grid-area:3/2"></i><i class="g" style="grid-area:3/3"></i></span></div>
 
-This is just a 3x3 grid with a missing center square. This formula will construct it:
+This is just a 3x3 grid with a missing centre square. This formula will construct it:
 
 $$
 \left(\left(\left(\left(\left(A_C^{(3)} + 1_R\right) + 1_R\right)^M\right)_C + 1_R\right)_R+1_C\right)+1_C
@@ -368,7 +368,7 @@ Every shape of four cells, counted with all orientations distinct. A formula for
 
 ## Conclusion
 
-I'll settle some more questions and new ideas in the next post as this is already getting too long. Do note that so far, with the rules we have, we can make all shapes upto N=10. The only problem with higher shapes (N=11 gives 4 shapes which we cannot make) is interior reachability.
+I'll settle some more questions and new ideas in the next post as this is already getting too long. Do note that so far, with the rules we have, we can make all shapes up to N=10. The only problem with higher shapes (N=11 gives 4 shapes which we cannot make) is interior reachability.
 
 For example, this the shape we just cannot reach for N=11 (this and its mirror pair and 90 degree rotated versions).
 

@@ -155,9 +155,9 @@ module {
 #loc23 = loc("y"(#loc9))
 ```
 
-From a [blog post on Trition compilation cycles](https://pytorch.org/blog/triton-kernel-compilation-stages/), I could understand that this is **based** on the open-source LLVM compiler project. Which I am assuming to mean that the syntax and semantics are "similar".
+From a [blog post on Triton compilation cycles](https://pytorch.org/blog/triton-kernel-compilation-stages/), I could understand that this is **based** on the open-source LLVM compiler project. Which I am assuming to mean that the syntax and semantics are "similar".
 
-Let's ignore the fluff for now (we'll come back to all the `loc` lines later) and look at the center of attraction:
+Let's ignore the fluff for now (we'll come back to all the `loc` lines later) and look at the centre of attraction:
 
 ```c
 module {
@@ -183,7 +183,7 @@ module {
 }
 ```
 
-In LLVM IR, all the `%` prefixed strings are identifiers, which I am assuming is the case here. We're defining a function (`tt.func`) that is `public` (which I am assuming means that it is accessbile outside of this module definition as well, LLVM IR doesn't have any `public` linkage though, its called `external` or something). The name is a global definition (`@constant_add_kernel`) and we can see that we're passing in the same params we had defined in our function:
+In LLVM IR, all the `%` prefixed strings are identifiers, which I am assuming is the case here. We're defining a function (`tt.func`) that is `public` (which I am assuming means that it is accessible outside of this module definition as well, LLVM IR doesn't have any `public` linkage though, its called `external` or something). The name is a global definition (`@constant_add_kernel`) and we can see that we're passing in the same params we had defined in our function:
 
 ```py
 def constant_add_kernel(
@@ -276,7 +276,7 @@ So, it already calculated the `pid*BLOCK_SIZE` and now it needs the vector to ad
 %offsets_2 = arith.addi %offsets_1, %offsets_0 : tensor<1024xi32> loc(#loc20)
 ```
 
-which is exactly what the `%offsets_1` identifier is doing. The `%offsets_2` identifier is the analog of the `offsets` variable in python which is the final result of the addition. The output is a tensor. The `splat` function is used to convert between datatypes.
+which is exactly what the `%offsets_1` identifier is doing. The `%offsets_2` identifier is the analogue of the `offsets` variable in python which is the final result of the addition. The output is a tensor. The `splat` function is used to convert between datatypes.
 
 The syntax for the `tt.splat` operation is as follows:
 
@@ -312,7 +312,7 @@ operation ::= `arith.cmpi` $predicate `,` $lhs `,` $rhs attr-dict `:` type($lhs)
 
 in our case, the `$predicate` is `slt` which stands for **signed less than**, the `$lhs` is `%offsets_2` (which basically the "**offsets**" variable in the python code) and the `$rhs` is the older `%mask` which is simply a constant vector held in memory.
 
-- Recall that when we were making the mask, we said `mask = offsets < N0`, that's the comparision we're going to do here.
+- Recall that when we were making the mask, we said `mask = offsets < N0`, that's the comparison we're going to do here.
 
 - The result is `1` if the comparison is true and `0` otherwise. Note that the syntax doesn't provide us the output type of the result, rather the output type of `$lhs` so lets not get confused as to why its a tensor.
 
@@ -331,7 +331,7 @@ tt.return loc(#loc12)
 ```
 
 - Recall how we wanted to add `x_ptr + offsets` before passing it to `tl.load` (which is `tt.load` here). To do that, we need to ensure that both are of the same types.
-- The `tt.splat` in this case also converts the 32 bit floating pointer to a tensor of 32 bit floating pointers. This is creating the `constant` indentifier we're using in the python code for `y`.
+- The `tt.splat` in this case also converts the 32 bit floating pointer to a tensor of 32 bit floating pointers. This is creating the `constant` identifier we're using in the python code for `y`.
 
 - Then we call the `arith.addf` function, and from previous discussions we know that this is tensor addition between the output of `tl.load` (or `tt.load`) add that to the constant to get the `y` value from the python code.
 

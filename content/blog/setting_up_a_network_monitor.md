@@ -107,7 +107,7 @@ This is how the DHCP works, straight from wikipedia docs
 
 > On receiving a DHCP request, the DHCP server may respond with specific information for each client, as previously configured by an administrator, or with a specific address and any other information valid for the entire network and for the time period for which the allocation (lease) is valid. A DHCP client typically queries this information immediately after booting, and periodically thereafter before the expiration of the information. When a DHCP client refreshes an assignment, it initially requests the same parameter values, but the DHCP server may assign a new address based on the assignment policies set by administrators.
 
-In my case, the adminstrators probably assign new ip addresses every new day. Not sure of the time.
+In my case, the administrators probably assign new ip addresses every new day. Not sure of the time.
 
 ---
 
@@ -137,15 +137,15 @@ I checked that the drivers exist and are not bound because of something called t
 
 The thing is the old server was previously my dad's business laptop and ULP is enabled in the UEFI by default (It supports legacy as well but who cares about that).
 
-This is so fucked. So apparently my e1000e doesn't discover the NIC hardware (its not listed in the modinfo). I tried install a newer version of the e1000e driver and BAM! API misconfigs, deprecated functins etc. This is so frustrating. Without this I can't even setup a simple LAN connection.
+This is so fucked. So apparently my e1000e doesn't discover the NIC hardware (its not listed in the modinfo). I tried install a newer version of the e1000e driver and BAM! API misconfigs, deprecated functions etc. This is so frustrating. Without this I can't even setup a simple LAN connection.
 
-For some reason manually binding the driver raises the issuse that "the file/directory cannot be found". BRUH I AM SITTING RIGHT HERE. its infront of me. Annoying as hell.
+For some reason manually binding the driver raises the issue that "the file/directory cannot be found". BRUH I AM SITTING RIGHT HERE. its in front of me. Annoying as hell.
 
 ---
 
 https://unix.stackexchange.com/questions/625912/e1000e-error-with-b460-motherboard-and-intel-i219-v-chipset
 
-Ahh, mostly likely my driver is bad as well. It is somehow "stuck" in ULP and it contantly tries to achieve that. The mailing list mentioned has code to continue execution even if ULP failed, but I am not if following that is right.
+Ahh, mostly likely my driver is bad as well. It is somehow "stuck" in ULP and it constantly tries to achieve that. The mailing list mentioned has code to continue execution even if ULP failed, but I am not if following that is right.
 
 With this I also figured that since the old laptop was my dad's `business` laptop, they have not even given the name of the mother board used in that. From what I could find online its a fully custom board built specifically for this laptop. This is the worst news ever because:
 
@@ -156,9 +156,9 @@ I might try the patches mentioned in the mailing list tomorrow and see if those 
 
 ---
 
-So, I have the e1000e driver version 3.8.7 loaded and ready. Running `make` is a pain because I think there is a kernel version mismatch, as this driver proably expects an older kernel (this is downloaded straight from the intel website). I think this to be the case because my new laptop has the e1000e driver working correct without any ULP errors, has the same kernel version `6.8.0-57-generic` and consequently the builds fail in that as well. I guess intel patched the driver for future versions of the kernel but hasn't included that on their website. So I have three choices:
+So, I have the e1000e driver version 3.8.7 loaded and ready. Running `make` is a pain because I think there is a kernel version mismatch, as this driver probably expects an older kernel (this is downloaded straight from the intel website). I think this to be the case because my new laptop has the e1000e driver working correct without any ULP errors, has the same kernel version `6.8.0-57-generic` and consequently the builds fail in that as well. I guess intel patched the driver for future versions of the kernel but hasn't included that on their website. So I have three choices:
 
-1. Switch to an older kernel permanantly (Easy but not a good idea as its not maintained and is probably buggy)
+1. Switch to an older kernel permanently (Easy but not a good idea as its not maintained and is probably buggy)
 2. Patch the driver myself
 3. Download the linux source code (that will come with the patched driver) and apply the bypass for ULP.
 

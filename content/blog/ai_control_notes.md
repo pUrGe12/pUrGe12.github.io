@@ -34,7 +34,7 @@ According to the APPS setting as defined in the [paper](https://arxiv.org/abs/23
 
 - $T$ - Trusted but less capable model
 - $U$ - Untrusted but more capable model
-- $H$ - Limited access to human labor for auditing (about 2% of the total cases)
+- $H$ - Limited access to human labour for auditing (about 2% of the total cases)
 - <span class="rt">RT</span>: Red Team
 - <span class="bt">BT</span>: Blue Team
 
@@ -63,7 +63,7 @@ $U_m$ - Untrusted model used to monitor the produced code
 <span class="rt">RT</span>:
 
 - Let $U_i$ produce backdoors whenever it can
-- Make $U_m$ lie about backdoors being present when asked to summarize for it.
+- Make $U_m$ lie about backdoors being present when asked to summarise for it.
 
 ### Reducing context for trusted monitoring
 
@@ -139,19 +139,19 @@ $T_g$ - Trusted model to generate an alternate code without backdoors
 - We keep selecting bigger and bigger context windows (that is, for $\text{part}\_n$ if we still get a False with $n-1$ and $n+1$, we choose $\text{part}\_{n-2}$, $\text{part}\_{n-1}$, $\text{part}\_{n+1}$, $\text{part}\_{n+2}$ also into context)
 - We repeat this until, either $T$ returns True or until $T$'s context window is exhausted. If it's the latter, then it returns False one last time and allows the code to pass through. If True, we pass it to $T_g$ to generate a less useful but trusted code for that batch.
 
-#### Explanations and optimizations
+#### Explanations and optimisations
 
-To optimize this process, we store the boolean value for each *part* thereby creating a separate YAML structure (note that each *part* was chosen randomly, and hence in this YAML structure, they are all independent of each other).
+To optimise this process, we store the boolean value for each *part* thereby creating a separate YAML structure (note that each *part* was chosen randomly, and hence in this YAML structure, they are all independent of each other).
 
 This creates an *unordered map* which we can use to *memoize* the process and hence, if $T$ has seen $\text{part}\_x$ before and has already flagged it with a boolean, we needn't provide that into its context. This helps in keeping the context window small.
 
-Now, I didn't tackle $U_c$'s failure to capture all backdoors. I mostly focused on minimizing false negatives. This is largely because $U_c$ is a capable model (albeit untrustworthy). The appropriate strategy from <span class="rt">RT</span> at this point can be to attack $U_c$ and try to exploit that. But I will rest the case here and will now take the idea of $T$ being susceptible to jailbreaking into context, and **continue** this discourse from there.
+Now, I didn't tackle $U_c$'s failure to capture all backdoors. I mostly focused on minimising false negatives. This is largely because $U_c$ is a capable model (albeit untrustworthy). The appropriate strategy from <span class="rt">RT</span> at this point can be to attack $U_c$ and try to exploit that. But I will rest the case here and will now take the idea of $T$ being susceptible to jailbreaking into context, and **continue** this discourse from there.
 
 Note that the use of $T_g$ means increased safety at the cost of usefulness.
 
 ## If $T$ is susceptible to jailbreaks
 
-This means that its system level instructions given by us to $T$ (assuming that we have system level access or atleast developer level access) can be overwritten by $U$ if the <span class="rt">RT</span> wishes for that. This can be in terms of propagating a prompt engineering attack through the channels I have devised above.
+This means that its system level instructions given by us to $T$ (assuming that we have system level access or at least developer level access) can be overwritten by $U$ if the <span class="rt">RT</span> wishes for that. This can be in terms of propagating a prompt engineering attack through the channels I have devised above.
 
 <span class="rt">RT</span>:
 
@@ -253,7 +253,7 @@ The background for this setting borrows heavily from the APPS setting, the diffe
 
 In <span class="hl">appendix D.</span> of the paper they have provided the prompt given to the trusted model. The concern I want to address is whether providing $T$, a less capable model, with a hefty prompt and expecting rational behaviour at all times, is valid.
 
-Additionally the novel ideas presented in the paper (resampling and incrimination) are all implemented after the first line of defense, which is one model $T$ with that big prompt. I propose to make the <span class="hl">*trusted monitor*</span> into a <span class="hl">*trusted layer*</span>, keeping all other operations (regarding future resampling and $H$) the same. This will ensure a higher safety metric, keeping the usefulness roughly equal. It additionally will have the capacity to easily detect known-string attacks as featured in <span class="hl">appendix F.</span> of the paper.
+Additionally the novel ideas presented in the paper (resampling and incrimination) are all implemented after the first line of defence, which is one model $T$ with that big prompt. I propose to make the <span class="hl">*trusted monitor*</span> into a <span class="hl">*trusted layer*</span>, keeping all other operations (regarding future resampling and $H$) the same. This will ensure a higher safety metric, keeping the usefulness roughly equal. It additionally will have the capacity to easily detect known-string attacks as featured in <span class="hl">appendix F.</span> of the paper.
 
 ### Working of the Trusted layer
 
@@ -270,12 +270,12 @@ These operations are defined as follows:
 2. System operations: Any system level change, including changing permissions, starting/killing processes, using system services, deleting software etc.
 3. Internet operations: Installing/upgrading software/files, network scans, network/LAN health monitoring etc.
 
-These operations combine to create an exhaustive set of operations a system admin may need to carry out in the context of Bash settings. Any addition to the number of models, and greater discretization will however be beneficial.
+These operations combine to create an exhaustive set of operations a system admin may need to carry out in the context of Bash settings. Any addition to the number of models, and greater discretisation will however be beneficial.
 
 The prototype prompt for $T_x$ has been provided at the end of the document. It is being used to perform the following operation:
 
 - **Input**: The current part command along with previous ones (based on execution order)
-- **Operation**: Organizes the current and previous commands based on their order, and concatenates them into a single one (using logical bash operators). This is done through a YAML structure.
+- **Operation**: Organises the current and previous commands based on their order, and concatenates them into a single one (using logical bash operators). This is done through a YAML structure.
 - **Output**: Returns a boolean. If the final command is something malicious, it returns False. Else, it returns True.
 
 I have based this on the understanding that in order to download a malware and execute it, there are some clear steps that the <span class="rt">RT</span> must take at some point. Irrespective of any arbitrary/obfuscated commands, chaining them in order and concatenating them should reveal their true intentions.
@@ -307,4 +307,4 @@ If the return value from the <span class="hl">trusted layer</span> is True, we p
 This protocol therefore has two added benefits to the method described in the paper:
 
 1. We're able to detect known-string attacks in a structured manner
-2. We don't overburden $T$ with large and complex prompts, rather giving it discretized and specific ones.
+2. We don't overburden $T$ with large and complex prompts, rather giving it discretised and specific ones.

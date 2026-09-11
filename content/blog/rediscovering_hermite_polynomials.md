@@ -115,7 +115,7 @@ $$
 f^{VI}(t)=(-120t+160t^3-32t^5)e^{-t^2}; \rvert_{t=0} = 0
 $$
 
-And so on. Now I cannot make a sense of the pattern here (atleast not entirely) so I am going to write the coefficients down as a matrix.
+And so on. Now I cannot make a sense of the pattern here (at least not entirely) so I am going to write the coefficients down as a matrix.
 
 The columns will be the coefficients of $x^0$, $x^1$, $x^2$..., while the rows will be for $f\'$, $f\'\'$... This is what the matrix ends up looking like:
 

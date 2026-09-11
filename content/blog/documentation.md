@@ -30,7 +30,7 @@ You can mock the sensor data using the `.resd` format. This is the renode sensor
 We can mock both regular and irregular sensors because there are two kinds of valid data formats for .resd files as well.
 
 1. **Arbitrary timestamp sample blocks** -> add a timestamp and a value -> For irregular sensor simulation
-2. **Constant frequency sample blocks** -> let's you add a metadata to specify the intiail timestamp and period between timestamps. This is for a regular sensor data testing.
+2. **Constant frequency sample blocks** -> let's you add a metadata to specify the initial timestamp and period between timestamps. This is for a regular sensor data testing.
 
 Timestamps are unsigned 8-byte values expressed in virtual nanoseconds counted from the beginning of the file.
 
@@ -89,7 +89,7 @@ There are two types of memory (is that the right way to say this?) and the funda
                            └─────────────┘
 ```
 
-All `MappedMemory` access is handled in C whle `ArrayMemory` access requires conversion to C# (why? No clue).
+All `MappedMemory` access is handled in C while `ArrayMemory` access requires conversion to C# (why? No clue).
 
 Now referencing https://renode.readthedocs.io/en/latest/advanced/writing-peripherals.html#writing-a-peripheral-model-in-c
 
@@ -123,7 +123,7 @@ And the `IAnalyzable` is basically to attach an analyzer (like a backend or an o
 
 `Reset` must be defined by us! This tells what exactly the **return to power-on state** must mean, whether you want to clear the registers or what.
 
-But only by this you cannot become readable and writable by the CPU. For that you need to implement atleast these three:
+But only by this you cannot become readable and writable by the CPU. For that you need to implement at least these three:
 
 - for **reading** (e.g., `ReadDoubleWord`) - called by the system bus in order to read a value from the peripheral,
 
@@ -360,7 +360,7 @@ Each individual timer can generate an interrupt when the value in its value regi
 Stuff you can use the timer for:
 
 1. Scheduling -> Threads, tasks, processes
-2. Synchronizing -> Digital Audio/Video
+2. Synchronising -> Digital Audio/Video
 3. Time stamping
 
 HPET, Multimedia Timer, MMT and MM Timer should be treated as the same timer hardware.
@@ -368,10 +368,10 @@ The terms Timer, Event Timer, HPET, MMT and MM Timer refer to the combination of
 
 - Fmin = 10 MHz -> Note how this is the same value used in the module
 - Number of comparators = 3 -> This is also what is written in the code above
-- Periodic capable timers = 1 -> This is probably not modeled in the C# module
+- Periodic capable timers = 1 -> This is probably not modelled in the C# module
 - Interrupt Delivery via IOxAPIC -> This is a requirement according to the specs, how are we doing this in the C# module?
 
-Okay turns out that this is ancient technology. 2005. No one does this anymore. And the reason I realized this is because HPET implements Interrupts via a specific required delivery mechanism, `Interrupt Delivery via IOxAPIC` -> But this C# module doesn't implement any output from this timer at all! Its only a **query me** module. That's all there is to this. And its not its fault. No one really needed this.
+Okay turns out that this is ancient technology. 2005. No one does this anymore. And the reason I realised this is because HPET implements Interrupts via a specific required delivery mechanism, `Interrupt Delivery via IOxAPIC` -> But this C# module doesn't implement any output from this timer at all! Its only a **query me** module. That's all there is to this. And its not its fault. No one really needed this.
 
 Let me actually look at the base class before anything else now, cause all timers inherit from it:
 
@@ -752,9 +752,9 @@ Arguments:
 1. `clockSource` -> This is a source clock for the timer
 2. `frequency` -> This must be the frequency for the clock
 3. `owner` -> This is a peripheral owner. I think this is related to which peripheral implements a `LimitTimer` but I am not sure yet. Let's see.
-4. `localname` -> This is a name. I think its just a refernence for the peripheral which implements this but again not sure
-5. `limit` -> Okay maybe its the max value it can increment upto until it rolls around?
-6. `direction` -> This is weird. Why is this defaulting to decreasing. (note that the defalt limit is also 2^64-1)
+4. `localname` -> This is a name. I think its just a reference for the peripheral which implements this but again not sure
+5. `limit` -> Okay maybe its the max value it can increment up to until it rolls around?
+6. `direction` -> This is weird. Why is this defaulting to decreasing. (note that the default limit is also 2^64-1)
 7. `enabled` -> Enabled what? The timer?
 8. `workMode` -> Periodic timer -> This is cool. This was in the HPET specs as well. 1 out of 3 being periodic.
 9. `eventEnabled` -> What event are we enabling? Interrupts?
@@ -793,7 +793,7 @@ InternalReset();
 
 - This part is chill. It ensures some values are reasonable. Then creates an object called `irqSync`. This sounds suspiciously like **interrupt syncing**. The reason you do `new object()` in `C#` is when you want to create a lock (to not allow multiple threads to access the same memory) or as a placeholder. So, this creates free memory in the heap and allocates it to this object (its like a malloc which mallocs about 24 bytes of memory just to exist).
 
-- `this.clockSource = clockSource;` -> This is basically doing `self.clockSource = clockSource` in python. However, you don't really have to do this in C# because this is **implicit**. In python its **explicit**. So the reason one would do it is to just make this clear (especailly if names are the same as argument).
+- `this.clockSource = clockSource;` -> This is basically doing `self.clockSource = clockSource` in python. However, you don't really have to do this in C# because this is **implicit**. In python its **explicit**. So the reason one would do it is to just make this clear (especially if names are the same as argument).
 
 - Then it says: **Set `this.owner` to myself (this) if I am a peripheral and no owner was provided. Otherwise, set `this.owner` to the provided owner**
 
@@ -833,7 +833,7 @@ private void InternalReset()
 
 Okay so this is a `private` method, I don't really care about that but sure. So, there is a new `clockEntry` and an object initializer. So that `Value` in there is basically, `0` if `initialDirection` is ascending (recall how the default is descending), and initialLimit if descending. And `initialLimit` is limit which cannot be 0 and defaults to `18446744073709551615` -> The largest 64 bit unsigned integer.
 
-So what is the `ClockEntry`? Did we define it before? I mean in this scope? Because its using `new` so its assinging some memory in the heap for this. But how is this like a dataclass? 
+So what is the `ClockEntry`? Did we define it before? I mean in this scope? Because its using `new` so its assigning some memory in the heap for this. But how is this like a dataclass? 
 
 This btw is the `GetClockEntry`:
 
@@ -1107,7 +1107,7 @@ namespace Antmicro.Renode.Peripherals.Timers
 }
 ```
 
-The thing is, this must be modelling some behvaiour, so let's pull out the datasheet for this bad boy. There are some properties [here](https://docs.zephyrproject.org/latest/build/dts/api/bindings/timer/riscv%2Cmachine-timer.html), and this is the [driver](https://github.com/zephyrproject-rtos/zephyr/blob/main/drivers/timer/riscv_machine_timer.c) for it. Here's what I learnt about this:
+The thing is, this must be modelling some behaviour, so let's pull out the datasheet for this bad boy. There are some properties [here](https://docs.zephyrproject.org/latest/build/dts/api/bindings/timer/riscv%2Cmachine-timer.html), and this is the [driver](https://github.com/zephyrproject-rtos/zephyr/blob/main/drivers/timer/riscv_machine_timer.c) for it. Here's what I learnt about this:
 
 1. sys_clock_announce() accepts at most INT32_MAX -> This seems familiar.
 

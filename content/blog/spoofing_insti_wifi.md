@@ -11,7 +11,7 @@ tags = ["Hardware", "Networks", "Cysec", "blog"]
 lang = "en"
 +++
 
-My college has LDAP credentials that we supposed to use to get access to the ethernet. There is a `netaccess.iitm.ac.in` page that asks for these creds whenever you login to a new network. Now if multiple people are connected to the same network and any **one** person authenticates, everyone gets access. Its weird, but thats not why we are here.
+My college has LDAP credentials that we supposed to use to get access to the ethernet. There is a `netaccess.iitm.ac.in` page that asks for these creds whenever you login to a new network. Now if multiple people are connected to the same network and any **one** person authenticates, everyone gets access. Its weird, but that's not why we are here.
 
 # Idea
 
@@ -235,11 +235,11 @@ I saved this as an .ino file and uploaded using `Arduino IDE`. It worked beautif
 
 # Supabase
 
-Another thing I thought of implementing was adding functionality to directly save the credentials in a supabase table. It woudn't be that hard because I have done it before for `Agnirath` (which is where I work as an electrical engineer).
+Another thing I thought of implementing was adding functionality to directly save the credentials in a supabase table. It wouldn't be that hard because I have done it before for `Agnirath` (which is where I work as an electrical engineer).
 
 # Making it a self-sustaining thing
 
-I added a battery to this! The battery is a 11V but I need maximum 5V to power the ESP (via the 5V pin), so I used a motor driver that was kept nearby. I didn't have a buck converter and the motor driver had a built in LDO for converting 12V to 5V. The battery discharged to 5V pretty quicky cause of the LDO, so now I am using it directly.
+I added a battery to this! The battery is a 11V but I need maximum 5V to power the ESP (via the 5V pin), so I used a motor driver that was kept nearby. I didn't have a buck converter and the motor driver had a built in LDO for converting 12V to 5V. The battery discharged to 5V pretty quickly cause of the LDO, so now I am using it directly.
 
 
 The only problem here is getting people to `look` at this new network. For this I will have to think of something else.

@@ -15,7 +15,7 @@ lang = "en"
 
 Good evening, its 1am and now we're gonna look at running some dummy NN code on edge (with an ESP32 which I have many of). Let's first see if ESP-IDF allows me do something like this or if someone else has already done this.
 
-And reddit to the rescue, [this](https://www.programmingboss.com/2025/05/run-tinyml-ai-models-on-esp32-voice-recgonation-using-esp32.html#gsc.tab=0) has some insights. But its not exatly what I am looking for because firstly its an arduino project, I mean written in a slightly higher level, I can't compile that with ESP-IDF to a firmware binary to run inside the emulator (since the bootloader, partition-table etc. will be handled by arduino's framework).
+And reddit to the rescue, [this](https://www.programmingboss.com/2025/05/run-tinyml-ai-models-on-esp32-voice-recgonation-using-esp32.html#gsc.tab=0) has some insights. But its not exactly what I am looking for because firstly its an arduino project, I mean written in a slightly higher level, I can't compile that with ESP-IDF to a firmware binary to run inside the emulator (since the bootloader, partition-table etc. will be handled by arduino's framework).
 
 Anyways, let's just try it out and we'll see if anything errors out (disclaimer, it all worked fine). Let's use the same setup as [before](https://purge12.github.io/blog/emulating-esp-firmware-on-qemu) and overwrite the hello world example code, build the code and emulate it.
 
@@ -188,7 +188,7 @@ void app_main(void)
 }
 ```
 
-### Explaination
+### Explanation
 
 Here's an explanation for what's happening in this code line by line:
 
@@ -234,7 +234,7 @@ static const float b2[N_OUT] = { 0.0f, 0.1f, 0.0f };
 static const char *CLASS_NAMES[N_OUT] = { "HEAT", "IDLE", "COOL" };
 ```
 
-This is to create a simple neural network, we have the weights and biases for an input layer and output layer. These are all arbitary numbers, but the thing is we don't care. We'll just want a simple classification NN to be there so that we can run forward passes. We don't even care about backprop right now.
+This is to create a simple neural network, we have the weights and biases for an input layer and output layer. These are all arbitrary numbers, but the thing is we don't care. We'll just want a simple classification NN to be there so that we can run forward passes. We don't even care about backprop right now.
 
 3. The forward pass
 
@@ -351,7 +351,7 @@ This is interesting because we know that the bug will come out very different in
 
 ### Emulating and observing the logs
 
-The most subtle one is the malloc returning NULL so, let's start with that. We'll just toggle the poision to `FAULT_ARENA_FAIL` and run the steps as before:
+The most subtle one is the malloc returning NULL so, let's start with that. We'll just toggle the poison to `FAULT_ARENA_FAIL` and run the steps as before:
 
 ```sh
 # from the ESP-IDF root
@@ -407,7 +407,7 @@ Let's understand this bug, precisely because this is something that cannot be ca
 
 - `EXCVADDR: 0x00000000` -> This is the address which is fucking us up, which is NULL. As expected since malloc(huge_number) gives NULL which is what we tried to store as a float here `float *hid = arena`.
 
-- `PC: 0x400d3697` — the instruction that did it. 0x400d_xxxx is the flash-mapped code region, and that address lives inside `infer()` (the cooked function, PC means **Program Counter**). How do I know this? Well I really don't, atleast not by looking at the number itself. We'll have to cross-link this with the symbol table, which I didn't. I am stating this assumption because I know its not a RAM or a ROM problem.
+- `PC: 0x400d3697` — the instruction that did it. 0x400d_xxxx is the flash-mapped code region, and that address lives inside `infer()` (the cooked function, PC means **Program Counter**). How do I know this? Well I really don't, at least not by looking at the number itself. We'll have to cross-link this with the symbol table, which I didn't. I am stating this assumption because I know its not a RAM or a ROM problem.
 
 This is because these addresses `0x4000_xxxx` are masked ROM and these `0x4008_xxxx` are IRAM (Instruction RAM) while `0x400D_xxxx` are the application memory. Hence I know its application memory and one function which can fuck up (I mean we deliberately set up `infer` to fuck up but still) is `infer`.
 

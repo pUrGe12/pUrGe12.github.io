@@ -108,7 +108,7 @@ In the last [blog](https://purge12.github.io/blog/confluence/), I discussed abou
 
 <div class="polyeq"><span class="poly"><i class="g" style="grid-area:1/1"></i><i class="g" style="grid-area:1/2"></i><i class="g" style="grid-area:1/3"></i><i class="g" style="grid-area:2/1"></i><i class="g" style="grid-area:2/3"></i><i class="g" style="grid-area:3/1"></i><i class="g" style="grid-area:4/1"></i><i class="g" style="grid-area:4/3"></i><i class="g" style="grid-area:5/1"></i><i class="g" style="grid-area:5/2"></i><i class="g" style="grid-area:5/3"></i></span></div>
 
-In this blog, I'll explore a way of solving this first, then I'll write some generalized notation so that we can talk about the length of the formula as a "feature" of the algebra and ponder over it.
+In this blog, I'll explore a way of solving this first, then I'll write some generalised notation so that we can talk about the length of the formula as a "feature" of the algebra and ponder over it.
 
 ## Introducing Subtraction
 
@@ -136,7 +136,7 @@ The only trick here was to leverage the pinned image. Because when we subtract, 
 
 ## Notation and reduction
 
-You would have realized that there are a lot of unncessary brackets and plus signs. I mean addition is understood, so we can get rid of those and assume addition by default. We can also get rid of the brackets because its one block at a time always going to the right.
+You would have realised that there are a lot of unnecessary brackets and plus signs. I mean addition is understood, so we can get rid of those and assume addition by default. We can also get rid of the brackets because its one block at a time always going to the right.
 
 So, a formula can be written in a simplified manner:
 
@@ -150,7 +150,7 @@ Basic translations:
 2. 
 
 
-There are some caveates to this. For example in case of rule 1, we only do this when the latch never changes! So, if we had latched onto a column before adding multiple things, we'll write:
+There are some caveats to this. For example in case of rule 1, we only do this when the latch never changes! So, if we had latched onto a column before adding multiple things, we'll write:
 
 $$
 C1_R(1_R \cdot 3)
@@ -196,7 +196,7 @@ In fact it is this observation that led me to adding subtraction in the rules an
 
 ## Coverage
 
-So, I was able to run some scripts to prove that we're able to reach all the shapes upto N = 11 atleast. After that the required computations go very high so I didn't run those checks. I'll keep updating this, but I assume there shouldn't be a problem with coverage now with all the rules we have in place.
+So, I was able to run some scripts to prove that we're able to reach all the shapes up to N = 11 at least. After that the required computations go very high so I didn't run those checks. I'll keep updating this, but I assume there shouldn't be a problem with coverage now with all the rules we have in place.
 
 ## Theorems and observations
 
@@ -208,9 +208,9 @@ $$
 S \geq (N-j)
 $$
 
-This is kinda trivial to see tbh. You will need N-j new blocks to build the shape, so definetly the number of steps will exceed that since we'll be counting M, P and X in the steps as well.
+This is kinda trivial to see tbh. You will need N-j new blocks to build the shape, so definitely the number of steps will exceed that since we'll be counting M, P and X in the steps as well.
 
-What you're not prepared for is this emperical fact I discovered by running more scripts. I did the following:
+What you're not prepared for is this empirical fact I discovered by running more scripts. I did the following:
 
 1. For each value of N from 5 to 10, we'll take every possible fixed polyominoes and try to find an algebra that fits it.
 2. For each algebra that we find, we'll count the number of steps. We'll find ALL possible algebra until we have exhausted the possible branches (the approach is obviously not a naive search, I'll talk about the code later) and move on.
@@ -222,7 +222,7 @@ If we count the percentage of shapes achieved for different $N$ values against t
 
 > Note that fixes shapes means we're not counting rotations and reflections as the same thing for any shape. Each operation results in a distinct shape.
 
-Clearly the graph is shifting to the right, with the peak decreasing ever so slightly. The thing I want you to focus on right now is the correspondance between the $N$ value and the number of steps at which it peaks. They're the same! That's a pretty coincidence to have isn't it. It also means that for a given $N$ value, atleast emperically, more than 30% of the shapes can be generated in a minimum of $N$ steps.
+Clearly the graph is shifting to the right, with the peak decreasing ever so slightly. The thing I want you to focus on right now is the correspondence between the $N$ value and the number of steps at which it peaks. They're the same! That's a pretty coincidence to have isn't it. It also means that for a given $N$ value, at least empirically, more than 30% of the shapes can be generated in a minimum of $N$ steps.
 
 Maybe there is a proof for that, I am yet to do that.
 

@@ -45,7 +45,7 @@ These two numbers are part of the `vector table` which also contains a bunch of 
 
 ### Compilation
 
-The compilation happens via the `arm-none-eabi-gcc` compiler and that doesn't include any addresses in the machine code beacuse the compiler doesn't know yet where everything will go inside the chip.
+The compilation happens via the `arm-none-eabi-gcc` compiler and that doesn't include any addresses in the machine code because the compiler doesn't know yet where everything will go inside the chip.
 
 Here the `linker` plays a very important role because that's the one telling the compiler where `flash` and `RAM` and that it should put the vector table first and all.
 
@@ -115,4 +115,4 @@ make -f tensorflow/lite/micro/tools/make/Makefile \
 
 - IN this case the failure is not a `Guru-meditation`!!! Its a `AllocateTensor failed`, damn. That's cool.
 
-I didn't know renode has a `--disable-gui` option. This saves my life I thiought we'll be doing docker all along. But we'll still have to do docker though in the CI/CD 
+I didn't know renode has a `--disable-gui` option. This saves my life I thought we'll be doing docker all along. But we'll still have to do docker though in the CI/CD 

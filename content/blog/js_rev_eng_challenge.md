@@ -41,11 +41,11 @@ Jane Street had released a [challenge](https://blog.janestreet.com/can-you-rever
 
 1. Traced the netlist by hand to get a feel for the adder. I had made adders before, but using only **AND**, **OR** and **XOR**, this one used **NOR**, **XNOR** etc. so it didn't LOOK the same initially.
 2. Tracked a few input output pairs, to bring the point home. It also helped with seeing how "conb" wasn't used to store a constant value. That is, the constant being a specific combination of the gate highs was a first.
-3. Installed the right software tooling here. I need KLayout for viewing the GDS. I also needed the right skywater library to load it. Then installed HAL for visualizing the running code on the netlist.
+3. Installed the right software tooling here. I need KLayout for viewing the GDS. I also needed the right skywater library to load it. Then installed HAL for visualising the running code on the netlist.
 4. Did some visual inspection of the GDS. This just means toggling the different layers, seeing what stays vs what goes, understanding the meaning of different layered representation, how transistors sit in the GDS as so on.
-5. I tried to do some timing analysis in HAL (I didn't think about SAT solvers just yet) to see how the different ripple adder bits would arrive. Turns out they were arriving in chunks of 2 (i.e. 2 bits at a time), so the ripple carry was kind of mangled by an optimization engine. I am still not 100% sure how that worked.
+5. I tried to do some timing analysis in HAL (I didn't think about SAT solvers just yet) to see how the different ripple adder bits would arrive. Turns out they were arriving in chunks of 2 (i.e. 2 bits at a time), so the ripple carry was kind of mangled by an optimisation engine. I am still not 100% sure how that worked.
    I didn't run DANA here, there wasn't much reason for that since I was just exploring how things looked at that time!
-6. Verified the GDS to netlist tooling, ran it for the warmup a bunch of times to make sure the transistors are modeled correctly, and gates are according to the skywater library and so on. Verification was just making sure no nets are hanging, no unknown transistor combinations made it through and so on.
+6. Verified the GDS to netlist tooling, ran it for the warmup a bunch of times to make sure the transistors are modelled correctly, and gates are according to the skywater library and so on. Verification was just making sure no nets are hanging, no unknown transistor combinations made it through and so on.
 
 ## Puzzle
 
@@ -53,7 +53,7 @@ Jane Street had released a [challenge](https://blog.janestreet.com/can-you-rever
 
 Used the same code as from the warmup to get a netlist for the puzzle. Verification of the netlist was just checking for any floating pins. I used the `sky130_fd_sc_hd__tt_025C_1v80_hal.lib` file for extraction. It's unlikely that this didn't have a module that the actual puzzle did. And it worked on warmup well.
 
-I have focused more on the puzzle logic itself rather than the quirks of extracting netlists. One reason for that is the `skywater` labels survided in the GDS (thankfully) so technically, the job become much much easier.
+I have focused more on the puzzle logic itself rather than the quirks of extracting netlists. One reason for that is the `skywater` labels survived in the GDS (thankfully) so technically, the job become much much easier.
 
 ### Basic Analysis
 
@@ -107,16 +107,16 @@ DANA is a Dataflow analysis tool for netlists. I wrote a [blog](https://purge12.
 
 4 as well, because the number of flip flops to be 92 and 92 doesn't fit nicely with powers of 2, the closest we can get is 11 registers of 8 bit, and 1 register of 4 bits, so that was my guess and hence I expected 4 FFs to also show up in a group. I had no prior to give to DANA.
 
-The output was 18 registers. Below is a visualization for that, where each block is one DANA module, and it lists its ID and size (the number of FF in that block). I arranged the diagram suggestively because at initial glances, it looked like I could make out the primary inputs and outputs. I was wrong, but it's a clear visualization nonetheless.
+The output was 18 registers. Below is a visualisation for that, where each block is one DANA module, and it lists its ID and size (the number of FF in that block). I arranged the diagram suggestively because at initial glances, it looked like I could make out the primary inputs and outputs. I was wrong, but it's a clear visualisation nonetheless.
 
-{{ figure(src="assets/DANA_output_JS.png", alt="DANA output visualized", caption="Visualized DANA groups") }}
+{{ figure(src="assets/DANA_output_JS.png", alt="DANA output visualised", caption="Visualised DANA groups") }}
 
 ### Observations
 
 1. Group 16 is just 1 FF which feeds to every other (except 0). This **might** mean that 16 is related to the clk (a hypothesis, corrected in point 6 of **inferences**).
 2. Groups {15, 12, 9, 13, 10, 11} form a dependency chain (w.r.t. their predecessors) which is very interesting to note.
 
-{{ figure(src="assets/group_heirarchy_visual.png", alt="Important dependency chain", caption="The predecessor dependency chain") }}
+{{ figure(src="assets/group_hierarchy_visual.png", alt="Important dependency chain", caption="The predecessor dependency chain") }}
 
 That is,
 
@@ -141,7 +141,7 @@ I assumed that these 5 (all except 16) might be related to **primary inputs**.
 7. Groups 3 and 4 are 2xdfstp (resets to 1) and 2xdfrtp (resets to 0) each. Therefore, at reset conditions, these 8 FFs (if considered together as an 8 bit value) are holding one of $8!/(4!4!)=70$ possible values. They are determined, but their order is nothing we know.
 8. There is a group 7 which has **45 FFs** in it. This is certainly an odd number of FFs to have, so we'll have to be more careful about how this plays out.
 9. Traced group 8 to be the output for the **success** flag.
-   Group 8 has 2 FFs but **success** is just 1 bit of value, so one of those two FFs must be holding the bit. We'll get back to this when we analyze the functions leading to each group.
+   Group 8 has 2 FFs but **success** is just 1 bit of value, so one of those two FFs must be holding the bit. We'll get back to this when we analyse the functions leading to each group.
 
 ### Inferences
 
@@ -171,7 +171,7 @@ group 13 : 1 flops [D x1]
 group 15 : 1 flops [D x1]
 ```
 
-**Now this is interesting because all the groups from the nested structure are listed here. This implies that for group 15, it must get input "I" without reaching any other FF, so no combinatorial logic will have mangled the "I" that comes to group 15. I can say this with confidence because group 15 has predecessors as only itself and 16, and we have hypothesized that 16 is some "clk" kind of signal. (corrected in point 6)**
+**Now this is interesting because all the groups from the nested structure are listed here. This implies that for group 15, it must get input "I" without reaching any other FF, so no combinatorial logic will have mangled the "I" that comes to group 15. I can say this with confidence because group 15 has predecessors as only itself and 16, and we have hypothesised that 16 is some "clk" kind of signal. (corrected in point 6)**
 
 **This means:**
 
@@ -485,7 +485,7 @@ Now we can just draw lines at the boundaries (where two neighbouring cells have 
 
 - JSC visible in the grid layout for the star-battle
 
-  I was just curious to see what the puzzle even looked like. Got into rabbit hole of polynomio reduction and confluence trying to figure out some proofs for 2 not touch.
+  I was just curious to see what the puzzle even looked like. Got into rabbit hole of polyomino reduction and confluence trying to figure out some proofs for 2 not touch.
 
 {{ figure(src="assets/JS_puzzle_final_image.png", alt="Final grid of the puzzle", caption="Final puzzle grid shows the symbols JSC") }}
 

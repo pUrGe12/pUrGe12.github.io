@@ -13,7 +13,7 @@ lang = "en"
 
 So my GSoC mentor had told me about something called a Homelab, and why it will be useful if I want to learn more about networking. I knew a few things before from CTFs and nmap and nettacker scans, but that's all. I had no idea how to setup my own servers, run services on ports, host websites (will be done in the future after I learn `port forwarding`) for all users on the internet (note that hosting one on the same LAN is so much simpler, cause you don't need to host it at all).
 
-This post is about creating my own NAS server. I am not sure if what I have is really a NAS server but it achieves its purpose. So, I will be describing exacly what I did, the commands I used and the hardware as well.
+This post is about creating my own NAS server. I am not sure if what I have is really a NAS server but it achieves its purpose. So, I will be describing exactly what I did, the commands I used and the hardware as well.
 
 ---
 
@@ -25,7 +25,7 @@ The keyboard doesn't work so I attached an external one. The battery is pretty m
 
 # Running Samba
 
-`Samba` is an implmentation of the SMB networking protocol. You can find more on it in its wikipedia page, but what's relevant to us is the fact that its basically a file sharing service.
+`Samba` is an implementation of the SMB networking protocol. You can find more on it in its wikipedia page, but what's relevant to us is the fact that its basically a file sharing service.
 
 The idea was to create a samba server that runs on my old laptop such that any other device connected to the same LAN (in my case, my institute wifi `iitmwifi`) can access that server and upload files. These [official docs](https://ubuntu.com/tutorials/install-and-configure-samba#1-overview) by ubuntu explain how to set this up.
 
@@ -37,7 +37,7 @@ Install samba using the following commands
 sudo apt install samba
 ```
 
-The way samba works is, we create a shared directory that can be used by any other computer if its mounted with authentication. Yes, authentication is important because duh, you probably dont want anyone in the internet to store pics in your device or worse, VIEW the information stored in your device.
+The way samba works is, we create a shared directory that can be used by any other computer if its mounted with authentication. Yes, authentication is important because duh, you probably don't want anyone in the internet to store pics in your device or worse, VIEW the information stored in your device.
 
 So, we create a shared directory, following exactly the steps mentioned in the documentation
 
@@ -104,7 +104,7 @@ You might be wondering what the `uid` and `gid` and `rw` are in the above comman
 - `gid=$(id -g)` sets group ownership to your current group
 - `rw` forces read/write mode
 
-And I am also forcing a version here because its makes stuff more stable.
+And I am also forcing a version here because it makes stuff more stable.
 
 > Note that these usernames are all the NAS server's names!
 
@@ -130,13 +130,13 @@ and look for an active network connection like `WLAN0` or `wlp2s0` etc. Under th
 
 ---
 
-Addtionally you may want to restrict your server from ever closing by
+Additionally you may want to restrict your server from ever closing by
 
 ```sh
 sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 ```
 
-and you probably want to create alias to do the mounting and unmouting for you. This goes inside zshrc or bashrc or whatever else you might be using.
+and you probably want to create alias to do the mounting and unmounting for you. This goes inside zshrc or bashrc or whatever else you might be using.
 
 ```sh
 # Alias for the NAS server's samba folder mounting

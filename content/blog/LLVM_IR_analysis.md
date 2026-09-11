@@ -75,12 +75,12 @@ attributes #1 = { "frame-pointer"="all" "no-trapping-math"="true" "stack-protect
 
 ### Analysis
 
-Okay, where do we start? Let's see if there are any reference materials for the LLVM IR. Ummm. good news and bad news. Good news is I found the reference manual. bad news is that's the only think I found. See for youself here: [Manual](https://llvm.org/docs/LangRef.html#introduction).
+Okay, where do we start? Let's see if there are any reference materials for the LLVM IR. Ummm. good news and bad news. Good news is I found the reference manual. bad news is that's the only think I found. See for yourself here: [Manual](https://llvm.org/docs/LangRef.html#introduction).
 
 Few bits of information:
 
 1. Comments are started off with a semi-colon, that's good to know
-2. Variables come in two types, global (preceeded by an `@`) and local (preceeded by a `%`). Usually we'll see `%` a lot because we tend of define stuff inside functions locally and all.
+2. Variables come in two types, global (preceded by an `@`) and local (preceded by a `%`). Usually we'll see `%` a lot because we tend of define stuff inside functions locally and all.
 3. String definitions are simple, each character is read literally except a backslash. They start and end with `"`. So, in my code, 
 
 ```c
@@ -118,7 +118,7 @@ define dso_local i32 @main() #0 {
 
 - `dso_local`: The compiler may assume that a function or variable marked as dso_local will resolve to a symbol within the same linkage unit. Direct access will be generated even if the definition is not within this compilation unit.
 
-In our case, the `dso_local` is binding for the main function. `%1` and `%2` are the language's way of defining every unnamed variabe. It cannot let anything hanging and it starts sequentually. these are all local values. This is the whole idea behind **Static Single Assignment (SSA)** for which LLVM owns a part of its populatrity.
+In our case, the `dso_local` is binding for the main function. `%1` and `%2` are the language's way of defining every unnamed variable. It cannot let anything hanging and it starts sequentially. these are all local values. This is the whole idea behind **Static Single Assignment (SSA)** for which LLVM owns a part of its popularity.
 
 - This line:
 
@@ -126,7 +126,7 @@ In our case, the `dso_local` is binding for the main function. `%1` and `%2` are
 store i32 0, i32* %1, align 4
 ```
 
-Looks like its trying to store the return value 0, by giving it a pointer which we just defined before `%1`. Actually no, this is an artifact of the unoptimized representation. This is equivalent to storing a random 0 for no reason because in the final return statement, it never referenes `%1`! Not sure why it does this.
+Looks like its trying to store the return value 0, by giving it a pointer which we just defined before `%1`. Actually no, this is an artifact of the unoptimised representation. This is equivalent to storing a random 0 for no reason because in the final return statement, it never references `%1`! Not sure why it does this.
 
 Its kind of like `clang's` fault. So, hahaha.
 
@@ -181,7 +181,7 @@ int main() {
 }
 ```
 
-I just remembered how one of the optimizations that LLVM would do, was to replace printf with puts when we're not passing in dynamic values.
+I just remembered how one of the optimisations that LLVM would do, was to replace printf with puts when we're not passing in dynamic values.
 
 so looking at this IR:
 
@@ -247,7 +247,7 @@ define dso_local i32 @main() #0 {
 }
 ```
 
-- This time the number of bytes in the `.str` global variable is 7, it is litearlly counting the format specifier! This is ofcourse the non-optimized case. We'll see what happens in the optimized case soon.
+- This time the number of bytes in the `.str` global variable is 7, it is literally counting the format specifier! This is of course the non-optimised case. We'll see what happens in the optimised case soon.
 
 - So it assigned three placeholders in memory with local unnamed variables, then it stores 0 again to one of them (as it did last time!), then stores the two integers we defined to be added together.
 
@@ -262,9 +262,9 @@ Basically its saying that this addition is not protected from signed overflows.
 ```
 No arguments at all!
 
-## The third program (with optimizations enabled)
+## The third program (with optimisations enabled)
 
-Let's try to see the optimizations now, what happens if I write a recursive function and let it perform a Tail call optimisation?
+Let's try to see the optimisations now, what happens if I write a recursive function and let it perform a Tail call optimisation?
 
 ```c
 #include <stdio.h>
@@ -308,7 +308,7 @@ So this is the program I have, slightly more complex but nothing over the top. T
 
 So now this should TCO the tailfib function but not the notailfib. If you're struck with what TCO means then checkout my blog on that. Anyway, it simply means that instead of "calling the function" (as in a `call` operand in assembly) which takes up more overhead in the stack, we perform a "jump" because after all the function is already defined and when we write a recursive loop, a JUMP is what we MEAN.
 
-Jumps are faster than calls, so that's the optimization. Let's see what clang does (note that we'll have to compile this with optimizations enabled as it won't do it by default)
+Jumps are faster than calls, so that's the optimisation. Let's see what clang does (note that we'll have to compile this with optimisations enabled as it won't do it by default)
 
 ```c
 ; ModuleID = 'fib.c'
@@ -447,7 +447,7 @@ define dso_local i32 @notailfib(i32 noundef %0) local_unnamed_addr #0 {
 ```
 
 - The old syntax of a global variable definition (`@`) is there, along with the `dso_local` declaration.
-- This time the function takes in a parameter which is a local unname variable (`%0`).
+- This time the function takes in a parameter which is a local unnamed variable (`%0`).
 - For the `br` instruction you can choose to [read the documentation](https://llvm.org/docs/LangRef.html#br-instruction) or my simple explanation: The way it is being used here, its an **unconditional** branch to a label identified as `2`.
 
 So the program will start at the label 2, let's see what it does from there on:
@@ -479,7 +479,7 @@ Note that something interesting has happened here. If you look at branch `%6`, t
 %3 = phi i32 [ 0, %1 ], [ %10, %6 ]
 ```
 
-So, this is telling us that **if** coming from `%1`, deifined inside main like this:
+So, this is telling us that **if** coming from `%1`, defined inside main like this:
 
 ```c
 %1 = tail call i32 @notailfib(i32 noundef 15)
@@ -542,7 +542,7 @@ define dso_local i32 @rec(i32 noundef %0, i32 noundef %1, i32 noundef %2) local_
 Lets first look at `rec` and then we'll talk about what `tailfib` does. Let's not go over the full flow of the program again, but talk about only the differences:
 
 1. This is using a `switch` to handle the 0 and 1 case. Is this more efficient than a simple `icmp ult`? An `icmp` is essentially an if-else equivalent and a switch is faster IF the number of entries in the jump table are large enough to justify it.
-In this case, the choice is arbitrary in my opinion and won't really optimize or fuck the code.
+In this case, the choice is arbitrary in my opinion and won't really optimise or fuck the code.
 
 2. There are no function calls!
 

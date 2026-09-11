@@ -32,7 +32,7 @@ GitHub Actions automates tasks. For our purposes, we’ll use it to:
 - Build the Zola site  
 - Deploy it to GitHub Pages  
 
-This runs everytime you push code to your repo and it renders your site again (don't worry, the site will still be live meanwhile)
+This runs every time you push code to your repo and it renders your site again (don't worry, the site will still be live meanwhile)
 
 #### The main.yml file
 

@@ -16,11 +16,11 @@ math = true
 
 The DANA paper is a pretty cool idea which I came across recently. Its goal is to facilitate the understanding of a netlist of logic-gates, making abstractions out of Flip-Flops (FF) into higher level registers so that the flow of data can be better understood.
 
-Before I start explaning the idea, I want to make sure we understand what these things even mean. A flip-flop is a logic gate that looks like this:
+Before I start explaining the idea, I want to make sure we understand what these things even mean. A flip-flop is a logic gate that looks like this:
 
 {{ figure(src="assets/flip-flop-sketch.png", alt="Flip-flop gate diagram", caption="Flip-flop gate diagram") }}
 
-It a modification of a latch, that is the right hand part of the circuit with the NOR gates cross linked together. The outputs come as `Q` and `~Q` and a single input `D` drives it. The capacitor and resistor in the middle is to convert the clock signal to a pulse which rises with the edge and quickly dies down. This gives enough time for the `Q` state to reflect whatever `D` was when the clock pulse was recieved.
+It a modification of a latch, that is the right hand part of the circuit with the NOR gates cross linked together. The outputs come as `Q` and `~Q` and a single input `D` drives it. The capacitor and resistor in the middle is to convert the clock signal to a pulse which rises with the edge and quickly dies down. This gives enough time for the `Q` state to reflect whatever `D` was when the clock pulse was received.
 
 In other words, its a **1-bit** storage with stores a new value (or retains the old one) every clock pulse. If you're working with an ASIC or some design involving FSMs (Finite-State-Machines) then you will use FFs to either store the state or combine together to form registers.
 
@@ -64,7 +64,7 @@ Note:
 
 1. This is **completely stripped** of logic gates. Every `node` is a `FF` and every `edge` says that "__there are no FFs in between these two FFs__"
 
-2. The FFs `A`, `B` and `C` are recieving primary inputs (i.e., from another source != FF). The FFs `F` and `G` are going to primary outputs (i.e., not to another FF).
+2. The FFs `A`, `B` and `C` are receiving primary inputs (i.e., from another source != FF). The FFs `F` and `G` are going to primary outputs (i.e., not to another FF).
 
 3. Our analysis will focus on the interconnections between these and **not** primary inputs and outputs.
 
@@ -93,11 +93,11 @@ $$
 \text{succ}(A) \cup \text{succ}(B) \cup \text{succ}(C) \cup \text{succ}(D) = \lbrace D, F, G, E \rbrace
 $$
 
-Thus the groups `D`, `F`, `G` and `E` must be of the same color according to the forward pass. So, we have this:
+Thus the groups `D`, `F`, `G` and `E` must be of the same colour according to the forward pass. So, we have this:
 
 {{ figure(src="assets/FF_diagram_FSA_1.png", alt="Flip-flop diagram for DANA forward stage 1", caption="FF diagram after a forward stage assignment has finished") }}
 
-I have colored them black, while `A`, `B` and `C` are all different stages, hence colored differently.
+I have coloured them black, while `A`, `B` and `C` are all different stages, hence coloured differently.
 
 ### Backward pass 1
 
@@ -122,11 +122,11 @@ $$
 \text{pred}(D) \cup \text{pred}(E) \cup \text{pred}(F) \cup \text{pred}(G) = \lbrace A, B, C, D \rbrace
 $$
 
-Thus the groups `A`, `B`, `C` and `D` must be of the same color according to the backward pass. So, we have this:
+Thus the groups `A`, `B`, `C` and `D` must be of the same colour according to the backward pass. So, we have this:
 
 {{ figure(src="assets/FF_diagram_BSA_1.png", alt="Flip-flop diagram for DANA backward stage 1", caption="FF diagram after a backward stage assignment has finished") }}
 
-I have colored them black, while `E`, `F` and `G` are all different stages, hence colored differently.
+I have coloured them black, while `E`, `F` and `G` are all different stages, hence coloured differently.
 
 ### Forward pass 2 - Result splitting
 
@@ -134,9 +134,9 @@ The next rule says:
 
 > No FF in a stage may drive another FF in that stage
 
-Recall that for the forward cycle we had `D`, `F`, `G` and `E` colored black and `A`, `B` and `C` colored differently. If we look at the diagram again, we can see that `F` and `G` are both driven by `D`.
+Recall that for the forward cycle we had `D`, `F`, `G` and `E` coloured black and `A`, `B` and `C` coloured differently. If we look at the diagram again, we can see that `F` and `G` are both driven by `D`.
 
-This is a violation of the rule. To fix this, we'll have to color `F` and `G` differently to ensure that they are part of a different group. So, we get this:
+This is a violation of the rule. To fix this, we'll have to colour `F` and `G` differently to ensure that they are part of a different group. So, we get this:
 
 {{ figure(src="assets/FF_diagram_FSA_2.png", alt="Flip-flop diagram for DANA forward stage 2", caption="FF diagram after the second forward stage assignment has finished") }}
 
@@ -178,7 +178,7 @@ Next up we have the processing step, which takes in as input the output of the p
 1. Group by successor OR predecessor (2)
 2. Iteratively group by successor OR predecessor (2)
 3. Split by successor OR predecessor groups (2)
-4. Group by number of sucessors OR predecessors (2)
+4. Group by number of successors OR predecessors (2)
 5. Group by control signals (1)
 
 Let's first look at what each of them does.
@@ -201,13 +201,13 @@ A similar procedure will follow for the successor.
 
 ### Split by successor OR predecessor groups
 
-In this case, the successors or the predecessors of a group are analyzed. If for example, a few elements of a group have a successor `X1` while the others have `X2` then the group is split based on that.
+In this case, the successors or the predecessors of a group are analysed. If for example, a few elements of a group have a successor `X1` while the others have `X2` then the group is split based on that.
 
 {{ figure(src="assets/SbSP.png", alt="Diagram for SbSP", caption="Diagram for splitting a group into cells because they differ in their successor") }}
 
 A similar procedure will follow for the predecessor.
 
-### Group by number of sucessors OR predecessors
+### Group by number of successors OR predecessors
 
 Here for each group we compute the maximum and minimum number of FF-successors/predecessors over all contained FFs. It
 then merges groups with matching values. Note that the rule check still ensures that no unrelated groups are merged.
@@ -232,14 +232,14 @@ Now the thing is, we don't do all 9 of them, we do only a pair. We can pick a pa
 
 Now we need to pick the best one, which is where the voting idea comes into picture. The voting mechanism goes like this:
 
-1. Count the occurence of each group in the final output across all 81 answers.
+1. Count the occurrence of each group in the final output across all 81 answers.
 2. This frequency of each group is their vote.
 
 > Votes = how many of the 81 runs independently produced that exact set of flops.
 
 To assemble the final answer then, we need to sort by the votes first and pick the winner.
 
-There is a small quirk here. If the top `n` votes lie within 10% of the top, then we'll pick all of them as **tied** canditates. Among the tied candidates now, we'll choose the one which strands the fewest flops.
+There is a small quirk here. If the top `n` votes lie within 10% of the top, then we'll pick all of them as **tied** candidates. Among the tied candidates now, we'll choose the one which strands the fewest flops.
 
 For example, say the following groups exist (among a set of only 6 FFs):
 

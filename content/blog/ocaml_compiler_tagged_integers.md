@@ -177,7 +177,7 @@ But, you would expect `8` to be printed right? And when you run it, you will see
 
 ## How does it do math then?
 
-Since we are losing one bit precision AND changing the value, how does the compiler even do normal math? Turns out, that this representation allows the compiler to optimize these calculations even better. Let's take a look at addition.
+Since we are losing one bit precision AND changing the value, how does the compiler even do normal math? Turns out, that this representation allows the compiler to optimise these calculations even better. Let's take a look at addition.
 
 ### Addition
 
@@ -237,7 +237,7 @@ How does `lea` help us solve this? We'll have to dig deeper into `lea`.
 
 This is a instruction in `x86` (and others as well), which is used to calculate the memory addresses of pointers. The general `x86` syntax for the operand is `offset(base, index, scale)`:
 
-- **offset**: An offet which is added to the final memory address
+- **offset**: An offset which is added to the final memory address
 - **base**: The base address
 - **scale**: This is what is multiplied by the index
 - **index**: This is the memory index

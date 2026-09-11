@@ -199,7 +199,7 @@ I am not really sure how prevalent timing attacks are though!
 
 ### Proof of Work - Cryptocurrency
 
-Cryptocurrencies achieve decentralization and sybil deterrence through what is called a 'Proof of Work'. A group of people or computers called 'miners' go through the tedious task of producing some 'unique number' which has a special property that would validate the transaction being broadcasted.
+Cryptocurrencies achieve decentralisation and sybil deterrence through what is called a 'Proof of Work'. A group of people or computers called 'miners' go through the tedious task of producing some 'unique number' which has a special property that would validate the transaction being broadcasted.
 
 There are 2 important properties that a valid Proof of Work must satisfy:
 

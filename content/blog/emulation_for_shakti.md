@@ -11,11 +11,11 @@ tags = ["blog"]
 lang = "en"
 +++
 
-So, I spend a few days diving deep into the shakti processor, specifically the one modified by Mindgrove into a secure-IOT chip called MGS2401. In this blog I just want to fight my demons and explain how thigns stand with Mindgrove's opensource repos and their documentation and my attempt at understanding them. Honestly, big cheers to Mindgrove for opensourcing all their code, it really shows how difficult and chaotic this world of development is.
+So, I spend a few days diving deep into the shakti processor, specifically the one modified by Mindgrove into a secure-IOT chip called MGS2401. In this blog I just want to fight my demons and explain how things stand with Mindgrove's opensource repos and their documentation and my attempt at understanding them. Honestly, big cheers to Mindgrove for opensourcing all their code, it really shows how difficult and chaotic this world of development is.
 
 ## Part 1 -> The datasheets
 
-[This](https://www.mindgrovetech.in/s2401-secure-iot) is the product I was targeting. Its the only chip sold by Mindgrove as of today. The [datasheet](https://corevoice.b-cdn.net/mindgrove/docs/MGS2401Q64CF8R16_datasheet.pdf) was last revised in April 2026 so its fairly recent (this is an important fact which I only realized later).
+[This](https://www.mindgrovetech.in/s2401-secure-iot) is the product I was targeting. Its the only chip sold by Mindgrove as of today. The [datasheet](https://corevoice.b-cdn.net/mindgrove/docs/MGS2401Q64CF8R16_datasheet.pdf) was last revised in April 2026 so its fairly recent (this is an important fact which I only realised later).
 
 > Some overview
 
@@ -48,13 +48,13 @@ Interrupts usually come about in three types:
 2. Software
 3. External (or global)
 
-The interrupts through **timer** and **software** are handled by the `CLINT` (**Core Local INTerruptor**) while the global interrupts (due to **peripherals**) are handeled by the `PLIC`. The software interrupts are how one `hart` (**hardware thread**) pokes another (IPIs / **inter-processor interrupts**), or how a hart triggers itself.
+The interrupts through **timer** and **software** are handled by the `CLINT` (**Core Local INTerruptor**) while the global interrupts (due to **peripherals**) are handled by the `PLIC`. The software interrupts are how one `hart` (**hardware thread**) pokes another (IPIs / **inter-processor interrupts**), or how a hart triggers itself.
 
 The external interrupts are driven by other peripherals, all of which are listed above. The `PLIC` (**Platform Level Interrupt Controller**) is basically a device that has some interrupt gateways to the PLIC core. The core is responsible for **queuing** up the interrupts based on their priority and then do **arbitration** on the same. It will also manage and store completion events. Its basically a huge router + memory for interrupts.
 
 > I am getting all this from [this documentation](https://shakti.org.in/docs/plic_user_manual.pdf) on PLIC.
 
-If you're wondering what does it even mean for SPI to have interrupt handling (since SPI is a peripheral and it has a PLIC model), then you're right. It's kinda weird. SPI usually works through `DMA` (**Direct Memory Access**), but sometimes it can also be made to raise interrupts and ask for data/send data everytime it feels the need to. It's kinda wasteful to do that though. That's just one example, all other peripherals have some behaviour defined for the PLIC.
+If you're wondering what does it even mean for SPI to have interrupt handling (since SPI is a peripheral and it has a PLIC model), then you're right. It's kinda weird. SPI usually works through `DMA` (**Direct Memory Access**), but sometimes it can also be made to raise interrupts and ask for data/send data every time it feels the need to. It's kinda wasteful to do that though. That's just one example, all other peripherals have some behaviour defined for the PLIC.
 
 ### What's C class?
 
@@ -89,7 +89,7 @@ And then have only UART0, UART1, and UART2 in the pinout! I went ahead and check
 
 Turns out that this is fairly common. The support exists for 5 UART lines, but 3 actual have pins so support exists for 3 only. Unless...
 
-If you look closely at the last commit on the github diff I shared above, it was made on 20th May 2024. That's 2 years before the latest documentation came out which probably means that the code I am looking at is obselete! This deviation was further enchanced, when I looked at the driver code for I2C:
+If you look closely at the last commit on the github diff I shared above, it was made on 20th May 2024. That's 2 years before the latest documentation came out which probably means that the code I am looking at is obsolete! This deviation was further enhanced, when I looked at the driver code for I2C:
 
 ```c
 #define MAX_I2C_COUNT 2
@@ -100,13 +100,13 @@ If you look closely at the last commit on the github diff I shared above, it was
 #define I2C_OFFSET 0x100
 ```
 
-Yeah, no way that the datasheet defines one I2C pin but someone wrote the driver for 2. That's when I went on a hunt for what **this** driver was even written for and found out that there exists a [prototype documentation](https://cdn.prod.website-files.com/63bb8de9076d75786876e803/677769d8383d9a93ed89e865_datasheet.pdf) which EXACTLY matches the driver behavior.
+Yeah, no way that the datasheet defines one I2C pin but someone wrote the driver for 2. That's when I went on a hunt for what **this** driver was even written for and found out that there exists a [prototype documentation](https://cdn.prod.website-files.com/63bb8de9076d75786876e803/677769d8383d9a93ed89e865_datasheet.pdf) which EXACTLY matches the driver behaviour.
 
 The reason I know this is not the right chip is simply because the earlier datasheet was pulled from their live website which is what they sell to people. So, now the time has come to hunt for the right drivers.
 
 ### Hunt begins
 
-Before I tell you what all I found out, the question to acknowledge is why am I even looking at the code. Well, here's the thing. I have the following documents given by mindgrove on thier own:
+Before I tell you what all I found out, the question to acknowledge is why am I even looking at the code. Well, here's the thing. I have the following documents given by mindgrove on their own:
 
 1. [The datasheet](https://corevoice.b-cdn.net/mindgrove/docs/MGS2401B144C_datasheet.pdf)
 2. [The API reference manual](https://corevoice.b-cdn.net/mindgrove/docs/MGS2401_API_Reference.pdf)
@@ -124,7 +124,7 @@ So, the hunt in the codebase is to find a whole PLIC listing, drivers for periph
 
 Usually, chip manufactures would also provide something called a SVD or a DTS, this is what I am looking for because Mindgrove, even thought they didn't explicitly provide it, must have coded it out! If I get my hands on these it'll be golden.
 
-So, to start with I dived straight into the shakti source and found something better than the codebase. The [SoC device registry manual](https://shakti.org.in/docs/shakti-soc-device-register-manual.pdf). This helps answer the modeling questions for the peripherals because this gives me for example for UART:
+So, to start with I dived straight into the shakti source and found something better than the codebase. The [SoC device registry manual](https://shakti.org.in/docs/shakti-soc-device-register-manual.pdf). This helps answer the modelling questions for the peripherals because this gives me for example for UART:
 
 - `BAUD` offset
 - `TX/RX` registers
@@ -148,7 +148,7 @@ Zi/N = Code from Mindgrove-Technologies
 | SCL      | `0x38` | "SCL ‘h38 8 bits" | `#define I2C_SCL_DIV 0x38` | `SCL` (L2331) |
 ```
 
-That was decisive for me that the manual is true! BTW, I verified, all the code above was commited in 2026. That's likely for the latest chip and hence correct.
+That was decisive for me that the manual is true! BTW, I verified, all the code above was committed in 2026. That's likely for the latest chip and hence correct.
 
 So that was for the peripherals, now I needed the PLIC numbers so that I can do interrupt routing. For ARM Cortex chips, I take the NVIC numbers btw, PLIC is pretty much the same thing but different. So, finding this was a pain. Because I kept stumbling upon outdated code!
 

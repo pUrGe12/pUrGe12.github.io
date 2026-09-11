@@ -25,7 +25,7 @@ Needless to say, there were a lot of variables and I don't like that. I was work
 
 ## Building the supreme court data scraper
 
-Few quriks, you are free to go and verify it for yourself, but I haven't added support for images on blogposts yet so unfortunately, I can't show you:
+Few quirks, you are free to go and verify it for yourself, but I haven't added support for images on blogposts yet so unfortunately, I can't show you:
 
 - This is the website in question, [SUPREME court](https://www.sci.gov.in) and [this is](https://www.sci.gov.in/judgements-judgement-date/) where the real scraping is going to happen because it allows us to search for all judgements within a timeframe.
 
@@ -41,7 +41,7 @@ Few quriks, you are free to go and verify it for yourself, but I haven't added s
 
 - This returns a table with no pagination, you can take the HTML and you have everything that is needed.
 
-Well I am making it sound more technical than it needs to be. The actual nail in the coffin for this experiement was that the PDFs are not signed or anything! So, once you have the URL for a PDF, say like this: https://api.sci.gov.in/supremecourt/2025/72357/72357_2025_12_14_70479_Judgement_23-Apr-2026.pdf, then you can open it anytime, from anywhere, without any auth.
+Well I am making it sound more technical than it needs to be. The actual nail in the coffin for this experiment was that the PDFs are not signed or anything! So, once you have the URL for a PDF, say like this: https://api.sci.gov.in/supremecourt/2025/72357/72357_2025_12_14_70479_Judgement_23-Apr-2026.pdf, then you can open it anytime, from anywhere, without any auth.
 
 This means if we can simply reconstruct the URL for all cases, then all we need to do is hit the `.pdf` links and we're done. Yeah, easier said than "done".
 
@@ -99,7 +99,7 @@ I know, I know, but the guys I was working for happened to have one so why not. 
 docker run -it --gpus all     --ipc=host     --ulimit memlock=-1     --ulimit stack=67108864     -p 8000:8000     -v /home/collaborator/.cache/huggingface:/root/.cache/huggingface     -e VLLM_IMAGE_MAX_PIXELS=200704     nvcr.io/nvidia/vllm:26.02-py3     vllm serve Qwen/Qwen2.5-VL-3B-Instruct     --trust-remote-code     --max-model-len 1024     --max-num-seqs 1     --gpu-memory-utilization 0.25     --swap-space 0     --cpu-offload-gb 0     --limit-mm-per-prompt '{"image":1}'     --dtype bfloat16     --enforce-eager     --disable-log-requests
 ```
 
-Notice all these flags? That's me trying to minimize memory usage. The 7B model (yeah I did try it, hehe) ended up taking a 100GB of RAM, this above one took only 20GB. Tested this out with an image of th (note that the API is exposed via OpenAI endpoints):
+Notice all these flags? That's me trying to minimise memory usage. The 7B model (yeah I did try it, hehe) ended up taking a 100GB of RAM, this above one took only 20GB. Tested this out with an image of th (note that the API is exposed via OpenAI endpoints):
 
 ```sh
 curl -s http://localhost:8000/v1/chat/completions \
@@ -146,7 +146,7 @@ Checking the [reported Judgements / Orders](https://bombayhighcourt.nic.in/ord_q
 3. The from date starts from 1966 (note that the Bombay High Court was formed in the mid 1800s).
 4. There is a real captcha (like, not maths)
 
-If you try to access 1966 data though, you'll see that the server errors out. This will keep happening until, 2005 (haha, basically they haven't digitalized previous records at all, but they **have** it I suppose). I actually verified this programmatically (very late in the game TBH) but now I am making it a practise to verify these kind of data sources.
+If you try to access 1966 data though, you'll see that the server errors out. This will keep happening until, 2005 (haha, basically they haven't digitalised previous records at all, but they **have** it I suppose). I actually verified this programmatically (very late in the game TBH) but now I am making it a practise to verify these kind of data sources.
 
 The funniest part is the captcha. So, my initial plan was to again run QWEN2.5 3B on this and solve the captchas, BUT this is the URL being used to generate the captcha image:
 
@@ -229,7 +229,7 @@ Then we can set from date to 2005 1st Jan and start extracting. (Note that, I tr
 
 ### A quirk about the PDF downloading
 
-So these guys have done something interesting with the PDF links, they have a centralized router: `/generatepdf.php?bhcpar=<base64_string>`. When you decode the bhcpar string, it’s not an encrypted token or a 
+So these guys have done something interesting with the PDF links, they have a centralised router: `/generatepdf.php?bhcpar=<base64_string>`. When you decode the bhcpar string, it’s not an encrypted token or a 
 database hash; it is literally just another standard query string: `path=...&fname=...&uploaddt=....`.
 
 They took perfectly normal URL parameters and base64-encoded them to make them look like a secure token. Well, anyways, not that big of a deal I suppose.

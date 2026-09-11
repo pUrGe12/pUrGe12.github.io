@@ -59,15 +59,15 @@ And this is the `assembly`:
     1189:	c3                   	ret    
 ```
 
-This is the heavily optimized multiplication. Simply enough. We get the values `a` and `b` inside `edi` and `esi` so simply call `imul` on them (`imul` is a variant of `mul` which calls for signed or negative numbers as well).
+This is the heavily optimised multiplication. Simply enough. We get the values `a` and `b` inside `edi` and `esi` so simply call `imul` on them (`imul` is a variant of `mul` which calls for signed or negative numbers as well).
 
-Let's first understand what the C compiler did for the function without optimization flags:
+Let's first understand what the C compiler did for the function without optimisation flags:
 
 1. It stored the values of `edi` and `esi` into the stack frame.
 2. Then it would call the stack-frame and get the first value into `rax` from there.
 3. Then multiple and store the value in `rax` back to the stack-frame!
 
-This is cooked only. We don't need to do all that management if we don't care about debuggability or reverse-engineering the binary later! Which is why the optimized version is the way it is.
+This is cooked only. We don't need to do all that management if we don't care about debuggability or reverse-engineering the binary later! Which is why the optimised version is the way it is.
 
 ## OCaml version:
 
@@ -91,7 +91,7 @@ And this is the `assembly`:
    18dde:	66 90                	xchg   %ax,%ax 	// This is a 2 byte NOP code
 ```
 
-Damn, these are objectively different (pun intended). Both of them were compiled without any optimisations. Actually, if we do optimize the C code:
+Damn, these are objectively different (pun intended). Both of them were compiled without any optimisations. Actually, if we do optimise the C code:
 
 So what happens for the OCaml case? Let's go over it one step at a time:
 

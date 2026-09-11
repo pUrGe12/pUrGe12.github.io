@@ -72,7 +72,7 @@ So what is a tail-call `optimisation`?
 
 ## Tail call optimisation
 
-To understand this in a deeper level, let's analyze the assembly output for the non-tail recursive case. For compiling, save the first definition in a file named `main.ml`, then run:
+To understand this in a deeper level, let's analyse the assembly output for the non-tail recursive case. For compiling, save the first definition in a file named `main.ml`, then run:
 
 ```sh
 # Assuming main.ml has the following code:
@@ -127,7 +127,7 @@ This is the `main` and the `_start` section:
 
 A few glossary terms:
 
-- `caml_main`: This is a C runtime interface function for OCaml. The call to **caml_main** initializes the OCaml runtime system, loads the bytecode (in the case of the bytecode compiler), and executes the initialization code of the OCaml program. Read the [intfc documentation](https://ocaml.org/manual/5.4/intfc.html) for details.
+- `caml_main`: This is a C runtime interface function for OCaml. The call to **caml_main** initialises the OCaml runtime system, loads the bytecode (in the case of the bytecode compiler), and executes the initialisation code of the OCaml program. Read the [intfc documentation](https://ocaml.org/manual/5.4/intfc.html) for details.
 
 - `caml_do_exit`: This is another C runtime interface function. They are actually typically used like this:
 
@@ -159,9 +159,9 @@ You might wonder why we're even seeing these in the assembly if we simply compil
 
 2. It uses `libc` (see the libc call in `_start`) to define memory allocation, syscalls and more.
 
-3. The function we call forth in libc is `__libc_start_main` which basically initializes the C runtime environment and then calls the `main` function.
+3. The function we call forth in libc is `__libc_start_main` which basically initialises the C runtime environment and then calls the `main` function.
 
-This should answer your question. It calls `caml_main` in the actual `main` definition because it needs to initialize the OCaml garbage collector, the heap and all.
+This should answer your question. It calls `caml_main` in the actual `main` definition because it needs to initialise the OCaml garbage collector, the heap and all.
 
 All this happens **before** our code is even touched. So, where is our code? If you scroll a little deeper you'll see this bit:
 
@@ -289,7 +289,7 @@ These are our base cases. Again you'll be screaming that the numbers don't match
    18ddd:	76 31                	jbe    18e10 <camlMain.fib_274+0x50>
 ```
 
-Because our smart compiler had figured out that if we're talking about numbers less than 3 (that is, 1 or 2), then we can simply jump to `18e0e`, even though we explictly told it to handle 1 and 2.
+Because our smart compiler had figured out that if we're talking about numbers less than 3 (that is, 1 or 2), then we can simply jump to `18e0e`, even though we explicitly told it to handle 1 and 2.
 
 3. Then look at the function calls itself:
 
@@ -309,13 +309,13 @@ Because our smart compiler had figured out that if we're talking about numbers l
 
 ---
 
-Now we're at the heart of what tail-call optimisations are. This function we used was **not** tail-recursive, and hence the OCaml compiler couldn't optimize it using tail-call optimisation. What this means is:
+Now we're at the heart of what tail-call optimisations are. This function we used was **not** tail-recursive, and hence the OCaml compiler couldn't optimise it using tail-call optimisation. What this means is:
 
 1. Each function call to the recursive function is can actual `call` opcode in assembly.
-2. A `call` instruction is operationally very heavy. It needs to remember a lot of things, intialize a bunch of pointers in memory etc.
+2. A `call` instruction is operationally very heavy. It needs to remember a lot of things, initialise a bunch of pointers in memory etc.
 3. The program needs to save every frame (every `fib i` operation it performs for `i = 1->n`) in the stack. If the value of `n` is large, this will 100% lead to a stack overflow!
 
-So, a non-tail-recursive function is a curse because its slow, can't be optimized and may lead to memory overflows! Before we go ahead, let's think about what optmisation even means here!
+So, a non-tail-recursive function is a curse because its slow, can't be optimised and may lead to memory overflows! Before we go ahead, let's think about what optimisation even means here!
 
 > Tail-call optimisation is when a tail-recursive function is replaced by a loop in assembly.
 
@@ -353,11 +353,11 @@ Let's look at the second case, compile the second implementation in the same man
    18e0f:	00 
 ```
 
-Notice the magic here! No, `call` instructions, only conditional jumps. If you just take a look at the assembly, you'll never realize that this was actually a recursive function. Which is the point. `Tail-call optimisations` covert a recursive function to its fastest counterpart which is a loop.
+Notice the magic here! No, `call` instructions, only conditional jumps. If you just take a look at the assembly, you'll never realise that this was actually a recursive function. Which is the point. `Tail-call optimisations` covert a recursive function to its fastest counterpart which is a loop.
 
 1. This function doesn't allocate a new frame in the stack for each value computed, so we don't have memory issues anymore.
 
-2. We went from **not** being able to compute the `100th` fibonnaci number (true, try definition 1 for the 100th number!) to computing `10^6th` fibonnaci number in a matter of seconds, **without memoization** of dynamic programming!
+2. We went from **not** being able to compute the `100th` fibonacci number (true, try definition 1 for the 100th number!) to computing `10^6th` fibonacci number in a matter of seconds, **without memoization** of dynamic programming!
 
 This it the compiler magic!
 

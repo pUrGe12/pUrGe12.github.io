@@ -215,7 +215,7 @@ Let's start with the function actually, cause that's kinda simple enough to find
    18e9f:	90                   	nop
 ``` 
 
-Again a few points before we start analyzing this:
+Again a few points before we start analysing this:
 
 1. `MOVSD xmm1, xmm2`: This means "Move scalar double precision floating-point value from xmm2 to xmm1 register". Documentation [here](https://www.felixcloutier.com/x86/movsd).
 2. `SUBSD xmm1, xmm2/m64`: This means "Subtract the low double precision floating-point value in xmm2/m64 from xmm1 and store the result in xmm1". Documentation [here](https://www.felixcloutier.com/x86/subsd)
@@ -257,7 +257,7 @@ What's important to us in this blog is to understand **where** the data for the 
 Let's look over here. I still haven't told you what the `caml_initialize` calls are doing, but if we ignore that bit for now, see what happens below it.
 
 - We call the store the value of the register **rbx** into the **stack pointer (rsp)**. What the fuck you may say. To understand this we'll have to do the whole assembly trace, which we'll do in just a moment.
-- Then we populate `rbx` and `rax` with the addresses present in the `rip` shifted by different offsets. `rip` is the instruction pointer, this esentially keeps track of where the CPU is executing code. We're using `RIP` relative adressing here. It's basically saying "The data we want is exactly 0x4ad01 bytes away from where we are right now."
+- Then we populate `rbx` and `rax` with the addresses present in the `rip` shifted by different offsets. `rip` is the instruction pointer, this essentially keeps track of where the CPU is executing code. We're using `RIP` relative addressing here. It's basically saying "The data we want is exactly 0x4ad01 bytes away from where we are right now."
 - The difference between the memory locations is `0x19` (or 25). But if you see the comments, the final memory address are actually `0x20` bytes apart (or 32). My claim is that `32` bytes (or 256) is the size of our `record`. We'll verify that later.
 
 Where did this extra 7 bytes come from? That's the `lea` instruction itself. You can count up those bytes (`48 8d 05 01 ad 04 00`). To even begin thinking about what `lea` does, it has to read all 7 bytes of that instruction. By the time it is ready to actually perform the math (adding the offset to the pointer), the "play-head" `%rip` is already sitting at the start of the next instruction.

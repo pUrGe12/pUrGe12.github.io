@@ -17,7 +17,7 @@ This is incomplete and probably just contains my thoughts and how I fucked up. R
 
 ---
 
-Update: 20th April, bought one. The adapter has its own network interface inside that is indepedent of the motherboard's NIC. So, this might work (assuming my LAN cables work)
+Update: 20th April, bought one. The adapter has its own network interface inside that is independent of the motherboard's NIC. So, this might work (assuming my LAN cables work)
 
 ---
 
@@ -31,7 +31,7 @@ So, ping works. Next, I will have to enable IP forwarding in my old laptop so th
 This is what I did on my host machine (because the interface shown here was a direct RJ45 connection)
 ```sh
 sudo ip addr add 192.168.42.2/24 dev eno1
-sudo ip link set en01 up
+sudo ip link set eno1 up
 ```
 
 and this is what I did on my old laptop
@@ -72,12 +72,12 @@ This needs to be written in the old laptop;
 sudo iptables -t nat -A POSTROUTING -o wlp3s0 -j MASQUERADE
 ```
 
-This is extremely important because this is what ends up setting the rules for the network traffic. That allows forwarding but it isn't much help unless I manully add a DNS IP.
+This is extremely important because this is what ends up setting the rules for the network traffic. That allows forwarding but it isn't much help unless I manually add a DNS IP.
 
 The way this works is:
 
 - Your router provides an IP + gateway + DNS (via DHCP)
-- Thus, everytime you connect, you get yourself these necessesities including say the local DNS server that might be running, in which case the router acts as a relay to push that to 8.8.8.8 or something.
+- Thus, every time you connect, you get yourself these necessities including say the local DNS server that might be running, in which case the router acts as a relay to push that to 8.8.8.8 or something.
 
 Now in our case, we've defined everything statically, so, we'll have to do the same for the DNS server! This can be done by editing the `/etc/resolv.conf` file. This means I will rewrite whatever DNS IP the institute router was giving me and saying something like no matter where you wanna go, use 8.8.8.8 or 1.1.1.1.
 
@@ -145,7 +145,7 @@ This gives a nicely formatted json and filters that too. I want to eventually fi
 
 ## ON TO DOING BETTER
 
-So, I got my hands on a tplink Archer C50 version 6.8 router. It sadly doesn't support openWRT but its pretty cool. I set it up to assign static IPs to all devices connected to it. This is done by the `binding` tne MAC address of the connected device to a IP address. So, within the LAN, all connected devices have known ip addresses.
+So, I got my hands on a tplink Archer C50 version 6.8 router. It sadly doesn't support openWRT but its pretty cool. I set it up to assign static IPs to all devices connected to it. This is done by `binding` the MAC address of the connected device to an IP address. So, within the LAN, all connected devices have known ip addresses.
 
 Since this router will also act as a hub, I can connect two devices to it, assign them static IPs and then make them talk to each other. Thus, my NAS is now wireless! (Only need ethernet cables if I have to configure the router).
 

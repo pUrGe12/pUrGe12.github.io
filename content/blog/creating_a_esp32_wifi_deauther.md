@@ -13,7 +13,7 @@ lang = "en"
 
 `Update`: This is March 28th 2026
 
-If you want to read a story of what I tried and failed at, you can scroll down. But this is what worked in the end, it only cost about 1.5k(INR). The problem was sending an `0xC0` frame which was unsupposed in all sorts of ESP frameworks. So, I bought an adapter from amazon, a 2.4GHz 802.11n 150Mbps USB Wireless WiFi Adapter.
+If you want to read a story of what I tried and failed at, you can scroll down. But this is what worked in the end, it only cost about 1.5k(INR). The problem was sending an `0xC0` frame which was unsupported in all sorts of ESP frameworks. So, I bought an adapter from amazon, a 2.4GHz 802.11n 150Mbps USB Wireless WiFi Adapter.
 
 This worked beautifully in the sense that I was very easily able to deauth people (given they didn't use `PMF` frames from WPA3 but most institutional wifi systems don't since it needs specific hardware support). Its very easy to setup an attack using `aircrack-ng`.
 
@@ -227,7 +227,7 @@ So, since action frames work, I am going to try something with `0xD0`. Reading m
 
 {{ figure(src="assets/IEEE_802_11_2012.png", alt="CSA element format diagram", caption="CSA format diagram") }}
 
-The idea being that a `Channel Switch Annoucement` can potentially be used to deauthenticate a user. If for example you're connected to your wifi using channel 1 and it suddenly asks you to switch to channel 6 then there **might** be a small time interval of disconnect followed by a reconnect.
+The idea being that a `Channel Switch Announcement` can potentially be used to deauthenticate a user. If for example you're connected to your wifi using channel 1 and it suddenly asks you to switch to channel 6 then there **might** be a small time interval of disconnect followed by a reconnect.
 
 If we can time this perfectly and send multiple CSA signals with different channels each time, the switching can be such that at any given time the connection is not present! Thus, the user will feel the need to check the wifi networks and boom, goal achieved.
 
@@ -235,7 +235,7 @@ So, I tried this but... either my ESP is cupping or this ain't working. I mean i
 
 ## Trying to reverse the ESP-IDF library 
 
-From what I learnt, it is definetly not a hardware issue cause the ESP32 chip **can** send raw wifi packets. I know its the ESP-IDF library. So, if we patch the software -- we can allow deauth frames to be sent!
+From what I learnt, it is definitely not a hardware issue cause the ESP32 chip **can** send raw wifi packets. I know its the ESP-IDF library. So, if we patch the software -- we can allow deauth frames to be sent!
 
 I am pretty sure this has been done before, but maybe that patch was also patched? (get it?)
 
@@ -351,11 +351,11 @@ First, cloning esp-idf 4.1. Alright this uses `python` and not `python3`. We wil
 
 `#!/usr/bin/env python` becomes `#!/usr/bin/env python3`
 
-also fix the bash sheband in the install script to `#!/bin/bash`
+also fix the bash shebang in the install script to `#!/bin/bash`
 
-Then using `. ./export.sh` to source the local enviornment.
+Then using `. ./export.sh` to source the local environment.
 
-First, lets test the actual [deatuh script](LinkToIt) (with the 0xC0 byte set) to see if this downgraded version allows this or not. If not then we'll try and bypass. 
+First, lets test the actual [deauth script](LinkToIt) (with the 0xC0 byte set) to see if this downgraded version allows this or not. If not then we'll try and bypass. 
 
 ---
 
@@ -376,7 +376,7 @@ I don't think its working. Two explanations
 
 ---
 
-Well, until I figure something else, I guess I will have to make do with my honeypot and hope people notice an "iitmwifi_6g" and click on that. I have opened an issue explaining my dilema. Let's see.
+Well, until I figure something else, I guess I will have to make do with my honeypot and hope people notice an "iitmwifi_6g" and click on that. I have opened an issue explaining my dilemma. Let's see.
 
 ## Important links
 

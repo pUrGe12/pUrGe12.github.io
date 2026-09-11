@@ -147,9 +147,9 @@ from any device on the same LAN.
 
 ---
 
-The only issue is, my old laptop (the "NAS") relies on my institute router for DHCP assignments and from the way its een configured, the IP address for the NAS changes every day.
+The only issue is, my old laptop (the "NAS") relies on my institute router for DHCP assignments and from the way it's been configured, the IP address for the NAS changes every day.
 
-Thats a huge issue because now my aliases don't work, I can't rely on the same link forever and I will have to manually see what the IP is for that day and connect to that. The mounts also change.
+That's a huge issue because now my aliases don't work, I can't rely on the same link forever and I will have to manually see what the IP is for that day and connect to that. The mounts also change.
 
 There are a few ways I can mitigate this but the simplest one for now (because I don't have money to buy up a router and rpis and create a full substitute for my institute network) is to:
 
@@ -176,7 +176,7 @@ This code runs every morning in the server:
 from supabase import create_client, Client
 import subprocess
 
-# Supabase to send and save IP everytime
+# Supabase to send and save IP every time
 url: str = ""
 key: str = ""
 
@@ -195,7 +195,7 @@ response = supabase.table("IPs").insert(info).execute()
 
 I ran this using a `cron_script.sh` and defined that inside my cronjobs using `crontab -e`. For redundancy, I am running this on every boot as well in case I miss the cronjob because my laptop was plugged out or something.
 
-Now in the client side what I need is, everytime I turn my laptop on, or every morning at 10am (and then 12pm cause I will have defently opened my laptop and kept it running by them, like 100% sure), query the database, get the latest ip, update the aliases and boom.
+Now in the client side what I need is, every time I turn my laptop on, or every morning at 10am (and then 12pm cause I will have definitely opened my laptop and kept it running by them, like 100% sure), query the database, get the latest ip, update the aliases and boom.
 
 The aliases I have defined are for
 

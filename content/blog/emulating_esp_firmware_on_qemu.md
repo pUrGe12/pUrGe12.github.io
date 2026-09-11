@@ -30,7 +30,7 @@ cd qemu
 git submodule update --init --recursive
 ```
 
-Since I am running this for ESP32 (that is EXtensa and not a RISC-V build), we need to run: (from the fork's [readme](https://github.com/espressif/esp-toolchain-docs/blob/main/qemu/esp32/README.md) for ESP32)
+Since I am running this for ESP32 (that is Xtensa and not a RISC-V build), we need to run: (from the fork's [readme](https://github.com/espressif/esp-toolchain-docs/blob/main/qemu/esp32/README.md) for ESP32)
 
 ```sh
 sudo apt-get install libaio-dev libbluetooth-dev libcapstone-dev libbrlapi-dev libbz2-dev -y

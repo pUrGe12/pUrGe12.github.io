@@ -90,12 +90,12 @@ We compiled wolfSSL straight from source instead of linking against a static `li
   *Optional solution*: increase the nrxslots in the litex SoC.
 - **Packet loss due to ARP:** The UDP rxslots were filled with ARP packets which caused additional packet losses. *Solution:* Since **udp_service** internally calls for a pending read to the ethernet slots, we called this function at strategic places to ensure that our buffers are available for handshake packets.
 - **Alignment Requirements:** VexRiscV's memory logic requires strict alignment; misalignment caused hard-to-trace failures. *Solution:* Applied WolfSSL alignment macros to all allocated buffers. (see [`WOLFSSL_USE_ALIGN`](https://github.com/wolfSSL/wolfssl/blob/3062d152409c4d86f00cb13c65a9d6942e1ef86f/wolfcrypt/src/misc.c#L186))
-- **Lack of RISC-V32 Optimizations:** WolfSSL's optimized assembly targets rv64 only and not rv32 which we had. *Solution:* Relied on compiler-based optimizations.
+- **Lack of RISC-V32 Optimisations:** WolfSSL's optimised assembly targets rv64 only and not rv32 which we had. *Solution:* Relied on compiler-based optimisations.
 - **ACK Handling:** With slower ACKs (due to large processing time in the client side), the server retransmitted most handshake data repeatedly, causing large delays. *Solution:* Issued ACK packets as soon as the receive buffer was processed, as permitted by the RFC.
 - **Source Modifications:** Due to some added flags in the WolfSSL build we had to define our own **TimeNowInMilliseconds()** function and make some modifications in the WolfSSL source code.
 
   *More on this in **Annexure 1.6**.*
-- **Parameter Tuning and minimizing ROM:** We systematically stripped the required macro list to reduce the compiled binary size while ensuring maximum throughput.
+- **Parameter Tuning and minimising ROM:** We systematically stripped the required macro list to reduce the compiled binary size while ensuring maximum throughput.
 
 Open bug in wolfssl: [KeyShare mismatch](https://github.com/wolfSSL/wolfssl/issues/9362) is not detected as wolfSSL does not raise errors for incorrect `useKeyShare()` configurations, causing handshakes to appear successful with invalid ML-KEM suite settings.
 
@@ -103,7 +103,7 @@ Open bug in wolfssl: [KeyShare mismatch](https://github.com/wolfSSL/wolfssl/issu
 
 ## 7. Security Considerations
 
-- **Relay attacks:** Since we're implementing session resumption, it raises concerns for relay attacks where the PSK is spoofed and used within the TTL. To minimize this we've set the expiry time for session resumption at 5 minutes.
+- **Relay attacks:** Since we're implementing session resumption, it raises concerns for relay attacks where the PSK is spoofed and used within the TTL. To minimise this we've set the expiry time for session resumption at 5 minutes.
 - Our use of **ChaCha20** cipher stream allows the implementation to be resistant to timing attacks because all crypto algorithms used are just ARX.
 - **MLKEM's** [underlying assumption](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf) is to keep secret the decapsulation key and shared secret key. Since these keys are not stored locally and are encrypted in epoch 2, the implementation is resistant to this attack vector.
 
@@ -145,10 +145,10 @@ Setting **WOLFSSL_DTLS13_NO_HRR_ON_RESUME** on the server removed the HelloRetry
 
 ## 10. Low-Power RISC-V Optimisations
 
-- **Link-Time and Linker Optimizations:** Enabled `-flto`, `-ffunction-sections`, and `-fdata-sections` along with `-Os` to allow whole-program optimization and minimize binary size.
+- **Link-Time and Linker Optimisations:** Enabled `-flto`, `-ffunction-sections`, and `-fdata-sections` along with `-Os` to allow whole-program optimisation and minimise binary size.
 - **Low-Power Idle via `wfi`:** Used the RISC-V `wfi` instruction to gate the CPU clock
 
-*For details on compiler flags and memory access optimizations, please refer to **Annexure 1.7**.*
+*For details on compiler flags and memory access optimisations, please refer to **Annexure 1.7**.*
 
 ## 11. Custom simulated TRNG
 
@@ -172,11 +172,11 @@ That gap is a severe bottleneck during the DTLS 1.3 handshake, especially with p
 
 ## Annexure 1.2: Algorithm Selection Rationale
 
-The cryptographic primitives used in this work are selected to comply with the emerging post-quantum security landscape defined by NIST. In particular, the Key Encapsulation Mechanism (KEM) must follow the NIST-standardized algorithms published in FIPS 203, "Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)" ([Federal Register Announcement](https://www.federalregister.gov/documents/2024/08/14/2024-17956/announcing-issuance-of-federal-information-processing-standards-fips-fips-203-module-lattice-based)). The ML-KEM family consists of three parameter sets (512, 768, and 1024), formally defined in Section 8 of the specification ([FIPS 203 PDF](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf)). In addition, NIST has recently selected the HQC algorithm as a secondary or "fallback" post-quantum KEM ([NIST Announcement](https://www.nist.gov/news-events/news/2025/03/nist-selects-hqc-fifth-algorithm-post-quantum-encryption)), though ML-KEM remains the preferred primary mechanism for interoperability and compatibility within standardized protocols such as TLS/DTLS 1.3.
+The cryptographic primitives used in this work are selected to comply with the emerging post-quantum security landscape defined by NIST. In particular, the Key Encapsulation Mechanism (KEM) must follow the NIST-standardised algorithms published in FIPS 203, "Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM)" ([Federal Register Announcement](https://www.federalregister.gov/documents/2024/08/14/2024-17956/announcing-issuance-of-federal-information-processing-standards-fips-fips-203-module-lattice-based)). The ML-KEM family consists of three parameter sets (512, 768, and 1024), formally defined in Section 8 of the specification ([FIPS 203 PDF](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf)). In addition, NIST has recently selected the HQC algorithm as a secondary or "fallback" post-quantum KEM ([NIST Announcement](https://www.nist.gov/news-events/news/2025/03/nist-selects-hqc-fifth-algorithm-post-quantum-encryption)), though ML-KEM remains the preferred primary mechanism for interoperability and compatibility within standardised protocols such as TLS/DTLS 1.3.
 
 Among the available ML-KEM parameter sets, **ML-KEM-1024** provides the highest security strength. Its larger keys and ciphertexts impose additional computational and network overhead, but the security justifies this choice for a DTLS 1.3 channel.
 
-For authentication, we use the **ML-DSA** (Dilithium) family, standardized by NIST as the primary post-quantum signature scheme. The three security levels—ML-DSA-44 (Level 2), ML-DSA-65 (Level 3), and ML-DSA-87 (Level 5)—offer progressively stronger protection. We select **ML-DSA-87** to maintain consistency with the high-security ML-KEM-1024 KEM. However, this choice results in **substantially larger artifacts**: the signatures (4627 bytes) significantly increase handshake message sizes. Consequently, DTLS 1.3 fragmentation and retransmission handling become essential to ensure handshake reliability on a constrained RISC-V client.
+For authentication, we use the **ML-DSA** (Dilithium) family, standardised by NIST as the primary post-quantum signature scheme. The three security levels—ML-DSA-44 (Level 2), ML-DSA-65 (Level 3), and ML-DSA-87 (Level 5)—offer progressively stronger protection. We select **ML-DSA-87** to maintain consistency with the high-security ML-KEM-1024 KEM. However, this choice results in **substantially larger artifacts**: the signatures (4627 bytes) significantly increase handshake message sizes. Consequently, DTLS 1.3 fragmentation and retransmission handling become essential to ensure handshake reliability on a constrained RISC-V client.
 
 Additionally, we had the option of using [Falcon](https://en.wikipedia.org/wiki/Falcon_(signature_scheme)) instead of Dilithium but Falcon relies on floating point operations as well, hence we did not go ahead with that.
 
@@ -186,10 +186,10 @@ Additionally, we had the option of using [Falcon](https://en.wikipedia.org/wiki/
 
 | Algorithm | Type | Rationale |
 |---|---|---|
-| ML-KEM-1024 | KEM | NIST-standardized (FIPS 203) highest-security parameter set; provides Level 5 protection. Larger key and ciphertext sizes (e.g., 1568-byte pk) increase fragmentation, but ensure long-term post-quantum confidentiality. |
+| ML-KEM-1024 | KEM | NIST-standardised (FIPS 203) highest-security parameter set; provides Level 5 protection. Larger key and ciphertext sizes (e.g., 1568-byte pk) increase fragmentation, but ensure long-term post-quantum confidentiality. |
 | ML-DSA-87 | Signature | NIST-selected Level 5 signature scheme. Strongest security configuration (256-bit). Large artifacts (4.9 kB sk, 2.6 kB pk, 4.6 kB signatures) require careful DTLS 1.3 fragmentation and retransmission handling. |
 | ChaCha20–Poly1305 | AEAD Cipher | Significantly faster than AES-GCM on software-only embedded CPUs; reduces per-record cycle cost by nearly half. Optimal choice for a RV32IM soft-core lacking AES acceleration. |
-| SHA-256 | Hash | Widely standardized and required for DTLS 1.3 transcript hashing and HKDF. Lowest-complexity member of the SHA-2 family and fits comfortably in constrained RISC-V environments. |
+| SHA-256 | Hash | Widely standardised and required for DTLS 1.3 transcript hashing and HKDF. Lowest-complexity member of the SHA-2 family and fits comfortably in constrained RISC-V environments. |
 
 *Table 2: Selected Cryptographic Primitives and Rationale*
 
@@ -392,9 +392,9 @@ to suppress HelloRetryRequest on compatible resumptions. This reduces one round 
 
 **Result.** With all that in place we got reliable PSK-based DTLS 1.3 resumption, early data worked, ticket-age handling stayed valid off our custom timing functions, and we avoided unnecessary HelloRetryRequests where we could.
 
-## Annexure 1.7: Low Power Optimizations
+## Annexure 1.7: Low Power Optimisations
 
-- **Link-Time and Linker Optimizations:** These flags place each function and zero-initialized object in its own section. Combined with `-Wl`,`--gc-sections`, the linker can remove unused code and data.
+- **Link-Time and Linker Optimisations:** These flags place each function and zero-initialised object in its own section. Combined with `-Wl`,`--gc-sections`, the linker can remove unused code and data.
 
   With LTO, GCC embeds intermediate representation (GIMPLE) in the object files. During linking, the linker invokes the compiler to perform cross-module inlining and dead-code elimination using global visibility over all translation units. Although this increases compile time and memory usage, the host system comfortably handles the overhead. The linker script finally merges all generated `.text.*` and `.bss.*` sections into contiguous segments while retaining the size reductions achieved through dead-code pruning.
 
@@ -440,7 +440,7 @@ int CustomRngGenerateBlock(byte *output, word32 sz) {
 
 The LFSR is seeded with a constant seed in the hardware simulation. But in a practical system, the randomness is generated by natural noise. After each clock cycle it updates its internal values according to the above expression, the register values only repeat after an astronomically large number of clock cycles.
 
-The value of this register can be accessed using the `entropy_seed_read()` function, which is generated in the `generated/csr.h` header during the simulation. The register value is used as the TRNG seed from the hardware. Then, the simulated TRNG seed is used to initialize ( and reinitialize ) ChaCha8, a Cryptographically Secure Random number Generator. For faster implementation, we buffer the value of ChaCha8 up to 16 values and then (after 16 cycles) update the internal state of ChaCha8, using the TRNG seed in the register at the next clock cycle.
+The value of this register can be accessed using the `entropy_seed_read()` function, which is generated in the `generated/csr.h` header during the simulation. The register value is used as the TRNG seed from the hardware. Then, the simulated TRNG seed is used to initialise ( and reinitialise ) ChaCha8, a Cryptographically Secure Random number Generator. For faster implementation, we buffer the value of ChaCha8 up to 16 values and then (after 16 cycles) update the internal state of ChaCha8, using the TRNG seed in the register at the next clock cycle.
 
 ChaCha8 is implemented inside the function `get_secure_random()` and this function is called whenever the CustomRngGenerateBlock function is used by the wolfssl.
 

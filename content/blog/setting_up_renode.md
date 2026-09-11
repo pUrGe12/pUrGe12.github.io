@@ -11,7 +11,7 @@ tags = ["blog"]
 lang = "en"
 +++
 
-Welcome to the renode setup. I hope you know why you want to do this, it won't take much time (depending on your internet speed) and I won't be explaning anything other than the problems I faced and how to exactly do it.
+Welcome to the renode setup. I hope you know why you want to do this, it won't take much time (depending on your internet speed) and I won't be explaining anything other than the problems I faced and how to exactly do it.
 
 ## Go through the readme
 
