@@ -15,11 +15,7 @@ lang = "en"
 
 ## Question
 
-We have been given a picture which is as shown below
-
-INSERT PIC HERE
-
-And we have a few statements that can either be true or false. Yes we need to decide which is it.
+We have been given a picture and we have a few statements that can either be true or false. Yes we need to decide which is it.
 
 1. It is Black to move.
 2. One colour has exactly one more piece than the other.
