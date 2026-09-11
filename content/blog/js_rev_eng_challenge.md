@@ -4,7 +4,7 @@ date = 2026-09-05
 draft = false
 
 [taxonomies]
-categories = ["Hardware", "Rev"]
+categories = ["Puzzles", "Hardware", "Rev"]
 tags = ["blog", "netlist"]
 
 [extra]
