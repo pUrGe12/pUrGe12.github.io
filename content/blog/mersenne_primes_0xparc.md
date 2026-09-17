@@ -1,7 +1,7 @@
 +++
 title = "0xPARC's mersenne prime puzzle"
 date = 2026-09-16
-draft = true
+draft = false
 
 [taxonomies]
 categories = ["Puzzles", "Math"]
