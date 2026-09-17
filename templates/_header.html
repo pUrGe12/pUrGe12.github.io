@@ -35,7 +35,7 @@
         </div>
       </nav>
       <div class="row items-center gap-3">
-        {% if section is defined and section.path and section.path != "/projects/" %}
+        {% if section is defined and section.path %}
         {% set rss_icon = load_data(path="static/icon/rss.svg") %}
         {% if section.generate_feed -%}
         <a href="{{ config.base_url }}/blog/{{ config.feed_filename }}" aria-label="rss feed" target="_blank">{{ rss_icon | safe }}</a>

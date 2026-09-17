@@ -66,7 +66,6 @@ links = [                             # Your links
 nav_separator = " > "
 
 display_id = true                     # Display your id on homepage
-projects_page = true                  # Display projects page
 wisps_page = true                     # Custom page to display some non-tech stuff
 notes_page = true                     # Custom page to display OCaml and LLM math notes
 books_page = true                     # Custom page to display book recommendations
