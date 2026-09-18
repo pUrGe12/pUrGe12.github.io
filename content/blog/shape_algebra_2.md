@@ -194,6 +194,16 @@ $$
 
 In fact it is this observation that led me to adding subtraction in the rules and discovering the new formula for the unspeakable shape.
 
+**Update:** we wrote a script in [Lean](https://github.com/purge12/shape-algebra) to verify this. Both sides draw the same shape, but the relation fails as a direct substitution because the final reference points are different. On the LHS the next $1_X$ goes to the default $X$ line. On the RHS the latch was just pressed, so it goes to the $X$ line with the most blocks, and in this shape those aren't the same line.
+
+It does work if both sides are followed by a latch. Latching resets the reference point the same way on both sides, and then the extra $X$ on the RHS isn't needed anymore:
+
+$$
+A_X^{j}(1_Y \cdot (j-1))M_YZ = A_Y^{j}(1_X \cdot (j-1))M_XZ \quad \forall Z \in \lbrace R, C \rbrace
+$$
+
+Lean checks this one as a perfect substitution for every $j$ from 1 to 15.
+
 ## Coverage
 
 So, I was able to run some scripts to prove that we're able to reach all the shapes up to N = 11 at least. After that the required computations go very high so I didn't run those checks. I'll keep updating this, but I assume there shouldn't be a problem with coverage now with all the rules we have in place.
