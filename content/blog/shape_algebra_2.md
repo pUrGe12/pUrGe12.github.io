@@ -240,4 +240,4 @@ So, each new value of N, requires on average 1.2 times more steps.
 
 ---
 
-I will develop this further when I am freerer
+See the next blog post for some more details on coverage using Lean.
