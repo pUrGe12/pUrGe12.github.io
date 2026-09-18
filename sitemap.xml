@@ -27,10 +27,6 @@
         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
-        <loc>https://purge12.github.io/blog/creating-an-ethernet-gateway/</loc>
-        <lastmod>2025-04-18</lastmod>
-    </url>
-    <url>
         <loc>https://purge12.github.io/blog/cve-2025-21535/</loc>
         <lastmod>2025-01-27</lastmod>
     </url>
@@ -111,10 +107,6 @@
         <lastmod>2025-01-25</lastmod>
     </url>
     <url>
-        <loc>https://purge12.github.io/blog/setting-up-gcloud-for-vertexai/</loc>
-        <lastmod>2025-01-29</lastmod>
-    </url>
-    <url>
         <loc>https://purge12.github.io/blog/setting-up-renode/</loc>
         <lastmod>2026-06-15</lastmod>
     </url>
@@ -143,16 +135,8 @@
         <lastmod>2026-06-19</lastmod>
     </url>
     <url>
-        <loc>https://purge12.github.io/blog/training-custom-yolov5/</loc>
-        <lastmod>2024-12-19</lastmod>
-    </url>
-    <url>
         <loc>https://purge12.github.io/blog/triton-kernels/</loc>
         <lastmod>2026-04-26</lastmod>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/blog/understanding-buffer-overflows-with-freertos/</loc>
-        <lastmod>2026-06-17</lastmod>
     </url>
     <url>
         <loc>https://purge12.github.io/blog/understanding-dana-for-netlist-re/</loc>
@@ -243,9 +227,6 @@
         <loc>https://purge12.github.io/categories/games/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/categories/gcp/</loc>
-    </url>
-    <url>
         <loc>https://purge12.github.io/categories/hacking/</loc>
     </url>
     <url>
@@ -304,9 +285,6 @@
     </url>
     <url>
         <loc>https://purge12.github.io/categories/triton/</loc>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/categories/vertexai/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/gallery/</loc>
@@ -377,9 +355,6 @@
         <loc>https://purge12.github.io/tags/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/tags/ai/</loc>
-    </url>
-    <url>
         <loc>https://purge12.github.io/tags/assembly/</loc>
     </url>
     <url>
@@ -390,9 +365,6 @@
     </url>
     <url>
         <loc>https://purge12.github.io/tags/classics/</loc>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/tags/coding/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/culture/</loc>
@@ -467,9 +439,6 @@
         <loc>https://purge12.github.io/tags/programming/</loc>
     </url>
     <url>
-        <loc>https://purge12.github.io/tags/python/</loc>
-    </url>
-    <url>
         <loc>https://purge12.github.io/tags/qemu/</loc>
     </url>
     <url>
@@ -477,9 +446,6 @@
     </url>
     <url>
         <loc>https://purge12.github.io/tags/science/</loc>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/tags/setup/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/startup/</loc>
@@ -492,9 +458,6 @@
     </url>
     <url>
         <loc>https://purge12.github.io/tags/webdev/</loc>
-    </url>
-    <url>
-        <loc>https://purge12.github.io/tags/yolo/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/wisps/</loc>
