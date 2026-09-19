@@ -246,4 +246,91 @@ $$
 \left| \frac{x}{y} - \sqrt{D}\right| \lt \frac{1}{2y^2}
 $$
 
-the fraction $\frac{x}{y}$ must be a convergent of $\sqrt{D}$. This is helpful, because now we can understand why the continued fractions algorithm even works out.
+the fraction $\frac{x}{y}$ must be a convergent of the continued fraction of $\sqrt{D}$. We also have the following recurrence relation, which will be easier to see if I add a few examples:
+
+$$
+\begin{aligned}
+[a_0] &= \frac{p_0}{q_0} = a_0 &&\implies p_0 = a_0, \quad q_0 = 1 \\\\
+[a_0, a_1] &= \frac{p_1}{q_1} = \frac{a_0a_1 + 1}{a_1} &&\implies p_1 = a_0a_1 + 1, \quad q_1 = a_1 \\\\
+[a_0, a_1, a_2] &= \frac{p_2}{q_2} = \frac{a_2(a_0a_1 + 1) + a_0}{a_2a_1 + 1} &&\implies p_2 = a_2p_1 + p_0, \quad q_2 = a_2q_1 + q_0 \\\\
+&\vdots
+\end{aligned}
+$$
+
+So the recurrence relation becomes:
+
+$$
+\begin{aligned}
+p_n &= a_n p_{n-1} + p_{n-2} \\\\
+q_n &= a_n q_{n-1} + q_{n-2}
+\end{aligned}
+$$
+
+Now we can use this to compute the different convergents! To make this recurrence work for the very first step ($n = 0$), we define dummy base values for $n = -2$ and $n = -1$.
+
+Now that we have everything, the algorithm becomes:
+
+```
+1. Start computing p_k and q_k of the continued fraction of sqrt(D)
+2. Stop at the first k for which p_k^2 - D*q_k^2 = 1
+```
+
+And that's really it! We can compute the convergents using the recurrence formula. This is what the final code then looks like:
+
+```python
+import math
+
+def solve_pell(D):
+    # Get the integer part of the square root
+    a0 = int(math.sqrt(D))
+    
+    # If D is a perfect square, there are no valid solutions
+    # Adding this here and not in the main loop like before
+    if a0 * a0 == D:
+        return 0, 0
+    
+    # Initialize variables for the continued fraction expansion
+    m, d, a = 0, 1, a0
+    
+    # Initialize numerators (h) and denominators (k) of the convergents
+    h_prev, h_curr = 0, 1
+    k_prev, k_curr = 1, 0
+    
+    while True:
+        # Calculate the next convergent numerator and denominator
+        h_next = a * h_curr + h_prev
+        k_next = a * k_curr + k_prev
+        
+        # The first convergent is (1,0) which is trivial. So we skip that
+        # Otherwise, check if this convergent solves Pell's Equation
+        if h_next != 1 and h_next**2 - D * k_next**2 == 1:
+            return h_next, k_next
+            
+        # Advance the continued fraction sequence
+        m = d * a - m
+        d = (D - m**2) // d
+        a = (a0 + m) // d
+        
+        h_prev, h_curr = h_curr, h_next
+        k_prev, k_curr = k_curr, k_next
+
+if __name__ == '__main__':
+    largest_x = 0
+    best_D = 0
+    
+    for D in range(2, 1001):
+        x, y = solve_pell(D)
+        
+        if x > largest_x:
+            largest_x = x
+            best_D = D
+
+    print(f"Largest x occurs at D = {best_D}")
+    print(f"The value of x is: {largest_x}")
+```
+
+Note that here I have initialized $a_0$ as the integer part of the square root of $D$. This makes sense because $a_i \in \mathbb{N}$, and hence everything after $a_0$ will necessarily be a number smaller than 1. Since any number can be split into the sum of its integer part and its fractional part ($n = \lfloor n \rfloor + \\{n\\}$), $a_0$ has to be $\lfloor \sqrt{D} \rfloor$.
+
+And with this, we're done.
+
+---
