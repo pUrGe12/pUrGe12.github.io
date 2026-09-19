@@ -15,7 +15,7 @@ lang = "en"
 
 I had been trying to see how triton's GPU kernels compile to LLVM IR. Seemed especially interesting given the fact that triton is python written for GPUs! So, let's start with a very very simple example, which I am picking from [this repo](https://github.com/rkinas/triton-resources/blob/main/daily_challange/day0/add_constant.py).
 
-```python3
+```python
 import time
 import torch
 import triton
@@ -68,7 +68,7 @@ def constant_add_triton(x: torch.Tensor, constant: float) -> torch.Tensor:
 
 You probably can't have a simpler kernel (that's also non-trivial) than this. In the final step of the wrapper function, before calling the kernel, let's print all compilation IRs:
 
-```python3
+```python
 def constant_add_triton(x: torch.Tensor, constant: float) -> torch.Tensor:
 	...    
     # Launch the Triton kernel

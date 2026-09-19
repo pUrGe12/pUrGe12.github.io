@@ -19,7 +19,7 @@ The minimalistic look of just uploading files to a folder and seeing it be saved
 
 The code for the server was pretty simple only
 
-```python3
+```python
 from flask import Flask, request, redirect, url_for, render_template, flash, Response
 from werkzeug.utils import secure_filename
 import os
