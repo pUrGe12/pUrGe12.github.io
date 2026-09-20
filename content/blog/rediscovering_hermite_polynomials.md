@@ -27,7 +27,7 @@ It looks so tantalizingly close to sigmoids, or tanhx or any other activation fu
 <details>
 <summary>TLDR;</summary>
 
-I had not searched for anything prior to starting my work on this. Which means I did not know that a lot of smart people have figured out a lot of smart shit in this area. I also **did not** end up deriving **Winitzki Approximation** or any other closed form approximation because I quickly digressed towards the gauss-hermite quadrature areas, starting from Hermite polynomials, deriving the recurrence relations and then moving up from there.
+I had not searched for anything prior to starting my work on this. Which means I did not know that a lot of smart people have figured out a lot of smart stuff in this area. I also **did not** end up deriving **Winitzki Approximation** or any other closed form approximation because I quickly digressed towards the gauss-hermite quadrature areas, starting from Hermite polynomials, deriving the recurrence relations and then moving up from there.
 
 This is part one of the blog, which dives into hermite polynomials and the recurrence relation derivation only.
 

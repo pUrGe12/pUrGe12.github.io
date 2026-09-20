@@ -741,7 +741,7 @@ namespace Antmicro.Renode.Peripherals.Timers
 }
 ```
 
-Let's break this motherfucker down:
+Let's break this bad boy down:
 
 ```c#
 public LimitTimer(IClockSource clockSource, ulong frequency, IPeripheral owner, string localName, ulong limit = ulong.MaxValue, Direction direction = Direction.Descending, bool enabled = false, WorkMode workMode = WorkMode.Periodic, bool eventEnabled = false, bool autoUpdate = false, ulong divider = 1) 

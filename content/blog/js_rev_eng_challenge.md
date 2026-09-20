@@ -407,7 +407,7 @@ Now we have numbers and partial information to play along with:
 
 At this point, I gave all this information to an LLM because I had no idea what all this means. And it very easily told me that this is a game called starbattle (2 not touch) on an 11x11 grid. I had never played this before, so I went online to play a few.
 
-**This means that the entire puzzle had been about finding the right pattern to finish a starbattle game! Damn.**
+**This means that the entire puzzle had been about finding the right pattern to finish a starbattle game! Wild.**
 
 My next question how it enforces the rules w.r.t. an entire square of neighbours not just what came before. How does it "think ahead"?
 

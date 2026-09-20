@@ -93,7 +93,7 @@ assert failed: __esp_system_init_fn_init_flash startup_funcs.c:118 (flash_ret ==
 Backtrace: 0x40084c2d:0x3ffe3a80 0x40084bf9:0x3ffe3aa0 0x4008a2f5:0x3ffe3ac0 0x400d1257:0x3ffe3be0 0x400d1834:0x3ffe3c00 0x400d1875:0x3ffe3c30 0x400811fa:0x3ffe3c60 0x40079922:0x3ffe3c90 |<-CORRUPTED
 ```
 
-What happened is the `clock div: 1`. The earlier tests we ran on QEMU all were `clock div: 2` which means a **QIO flash mode @ 40 MHz**, while the `div: 2` is **80 MHz** thus this can be potential reason why shit broke.
+What happened is the `clock div: 1`. The earlier tests we ran on QEMU all were `clock div: 2` which means a **QIO flash mode @ 40 MHz**, while the `div: 2` is **80 MHz** thus this can be potential reason why stuff broke.
 
 ```sh
 cd ~/esp/esp-tflite-micro/examples/hello_world/

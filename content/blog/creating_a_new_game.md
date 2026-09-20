@@ -14,13 +14,13 @@ banner = "assets/banners/creating-a-new-game.jpg"
 
 # Introduction
 
-I was watching some clips on YouTube of Pirates of the Caribbean and the scene where Davy Jones plays against Will Turner the dice game got me thinking. So, naturally I wanted to understand how the fuck the game even works because the movie's cut for this scene does an absolute jackshit job of explaining it. I found some YouTube videos to explain the game and I won't explain that here but I'll [link the video](https://youtu.be/T44LuxdH0iw?si=2B5FIfzB6kQPapCQ) so that you can see for yourself.
+I was watching some clips on YouTube of Pirates of the Caribbean and the scene where Davy Jones plays against Will Turner the dice game got me thinking. So, naturally I wanted to understand how on earth the game even works because the movie's cut for this scene does an absolutely awful job of explaining it. I found some YouTube videos to explain the game and I won't explain that here but I'll [link the video](https://youtu.be/T44LuxdH0iw?si=2B5FIfzB6kQPapCQ) so that you can see for yourself.
 
 Now I only have a deck of cards, and 0 dies, which means I had to come up with a variant for Liar's Dice that I can play with my friends using cards. 
 
 > The major difference between dies and cards is that cards have dependent events
 
-In a typical liar's dice game, you can roll any number you want, but it doesn't necessarily pin down or give you any information about what the other player might have. In cards however, such is not the case. Because if you see 3 6's in your hand, then you're damn sure only 1 more exists in the entire deck, so your betting strategy will change. Anyways, I am getting ahead of myself here, let me explain the rules a little more precisely.
+In a typical liar's dice game, you can roll any number you want, but it doesn't necessarily pin down or give you any information about what the other player might have. In cards however, such is not the case. Because if you see 3 6's in your hand, then you're absolutely sure only 1 more exists in the entire deck, so your betting strategy will change. Anyways, I am getting ahead of myself here, let me explain the rules a little more precisely.
 
 ## Rules
 

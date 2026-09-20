@@ -199,7 +199,7 @@ okay, its been a few hours and I learnt that support for `0xC0` was removed in v
 
 ## Installing lower versions
 
-Man! The problem with cloning this is that its so fucking big, and a bad internet connection (unstable or slow) means you will never be able to do it because it will inevitably drop frames.
+Man! The problem with cloning this is that its so massive, and a bad internet connection (unstable or slow) means you will never be able to do it because it will inevitably drop frames.
 
 Had to rush to the library for this, it gives 4Mbps which is good enough and stable enough. This is the cloning script I am using now,
 
@@ -300,7 +300,7 @@ Checking `components/esp_wifi/include/esp_wifi.h` and this is the metadata we fi
 
 This is exactly what we want to bypass.
 
-I was being too ambitious. After a bit of researching I found that the implementation of this function is mostly likely close-sourced. Thus, even replicating the certain specifics is going to be difficult as fuck.
+I was being too ambitious. After a bit of researching I found that the implementation of this function is mostly likely close-sourced. Thus, even replicating the certain specifics is going to be ridiculously difficult.
 
 ## Alternative approach
 

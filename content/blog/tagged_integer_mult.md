@@ -91,7 +91,7 @@ And this is the `assembly`:
    18dde:	66 90                	xchg   %ax,%ax 	// This is a 2 byte NOP code
 ```
 
-Damn, these are objectively different (pun intended). Both of them were compiled without any optimisations. Actually, if we do optimise the C code:
+Wow, these are objectively different (pun intended). Both of them were compiled without any optimisations. Actually, if we do optimise the C code:
 
 So what happens for the OCaml case? Let's go over it one step at a time:
 

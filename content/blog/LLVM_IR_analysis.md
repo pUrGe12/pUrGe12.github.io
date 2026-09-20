@@ -542,7 +542,7 @@ define dso_local i32 @rec(i32 noundef %0, i32 noundef %1, i32 noundef %2) local_
 Lets first look at `rec` and then we'll talk about what `tailfib` does. Let's not go over the full flow of the program again, but talk about only the differences:
 
 1. This is using a `switch` to handle the 0 and 1 case. Is this more efficient than a simple `icmp ult`? An `icmp` is essentially an if-else equivalent and a switch is faster IF the number of entries in the jump table are large enough to justify it.
-In this case, the choice is arbitrary in my opinion and won't really optimise or fuck the code.
+In this case, the choice is arbitrary in my opinion and won't really optimise or break the code.
 
 2. There are no function calls!
 

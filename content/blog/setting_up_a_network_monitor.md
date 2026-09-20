@@ -137,7 +137,7 @@ I checked that the drivers exist and are not bound because of something called t
 
 The thing is the old server was previously my dad's business laptop and ULP is enabled in the UEFI by default (It supports legacy as well but who cares about that).
 
-This is so fucked. So apparently my e1000e doesn't discover the NIC hardware (its not listed in the modinfo). I tried install a newer version of the e1000e driver and BAM! API misconfigs, deprecated functions etc. This is so frustrating. Without this I can't even setup a simple LAN connection.
+This is so broken. So apparently my e1000e doesn't discover the NIC hardware (its not listed in the modinfo). I tried install a newer version of the e1000e driver and BAM! API misconfigs, deprecated functions etc. This is so frustrating. Without this I can't even setup a simple LAN connection.
 
 For some reason manually binding the driver raises the issue that "the file/directory cannot be found". BRUH I AM SITTING RIGHT HERE. its in front of me. Annoying as hell.
 
@@ -176,7 +176,7 @@ The good thing is the build passed. sigh... If only I did this yesterday :(.
 
 ---
 
-Sad stuff happened, cause turns out the patch I wanted to do is already there. haha. :(((. What the fuck.
+Sad stuff happened, cause turns out the patch I wanted to do is already there. haha. :(((. Are you kidding me.
 
 ---
 
@@ -216,7 +216,7 @@ The next step is then to enable IP forwarding. This is basically a single bit th
 
 ---
 
-So, I will now setup my default gateway as the new laptop. This is risky (cause it might mess up shit)
+So, I will now setup my default gateway as the new laptop. This is risky (cause it might mess stuff up)
 
 ```sh
 sudo ip route add default via 192.168.42.1

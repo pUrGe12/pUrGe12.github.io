@@ -77,7 +77,7 @@ start
 
 ---
 
-Not impressed? I agree, this makes for a shitty demo. I need to find a better firmware which is more chattier so we can talk over UART or something. The easiest to verify is:
+Not impressed? I agree, this makes for a lousy demo. I need to find a better firmware which is more chattier so we can talk over UART or something. The easiest to verify is:
 
 ```sh
 start @scripts/single-node/stm32f4_discovery.resc

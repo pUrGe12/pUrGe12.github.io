@@ -113,6 +113,6 @@ make -f tensorflow/lite/micro/tools/make/Makefile \
   microlite -j$(nproc)
 ```
 
-- IN this case the failure is not a `Guru-meditation`!!! Its a `AllocateTensor failed`, damn. That's cool.
+- IN this case the failure is not a `Guru-meditation`!!! Its a `AllocateTensor failed`. That's actually cool.
 
 I didn't know renode has a `--disable-gui` option. This saves my life I thought we'll be doing docker all along. But we'll still have to do docker though in the CI/CD 

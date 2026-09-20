@@ -256,7 +256,7 @@ What's important to us in this blog is to understand **where** the data for the 
 
 Let's look over here. I still haven't told you what the `caml_initialize` calls are doing, but if we ignore that bit for now, see what happens below it.
 
-- We call the store the value of the register **rbx** into the **stack pointer (rsp)**. What the fuck you may say. To understand this we'll have to do the whole assembly trace, which we'll do in just a moment.
+- We call the store the value of the register **rbx** into the **stack pointer (rsp)**. What on earth, you may say. To understand this we'll have to do the whole assembly trace, which we'll do in just a moment.
 - Then we populate `rbx` and `rax` with the addresses present in the `rip` shifted by different offsets. `rip` is the instruction pointer, this essentially keeps track of where the CPU is executing code. We're using `RIP` relative addressing here. It's basically saying "The data we want is exactly 0x4ad01 bytes away from where we are right now."
 - The difference between the memory locations is `0x19` (or 25). But if you see the comments, the final memory address are actually `0x20` bytes apart (or 32). My claim is that `32` bytes (or 256) is the size of our `record`. We'll verify that later.
 
@@ -323,7 +323,7 @@ If I were to give you a step by step breakdown:
 7. Else, we compare `rsi` with `rax` (again, since last time we did `rdi` but `rdi` had `rsi`), and if they're equal, we do the same mechanism stated above.
 8. If that's also not true, then we compare `rsi` with the value stored **31 bytes** from the previous one we were accessing (from `rip`)
 9. if that's true we do the **same cleanup**, else we do a bunch of things, and eventually see again if we can pop the stack in the same way as above.
-10. If none of that happens, we do a **no-op** and fuck off. 
+10. If none of that happens, we do a **no-op** and bail. 
 
 I kinda got bored towards the end. But, what we're looking at, is actually something called the `The Write Barrier`. Yeah, we're into crazy territories now.
 

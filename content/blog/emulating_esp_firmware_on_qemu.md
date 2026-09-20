@@ -11,7 +11,7 @@ tags = ["blog"]
 lang = "en"
 +++
 
-The goal is to test ESP32 firmware. I know you can flash the fucking MCU with that and run it but for safety critical situations (or in any other sane person's hands) this doesn't make sense.
+The goal is to test ESP32 firmware. I know you can flash the actual MCU with that and run it but for safety critical situations (or in any other sane person's hands) this doesn't make sense.
 
 ## Running espressif's QEMU fork
 

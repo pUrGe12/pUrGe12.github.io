@@ -405,11 +405,11 @@ Let's understand this bug, precisely because this is something that cannot be ca
 
 - `EXCCAUSE: 0x0000001d` -> This is the number 29. If we look at this [post](https://esp32.com/viewtopic.php?t=5492) then this is the same memory corruption (StoreProhibited) problem. it is indeed something trying to write to non-existent memory, by e.g. dereferencing a NULL pointer.
 
-- `EXCVADDR: 0x00000000` -> This is the address which is fucking us up, which is NULL. As expected since malloc(huge_number) gives NULL which is what we tried to store as a float here `float *hid = arena`.
+- `EXCVADDR: 0x00000000` -> This is the address which is messing us up, which is NULL. As expected since malloc(huge_number) gives NULL which is what we tried to store as a float here `float *hid = arena`.
 
 - `PC: 0x400d3697` — the instruction that did it. 0x400d_xxxx is the flash-mapped code region, and that address lives inside `infer()` (the cooked function, PC means **Program Counter**). How do I know this? Well I really don't, at least not by looking at the number itself. We'll have to cross-link this with the symbol table, which I didn't. I am stating this assumption because I know its not a RAM or a ROM problem.
 
-This is because these addresses `0x4000_xxxx` are masked ROM and these `0x4008_xxxx` are IRAM (Instruction RAM) while `0x400D_xxxx` are the application memory. Hence I know its application memory and one function which can fuck up (I mean we deliberately set up `infer` to fuck up but still) is `infer`.
+This is because these addresses `0x4000_xxxx` are masked ROM and these `0x4008_xxxx` are IRAM (Instruction RAM) while `0x400D_xxxx` are the application memory. Hence I know its application memory and one function which can blow up (I mean we deliberately set up `infer` to blow up but still) is `infer`.
 
 Note how much free heap we had: `free heap = 304988 bytes` that's roughly 300KB, and we tried to allocate 64MB in there so obviously it faulted. The backtrace line is four `PC:SP` pairs (SP means **stack pointer**).
 
@@ -466,7 +466,7 @@ Its a warning and that too not about the heap bytes itself, but about `hid[j] = 
       |     ^
 ```
 
-- What about `EspStackTraceDecoder.jar`? Its basically a wrapper around `xtensa-esp32-elf-addr2line`. Its a pretty printer! Its going to take the backtrace we've been seeing for all our error outputs along with the `Guru meditation` error and tell us which line fucked up in the code. Its a useful tool, but it's AFTER a problem has already happened.
+- What about `EspStackTraceDecoder.jar`? Its basically a wrapper around `xtensa-esp32-elf-addr2line`. Its a pretty printer! Its going to take the backtrace we've been seeing for all our error outputs along with the `Guru meditation` error and tell us which line broke in the code. Its a useful tool, but it's AFTER a problem has already happened.
 
 - And `openocd` also will not work because its a live debugger. You'll have to RUN the actual code and attach this to the running chip and it uses GDB to set debugging points etc.
 
