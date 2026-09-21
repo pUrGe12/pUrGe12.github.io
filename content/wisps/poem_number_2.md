@@ -1,5 +1,5 @@
 +++
-title = "your are so easy to fool"
+title = "you are so easy to fool"
 date = 2025-04-24
 draft = false
 

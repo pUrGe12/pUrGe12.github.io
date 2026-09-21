@@ -49,10 +49,10 @@ for i in range(10**12, 10**13):
 
 And this gave me a lot of false positives. Here's why this is wrong:
 
-1. Floating point comparisions are tricky in python and doing `x-math.floor(x) == 0.0` is the worst thing I could've done. Its always better to just compute the `isqrt` instead of `sqrt` if integers are what we need.
+1. Floating point comparisons are tricky in python and doing `x-math.floor(x) == 0.0` is the worst thing I could've done. Its always better to just compute the `isqrt` instead of `sqrt` if integers are what we need.
 2. This will take forever to complete!
 
-Lesson to be learnt here is that, whenever your code seems to run forever, its probably either a less effieicent algorithm or more often, less effiecient math.
+Lesson to be learnt here is that, whenever your code seems to run forever, its probably either a less efficient algorithm or more often, less efficient math.
 
 In this case, it was less efficient math. Because if we look at the equation written before more carefully, we'll observe this:
 
@@ -85,7 +85,7 @@ There actually is another very interesting optimization we can do. Going with th
 
 Note that passing doesn't mean its a perfect square. But failing means it def. isn't.
 
-So, it took roughly 33 minutes to find the solution! Which is wayyyy worse than continuted fractions of $\sqrt{2}$ but I digress.
+So, it took roughly 33 minutes to find the solution! Which is wayyyy worse than continued fractions of $\sqrt{2}$ but I digress.
 
 ## Problem solving tactics
 

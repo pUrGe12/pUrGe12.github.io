@@ -27,7 +27,7 @@ val f : t -> u
 
 To write a good documentation you need to provide specifications like these to the client. This is usually write in the `.mli` file above the declaration of the name.
 
-We can also add effiency details as part of the function (like saying, this function will always run with constant space). You don't have to write types in the precondition of course.
+We can also add efficiency details as part of the function (like saying, this function will always run with constant space). You don't have to write types in the precondition of course.
 
 - For pre-conditions, programmers often tend to say "this accepts only X" and NOT check for it.
 
@@ -94,7 +94,7 @@ end
 
 The problem is, this implementation of sets is correct iff the list being passed to it, contains no duplicates! The onus then falls onto the client (the consumer of the struct) to make sure that there are no duplicates in whatever list they are giving us.
 
-This is where specs are helpful cause we can shift the blame! Now ofcourse a set where you have to manually deduplicate is kinda dumb because then I'll just use a normal list right! -> That's the tradeoff your pre-conditions can have!
+This is where specs are helpful cause we can shift the blame! Now of course a set where you have to manually deduplicate is kinda dumb because then I'll just use a normal list right! -> That's the tradeoff your pre-conditions can have!
 
 ## Efficiency
 
@@ -128,7 +128,7 @@ let size s =
 
 And now we should be good! But note how this is actually even worse than **O(n)** (**O(n^2)**)!
 
-The simplest thing to do ofcourse would be to remove all the elements of the list first, then we can just take the length of the list. To do this, let's make use of the list library functions:
+The simplest thing to do of course would be to remove all the elements of the list first, then we can just take the length of the list. To do this, let's make use of the list library functions:
 
 ```ocaml
 let size s =

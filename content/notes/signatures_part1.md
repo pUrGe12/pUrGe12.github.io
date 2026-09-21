@@ -21,7 +21,7 @@ module type Fact = sig
 end
 ```
 
-So, yes even though I was spekaing about it in the sense of a module, its really applicable to functions as well. Here, we're saying that there exists a `value` called `fact` which has the type `int->int`.
+So, yes even though I was speaking about it in the sense of a module, its really applicable to functions as well. Here, we're saying that there exists a `value` called `fact` which has the type `int->int`.
 
 The `val` keyword is pretty important, we see it in utop all the time. Don't try to use it in your programs as variable names!
 

@@ -97,7 +97,7 @@ let center (s:shape) = match s with
 			(avg x1 y1, avg x2 y2);;
 ```
 
-That's kinda cool now! Notice how the order for the match has fliped. That's why its not merely **unpacking** a tuple, its a **pattern match**. They are different things.
+That's kinda cool now! Notice how the order for the match has flipped. That's why its not merely **unpacking** a tuple, its a **pattern match**. They are different things.
 
 Let's add a shape:
 

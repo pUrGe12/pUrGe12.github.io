@@ -49,7 +49,7 @@ end
 - The functor takes in a module M, which is type bound to `X` (which we have defined before). So, only those signatures can make through to this **functor**.
 - It returns a struct which defines a new x, that takes the module M's x and adds 1 to it (exactly what we wanted)
 
-To use it, we need to call it on a module with brakets!
+To use it, we need to call it on a module with brackets!
 
 ```ocaml
 module B = IncX(A);;
@@ -98,9 +98,9 @@ end
 
 You can find this signature [in here](https://github.com/ocaml/ocaml/blob/8cad7474b341dca46c56daf68108ce3949028951/stdlib/pqueue.ml#L221) as well.
 
-- Basically to **make** a map, you need to pass in a module which has two things in it, a type (for the keys) and a comparision function (for the keys).
+- Basically to **make** a map, you need to pass in a module which has two things in it, a type (for the keys) and a comparison function (for the keys).
 
-- The comparision function is needed due to its implementation as a balanced binary tree, so it needs to be able to compare the keys at every node.
+- The comparison function is needed due to its implementation as a balanced binary tree, so it needs to be able to compare the keys at every node.
 
 The output of the functor is `S`. The output signature look likes:
 

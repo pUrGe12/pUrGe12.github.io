@@ -21,7 +21,7 @@ type 'a MyQueue =
 	| Cons of 'a * 'a MyQueue
 ```
 
-But we ofcourse want to wrap this around a module:
+But we of course want to wrap this around a module:
 
 ```ocaml
 module MyQueue = struct	
@@ -48,7 +48,7 @@ Is the more efficient way of adding an element at the end of the list is to reve
 let enqueue val q = List.rev (val::List.rev q);;
 ```
 
-100% **not**! Because firstly, we're traversig the list twice, so its twice as bad as `q @ [val]`. Secondly, They are equivalent in terms of time complexity O(n). We have a much sleeker solution. Let's look at it.
+100% **not**! Because firstly, we're traversing the list twice, so its twice as bad as `q @ [val]`. Secondly, They are equivalent in terms of time complexity O(n). We have a much sleeker solution. Let's look at it.
 
 1. We'll represent the queue as two lists, front and the back of the queue
 
@@ -121,7 +121,7 @@ Very neat!
 
 ## Exceptions vs options
 
-Options as you should recall are `Some` and `None`. The good thing baout exceptions is that we don't have to worry about options! As in we can simply chain together multiple operations without have to "optionally" get a response from a function.
+Options as you should recall are `Some` and `None`. The good thing about exceptions is that we don't have to worry about options! As in we can simply chain together multiple operations without have to "optionally" get a response from a function.
 
 Because if we're optionally getting a response we'll have to handle the complementary as well. For example:
 

@@ -110,7 +110,7 @@ Now `partial_forth` is a function, which is awaiting an argument `x` which it in
 
 Apparently Google's `MapReduce` was inspired from Lisp and functional programming. Anyways...
 
-The idea of a `map` is to give it a function and an iteratable element and it will apply that function to each element of that iteratable element.
+The idea of a `map` is to give it a function and an iterable element and it will apply that function to each element of that iterable element.
 
 Do note that, doing something like this:
 

@@ -34,7 +34,7 @@ Features of functional programming languages:
 > How to learn a new language?
 
 1. Learn the syntax
-2. Learn the symantics -> What does the program mean and how does the computer understand it
+2. Learn the semantics -> What does the program mean and how does the computer understand it
 (Ocaml -> Type checking and evaluation rules)
 3. idioms -> What are the typical patterns for the language (how to write like a native)
 4. libraries -> What have been given, what needs to be imported
@@ -49,7 +49,7 @@ Features of functional programming languages:
 
 Semantics can be:
 
-a. `type-checking` also called **static semantics**. Why static? Because this is performed by the compiler before the program exectues. So its static.
+a. `type-checking` also called **static semantics**. Why static? Because this is performed by the compiler before the program executes. So its static.
 b. `evaluations tules` also called **dynamic semantics**, which is what happens when we run the program. So, all value evals, exceptions or infinite loops happen here.
 
 - A value is an expression that doesn't need any further evaluations. Something which is DONE.
@@ -82,7 +82,7 @@ Now we have explicitly said that `x` and `y` must be floats. Note that this is n
 
 ## Conditions
 
-- Simple if statments go like `if ... then ... else`. So you can write something like:
+- Simple if statements go like `if ... then ... else`. So you can write something like:
 
 ```ocaml
 if "batman" > "superman" then 0 else 1;;
@@ -188,7 +188,7 @@ and when we evaluate the inner expression we get `x` bound to 2, hence `x` is 2.
 
 We basically allocated 2 memory locations, called it x, but they are different memory locations. And we used only one.
 
-But if that is the case, can I **go back to the first x defintion and get 1 from that memory location**? Uhh.. in the top level, you can't, but in normal files, yes def. We'll see.
+But if that is the case, can I **go back to the first x definition and get 1 from that memory location**? Uhh.. in the top level, you can't, but in normal files, yes def. We'll see.
 
 ## Anonymous functions
 
@@ -211,9 +211,9 @@ Another thing is that, in general `fun x1 x2 ... xn -> e` does **NOT** evaluate 
 
 `Semantics`: Application of `fun x1 x2 ... xn -> e` goes as follows:
 
-> fun ==> v0, x1 ==> v1, x2 ==> v2 ... xn ==> vn. Now v0 must be a function say, `fun x1 .. xn -> e`, now in THIS function, we can substitute the values of vi for xi and evalute an e. Then e ==> v. And v is the final output.
+> fun ==> v0, x1 ==> v1, x2 ==> v2 ... xn ==> vn. Now v0 must be a function say, `fun x1 .. xn -> e`, now in THIS function, we can substitute the values of vi for xi and evaluate an e. Then e ==> v. And v is the final output.
 
-Pretty interesting way of putting this. Intutively it may make sense much easier than this but yep. This is the formal way of how this expression evaluation works semantically.
+Pretty interesting way of putting this. Intuitively it may make sense much easier than this but yep. This is the formal way of how this expression evaluation works semantically.
 
 ```ocaml
 (fun x -> x+1) (3+4);;

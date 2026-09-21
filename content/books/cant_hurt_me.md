@@ -24,7 +24,7 @@ I know by the looks of the cover, it seems like another **master your mind** kin
 
 But yes, in some sense this book does have obvious key takeaways:
 
-1. You are **much stronger than you think**. David believes you only operate at 40% of your capacity because you give up from pain, exhuastion, pressure or whatever else that tells you that you cannot go on. Beat that.
+1. You are **much stronger than you think**. David believes you only operate at 40% of your capacity because you give up from pain, exhaustion, pressure or whatever else that tells you that you cannot go on. Beat that.
 
 2. **Being uncommon isn't enough**, you can strive to be the uncommon among uncommons! Its a tough world, and a lonely world, but you have one life, why not live it large.
 

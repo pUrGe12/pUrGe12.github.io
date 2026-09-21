@@ -244,4 +244,4 @@ This has some weird consequences because now we can construct a Turing machine t
 
 I have left a great deal to the reader like the mesmerising interplay of life and death in the game, one of the most fascinating things to watch. There are questions on whether there is an equivalence of 'energy' in Life, or perhaps the applicability of the $2^{nd}$ law of thermodynamics. 
 
-I hope with this short insight into Cellular Automatas the reader will be inspired to delve deeper.
+I hope with this short insight into Cellular Automata the reader will be inspired to delve deeper.

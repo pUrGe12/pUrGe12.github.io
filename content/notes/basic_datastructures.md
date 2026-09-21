@@ -31,7 +31,7 @@ let a = [1;2;3];;
 
 Now, here's one thing you cannot do: Add elements to the list with different types! So, `["abcd"; 'a']` is not allowed (yet). 
 
-> We will see later on how to have lists with different types cause that's actually a really important thing to have in any real usecase!
+> We will see later on how to have lists with different types cause that's actually a really important thing to have in any real use case!
 
 We can have nested lists:
 
@@ -46,7 +46,7 @@ Now you can add an element to a list using the `::` operator.
 0::[1;2;3];; (*gives [0;1;2;3]*)
 ```
 
-- OCaml lists are always immuatable, once something goes inside a list, you can't change it
+- OCaml lists are always immutable, once something goes inside a list, you can't change it
 - You will have to redefine a new list if you want to make any changes
 - Lists are "singly-linked" => They are ordered, and they work okayish only.
 
@@ -94,7 +94,7 @@ print_endline @@ string_of_int me.grad_year;;
 print_endline me.name;;
 ```
 
-Its essentially a dictionary acess if you think about it. But its also a little different.
+Its essentially a dictionary access if you think about it. But its also a little different.
 
 ## Tuples
 
@@ -112,7 +112,7 @@ type points = float * float;;
 let p1 : points = (1.2, 2.3);;
 ```
 
-The real magic for the lists and tuples and records and all, come when we do matching! Which is coming soon. I belive.
+The real magic for the lists and tuples and records and all, come when we do matching! Which is coming soon. I believe.
 
 Also you can `unpack` the tuple to access individual values:
 
@@ -144,11 +144,11 @@ Tuples are bounded because while we have ways to "extend" a list due to its "lin
 
 ## Record syntax and semantics
 
-- One cool thing about field names in the type definition is that, we can have upto 4 million of them (I am not sure what's so special about 4 million).
+- One cool thing about field names in the type definition is that, we can have up to 4 million of them (I am not sure what's so special about 4 million).
 
 - `e.f` lets you access field `f` of a **record** expression `e`. The `f` is an identifier, not an expression to be computed.
 
-`Type checking`: If `e:t` and if `t` is defined as `{ t1 : v1 ... ti : vi ... }`, then `e.ti = vi`. Which basially means, `e` is a record of type `t`.
+`Type checking`: If `e:t` and if `t` is defined as `{ t1 : v1 ... ti : vi ... }`, then `e.ti = vi`. Which basically means, `e` is a record of type `t`.
 
 - Records and types are both immutable. For example, consider:
 

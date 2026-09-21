@@ -18,7 +18,7 @@ banner = "assets/banners/greenlights.jpg"
 
 ## The book
 
-This is the story of the actor Mathew McConaughey. I knew he was a good man (by which I mean someone who thinks deeply about himself), but what I did not know and hence learnt, is how he did it. This is not a tutorial, this is not a "look-at-me-I-am-so-great" type of flex, he's been genuinely self-reflective. The book is about finding opportunities, `greenlights` as he calls them.
+This is the story of the actor Matthew McConaughey. I knew he was a good man (by which I mean someone who thinks deeply about himself), but what I did not know and hence learnt, is how he did it. This is not a tutorial, this is not a "look-at-me-I-am-so-great" type of flex, he's been genuinely self-reflective. The book is about finding opportunities, `greenlights` as he calls them.
 
 ## The idea
 
@@ -31,7 +31,7 @@ They know what they want. When I read the book, I didn't know what I wanted, and
 I didn't really make goals after reading this as he had. I am **not** chasing myself 10 years in the future, but this did give me an idea about what I can potentially be, about what doors I can potentially open, and how I can... breathe...
 Give it a thought, the answer to all questions will come, is it a hut in the woods? Is it a trek in the mountains? I don't know, even he didn't know, so you know what he did? He went and found out. Now he's written about it, and I won't tell you if it worked. Because even I don't want to know.
 
-**I want to find out for myself**. (Yeah, I read that part, I tried to erase it from my memory and now when I go hiking up the Appalachian trail, I will revist and find out how wrong I was, but then it'll be too late and I'll be watching the sunrise and packing up my tent and breathing and living).
+**I want to find out for myself**. (Yeah, I read that part, I tried to erase it from my memory and now when I go hiking up the Appalachian trail, I will revisit and find out how wrong I was, but then it'll be too late and I'll be watching the sunrise and packing up my tent and breathing and living).
 
 ## Summary?
 

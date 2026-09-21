@@ -50,7 +50,7 @@ note = "Bought Excellent Excuses because I thought it would hand me a LIST OF EX
 
 [[extra.shelves]]
 title = "Physics and the universe"
-note = "Science books were a good passtime."
+note = "Science books were a good pastime."
 feature = "meditations"
 
 [[extra.shelves.books]]

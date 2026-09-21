@@ -26,9 +26,9 @@ And most of the times this walk is going to take you to places you don't want to
 
 ## The audit
 
-Its not just that "you can do it if you want to", you must want it so bad, that no one can stop you from doing it. Personally, I lost it when the CEO of Bear Stearns calls Chris to tell him that the firm is not made from graudates but from `PSDs` (Poor, Smart and a deep Desire to be someone). I lost it because its so fucking true. The `desire` which is sometimes considered a **sin** is the one thing that changes you completely.
+Its not just that "you can do it if you want to", you must want it so bad, that no one can stop you from doing it. Personally, I lost it when the CEO of Bear Stearns calls Chris to tell him that the firm is not made from graduates but from `PSDs` (Poor, Smart and a deep Desire to be someone). I lost it because its so fucking true. The `desire` which is sometimes considered a **sin** is the one thing that changes you completely.
 
-Desire leads to obession, and that leads you to wherever you want to go.
+Desire leads to obsession, and that leads you to wherever you want to go.
 
 Hustle is the part of obsession. You see someone better? Go learn from them, outshine them, move on. No strings attached. You got one life. All your mistakes are yours only, and only you can fix them, own it, fix it, destroy it.
 

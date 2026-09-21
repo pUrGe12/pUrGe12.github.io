@@ -21,6 +21,10 @@ math = true
 .dark .hl { color: #f18ae0; }
 </style>
 
+Working notes on the AI control setting from [Greenblatt et al.](https://arxiv.org/abs/2312.06942), protocols meant to stay safe even when the model you are deploying is actively trying to subvert them. Here I am working through two of them: the **APPS** setting, where an untrusted model writes code and may plant backdoors, and the **Bash** setting, where it has shell access and attacks unfold over multiple steps.
+
+The thing I did not expect going in is that the trusted monitor's weakness is not that it misses backdoors. It is that the red team can *manufacture* false positives. The untrusted model controls what reaches the monitor's context, so it can inject instructions that force benign code to be flagged, and every flag consumes part of the roughly 2% human auditing budget. Drain that, and the protocol's own fallback of deferring to the trusted model concedes everything. That is basically a `denial of service` against the safety mechanism rather than an evasion of it. It is worked out in the second section, *If T is susceptible to jailbreaks*.
+
 ## APPS setting with large context ([Notes](https://docs.google.com/document/d/18GG8H15h2jNuejPrSIjH6J4ae0h_bsnKfaBY8Zj6LJQ/edit?usp=sharing))
 
 I am assuming that the background for this game is something like this:

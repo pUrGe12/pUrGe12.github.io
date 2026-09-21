@@ -194,11 +194,11 @@ let filter f acc lst =
 ```
 
 1. Add an **accumulator** to the main function call
-2. Simplify the main call to a normal function and create an **auxliary recursive function** inside it
+2. Simplify the main call to a normal function and create an **auxiliary recursive function** inside it
 3. The base case changes to return the **accumulator**
 4. Just **call the aux** function, then find a way to fill the accumulator inside it, with an expression
 
-One interesting observation with this is that, if we run it like this, we get the output but in the reversed order! So, if we want to fix that (think about it, because we're accumulting the first few values first, so we're essentially reversing the list). To fix that we'll have to return `List.rev acc` in the base case.
+One interesting observation with this is that, if we run it like this, we get the output but in the reversed order! So, if we want to fix that (think about it, because we're accumulating the first few values first, so we're essentially reversing the list). To fix that we'll have to return `List.rev acc` in the base case.
 
 That's only for the tail-recursive case though.
 

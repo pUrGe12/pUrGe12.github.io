@@ -224,7 +224,7 @@ This device receives the interrupts from all the peripherals and notifies the sy
 
 Key Features:
 • Interrupt from 81 sources are connected.
-• Interrupt priority value upto 7.
+• Interrupt priority value up to 7.
 • A threshold register to service interrupts above a required priority value.
 ```
 

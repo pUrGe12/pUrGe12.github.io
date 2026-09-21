@@ -503,7 +503,7 @@ namespace Antmicro.Renode.Peripherals.Timers
         {
             get
             {
-                lock(irqSync)   // yeah, we're using this as a lock, that was the normal usecase for object() anyway
+                lock(irqSync)   // yeah, we're using this as a lock, that was the normal use case for object() anyway
                 {
                     return rawInterrupt;
                 }

@@ -18,7 +18,7 @@ banner = "assets/banners/steve_jobs.jpg"
 
 ## The Book
 
-This is a biography on Steve Jobs and `Isaac Walterson`, praise the heavens for sending this man to write about other people's lives. He's an insanely good author and this book was a big turning point in my life (maybe I just happened to read it during a turn, whatever).
+This is a biography on Steve Jobs and `Walter Isaacson`, praise the heavens for sending this man to write about other people's lives. He's an insanely good author and this book was a big turning point in my life (maybe I just happened to read it during a turn, whatever).
 
 Here's what I got to know about Steve Jobs:
 

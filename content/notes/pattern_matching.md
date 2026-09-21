@@ -181,11 +181,11 @@ let rec list_sum int_list = match int_list with
 	| a::t -> a + list_sum t;;
 ```
 
-This is a `recursive` function which basically takes the first element of each list and adds it to the first element of the remaning list, until we have an empty list.
+This is a `recursive` function which basically takes the first element of each list and adds it to the first element of the remaining list, until we have an empty list.
 
-The `rec` keyword just defines a recursive function. Its to avoid any unambiguity of which function is recursive and which isn't. I have done a deep dive on Tail call optimisations in recursive functions in OCaml in a [blog post](https://purge12.github.io/blog/tco-ocaml/). You can check it out!
+The `rec` keyword just defines a recursive function. Its to avoid any ambiguity of which function is recursive and which isn't. I have done a deep dive on Tail call optimisations in recursive functions in OCaml in a [blog post](https://purge12.github.io/blog/tco-ocaml/). You can check it out!
 
-We can trace the output of the `list_sum` function in **utop** and get a nice little depection of what is going on:
+We can trace the output of the `list_sum` function in **utop** and get a nice little depiction of what is going on:
 
 ```ocaml
 utop # #trace list_sum;;
@@ -225,7 +225,7 @@ let append value lst =
 	| _ -> lst @ [value];;
 ```
 
-The `@` operator is a list concatention operator. Note that we can also do this with a recursive function:
+The `@` operator is a list concatenation operator. Note that we can also do this with a recursive function:
 
 ```ocaml
 let rec append value lst =
@@ -317,4 +317,4 @@ Pretty neat. Note that we only use it when we want to pattern match the `last ar
 ## Cons vs Append operator
 
 `::` -> prepends an element to a list -> **O(1)** in time complexity
-`@` -> Concatenates two lists together -> **O(n)** in time compleixity (n is the length of the first list)
+`@` -> Concatenates two lists together -> **O(n)** in time complexity (n is the length of the first list)

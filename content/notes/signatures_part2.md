@@ -13,7 +13,7 @@ lang = "en"
 
 ## .mli files
 
-So we looked at implemeting signatures using the `module type` keyword, in the same file itself. But there is another way of doing this (which I hinted at before) which is to define a `.mli` file. This is an **interface** file which holds all your definitions so that you can decide what to keep public and what to keep private.
+So we looked at implementing signatures using the `module type` keyword, in the same file itself. But there is another way of doing this (which I hinted at before) which is to define a `.mli` file. This is an **interface** file which holds all your definitions so that you can decide what to keep public and what to keep private.
 
 To give an example, let's bring out the stack code we had and define its type interface separately:
 
@@ -63,7 +63,7 @@ Note that the signature in this case is pretty much anonymous. You can see the a
 
 ## Includes
 
-We've seen in the past how OCaml uses different operators for interger and float arithmetic ("+" vs "+."). In abstract algebra there are `rings` and `fields` which let you abstract away. A ring for example in abstract algebra is an abstraction over **additional** and **multiplication**, but not just for numbers, for any other mathematical object (like polynomials for example).
+We've seen in the past how OCaml uses different operators for integer and float arithmetic ("+" vs "+."). In abstract algebra there are `rings` and `fields` which let you abstract away. A ring for example in abstract algebra is an abstraction over **additional** and **multiplication**, but not just for numbers, for any other mathematical object (like polynomials for example).
 
 So, let's define the signature of rings:
 
@@ -83,7 +83,7 @@ module type Rings = sig
 end
 ```
 
-Now we can use these signatures to create a module for say integer arithemtic:
+Now we can use these signatures to create a module for say integer arithmetic:
 
 ```ocaml
 module IntRings : Rings = struct
@@ -152,7 +152,7 @@ And we won't have to change our programs one bit, since succ3 for example can be
 let succ3 i = FloatRing.(i + one |> string);;
 ```
 
-And this will work for floats! Interesting right. So, what if we wanted to say have division as well? Rings in general don't do divisons so we'll have to go for fields. 
+And this will work for floats! Interesting right. So, what if we wanted to say have division as well? Rings in general don't do divisions so we'll have to go for fields. 
 
 ```ocaml
 module type Field = sig
@@ -220,6 +220,6 @@ module N : sig val a : string val b : string end
 module O : sig val b : string end
 ```
 
-This means that the module N ended up "redefining" or "re-providing" the definitions and values in `M`. This is obviosuly as the name suggests!
+This means that the module N ended up "redefining" or "re-providing" the definitions and values in `M`. This is obviously as the name suggests!
 
 So, you should use include, if you want to have your new module re-provide all those instances, otherwise use open if you just want to "use" the definitions in a module.

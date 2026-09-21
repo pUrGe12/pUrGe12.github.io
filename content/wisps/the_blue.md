@@ -247,7 +247,7 @@ A short screenplay. You can also [read the formatted PDF](/pdf/The_blue.pdf) if 
 <p class="sp-paren">(in a soft voice)</p>
 <p class="sp-dial">You heard about the suicides again? Yesterday news?</p>
 
-<p class="sp-action">OC_GUY2 ignores the question, continue's puffing.</p>
+<p class="sp-action">OC_GUY2 ignores the question, continues puffing.</p>
 
 <p class="sp-char">OC_Guy2</p>
 <p class="sp-dial">Dude, I think this is some heavy stuff! Are you sure it was just lying around?</p>

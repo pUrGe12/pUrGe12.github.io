@@ -48,7 +48,7 @@ This will make the server a static observer of all my traffic. Then we can filte
 
 ## Getting certs
 
-Browser's are pretty solid these days and they can easily figure out if a hacker is trying to insert themself in the middle. So, the first thing to do after enabling proxies and starting the mitmproxy service, is to get a valid certificate.
+Browsers are pretty solid these days and they can easily figure out if a hacker is trying to insert themselves in the middle. So, the first thing to do after enabling proxies and starting the mitmproxy service, is to get a valid certificate.
 
 - visit `http://mitm.it`
 - Select the os/browser you're panning to set up the proxy on

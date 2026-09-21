@@ -16,9 +16,9 @@ card = "assets/books/shoe_dog.jpg"
 banner = "assets/banners/shoe_dog.jpg"
 +++
 
-Shoedog is the story of Phil Knight. He's an American billionare and philanthropist (with no mention in the Epstein files!) who co-founded Nike with his running coach Bill Bowerman.
+Shoe Dog is the story of Phil Knight. He's an American billionaire and philanthropist (with no mention in the Epstein files!) who co-founded Nike with his running coach Bill Bowerman.
 
-This is not a typical rags to riches story because well, there were no rags perse. He family was earning decently, not too good but not too bad. But it shows how you break mediocrity. I loved this book for one reason alone, this man spent a lot of time looking for answers. He travelled around the world before he had anything in his pockets, or to his name. He meditated, he read and he listened, for signs, for anything that would give him whatever it was that he was seeking.
+This is not a typical rags to riches story because well, there were no rags per se. He family was earning decently, not too good but not too bad. But it shows how you break mediocrity. I loved this book for one reason alone, this man spent a lot of time looking for answers. He travelled around the world before he had anything in his pockets, or to his name. He meditated, he read and he listened, for signs, for anything that would give him whatever it was that he was seeking.
 
 I understand that. Its a book more about dealing with pressure than about the glory and steps to success. He is not flattering, he is blunt and sometimes wrong and outright bad. He doesn't always treat people like how a "nice" man would, but it worked out for him. Like it worked out for Jobs.
 
