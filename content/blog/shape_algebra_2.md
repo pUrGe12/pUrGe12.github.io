@@ -208,6 +208,8 @@ Lean checks this one as a perfect substitution for every $j$ from 1 to 15.
 
 So, I was able to run some scripts to prove that we're able to reach all the shapes up to N = 11 at least. After that the required computations go very high so I didn't run those checks. I'll keep updating this, but I assume there shouldn't be a problem with coverage now with all the rules we have in place.
 
+(For code explanations, see the next [post](https://purge12.github.io/blog/shape-algebra-3/))
+
 ## Observations
 
 This is a simple observation:
@@ -248,6 +250,16 @@ $$
 
 So, each new value of N, requires on average 1.2 times more steps. 
 
+Few things to note here:
+
+1. N = 5 to 10 implies we haven't encountered subtraction yet, so this is purely an additive artifact. Nothing else can be drawn from this.
+
+2. Honestly, the search space is way too narrow to make any claims about the mean for the entire algebra. That's an engineering mindset and that can't work here!
+
 ---
 
-Now I'll try and prove some things, maybe we'll have to update a few rules yet again who knows. The goal is to see if we can use this construction to first prove some well known theorems in polyominoes. After that sky's the limit.
+Now I'll try and prove some things, maybe we'll have to update a few rules yet again who knows. The goal is to see if we can use this construction to first prove some well known theorems in polyominoes. After that sky's the limit. But first we'll talk about the code.
+
+Let's talk the code [next](https://purge12.github.io/blog/shape-algebra-3/).
+
+Link for the 3rd part: [part 3](https://purge12.github.io/blog/shape-algebra-3/)
