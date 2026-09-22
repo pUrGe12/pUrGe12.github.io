@@ -190,20 +190,6 @@
   color: rgb(255 255 255 / 0.8);
 }
 
-/* Links inside the hero meta line sit on the dark gradient, so they get a
-   light underline rather than the page's link colour. */
-.tl-hero-link {
-  color: #fff;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-  text-decoration-color: rgb(255 255 255 / 0.5);
-}
-
-.tl-hero-link:hover {
-  text-decoration-color: #fff;
-}
-
 .tl-books-intro {
   max-width: 65ch;
   margin-bottom: 0.5rem;
