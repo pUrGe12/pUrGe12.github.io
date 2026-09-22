@@ -24,28 +24,7 @@
         </div>
       </div>
     </section>
-    <section class="row justify-between py-4">
-      <div class="row gap-3">
-        <a class="text-lg tl-link" href="{{ config.base_url }}/blog">blog</a>
-        
-        {% if config.extra.wisps_page -%}
-        <a class="text-lg tl-link" href="{{ config.base_url }}/wisps">wisps</a>
-        {% endif -%}
-
-        {% if config.extra.books_page -%}
-        <a class="text-lg tl-link" href="{{ config.base_url }}/books">books</a>
-        {% endif -%}
-
-        {% if config.extra.notes_page -%}
-        <a class="text-lg tl-link" href="{{ config.base_url }}/notes">notes</a>
-        {% endif -%}
-
-        {% if config.extra.gallery_page -%}
-        <a class="text-lg tl-link" href="{{ config.base_url }}/gallery">gallery</a>
-        {% endif -%}
-
-        <a class="text-lg tl-link" href="{{ get_url(path='tags/', trailing_slash=true) }}">tags</a>
-      </div>
+    <section class="row justify-end py-4">
       <div class="row gap-2 h-6">
         {% for link in config.extra.links -%}
           <a class="text-lg tl-link" href="{{ link.url }}" aria-label="{{ link.name }}" target="_blank" rel='noreferrer noopener'>
@@ -65,29 +44,43 @@
       {{ section.content | trim | safe }}
     </section>
 
-    {% if section.extra.featured %}
-    <section aria-label="Featured posts" class="tl-cards">
-      {% for item in section.extra.featured %}
-      {% set post = get_page(path=item.path) %}
-      <a class="tl-card" href="{{ post.permalink }}">
-        {% if post.extra.banner %}
-        <img class="tl-card-banner" src="{{ get_url(path=post.extra.banner) }}" alt="">
-        {% else %}
-        <div class="tl-card-banner" aria-hidden="true"></div>
-        {% endif %}
-        <div class="tl-card-body">
-          <span class="tl-card-title">{{ post.title }}</span>
-          {% if item.blurb %}
-          <p class="tl-card-blurb">{{ item.blurb }}</p>
-          {% elif post.description %}
-          <p class="tl-card-blurb">{{ post.description }}</p>
-          {% endif %}
-          <span class="tl-card-meta">{{ post.date | date }}</span>
-        </div>
+    {#- The sections of the site, as cards. Same destinations as the old text
+        links; each carries a one-line description. Guarded by the same config
+        flags, so a disabled section just drops out of the grid. -#}
+    <nav aria-label="Sections" class="tl-nav-cards">
+      <a class="tl-nav-card" href="{{ config.base_url }}/blog">
+        <span class="tl-nav-card-name">blog</span>
+        <span class="tl-nav-card-desc">Writeups on whatever I'm nose-deep in.</span>
       </a>
-      {% endfor %}
-    </section>
-    {% endif %}
+      {% if config.extra.wisps_page -%}
+      <a class="tl-nav-card" href="{{ config.base_url }}/wisps">
+        <span class="tl-nav-card-name">wisps</span>
+        <span class="tl-nav-card-desc">Poems and shorter things.</span>
+      </a>
+      {% endif -%}
+      {% if config.extra.books_page -%}
+      <a class="tl-nav-card" href="{{ config.base_url }}/books">
+        <span class="tl-nav-card-name">books</span>
+        <span class="tl-nav-card-desc">What I've read, shelved by theme.</span>
+      </a>
+      {% endif -%}
+      {% if config.extra.notes_page -%}
+      <a class="tl-nav-card" href="{{ config.base_url }}/notes">
+        <span class="tl-nav-card-name">notes</span>
+        <span class="tl-nav-card-desc">Notes, mostly OCaml.</span>
+      </a>
+      {% endif -%}
+      {% if config.extra.gallery_page -%}
+      <a class="tl-nav-card" href="{{ config.base_url }}/gallery">
+        <span class="tl-nav-card-name">gallery</span>
+        <span class="tl-nav-card-desc">A few photographs.</span>
+      </a>
+      {% endif -%}
+      <a class="tl-nav-card" href="{{ get_url(path='tags/', trailing_slash=true) }}">
+        <span class="tl-nav-card-name">tags</span>
+        <span class="tl-nav-card-desc">Browse everything by tag.</span>
+      </a>
+    </nav>
 
     {% if section.extra.outro %}
     <section class="mb-16 tl-prose">
