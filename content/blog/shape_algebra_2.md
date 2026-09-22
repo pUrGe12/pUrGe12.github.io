@@ -208,9 +208,9 @@ Lean checks this one as a perfect substitution for every $j$ from 1 to 15.
 
 So, I was able to run some scripts to prove that we're able to reach all the shapes up to N = 11 at least. After that the required computations go very high so I didn't run those checks. I'll keep updating this, but I assume there shouldn't be a problem with coverage now with all the rules we have in place.
 
-## Theorems and observations
+## Observations
 
-We can define some basic theorems:
+This is a simple observation:
 
 **If we're starting from base $A_X^j$, for a figure with N blocks, if the number of "steps" needed is S then**
 
@@ -218,7 +218,7 @@ $$
 S \geq (N-j)
 $$
 
-This is kinda trivial to see tbh. You will need N-j new blocks to build the shape, so definitely the number of steps will exceed that since we'll be counting M, P and X in the steps as well.
+This is kinda trivial to see tbh. You will need $N-j$ new blocks to build the shape, so definitely the number of steps will exceed that since we'll be counting $M$, $P$ and $X$ in the steps as well.
 
 What you're not prepared for is this empirical fact I discovered by running more scripts. I did the following:
 
@@ -250,4 +250,4 @@ So, each new value of N, requires on average 1.2 times more steps.
 
 ---
 
-See the next blog post for some more details on coverage using Lean.
+Now I'll try and prove some things, maybe we'll have to update a few rules yet again who knows. The goal is to see if we can use this construction to first prove some well known theorems in polyominoes. After that sky's the limit.
