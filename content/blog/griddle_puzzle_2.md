@@ -33,7 +33,7 @@ The problem says that the museum plan is such that from the entrance (top-left) 
 
 This implies that the number of doorways must exactly equal the number of cells in the grid. But since we’re already in the starting position we need to remove 1 from it. This is similar to having one continuous loop throughout the board, that’s exactly the number of doorways we’d need.
 
-{{ figure(src="assets/image_1.png") }}
+{{ figure(src="assets/image_1.png", alt="Image 1", caption="-") }}
 
 Doing this for $N=8$, we get $63$ doorways. There exist exactly $2N(N-1)$ possible grid lines where walls can be placed. This is a standard formula. For $N=8$ that’s $112$ possible grid lines.
 
@@ -41,13 +41,13 @@ This implies, we need exactly $49$ walls, and it's non-negotiable. These two num
 
 We can see this for a few sample cases as well:
 
-{{ figure(src="assets/image_2.png") }}
+{{ figure(src="assets/image_2.png", alt="Image 2", caption="-") }}
 
 #### Expected values and walls
 
 Let’s start by assuming a plain $8 \times 8$ grid with no walls or numbers at all. We’ll write down the number of steps (which just means the number of doorways) it takes to reach a cell in that grid from the top-left (the starting gallery) following the shortest path in green.
 
-{{ figure(src="assets/image_3.png") }}
+{{ figure(src="assets/image_3.png", alt="Image 3", caption="-") }}
 
 The expected value of the number of doorways it takes to reach any cell in this grid is 7 as:
 
@@ -64,13 +64,13 @@ Adding walls to this base grid will only increase the expected value in counts o
 - We’ll call this kind of a wall configuration as a “cover”. Specifically, a cover is a wall on cell $(i, j)$ that is placed above and to the left of it, that is, between $(i-1, j)$ -> $(i, j)$ and $(i, j-1)$ -> $(i, j)$.
 
 
-{{ figure(src="assets/image_4.png") }}
+{{ figure(src="assets/image_4.png", alt="Image 4", caption="-") }}
 
 The effect of adding walls to the base grid can be quantified now, if the wall is a “cover” then we’ll see a change in the number of steps required to get there, else we won’t.
 
 For example:
 
-{{ figure(src="assets/image_5.png") }}
+{{ figure(src="assets/image_5.png", alt="Image 5", caption="-") }}
 
 I have added a few walls to the base grid and it's clear how the numbers have changed. I have highlighted a few of them in pink.
 
@@ -82,7 +82,7 @@ $$
 
 Here, $\Delta_{i}$ represents the deviations of the $i^{th}$ cell from the base case. To make this idea more explicit this is another grid with more walls and labelled deviations for all cells.
 
-{{ figure(src="assets/image_6.png") }}
+{{ figure(src="assets/image_6.png", alt="Image 6", caption="-") }}
 
 
 This is the “delta map” which is counting the deviations for each cell for minimum distance from the starting point. The sum of deviations in this grid is $228$ and hence the expected value of steps (doorways) is $10.5625$. So, we can already note that with walls added, the expected value will increase.
@@ -94,7 +94,7 @@ So we understand that a cover increases the number of steps and we ideally want 
 
 In order to see how this is possible, consider this diagram which considers the walls that have been provided by the question in brown.
 
-{{ figure(src="assets/image_7.png") }}
+{{ figure(src="assets/image_7.png", alt="Image 7", caption="-") }}
 
 This shows the flow from the top-left corner to each cell such that the cell can be reached in the minimum possible steps. The diagram shows all such possible cases. Notice how they’re all headed to the right and down in the normal case, except near walls. This is again because we’re trying to minimize the distance from the top-left. 
 
@@ -104,7 +104,7 @@ The reason we can say that the optimal condition is achieved when we have walled
 
 Now for each cell that has more than or equal to 2 inputs, we can wall one of them, and only one of them at a time. If we count those cells (shown as shaded green ones)
 
-{{ figure(src="assets/image_8.png") }}
+{{ figure(src="assets/image_8.png", alt="Image 8", caption="-") }}
 
 There’s exactly $43$ of them (It’s not a coincidence that $43$ = $49 - 6$). Therefore the number of ways we can wall these such that optimality is preserved (note that by selecting these cells, we have already said optimality will be preserved if we wall one of the two inputs), is $243$.
 
@@ -114,7 +114,7 @@ In general there are $\binom{112}{49}$ possible ways to add $49$ walls here, and
 
 Before we make the arrow diagram, let me explain the new constraints that the numbers bring.
 
-{{ figure(src="assets/image_9.png") }}
+{{ figure(src="assets/image_9.png", alt="Image 9", caption="-") }}
 
 Firstly, we notice that 64 already placed implies it CANNOT lead to any other number and hence the chain must end at it. This can be done in a few ways but we choose the one I have represented with the purple because that’s the only one that will not create a cover. If a cover is created, then the number of steps to reach 64 will increase by 2 (at minimum), and hence the layout will NOT be optimal.
 
@@ -123,7 +123,7 @@ Now we also have 62 and we know that 62 can only lead to 63 and 63 cannot possib
 - The reason for this is again optimality. Choosing 1 will completely block off 26, so that is definitely wrong. Choosing the 2nd one (top right), will FURTHER increase the number of steps to the shaded green region by +2 which is not optimal.
 - Between 3 (bottom left) and the last one, consider their delta maps:
 
-{{ figure(src="assets/image_10.png") }}
+{{ figure(src="assets/image_10.png", alt="Image 10", caption="-") }}
 
 - Sum of deviations for 1: $78$ (minimum expected doorways = $8.21875$)
 - Sum of deviations for 2: $68$ (minimum expected doorways = $8.0625$)
@@ -133,7 +133,7 @@ Now we also have 62 and we know that 62 can only lead to 63 and 63 cannot possib
 
 For the chosen grid, note how the $62$ can ONLY feed to $63$ (that is, $62 -> 63$). For optimality, only the cell from the TOP of $62$ can feed it (because if not, then reaching $62$ would require more doorways). It’s effectively a box around $62$ as well, which will be clear in the image below.
 
-{{ figure(src="assets/image_11.png") }}
+{{ figure(src="assets/image_11.png", alt="Image 11", caption="-") }}
 
 Let’s also reason about the 9 there because that will give us some more constraints.
 
@@ -143,7 +143,7 @@ We need 5, 6 and 7 to be exactly as shown in the image below. They cannot move f
 
 Let me draw the arrow diagram for the chosen grid with numbers and walls (including inferred):
 
-{{ figure(src="assets/image_12.png") }}
+{{ figure(src="assets/image_12.png", alt="Image 12", caption="-") }}
 
 See the box around 62. No such box exists for 16, 9 or 26 because they only have 2 possible inputs around them and both paths take up the same number of doorways. 
 
@@ -172,13 +172,13 @@ This means we will have to reuse the 5,6,7 that we planted for reaching 9 and ge
 To put pictures to this, this diagram valid is works with 0 margin for error (I am still following the same lines I drew in the diagram above)
 
 
-{{ figure(src="assets/image_13.png") }}
+{{ figure(src="assets/image_13.png", alt="Image 13", caption="-") }}
 
 The green dotted path goes to 26, pink path to 9 and yellow to 16. This entirely uses 1-26 numbers so no margin for error. 
 
 But if we look at the below diagram:
 
-{{ figure(src="assets/image_14.png") }}
+{{ figure(src="assets/image_14.png", alt="Image 14", caption="-") }}
 
 This time we’ve split off for 26 from $(2,2)$ itself which is a PERFECTLY valid move according to the arrow diagram I showed above but in this case will break the margins we were playing with! So, this is wrong.
 
@@ -198,7 +198,7 @@ If all 4 of these happen, then we’re cooked. So,
 
 So basically, the arrow diagram now looks like this:
 
-{{ figure(src="assets/image_15.png") }}
+{{ figure(src="assets/image_15.png", alt="Image 15", caption="-") }}
 
 That’s a total of $2^{29}$ cases! ($28$ green shaded ones and 26)
 
