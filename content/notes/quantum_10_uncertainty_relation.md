@@ -115,4 +115,4 @@ If instead the state was $|S_z;+\rangle$, then the dispersion would be 0 $\impli
 
 ---
 
-[← Compatible observables and simultaneous eigenkets](@/notes/quantum_09_compatible_observables.md)
+[← Compatible observables and simultaneous eigenkets](@/notes/quantum_09_compatible_observables.md) | Next: [Incompatible observables and the general uncertainty relation →](@/notes/quantum_11_incompatible_observables.md)
