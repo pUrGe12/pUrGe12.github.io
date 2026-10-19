@@ -273,6 +273,9 @@
         <loc>https://purge12.github.io/categories/philosophy/</loc>
     </url>
     <url>
+        <loc>https://purge12.github.io/categories/physics/</loc>
+    </url>
+    <url>
         <loc>https://purge12.github.io/categories/poetry/</loc>
     </url>
     <url>
@@ -280,6 +283,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/categories/puzzles/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/categories/quantum-physics/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/categories/rev/</loc>
@@ -340,6 +346,46 @@
     <url>
         <loc>https://purge12.github.io/notes/pattern-matching/</loc>
         <lastmod>2026-03-31</lastmod>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/notes/quantum-01-stern-gerlach/</loc>
+        <lastmod>2026-10-19</lastmod>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/notes/quantum-02-kets-and-hilbert-space/</loc>
+        <lastmod>2026-10-19</lastmod>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/notes/quantum-03-bras-and-inner-products/</loc>
+        <lastmod>2026-10-19</lastmod>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/notes/quantum-04-operators/</loc>
+        <lastmod>2026-10-19</lastmod>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/notes/quantum-05-eigenkets-and-base-kets/</loc>
+        <lastmod>2026-10-19</lastmod>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/notes/quantum-06-matrix-representations/</loc>
+        <lastmod>2026-10-19</lastmod>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/notes/quantum-07-spin-half-matrices/</loc>
+        <lastmod>2026-10-19</lastmod>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/notes/quantum-08-measurements-and-sg/</loc>
+        <lastmod>2026-10-19</lastmod>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/notes/quantum-09-compatible-observables/</loc>
+        <lastmod>2026-10-19</lastmod>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/notes/quantum-10-uncertainty-relation/</loc>
+        <lastmod>2026-10-19</lastmod>
     </url>
     <url>
         <loc>https://purge12.github.io/notes/queues-and-options/</loc>
@@ -443,6 +489,9 @@
         <loc>https://purge12.github.io/tags/philosophy/</loc>
     </url>
     <url>
+        <loc>https://purge12.github.io/tags/physics/</loc>
+    </url>
+    <url>
         <loc>https://purge12.github.io/tags/pqc/</loc>
     </url>
     <url>
@@ -453,6 +502,9 @@
     </url>
     <url>
         <loc>https://purge12.github.io/tags/quantisation/</loc>
+    </url>
+    <url>
+        <loc>https://purge12.github.io/tags/quantum-mechanics/</loc>
     </url>
     <url>
         <loc>https://purge12.github.io/tags/science/</loc>
