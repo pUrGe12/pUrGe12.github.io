@@ -67,7 +67,7 @@ nav_separator = " > "
 
 display_id = true                     # Display your id on homepage
 wisps_page = true                     # Custom page to display some non-tech stuff
-notes_page = true                     # Custom page to display OCaml and LLM math notes
+notes_page = true                     # Custom page to display course notes (OCaml, quantum physics)
 books_page = true                     # Custom page to display book recommendations
 # books_categorized is gone: the books page groups by the shelves declared in
 # content/books/_index.md instead.
