@@ -21,8 +21,12 @@
       {% if config.extra.notes_categorized %}
       {% for category,posts in section.pages | group_by(attribute="taxonomies.categories.0") -%}
       <h1 class="text-2xl">{{ category }}</h1>
+      {% if section.extra.category_notes and section.extra.category_notes[category] %}
+      <p class="text-lg italic text-stone-400">{{ section.extra.category_notes[category] }}</p>
+      {% endif %}
       <div class="col gap-5">
-        {% for post in posts %}
+        {# Oldest first; notes from the same day keep their filename order #}
+        {% for post in posts | sort(attribute="permalink") | sort(attribute="date") %}
         <div>
           <a href="{{ post.permalink }}" class="tl-link">{{ post.title }}</a>
           <span class="text-black dark:text-white text-lg pl-2">{{ post.date | date}}</span>

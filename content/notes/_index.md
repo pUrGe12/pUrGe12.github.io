@@ -9,4 +9,8 @@ insert_anchor_links = "left"
 lang = 'en'
 display_tags = true
 truncate_summary = false
+
+# Optional line shown under a category's heading on the notes page
+[extra.category_notes]
+"Quantum Physics" = "Taken from Sakurai and Ashok Das."
 +++
