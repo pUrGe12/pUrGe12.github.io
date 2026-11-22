@@ -41,7 +41,7 @@ note = "Renaissance, Brotherhood, The Secret Crusade (personal favourite, Altair
 [[extra.shelves.books]]
 title = "Diary of a Wimpy Kid"
 author = "Jeff Kinney"
-note = "The whole series, five times over. I was so obsessed I would read this instead of YouTube while eating."
+note = "The whole series, ten times over at this point. I was so obsessed I would read this instead of YouTube while eating."
 
 [[extra.shelves.books]]
 title = "Tom Gates"
@@ -50,28 +50,28 @@ note = "Bought Excellent Excuses because I thought it would hand me a LIST OF EX
 
 [[extra.shelves]]
 title = "Physics and the universe"
-note = "Science books were a good pastime."
+note = "I owe whatever curiosity I have in me to these."
 feature = "meditations"
 
 [[extra.shelves.books]]
 title = "A Brief History of Time"
 author = "Stephen Hawking"
-note = "Possibly the first science book I bought, and I understood jackshit back then."
+note = "Possibly the first science book I bought, and I understood jackshit back then. I understand now, roughly 10 years later."
 
 [[extra.shelves.books]]
 title = "Parallel Worlds"
 author = "Michio Kaku"
-note = "Some mind-twisting stuff in there, but I was slowly getting a hang of it."
+note = "Some mind-twisting stuff in there about parallel world's theory, talks about almost all of science from the 20th century and then presents a bit of string theory."
 
 [[extra.shelves.books]]
 title = "Brief Answers to the Big Questions"
 author = "Stephen Hawking"
-note = "Still a doable read by then, on account of my experience."
+note = "A complimentary book to his first book. A little more detailed on specific aspects, but overall the content is the same. The goal of a unified quantum-gravity theory is explained in a language that people like me can understand."
 
 [[extra.shelves.books]]
 title = "Quantum"
 author = "Manjit Kumar"
-note = "Introduced me to quantum mechanics like no other book could. I felt like I was living with Bohr."
+note = "Introduced me to quantum mechanics like no other book could. I literally went and bought Dirac's lectures on Quantum Mechanics because I wanted to believe. I couldn't. Now I do, again 10 years later."
 star = true
 
 [[extra.shelves]]
@@ -140,7 +140,7 @@ feature = "pursuit_of_happyness"
 [[extra.shelves.books]]
 title = "White Nights"
 author = "Fyodor Dostoevsky"
-note = "What a love. I had no words. The neglect hurt more than the fact that he meant nothing."
+note = "What a love."
 star = true
 
 [[extra.shelves.books]]
@@ -166,13 +166,13 @@ feature = "cant_hurt_me"
 [[extra.shelves.books]]
 title = "The Trial"
 author = "Franz Kafka"
-note = "Haunting. Led me into a deeper study of absurdism and kafkaesque writing. Any screenplay I have thought of since has had this element in it."
+note = "Haunting. Led me into a deeper study of absurdism and kafkaesque writing. All my screenplays since have had this element in it."
 star = true
 
 [[extra.shelves.books]]
 title = "The Metamorphosis"
 author = "Franz Kafka"
-note = "Another one of Kafka's you-cannot-control-it-you-will-die novels."
+note = "You only matter when you bring value. If you think about it, self-worth is really judged by others."
 
 [[extra.shelves.books]]
 title = "The Plague"
@@ -222,7 +222,7 @@ status = "unfinished"
 
 [[extra.shelves]]
 title = "Self-help and money"
-note = "I didn't really enjoy these much. I read them because my dad had a bunch of them in the house."
+note = "You gotta explore all frontiers"
 
 [[extra.shelves.books]]
 title = "Think Again"
@@ -232,12 +232,12 @@ note = "About the need to rethink old ideas and old ways of thinking. I always t
 [[extra.shelves.books]]
 title = "Atomic Habits"
 author = "James Clear"
-note = "Who hasn't read it. Reminiscent of that Admiral McRaven speech at the University of Texas. Some ideas were nice, like the ones for removing distractions."
+note = "Who hasn't read it. Reminiscent of that Admiral McRaven speech at the University of Texas."
 
 [[extra.shelves.books]]
 title = "The Psychology of Money"
 author = "Morgan Housel"
-note = "Not really self-help I guess, but I do not remember a thing from it. Besides, all of it seems like a part of The Intelligent Investor."
+note = "I don't remember anything from this book. I read it twice, I still couldn't remember anything."
 
 [[extra.shelves.books]]
 title = "The Intelligent Investor"
@@ -246,20 +246,48 @@ note = "How could I not. The OG self-help book. Reading this, I started my inves
 star = true
 
 [[extra.shelves]]
-title = "Biographies, in one line"
-note = "Not all of them need a whole page. Some I can say in a line."
+title = "Biographies"
+note = "How could you have lived, but not have a story to tell"
 
 [[extra.shelves.books]]
 title = "Masters of Doom"
 author = "David Kushner"
-note = "Gave some excellent perspective on how smart Carmack really was, and why the two Johns were the equivalent of the two Steves."
+note = "Gave some excellent perspective on how smart Carmack really was, and why the two Johns were the equivalent of the two Steves in the world of computing."
 
 [[extra.shelves.books]]
 title = "That Will Never Work"
 author = "Marc Randolph"
-note = "A book about ideas, and about accepting when you are not the right person for one, then finding the right thing to do instead. Honestly a light read."
+note = "A book about ideas, and about accepting when you are not the right person for one, then finding the right thing to do instead. It's a light enough read."
+
+[[extra.shelves.books]]
+title = "Oscar Wilde"
+author = "Richard Ellmann"
+note = "Richard won the pulitzer's prize for this book. Its extremely detailed, and the stories of Wilde's wit through his own letters is insane. Tough read."
+
+[[extra.shelves.books]]
+title = "Rudyard Kipling"
+author = "Andrew Lycett"
+note = "Kipling's biography, as big as the fucking Bible I swear. It took a while, was slow in the beginnings and tougher to stay engaged. His ideas made up for it."
+
+[[extra.shelves]]
+title = "random stories"
+note = "A collection of books I read once a while"
+
+[[extra.shelves.books]]
+title = "Oscar Wilde"
+author = "Oscar Wilde"
+note = "This was really a collection of a stories written by Oscar Wilde, including The Picture of Dorian Gray, and a bunch of short stories"
+
+[[extra.shelves.books]]
+title = "Dan Brown books"
+author = "Dan Brown"
+note = "The first two books are my favourite, after that it goes downhill for me. But I have read almost all the books now in here."
+
+[[extra.shelves.books]]
+title = "Dan Brown books"
+author = "Dan Brown"
+note = "The first two books are my favourite, after that it goes downhill for me. But I have read almost all the books now in here."
+
 +++
 
-I have written about some of these in more depth &mdash; the ones with enough in them to write about. I try to extract meaning from every book I read and it obviously doesn't work out that well, so I figured a better way is to sometimes just appreciate them too.
-
-What follows is roughly how I'd shelve them: the series I grew up on, the science, the fiction, the self-help I mostly tolerated, and the biographies. The tiles are the lists. The cards sitting next to them are the ones that got a page of their own.
+I have written about some of these in more depth; the ones with enough in them to write about. I try to extract meaning from every book I read and it obviously doesn't work out that well, so I figured a better way is to sometimes just appreciate them and move on. Like you must with life.
