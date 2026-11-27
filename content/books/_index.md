@@ -144,6 +144,11 @@ note = "What a love."
 star = true
 
 [[extra.shelves.books]]
+title = "The Master and Margarita"
+author = "Mikhail Bulgakov"
+note = "Underway"
+
+[[extra.shelves.books]]
 title = "Crime and Punishment"
 author = "Fyodor Dostoevsky"
 note = "Classic classic. Betrayed himself for nothing, which I think is the theme of most of his novels."

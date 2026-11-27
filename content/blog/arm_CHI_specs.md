@@ -279,8 +279,12 @@ So, we can test for these too.
 
 ## Issues
 
-An issue popped up when I tested OpenNCB on verilator. Remember that misaligned memory access part? It doesn't work like its supposed to. The software just hung up, it must be a code bug which I am yet to investigate.
+1. An issue popped up when I tested OpenNCB on verilator. Remember that misaligned memory access part? It doesn't work like its supposed to.
 
-Claude says there are 3 more issues which I am not sure since I haven't found anything in the specs regarding them yet. I'll put up updates in a new post maybe.
+I did investigate. And it really is a code bug. I don't want to write about it here, I already made the [issue](https://github.com/OpenXiangShan/OpenNCB/issues/14) and a [PR](https://github.com/OpenXiangShan/OpenNCB/pull/15) upstream.
 
 ---
+
+2. ANOTHER potential bug. The bridge grants a 16th data-channel credit after reactivation. Over the limit of 15. The maximum number of L-Credits that a receiver can provide is 15. -> Section 14.2.1, L-layer flow control, AMBA CHI specs.
+
+This is documented [here](purge12.github.io/blog/openncb-bug/).
